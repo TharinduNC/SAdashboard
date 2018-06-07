@@ -6,21 +6,22 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user != null){
 
       var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Welcome " + email_id;
-	  window.alert(user.username);
+	  window.alert(user.uid);
+	  window.location.href = "everything.html";
     }
 
   } else {
     // No user is signed in.
+	window.alert("no sign");
   }
 });
 
 function login(){
 
-  var userEmail = document.getElementById("email_field").value;
-  var userPass = document.getElementById("password_field").value;
-
-  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+	var userEmail = document.getElementById("email_field").value;
+	var userPass = document.getElementById("password_field").value;
+	window.alert("Hi");
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     // Handle Errors here.
 	var errorCode = error.code;
     var errorMessage = error.message;
@@ -30,9 +31,4 @@ function login(){
     // ...
   });
 
-}
-
-function logout(){
-  firebase.auth().signOut();
-  window.location.href = "index.html";
 }
