@@ -7,13 +7,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
       var email_id = user.email;
       document.getElementById("user_para").innerHTML = "Welcome " + email_id;
-	  window.location.href="everything.html";
 	  window.alert(user.username);
     }
 
   } else {
     // No user is signed in.
-	
   }
 });
 
@@ -24,7 +22,7 @@ function login(){
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     // Handle Errors here.
-    var errorCode = error.code;
+	var errorCode = error.code;
     var errorMessage = error.message;
 
     window.alert("Error : " + errorMessage);
@@ -36,5 +34,5 @@ function login(){
 
 function logout(){
   firebase.auth().signOut();
-  document.getElementById("user_para").innerHTML = "Welcome to the StudentAvatar Dashboard";
+  window.location.href = "index.html";
 }
