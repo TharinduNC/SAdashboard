@@ -74,10 +74,62 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1>StudentAvatar Dashboard</h1>
-					<p id="user_para">Welcome to the StudentAvatar Dashboard</p>
+					<p>Welcome to the StudentAvatar Dashboard</p>
 				</div>
 			</div>
 			<hr>
+		</div>
+		<!--hide every div based on clicked navigation-->
+		<div id="user">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>StudentAvatar Dashboard</h1>
+					<p>Add a user</p>
+				</div>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading">Add users</div>
+					<div class="panel-body">
+					
+						<form class="form-horizontal">
+						
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="user_name" placeholder="Enter Username" name="user_name" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="user_pass" placeholder="Enter Password" name="user_pass" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<label for="user_role">Select role of user</label>
+									<select class="form-control" name="user_role" size="1" id="user_role" required="required">
+										<option value="1">admin (1)</option>
+										<option value="2">staff (2)</option>
+										<option value="3">club leader (3)</option>
+										<option value="4">student (4)</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<button type="button" class="btn btn-default" onclick="userSubmit()">Add</button>
+								</div>
+							</div>
+						
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		
