@@ -49,49 +49,33 @@
 	
 	<div class="container">
 	
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Student Avatar</a>
-				</div>
-		
-				<ul class="nav navbar-nav">
-					<li><a href="#">User</a></li>
-					<li><a href="#">Guides</a></li>
-					<li><a href="#">Events</a></li>
-					<li><a href="#">Map</a></li>
-					<li><a href="#">Unit</a></li>
-					<li><a href="#">Club</a></li>
-				</ul>
-				
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-				</ul>
-			</div>
-		</nav>
 	
-		<div id="current">
-			<div class="row">
-				<div class="col-md-12">
-					<h1>StudentAvatar Dashboard</h1>
-					<p>Welcome to the StudentAvatar Dashboard</p>
-				</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h1>StudentAvatar Dashboard</h1>
+				<p>Welcome to the StudentAvatar Dashboard</p>
 			</div>
-			<hr>
 		</div>
-		<!--hide every div based on clicked navigation-->
-		<div id="user">
-			<div class="row">
-				<div class="col-md-12">
-					<h1>StudentAvatar Dashboard</h1>
-					<p>Add a user</p>
-				</div>
-			</div>
-			<hr>
+		<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+		<hr>
+		
+		<nav>
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#user">User</a></li>
+				<li><a data-toggle="tab" href="#guide">Guide</a></li>
+				<li><a data-toggle="tab" href="#event">Event</a></li>
+				<li><a data-toggle="tab" href="#map">Map</a></li>
+				<li><a data-toggle="tab" href="#unit">Unit</a></li>
+				<li><a data-toggle="tab" href="#club">Club</a></li>
+			</ul>
+		</nav>
+		
+		<div class="tab-content">
+		
+			<div id="user" class="tab-pane fade in active">
 			
-			<div class="row">
 				<div class="panel panel-default">
-					<div class="panel-heading">Add users</div>
+					<div class="panel-heading">Add one user</div>
 					<div class="panel-body">
 					
 						<form class="form-horizontal">
@@ -135,8 +119,47 @@
 						</form>
 					</div>
 				</div>
+			
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">Add multiple user</div>
+					<div class="panel-body">
+						<p>put something</p>
+					</div>
+				</div>
+			
 			</div>
+		
+			<div id="guide" class="tab-pane fade">
+				<h3>temp</h3>
+				<p>placeholder add later</p>
+			</div>
+			
+			<div id="event" class="tab-pane fade">
+				<h3>temp</h3>
+				<p>placeholder add later</p>
+			</div>
+			
+			<div id="map" class="tab-pane fade">
+				<h3>temp</h3>
+				<p>placeholder add later</p>
+			</div>
+			
+			<div id="unit" class="tab-pane fade">
+				<h3>temp</h3>
+				<p>placeholder add later</p>
+			</div>
+			
+			<div id="club" class="tab-pane fade">
+				<h3>temp</h3>
+				<p>placeholder add later</p>
+			</div>
+		
 		</div>
+		
+			
+		
+
 		
 		
 	</div>
@@ -156,7 +179,6 @@
     <script src="/__/firebase/init.js"></script>
 	
     <script src="scripts/logout.js"></script>
-	<script src="scripts/nav.js"></script>
 </body>
     
 </html>
