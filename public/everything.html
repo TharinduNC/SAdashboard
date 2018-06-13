@@ -49,7 +49,6 @@
 	
 	<div class="container">
 	
-	
 		<div class="row">
 			<div class="col-md-12">
 				<h1>StudentAvatar Dashboard</h1>
@@ -82,19 +81,19 @@
 						
 							<div class="form-group">
 								<div class="col-md-3">
-									<input type="text" class="form-control" id="user_name" placeholder="Enter Username" name="user_name" required="required">
+									<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-3">
-									<input type="email" class="form-control" id="user_mail" placeholder="Enter Email" name="user_mail" required="required">
+									<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-3">
-									<input type="text" class="form-control" id="user_pass" placeholder="Enter Password" name="user_pass" required="required">
+									<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">
 								</div>
 							</div>
 							
@@ -112,7 +111,7 @@
 							
 							<div class="form-group">
 								<div class="col-md-3">
-									<button type="button" class="btn btn-default" onclick="userSubmit()">Add</button>
+									<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>
 								</div>
 							</div>
 						
@@ -122,7 +121,7 @@
 			
 			
 				<div class="panel panel-default">
-					<div class="panel-heading">Add multiple user</div>
+					<div class="panel-heading">Add multiple users</div>
 					<div class="panel-body">
 						<p>put something</p>
 					</div>
@@ -136,8 +135,70 @@
 			</div>
 			
 			<div id="event" class="tab-pane fade">
-				<h3>temp</h3>
-				<p>placeholder add later</p>
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">Add one event</div>
+					<div class="panel-body">
+						<!--enforce rules later-->
+						<form class="form-horizontal">
+						
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="event_title" placeholder="Enter title" name="event_title" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="event_date" placeholder="Enter date (yyyy/mm/dd)" name="user_mail" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="event_time" placeholder="Enter time, 24hrs (hh:mm)" name="event_time" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="event_location" placeholder="Enter location" name="event_location" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<textarea rows="4" cols="50" id="event_description" placeholder="Add a description" name="event_description" ></textarea>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<div class="checkbox">
+										<label><input type="checkbox" id="event_notification" name="event_notification" value="1">Push notification?</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<button type="button" class="btn btn-default" onclick="eventSubmit()">Add event</button>
+								</div>
+							</div>
+						
+						</form>
+					
+					
+					</div>
+				</div>
+				
+				<div class="panel panel-default">
+					<div class="panel-heading">Add multiple events</div>
+					<div class="panel-body">
+						<p>put something</p>
+					</div>
+				</div>
+				
 			</div>
 			
 			<div id="map" class="tab-pane fade">
@@ -156,10 +217,6 @@
 			</div>
 		
 		</div>
-		
-			
-		
-
 		
 		
 	</div>
