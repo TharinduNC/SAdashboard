@@ -143,31 +143,31 @@
 						<form class="form-horizontal">
 						
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-5">
 									<input type="text" class="form-control" id="event_title" placeholder="Enter title" name="event_title" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<div class="col-md-3">
-									<input type="text" class="form-control" id="event_date" placeholder="Enter date (yyyy/mm/dd)" name="user_mail" required="required">
+								<div class="col-md-5">
+									<input type="text" class="form-control" id="event_date" placeholder="Enter date (yyyy/mm/dd), [range] (yyyy/mm/dd - yyyy/mm/dd)" name="user_mail" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<div class="col-md-3">
-									<input type="text" class="form-control" id="event_time" placeholder="Enter time, 24hrs (hh:mm)" name="event_time" required="required">
+								<div class="col-md-5">
+									<input type="text" class="form-control" id="event_time" placeholder="Enter time, [24hrs] (hh:mm), [range] (hh:mm - hh:mm)" name="event_time" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-5">
 									<input type="text" class="form-control" id="event_location" placeholder="Enter location" name="event_location" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<div class="col-md-3">
+								<div class="col-md-5">
 									<textarea rows="4" cols="50" id="event_description" placeholder="Add a description" name="event_description" ></textarea>
 								</div>
 							</div>
@@ -207,13 +207,75 @@
 			</div>
 			
 			<div id="unit" class="tab-pane fade">
-				<h3>temp</h3>
-				<p>placeholder add later</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">Add one unit</div>
+					<div class="panel-body">
+					
+						<form class="form-horizontal">
+						
+							<div class="form-group">
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="col-md-5">
+									<input type="text" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<button type="button" class="btn btn-default" onclick="unitSubmit()">Add unit</button>
+								</div>
+							</div>
+						
+						</form>
+					</div>
+				</div>
+			
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">Add multiple units</div>
+					<div class="panel-body">
+						<p>put something</p>
+					</div>
+				</div>
+				
 			</div>
 			
 			<div id="club" class="tab-pane fade">
-				<h3>temp</h3>
-				<p>placeholder add later</p>
+				<div class="panel panel-default">
+					<div class="panel-heading">Add one club</div>
+					<div class="panel-body">
+					
+						<form class="form-horizontal">
+
+							<div class="form-group">
+								<div class="col-md-4">
+									<input type="text" class="form-control" id="club_name" placeholder="Enter name" name="club_name" required="required">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-3">
+									<button type="button" class="btn btn-default" onclick="clubSubmit()">Add club</button>
+								</div>
+							</div>
+						
+						</form>
+					</div>
+				</div>
+			
+			
+				<div class="panel panel-default">
+					<div class="panel-heading">Add multiple clubs</div>
+					<div class="panel-body">
+						<p>put something</p>
+					</div>
+				</div>
 			</div>
 		
 		</div>
