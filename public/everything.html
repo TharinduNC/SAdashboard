@@ -73,58 +73,107 @@
 		
 			<div id="user" class="tab-pane fade in active">
 			
-				<div class="panel panel-default">
-					<div class="panel-heading">Add one user</div>
-					<div class="panel-body">
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#user-create">Add users</a></li>
+					<li><a data-toggle="pill" href="#user-read">View users</a></li>
+					<li><a data-toggle="pill" href="#user-update">Edit users</a></li>
+					<li><a data-toggle="pill" href="#user-delete">Delete users</a></li>
+				</ul>
+			
+			
+				<div class="tab-content">
 					
-						<form class="form-horizontal">
-						
-							<div class="form-group">
-								<div class="col-md-3">
-									<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">
-								</div>
-							</div>
+					<div id="user-create" class="tab-pane fade in active">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Add one user</div>
+							<div class="panel-body">
 							
-							<div class="form-group">
-								<div class="col-md-3">
-									<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">
-								</div>
+								<form class="form-horizontal">
+								
+									<div class="form-group">
+										<div class="col-md-3">
+											<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<label for="user_role">Select role of user</label>
+											<select class="form-control" name="user_role" size="1" id="user_role" required="required">
+												<option value="1">admin (1)</option>
+												<option value="2">staff (2)</option>
+												<option value="3">club leader (3)</option>
+												<option value="4">student (4)</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>
+										</div>
+									</div>
+								
+								</form>
 							</div>
-							
-							<div class="form-group">
-								<div class="col-md-3">
-									<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">
-								</div>
+						</div>
+					
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Add multiple users</div>
+							<div class="panel-body">
+								<p>put something</p>
 							</div>
-							
-							<div class="form-group">
-								<div class="col-md-3">
-									<label for="user_role">Select role of user</label>
-									<select class="form-control" name="user_role" size="1" id="user_role" required="required">
-										<option value="1">admin (1)</option>
-										<option value="2">staff (2)</option>
-										<option value="3">club leader (3)</option>
-										<option value="4">student (4)</option>
-									</select>
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<div class="col-md-3">
-									<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>
-								</div>
-							</div>
-						
-						</form>
+						</div>
+					
 					</div>
-				</div>
-			
-			
-				<div class="panel panel-default">
-					<div class="panel-heading">Add multiple users</div>
-					<div class="panel-body">
-						<p>put something</p>
+					
+					<div id="user-read" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">View users</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+						
 					</div>
+					
+					<div id="user-update" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Edit users</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div id="user-delete" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete users</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+						
+					</div>
+					
 				</div>
 			
 			</div>
@@ -207,75 +256,175 @@
 			</div>
 			
 			<div id="unit" class="tab-pane fade">
-				<div class="panel panel-default">
-					<div class="panel-heading">Add one unit</div>
-					<div class="panel-body">
+			
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#unit-create">Add units</a></li>
+					<li><a data-toggle="pill" href="#unit-read">View units</a></li>
+					<li><a data-toggle="pill" href="#unit-update">Edit units</a></li>
+					<li><a data-toggle="pill" href="#unit-delete">Delete units</a></li>
+				</ul>
+			
+			
+				<div class="tab-content">
+				
+					<div id="unit-create" class="tab-pane fade in active">
 					
-						<form class="form-horizontal">
-						
-							<div class="form-group">
-								<div class="col-md-3">
-									<input type="text" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								<div class="col-md-5">
-									<input type="text" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
-								</div>
-							</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">Add one unit</div>
+							<div class="panel-body">
 							
-							<div class="form-group">
-								<div class="col-md-3">
-									<button type="button" class="btn btn-default" onclick="unitSubmit()">Add unit</button>
-								</div>
+								<form class="form-horizontal">
+								
+									<div class="form-group">
+										<div class="col-md-3">
+											<input type="text" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<div class="col-md-5">
+											<input type="text" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-default" onclick="unitSubmit()">Add unit</button>
+										</div>
+									</div>
+								
+								</form>
 							</div>
+						</div>
+					
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Add multiple units</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+							
+					</div>
+				
+					<div id="unit-read" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">View units</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
 						
-						</form>
 					</div>
-				</div>
-			
-			
-				<div class="panel panel-default">
-					<div class="panel-heading">Add multiple units</div>
-					<div class="panel-body">
-						<p>put something</p>
+					
+					<div id="unit-update" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Edit units</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+						
 					</div>
+					
+					<div id="unit-delete" class="tab-pane fade">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete units</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+						
+					</div>
+				
 				</div>
 				
 			</div>
 			
 			<div id="club" class="tab-pane fade">
-				<div class="panel panel-default">
-					<div class="panel-heading">Add one club</div>
-					<div class="panel-body">
+			
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#club-create">Add clubs</a></li>
+					<li><a data-toggle="pill" href="#club-read">View clubs</a></li>
+					<li><a data-toggle="pill" href="#club-update">Edit clubs</a></li>
+					<li><a data-toggle="pill" href="#club-delete">Delete clubs</a></li>
+				</ul>
+				
+				<div class="tab-content">
+				
+					<div id="club-create" class="tab-pane fade in active">
 					
-						<form class="form-horizontal">
-
-							<div class="form-group">
-								<div class="col-md-4">
-									<input type="text" class="form-control" id="club_name" placeholder="Enter name" name="club_name" required="required">
-								</div>
-							</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">Add one club</div>
+							<div class="panel-body">
 							
-							<div class="form-group">
-								<div class="col-md-3">
-									<button type="button" class="btn btn-default" onclick="clubSubmit()">Add club</button>
-								</div>
+								<form class="form-horizontal">
+
+									<div class="form-group">
+										<div class="col-md-4">
+											<input type="text" class="form-control" id="club_name" placeholder="Enter name" name="club_name" required="required">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-default" onclick="clubSubmit()">Add club</button>
+										</div>
+									</div>
+								
+								</form>
 							</div>
+						</div>
+					
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Add multiple clubs</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+					
+					</div>
+					
+					<div id="club-read" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">View clubs</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+					
+					</div>
+					
+					<div id="club-update" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Edit clubs</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
 						
-						</form>
 					</div>
+					
+					<div id="club-delete" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete clubs</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+						
+					</div>
+					
 				</div>
 			
-			
-				<div class="panel panel-default">
-					<div class="panel-heading">Add multiple clubs</div>
-					<div class="panel-body">
-						<p>put something</p>
-					</div>
-				</div>
 			</div>
 		
 		</div>
