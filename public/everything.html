@@ -400,7 +400,10 @@
 										<th>Name</th>
 									</tr>
 									<tr ng-repeat="c in clubs">
-										<td>{{c.name}}</td>
+										<td>
+											<input type="checkbox" name="remember" value="{{c.name}}">
+											{{c.name}}
+										</td>
 									</tr>
 								</table>
 							</div>
@@ -413,16 +416,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit clubs</div>
 							<div class="panel-body">
-								
-								<table class="table" id="tableViewClub">
-									<tr>
-										<th>Name</th>
-									</tr>
-									<tr ng-repeat="c in clubs">
-										<td>{{c.name}}</td>
-									</tr>
-								</table>
-								
+								<p>check items to edit</p>
 							</div>
 						</div>
 						
@@ -433,7 +427,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Delete clubs</div>
 							<div class="panel-body">
-								<p>put something</p>
+								<p>check items to delete</p>
 							</div>
 						</div>
 						
@@ -466,13 +460,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="scripts/angular.js"></script>
 	
+	<script src="scripts/club.js"></script>
+	
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 	
-    <script src="scripts/logout.js"></script>
+    
 	
+	
+	<script src="scripts/logout.js"></script>
 	<!--
-	<script src="scripts/club.js"></script>
+	
 	
 	
 	-->
