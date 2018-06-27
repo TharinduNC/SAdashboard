@@ -2,6 +2,8 @@ https://firebase.google.com/docs/hosting/deploying?authuser=0
 
 website: https://my-awesome-project-6dd85.firebaseapp.com/
 
+AngularJS angularFire docs refered: https://github.com/firebase/angularfire/blob/master/docs/quickstart.md
+
 1. Install Node.js 10.0.0 https://nodejs.org/en/
 2. Open cmd and install the Firebase CLI using: 
   npm install -g firebase-tools
