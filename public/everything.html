@@ -397,13 +397,10 @@
 							<div class="panel-body">
 								<table class="table" id="tableViewClub">
 									<tr>
-										<th>Name {{x}}</th>
+										<th>Name</th>
 									</tr>
-									<tr>
-										<td>lololo</td>
-									</tr>
-									<tr>
-										<td>lololqqqo</td>
+									<tr ng-repeat="c in clubs">
+										<td>{{c.name}}</td>
 									</tr>
 								</table>
 							</div>
@@ -459,6 +456,9 @@
 	<!--angularjs-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="scripts/angular.js"></script>
+	
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 	
     <script src="scripts/logout.js"></script>
 	<script src="scripts/club.js"></script>

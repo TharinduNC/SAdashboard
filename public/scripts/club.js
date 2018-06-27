@@ -31,11 +31,4 @@ code for table looping duplicates
 https://www.w3schools.com/code/tryit.asp?filename=FSOMG40PE1MZ
 */
 
-function clubView()
-{
-	var firebaseRef = firebase.database().ref();
-	
-	
-}
-
 
