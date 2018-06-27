@@ -45,7 +45,7 @@
 	<link rel="stylesheet" href="css/nav.css">
 </head>
 
-<body>
+<body ng-app="myApp">
 	
 	<div class="container">
 	
@@ -349,7 +349,7 @@
 			
 				<ul class="nav nav-pills">
 					<li class="active"><a data-toggle="pill" href="#club-create">Add clubs</a></li>
-					<li><a data-toggle="pill" href="#club-read" onclick="clubView()">View clubs</a></li>
+					<li><a data-toggle="pill" href="#club-read">View clubs</a></li>
 					<li><a data-toggle="pill" href="#club-update">Edit clubs</a></li>
 					<li><a data-toggle="pill" href="#club-delete">Delete clubs</a></li>
 				</ul>
@@ -390,14 +390,14 @@
 					
 					</div>
 					
-					<div id="club-read" class="tab-pane fade">
+					<div id="club-read" class="tab-pane fade" ng-controller="clubRead">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">View clubs</div>
 							<div class="panel-body">
 								<table class="table" id="tableViewClub">
 									<tr>
-										<th>Name</th>
+										<th>Name {{x}}</th>
 									</tr>
 									<tr>
 										<td>lololo</td>
@@ -455,6 +455,10 @@
     <script src="/__/firebase/3.9.0/firebase-auth.js"></script>
     <script src="/__/firebase/3.9.0/firebase-database.js"></script>
     <script src="/__/firebase/init.js"></script>
+	
+	<!--angularjs-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="scripts/angular.js"></script>
 	
     <script src="scripts/logout.js"></script>
 	<script src="scripts/club.js"></script>

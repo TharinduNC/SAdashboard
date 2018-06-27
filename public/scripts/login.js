@@ -1,19 +1,19 @@
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    var user = firebase.auth().currentUser;
+	if(user) {
+			// User is signed in.
+			var user = firebase.auth().currentUser;
 
-    if(user != null){
+			if(user != null) {
 
-      var email_id = user.email;
-	  window.alert(user.uid);
-	  window.location.href = "everything.html";
-    }
+				var email_id = user.email;
+				window.alert(user.uid);
+				window.location.href = "everything.html";
+			}
 
-  } else {
-    // No user is signed in.
-	window.alert("no sign");
-  }
+	} else {
+		// No user is signed in.
+		window.alert("no sign");
+	}
 });
 
 function login(){
