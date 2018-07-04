@@ -1,12 +1,30 @@
-app.controller('clubCreate', function($scope) {
+app.controller('clubCreate', function($scope, $firebaseArray) {
 	
+	//check validity of input https://stackoverflow.com/questions/20054055/angularjs-check-if-form-is-valid-in-controller
 	$scope.createClub = function(form)
 	{
 		if(form.$valid)
 		{
-			var firebaseRef = firebase.database().ref();
+			var firebaseRefClub = firebase.database().ref("club");
+			
+			var list = $firebaseArray(firebaseRefClub);
+			
+			list.$add({
+				name: $scope.clubName
+			}).then(function(ref) {
+				var id = ref.key;
+				//console.log("added record with id " + id);
+				window.alert("added record with id " + id);
+				list.$indexFor(id); // returns location in the array
+				
+				//try to clear the field after addition
+			});
+			
+			//https://stackoverflow.com/questions/42194358/typeerror-ref-key-is-not-a-function
+			//help for code comment above, for .key
+			//can use .then to provide alert to indicate item added
 		
-			firebaseRef.child("club").push().child("name").set($scope.clubName);
+			//firebaseRef.push().child("name").set($scope.clubName);
 		}
 		else
 		{
