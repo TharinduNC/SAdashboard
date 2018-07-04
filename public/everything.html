@@ -401,7 +401,7 @@
 									</tr>
 									<tr ng-repeat="c in clubs">
 										<td>
-											<input type="checkbox" name="remember" value="{{c.$id}}">
+											<input type="checkbox" value="{{c.$id}}" ng-model="clubs[c]">
 											{{c.name}}
 										</td>
 									</tr>
@@ -416,7 +416,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit clubs</div>
 							<div class="panel-body">
-								<p>check items to edit</p>
+								<p>lolo put table here, logic should be when checked put in array, display that array here</p>
 							</div>
 						</div>
 						

@@ -40,6 +40,11 @@ app.controller('clubRead', function($scope, $firebaseArray) {
 	var firebaseRefClub = firebase.database().ref("club");
 	
 	$scope.clubs = $firebaseArray(firebaseRefClub);
+	
+	
+	
+	
+	
 });
 
 
