@@ -401,7 +401,7 @@
 									</tr>
 									<tr ng-repeat="c in clubs">
 										<td>
-											<input type="checkbox" value="{{c.$id}}" name="{{c.$id}}" id="{{c.$id}}">
+											<input type="checkbox" ng-change="clubChange()" value="{{c.$id}}" name="{{c.$id}}" id="{{c.$id}}">
 											{{c.name}}
 										</td>
 									</tr>
