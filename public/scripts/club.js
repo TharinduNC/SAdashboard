@@ -41,12 +41,6 @@ app.controller('clubRead', function($scope, $firebaseArray) {
 	
 	$scope.clubs = $firebaseArray(firebaseRefClub);
 	
-	$scope.clubChange = function() {
-		window.alert("Hello");
-	};
-	
-	
-	
 });
 
 
