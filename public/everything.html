@@ -401,11 +401,12 @@
 									</tr>
 									<tr ng-repeat="c in clubs">
 										<td>
-											<input type="checkbox" name="{{c.name}}" id="{{c.$id}}">
+											<input type="checkbox" checklist-model="clubChecked.clubs" checklist-value="c.$id" id="{{c.$id}}">
 											<label for="{{c.$id}}">{{c.name}}</label>
 										</td>
 									</tr>
 								</table>
+								clubChecked.clubs {{clubChecked.clubs | json}}
 							</div>
 						</div>
 					
@@ -460,6 +461,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="scripts/angular.js"></script>
 	
+	<script src="scripts/checklist-model.js"></script>
 	<script src="scripts/club.js"></script>
 	
 	<!-- AngularFire -->

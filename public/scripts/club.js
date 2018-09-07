@@ -41,6 +41,10 @@ app.controller('clubRead', function($scope, $firebaseArray) {
 	
 	$scope.clubs = $firebaseArray(firebaseRefClub);
 	
+	$scope.clubChecked = {
+		clubs: []
+	};
+	
 });
 
 
