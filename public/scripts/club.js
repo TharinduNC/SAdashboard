@@ -1,3 +1,15 @@
+app.service('sharedService', function() {
+	var items = [];
+	
+	this.add = function(toAdd) {
+		items = toAdd;
+	};
+	
+	this.get = function() {
+		return items;
+	}
+});
+
 app.controller('clubCreate', function($scope, $firebaseArray) {
 	
 	//check validity of input https://stackoverflow.com/questions/20054055/angularjs-check-if-form-is-valid-in-controller
@@ -35,7 +47,7 @@ app.controller('clubCreate', function($scope, $firebaseArray) {
 });
 
 
-app.controller('clubRead', function($scope, $firebaseArray) {
+app.controller('clubRead', function($scope, $firebaseArray, sharedService) {
 	//read more https://stackoverflow.com/questions/20181323/passing-data-between-controllers-in-angular-js
 	var firebaseRefClub = firebase.database().ref("club");
 	
@@ -45,20 +57,27 @@ app.controller('clubRead', function($scope, $firebaseArray) {
 		clubs: []
 	};
 	
-});
+	
+	sharedService.add($scope.clubChecked);
 
-
-app.controller('clubEdit', function($scope, $firebaseArray) {
-	
-	var firebaseRefClub = firebase.database().ref("club");
-	
-	$scope.clubs = $firebaseArray(firebaseRefClub);
-	
-	
 	
 });
 
 
+app.controller('clubEdit', function($scope, $firebaseArray, sharedService) {
+	
+	
+	
+	
+});
+
+
+app.controller('clubDelete', function($scope, $firebaseArray, sharedService) {
+	
+	
+	$scope.clubsSelected = sharedService.get();
+	
+});
 
 /*
 ****** if angular fire gets confusing, can use code below to get snapshot of club leaves ******

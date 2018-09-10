@@ -423,12 +423,13 @@
 						
 					</div>
 					
-					<div id="club-delete" class="tab-pane fade">
+					<div id="club-delete" class="tab-pane fade" ng-controller="clubDelete">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">Delete clubs</div>
 							<div class="panel-body">
 								<p>check items to delete</p>
+								clubsSelected.clubs {{clubsSelected.clubs | json}}
 							</div>
 						</div>
 						
