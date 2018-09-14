@@ -7,7 +7,7 @@ app.service('sharedService', function() {
 	
 	this.get = function() {
 		return items;
-	}
+	};
 });
 
 app.controller('clubCreate', function($scope, $firebaseArray) {
@@ -73,7 +73,6 @@ app.controller('clubEdit', function($scope, $firebaseArray, sharedService) {
 
 
 app.controller('clubDelete', function($scope, $firebaseArray, sharedService) {
-	
 	
 	$scope.clubsSelected = sharedService.get();
 	
