@@ -43,7 +43,7 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 	};
 	
 	//update club
-	
+	// this refreshes the selection on when the pill is clicked
 	$scope.onClubEditClick = function() {
 		if($scope.clubChecked.clubs.length == 1)
 		{
@@ -59,6 +59,7 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		}
 	};
 	
+	//only one selection is allowed when updating the club
 	$scope.updateClub = function() {
 		
 		if($scope.clubChecked.clubs.length == 1)
