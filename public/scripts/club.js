@@ -59,38 +59,58 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		}
 	};
 	
+	$scope.newClubName = "";
+	
 	//only one selection is allowed when updating the club
 	$scope.updateClub = function() {
 		
 		if($scope.clubChecked.clubs.length == 1)
 		{
-			window.alert($scope.newClubName);
+			if($scope.newClubName.length > 0)
+			{
+				window.alert($scope.newClubName);
 			
-			var updatedName = {
-				name: $scope.newClubName
-			};
-			
-			var updates = {};
-			updates['club/' + $scope.clubChecked.clubs[0]] = updatedName;
-			
-			firebase.database().ref().update(updates);
+				var updatedName = {
+					name: $scope.newClubName
+				};
+				
+				var updates = {};
+				updates['club/' + $scope.clubChecked.clubs[0]] = updatedName;
+				
+				firebase.database().ref().update(updates);
+			}
+			else
+			{
+				window.alert("empty");
+			}
+		}
+		else
+		{
+			window.alert("no selection");
 		}
 	};
 	
 	//delete club
-	$scope.deleteClub = function() {	
-
-		var i;
+	$scope.deleteClub = function() {
 		
-		for(i = 0; i < $scope.clubChecked.club.length; i++)
+		
+		if($scope.clubChecked.clubs.length > 0)
 		{
-			firebase.database().ref().child("club/" + $scope.clubChecked.clubs[i]).remove();
+			var i;
+		
+			for(i = 0; i < $scope.clubChecked.clubs.length; i++)
+			{
+				firebase.database().ref().child("club/" + $scope.clubChecked.clubs[i]).remove();
+			}
+			
+			$scope.clubChecked = {
+				clubs: []
+			};
 		}
-		
-		$scope.clubChecked = {
-			clubs: []
-		};
-		
+		else
+		{
+			window.alert("no selection");
+		}
 	};
 	
 	
