@@ -345,16 +345,16 @@
 				
 			</div>
 			
-			<div id="club" class="tab-pane fade">
+			<div id="club" class="tab-pane fade" ng-controller="clubAll">
 			
 				<ul class="nav nav-pills">
 					<li class="active"><a data-toggle="pill" href="#club-create">Add clubs</a></li>
 					<li><a data-toggle="pill" href="#club-read">View clubs</a></li>
-					<li><a data-toggle="pill" href="#club-update">Edit clubs</a></li>
+					<li><a data-toggle="pill" href="#club-update" ng-click="onClubEditClick()">Edit clubs</a></li>
 					<li><a data-toggle="pill" href="#club-delete">Delete clubs</a></li>
 				</ul>
 				
-				<div class="tab-content" ng-controller="clubAll">
+				<div class="tab-content">
 				
 					<div id="club-create" class="tab-pane fade in active">
 					
@@ -417,7 +417,11 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit clubs</div>
 							<div class="panel-body">
-								<p>lolo put table here, logic should be when checked put in array, display that array here</p>
+							<p>only edits the first item</p>
+							clubChecked.clubs: {{clubChecked.clubs | json}}<br>
+							current selection: {{currentClubName}}<br>
+							<input type="text" ng-model="newClubName" placeholder="Enter name">
+							<button type="button" class="btn btn-default" ng-click="updateClub()">Update</button>
 							</div>
 						</div>
 						

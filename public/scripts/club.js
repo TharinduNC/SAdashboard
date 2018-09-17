@@ -42,6 +42,40 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		clubs: []
 	};
 	
+	//update club
+	
+	$scope.onClubEditClick = function() {
+		if($scope.clubChecked.clubs.length == 1)
+		{
+			var clubNameRef = firebase.database().ref("club/" + $scope.clubChecked.clubs[0] + "/name");
+		
+			clubNameRef.on('value', function(snapshot) {
+				$scope.currentClubName = snapshot.val();
+			});
+		}
+		else
+		{
+			$scope.currentClubName = "<no selection or too many selected>";
+		}
+	};
+	
+	$scope.updateClub = function() {
+		
+		if($scope.clubChecked.clubs.length == 1)
+		{
+			window.alert($scope.newClubName);
+			
+			var updatedName = {
+				name: $scope.newClubName
+			};
+			
+			var updates = {};
+			updates['club/' + $scope.clubChecked.clubs[0]] = updatedName;
+			
+			firebase.database().ref().update(updates);
+		}
+	};
+	
 	//delete club
 	$scope.deleteClub = function() {	
 
