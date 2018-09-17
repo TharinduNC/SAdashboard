@@ -354,11 +354,11 @@
 					<li><a data-toggle="pill" href="#club-delete">Delete clubs</a></li>
 				</ul>
 				
-				<div class="tab-content">
+				<div class="tab-content" ng-controller="clubAll">
 				
 					<div id="club-create" class="tab-pane fade in active">
 					
-						<div class="panel panel-default" ng-controller="clubCreate">
+						<div class="panel panel-default">
 							<div class="panel-heading">Add one club</div>
 							<div class="panel-body">
 							
@@ -390,7 +390,7 @@
 					
 					</div>
 					
-					<div id="club-read" class="tab-pane fade" ng-controller="clubRead">
+					<div id="club-read" class="tab-pane fade">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">View clubs</div>
@@ -412,7 +412,7 @@
 					
 					</div>
 					
-					<div id="club-update" class="tab-pane fade" ng-controller="clubEdit">
+					<div id="club-update" class="tab-pane fade">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit clubs</div>
@@ -423,13 +423,14 @@
 						
 					</div>
 					
-					<div id="club-delete" class="tab-pane fade" ng-controller="clubDelete">
+					<div id="club-delete" class="tab-pane fade">
 					
 						<div class="panel panel-default">
 							<div class="panel-heading">Delete clubs</div>
 							<div class="panel-body">
 								<p>check items to delete</p>
-								clubsSelected.clubs {{clubsSelected.clubs | json}}
+								clubChecked.clubs {{clubChecked.clubs | json}}<br>
+								<button type="button" class="btn btn-default" ng-click="deleteClub()">Delete</button>
 							</div>
 						</div>
 						

@@ -1,24 +1,14 @@
-app.service('sharedService', function() {
-	var items = [];
-	
-	this.add = function(toAdd) {
-		items = toAdd;
-	};
-	
-	this.get = function() {
-		return items;
-	};
-});
-
-app.controller('clubCreate', function($scope, $firebaseArray) {
+app.controller('clubAll', function($scope, $firebaseArray) {
 	
 	//check validity of input https://stackoverflow.com/questions/20054055/angularjs-check-if-form-is-valid-in-controller
+	
+	var firebaseRefClub = firebase.database().ref("club");
+	
+	//create club
 	$scope.createClub = function(form)
 	{
 		if(form.$valid)
 		{
-			var firebaseRefClub = firebase.database().ref("club");
-			
 			var list = $firebaseArray(firebaseRefClub);
 			
 			list.$add({
@@ -44,67 +34,29 @@ app.controller('clubCreate', function($scope, $firebaseArray) {
 		}
 		
 	};
-});
-
-
-app.controller('clubRead', function($scope, $firebaseArray, sharedService) {
-	//read more https://stackoverflow.com/questions/20181323/passing-data-between-controllers-in-angular-js
-	var firebaseRefClub = firebase.database().ref("club");
 	
+	//read club
 	$scope.clubs = $firebaseArray(firebaseRefClub);
 	
 	$scope.clubChecked = {
 		clubs: []
 	};
 	
-	
-	sharedService.add($scope.clubChecked);
+	//delete club
+	$scope.deleteClub = function() {	
 
-	
-});
-
-
-app.controller('clubEdit', function($scope, $firebaseArray, sharedService) {
-	
-	
-	
-	
-});
-
-
-app.controller('clubDelete', function($scope, $firebaseArray, sharedService) {
-	
-	$scope.clubsSelected = sharedService.get();
-	
-});
-
-/*
-****** if angular fire gets confusing, can use code below to get snapshot of club leaves ******
-
-https://firebase.google.com/docs/database/web/lists-of-data
-
-
-function readClub()
-{	
-	var firebaseRefClub = firebase.database().ref("club");
-	
-	firebaseRefClub.on("value", function(snapshot) {
+		var i;
 		
-		snapshot.forEach(function(childSnapshot) {
-			var childKey = childSnapshot.key;
-			var childData = childSnapshot.val();
-			
-			getClub(childData);
-			//console.log(hello);
-			
-		});
+		for(i = 0; i < $scope.clubChecked.club.length; i++)
+		{
+			firebase.database().ref().child("club/" + $scope.clubChecked.clubs[i]).remove();
+		}
 		
-	}, function(errorObject) {
-		console.log("the read failed: " + errorObject.code);
-		hello = errorObject;
-	});
+		$scope.clubChecked = {
+			clubs: []
+		};
+		
+	};
 	
-}
-*/
-
-
+	
+});
