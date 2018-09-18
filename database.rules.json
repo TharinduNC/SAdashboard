@@ -60,6 +60,11 @@
 	"club": {
 		".read": true,
 		".write": true
+	},
+	
+	"unit": {
+		".read": true,
+		".write": true
 	}
   }
 }

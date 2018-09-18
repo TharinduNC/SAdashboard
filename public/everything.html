@@ -255,7 +255,7 @@
 				<p>placeholder add later</p>
 			</div>
 			
-			<div id="unit" class="tab-pane fade">
+			<div id="unit" class="tab-pane fade" ng-controller="unitAll">
 			
 				<ul class="nav nav-pills">
 					<li class="active"><a data-toggle="pill" href="#unit-create">Add units</a></li>
@@ -273,24 +273,24 @@
 							<div class="panel-heading">Add one unit</div>
 							<div class="panel-body">
 							
-								<form class="form-horizontal">
+								<form novalidate name="formUnitCreate" ng-submit="createUnit(formUnitCreate)" class="form-horizontal">
 								
 									<div class="form-group">
 										<div class="col-md-3">
-											<input type="text" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
+											<input type="text" ng-model="unitCode" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
 										</div>
 									</div>
 
 
 									<div class="form-group">
 										<div class="col-md-5">
-											<input type="text" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
+											<input type="text" ng-model="unitName" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<div class="col-md-3">
-											<button type="button" class="btn btn-default" onclick="unitSubmit()">Add unit</button>
+											<input type="submit" class="btn btn-default" value="Add unit" />
 										</div>
 									</div>
 								
@@ -469,6 +469,7 @@
 	
 	<script src="scripts/checklist-model.js"></script>
 	<script src="scripts/club.js"></script>
+	<script src="scripts/unit.js"></script>
 	
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
