@@ -4,13 +4,13 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 	
 	var firebaseRefClub = firebase.database().ref("club");
 	
+	var list = $firebaseArray(firebaseRefClub);
+	
 	//create club
 	$scope.createClub = function(form)
 	{
 		if(form.$valid)
 		{
-			var list = $firebaseArray(firebaseRefClub);
-			
 			list.$add({
 				name: $scope.clubName
 			}).then(function(ref) {
@@ -36,7 +36,7 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 	};
 	
 	//read club
-	$scope.clubs = $firebaseArray(firebaseRefClub);
+	$scope.clubs = list;
 	
 	$scope.clubChecked = {
 		clubs: []

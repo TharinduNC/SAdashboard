@@ -2,14 +2,14 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 	
 	var firebaseRefUnit = firebase.database().ref("unit");
 	
+	var list = $firebaseArray(firebaseRefUnit);
+	
 	//create unit
 	$scope.createUnit = function(form)
 	{
 		
 		if(form.$valid)
 		{	
-			var list = $firebaseArray(firebaseRefUnit);
-			
 			list.$add({
 				code: $scope.unitCode,
 				name: $scope.unitName
@@ -28,6 +28,14 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 			window.alert("empty");
 		}
 		
+	};
+	
+	
+	//read club
+	$scope.units = list;
+	
+	$scope.unitChecked = {
+		units: []
 	};
 	
 });

@@ -313,7 +313,22 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">View units</div>
 							<div class="panel-body">
-								<p>put something</p>
+								<table class="table" id="tableViewUnit">
+									<tr>
+										<th>Code</th>
+										<th>Name</th>
+									</tr>
+									<tr ng-repeat="u in units">
+										<td>
+											<input type="checkbox" checklist-model="unitChecked.units" checklist-value="u.$id" id="{{u.$id}}">
+											<label for="{{u.$id}}">{{u.code}}</label>
+										</td>
+										<td>
+											<strong>{{u.name}}</strong>
+										</td>
+									</tr>
+								</table>
+								unitChecked.units {{unitChecked.units | json}}
 							</div>
 						</div>
 						
