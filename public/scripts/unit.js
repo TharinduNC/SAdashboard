@@ -31,11 +31,14 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 	};
 	
 	
-	//read club
+	//read unit
 	$scope.units = list;
 	
 	$scope.unitChecked = {
 		units: []
 	};
+	
+	//update unit
+	//testing from laptop local disk
 	
 });
