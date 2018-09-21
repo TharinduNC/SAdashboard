@@ -93,7 +93,6 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 	//delete club
 	$scope.deleteClub = function() {
 		
-		
 		if($scope.clubChecked.clubs.length > 0)
 		{
 			var i;
@@ -112,6 +111,5 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 			window.alert("no selection");
 		}
 	};
-	
 	
 });

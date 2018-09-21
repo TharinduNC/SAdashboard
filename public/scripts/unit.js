@@ -92,5 +92,26 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		}
 	};
 	
+	//delete unit
+	$scope.deleteUnit = function() {
+		
+		if($scope.unitChecked.units.length > 0)
+		{
+			var i;
+		
+			for(i = 0; i < $scope.unitChecked.units.length; i++)
+			{
+				firebase.database().ref().child("unit/" + $scope.unitChecked.units[i]).remove();
+			}
+			
+			$scope.unitChecked = {
+				units: []
+			};
+		}
+		else
+		{
+			window.alert("no selection");
+		}
+	};
 	
 });

@@ -344,7 +344,7 @@
 								current selection: {{currentUnitCode}} {{currentUnitName}}<br>
 								<input type="text" ng-model="newUnitCode" placeholder="Enter Code">
 								<input type="text" ng-model="newUnitName" placeholder="Enter Name">
-								<button type="button" class="btn btn-default" ng-click="updateUnit()">Update</button>
+								<button type="button" class="btn btn-default" ng-click="updateUnit()">Update unit</button>
 							</div>
 						</div>
 						
@@ -355,7 +355,9 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Delete units</div>
 							<div class="panel-body">
-								<p>put something</p>
+								<p>check items to delete</p>
+								unitChecked.units {{unitChecked.units | json}}<br>
+								<button type="button" class="btn btn-default" ng-click="deleteUnit()">Delete unit</button>
 							</div>
 						</div>
 						
@@ -441,7 +443,7 @@
 								clubChecked.clubs: {{clubChecked.clubs | json}}<br>
 								current selection: {{currentClubName}}<br>
 								<input type="text" ng-model="newClubName" placeholder="Enter name">
-								<button type="button" class="btn btn-default" ng-click="updateClub()">Update</button>
+								<button type="button" class="btn btn-default" ng-click="updateClub()">Update club</button>
 							</div>
 						</div>
 						
@@ -454,7 +456,7 @@
 							<div class="panel-body">
 								<p>check items to delete</p>
 								clubChecked.clubs {{clubChecked.clubs | json}}<br>
-								<button type="button" class="btn btn-default" ng-click="deleteClub()">Delete</button>
+								<button type="button" class="btn btn-default" ng-click="deleteClub()">Delete club</button>
 							</div>
 						</div>
 						
