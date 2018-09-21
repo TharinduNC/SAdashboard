@@ -61,7 +61,7 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 	$scope.newUnitCode = "";
 	$scope.newUnitName = "";
 	
-	/*
+	
 	//only one selection is allowed when updating the unit
 	$scope.updateUnit = function() {
 		
@@ -90,7 +90,7 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		{
 			window.alert("no selection");
 		}
-	};*/
+	};
 	
 	
 });
