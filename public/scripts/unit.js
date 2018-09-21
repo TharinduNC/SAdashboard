@@ -67,7 +67,7 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		
 		if($scope.unitChecked.units.length == 1)
 		{
-			if($scope.newUnitName.length > 0 && $scope.newUnitCode > 0)
+			if($scope.newUnitName.length > 0 && $scope.newUnitCode.length > 0)
 			{
 				window.alert($scope.newUnitCode + " " + $scope.newUnitName);
 			
