@@ -260,7 +260,7 @@
 				<ul class="nav nav-pills">
 					<li class="active"><a data-toggle="pill" href="#unit-create">Add units</a></li>
 					<li><a data-toggle="pill" href="#unit-read">View units</a></li>
-					<li><a data-toggle="pill" href="#unit-update">Edit units</a></li>
+					<li><a data-toggle="pill" href="#unit-update" ng-click="onUnitEditClick()">Edit units</a></li>
 					<li><a data-toggle="pill" href="#unit-delete">Delete units</a></li>
 				</ul>
 			
@@ -339,7 +339,12 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit units</div>
 							<div class="panel-body">
-								<p>put something</p>
+								<p>only edits the first item</p>
+								unitChecked.units: {{unitChecked.units | json}}<br>
+								current selection: {{currentUnitCode}} {{currentUnitName}}<br>
+								<input type="text" ng-model="newUnitCode" placeholder="Enter Code">
+								<input type="text" ng-model="newUnitName" placeholder="Enter Name">
+								<button type="button" class="btn btn-default" ng-click="updateUnit()">Update</button>
 							</div>
 						</div>
 						
@@ -432,11 +437,11 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit clubs</div>
 							<div class="panel-body">
-							<p>only edits the first item</p>
-							clubChecked.clubs: {{clubChecked.clubs | json}}<br>
-							current selection: {{currentClubName}}<br>
-							<input type="text" ng-model="newClubName" placeholder="Enter name">
-							<button type="button" class="btn btn-default" ng-click="updateClub()">Update</button>
+								<p>only edits the first item</p>
+								clubChecked.clubs: {{clubChecked.clubs | json}}<br>
+								current selection: {{currentClubName}}<br>
+								<input type="text" ng-model="newClubName" placeholder="Enter name">
+								<button type="button" class="btn btn-default" ng-click="updateClub()">Update</button>
 							</div>
 						</div>
 						
