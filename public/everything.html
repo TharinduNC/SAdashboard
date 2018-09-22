@@ -185,53 +185,53 @@
 			
 			<div id="event" class="tab-pane fade">
 			
-				<div class="panel panel-default">
+				<div class="panel panel-default" ng-controller="eventAll">
 					<div class="panel-heading">Add one event</div>
 					<div class="panel-body">
 						<!--enforce rules later-->
-						<form class="form-horizontal">
+						<form novalidate name="formEventCreate" ng-submit="createEvent(formEventCreate)" class="form-horizontal">
 						
 							<div class="form-group">
 								<div class="col-md-5">
-									<input type="text" class="form-control" id="event_title" placeholder="Enter title" name="event_title" required="required">
+									<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-5">
-									<input type="text" class="form-control" id="event_date" placeholder="Enter date (yyyy/mm/dd), [range] (yyyy/mm/dd - yyyy/mm/dd)" name="user_mail" required="required">
+									<input type="text" class="form-control" ng-model="eventDate" id="event_date" placeholder="Enter date (yyyy/mm/dd)" name="user_mail" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-5">
-									<input type="text" class="form-control" id="event_time" placeholder="Enter time, [24hrs] (hh:mm), [range] (hh:mm - hh:mm)" name="event_time" required="required">
+									<input type="text" class="form-control" ng-model="eventTime" id="event_time" placeholder="Enter time, [24hrs] (hh:mm), [range] (hh:mm - hh:mm)" name="event_time" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-5">
-									<input type="text" class="form-control" id="event_location" placeholder="Enter location" name="event_location" required="required">
+									<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location" required="required">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-5">
-									<textarea rows="4" cols="50" id="event_description" placeholder="Add a description" name="event_description" ></textarea>
+									<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-3">
 									<div class="checkbox">
-										<label><input type="checkbox" id="event_notification" name="event_notification" value="1">Push notification?</label>
+										<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
 									</div>
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div class="col-md-3">
-									<button type="button" class="btn btn-default" onclick="eventSubmit()">Add event</button>
+									<input type="submit" class="btn btn-default" value="Add event" />
 								</div>
 							</div>
 						
@@ -490,6 +490,7 @@
 	<script src="scripts/angular.js"></script>
 	
 	<script src="scripts/checklist-model.js"></script>
+	<script src="scripts/event.js"></script>
 	<script src="scripts/club.js"></script>
 	<script src="scripts/unit.js"></script>
 	

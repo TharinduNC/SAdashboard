@@ -65,6 +65,11 @@
 	"unit": {
 		".read": true,
 		".write": true
+	},
+	
+	"event": {
+		".read": true,
+		".write": true
 	}
   }
 }
