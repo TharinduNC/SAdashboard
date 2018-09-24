@@ -4,11 +4,19 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	var list = $firebaseArray(firebaseRefEvent);
 	
+	$scope.eventNote = false;
+	
+	$scope.eventDesc = "";
+	
 	$scope.createEvent = function(form)
 	{
 		
 		if(form.$valid)
 		{
+			if($scope.eventDesc == "")
+			{
+				$scope.eventDesc = "<no description given>";
+			}
 			
 			list.$add({
 				date: $scope.eventDate,
