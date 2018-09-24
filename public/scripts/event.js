@@ -8,6 +8,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		event: 'general'
 	};
 	
+	//for relate to, use variable and append string instead of if's
 	
 	$scope.eventNote = false;
 	
