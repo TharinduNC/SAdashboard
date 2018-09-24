@@ -4,6 +4,11 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	var list = $firebaseArray(firebaseRefEvent);
 	
+	$scope.rel = {
+		event: 'general'
+	};
+	
+	
 	$scope.eventNote = false;
 	
 	$scope.eventDesc = "";

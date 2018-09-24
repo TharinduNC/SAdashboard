@@ -197,6 +197,39 @@
 								</div>
 							</div>
 							
+							<!--
+							<div class="form-group">
+								<div class="col-md-3">
+									<label for="sel">List</label>
+									<select class="form-control" size="1" id="sel" required="required">
+										<option ></option>
+									</select>
+								</div>
+							</div>-->
+							
+							
+							<div class="form-group">
+								
+								<label class="col-md-12" for="relateTo">This event relates to?</label>
+								
+								<div class="col-md-6">
+								
+									<label class="radio-inline">
+										<input type="radio" id="relateTo" ng-model="rel.event" value="general">General Event
+									</label>
+									
+									<label class="radio-inline">
+										<input type="radio" id="relateTo" ng-model="rel.event" value="unit">Unit (class/schedule/timetable)
+									</label>
+									
+									<label class="radio-inline">
+										<input type="radio" id="relateTo" ng-model="rel.event" value="club">Club Events
+									</label>
+								
+								</div>
+								
+							</div>
+							
 							<div class="form-group">
 								<div class="col-md-5">
 									<input type="text" class="form-control" ng-model="eventDate" id="event_date" placeholder="Enter date (yyyy/mm/dd)" name="user_mail" required="required">
