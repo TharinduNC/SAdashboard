@@ -197,39 +197,36 @@
 								</div>
 							</div>
 							
-							<!--
 							<div class="form-group">
-								<div class="col-md-3">
-									<label for="sel">List</label>
-									<select class="form-control" size="1" id="sel" required="required">
-										<option ></option>
-									</select>
-								</div>
-							</div>-->
-							
-							
-							<div class="form-group">
-								
+
 								<label class="col-md-12" for="relateTo">This event relates to?</label>
-								
+							
 								<div class="col-md-6">
-								
+									
 									<label class="radio-inline">
 										<input type="radio" id="relateTo" ng-model="rel.event" value="general">General Event
 									</label>
 									
 									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="unit">Unit (class/schedule/timetable)
+										<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
 									</label>
 									
 									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="club">Club Events
+										<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
 									</label>
 								
-									
-								
 								</div>
-								
+							
+							</div>
+							
+							<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
+							
+								<div class="col-md-4">
+									<label>List of {{rel.event}}</label>
+									<select class="form-control" size="4" ng-model="selectedEventId" ng-options="c.name for c in sel" required="required">
+									</select>
+								</div>
+								{{selectedEventId.$id}}
 							</div>
 							
 							<div class="form-group">

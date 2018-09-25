@@ -14,6 +14,11 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	$scope.eventDesc = "";
 	
+	$scope.onEventRelSelect = function(selec)
+	{
+		$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
+	};
+	
 	$scope.createEvent = function(form)
 	{
 		
@@ -29,7 +34,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				desc: $scope.eventDesc,
 				location: $scope.eventLocation,
 				note: $scope.eventNote,
-				relateTo: "<unit/club>/uid",
+				relateTo: $scope.rel.event + "/" + $scope.selectedEventId.$id,
 				time: $scope.eventTime,
 				title: $scope.eventTitle
 			}).then(function(ref) {
