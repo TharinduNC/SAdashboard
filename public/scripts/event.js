@@ -14,6 +14,10 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	$scope.eventDesc = "";
 	
+	$scope.choose = {
+		selectedEventId: "general"
+	};
+	
 	$scope.onEventRelSelect = function(selec)
 	{
 		$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
@@ -34,7 +38,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				desc: $scope.eventDesc,
 				location: $scope.eventLocation,
 				note: $scope.eventNote,
-				relateTo: $scope.rel.event + "/" + $scope.selectedEventId.$id,
+				relateTo: $scope.rel.event + "/" + $scope.choose.selectedEventId.$id,
 				time: $scope.eventTime,
 				title: $scope.eventTitle
 			}).then(function(ref) {
@@ -50,6 +54,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		{
 			window.alert("empty");
 		}
+		
 	};
 	
 });
