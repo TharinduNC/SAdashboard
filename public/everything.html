@@ -178,10 +178,159 @@
 			
 			</div>
 		
-			<div id="guide" class="tab-pane fade">
-				<h3>temp</h3>
-				<p>placeholder add later</p>
-			</div>
+			<div id="guide" class="tab-pane fade" ng-controller="guideAll">
+
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#guide-create">Create a Guide</a></li>
+					<li><a data-toggle="pill" href="#guide-read">View all Guides</a></li>
+					<li><a data-toggle="pill" href="#guide-update" ng-click="onGuideEditClick()">Edit a Guide</a></li>
+					<li><a data-toggle="pill" href="#guide-delete">Delete a Guide</a></li>
+				</ul>
+				
+				<div class="tab-content">
+				
+					<div id="guide-create" class="tab-pane fade in active">
+            
+            <div class="panel panel-default">
+              <div class="panel-heading">Create a guide</div>
+              <div class="panel-body">
+                <!--enforce rules later-->
+                <form novalidate name="formGuideCreate" ng-submit="createGuide(formGuideCreate)" class="form-horizontal">
+                  <div class="form-group">
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="guideName" id="guide_name" placeholder="Give your guide a name" name="guide_name" required="required">
+                    </div>
+                  </div>
+                            
+                  <div class="form-group">
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="guideDate" id="guide_date" placeholder="Enter date (yyyy/mm/dd)" name="guide_date" required="required">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="col-md-5">
+                      <label for="guideGeneral">General</label>
+                      <input type="text" class="form-control" ng-model="guideTitle" id="guide_title" placeholder="Enter title" name="guide_title" required="required">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">  
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="guideLocation" id="guide_location" placeholder="Enter location" name="guide_location">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">  
+                    <div class="col-md-5">
+                      <input type="file" class="form-control" ng-model="guideHeader" id="guide_header" name="guide_header" accept="image/*">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">  
+                    <div class="col-md-5">
+                        <textarea class="form-control" rows="5" ng-model="guideDescription" id="guide_description" placeholder="Enter details" name="guide_description"></textarea>
+                    </div>                
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="col-md-5">
+                      <label for="guideChecklist">Checklist</label>
+                      <input type="text" class="form-control" ng-model="checklistTask" id="checklist_task" placeholder="Create a task" name="checklist_task" required="required">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">  
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="checklistDescription" id="checklist_description" placeholder="Enter description" name="checklist_description">
+                    </div>                
+                  </div>
+                  
+                  <div class="form-group">  
+                    <div class="col-md-5">
+                      <textarea class="form-control" rows="5" ng-model="checklistBody" id="checklist_body" placeholder="Enter details" name="checklist_body"></textarea>
+                    </div>                
+                  </div>
+                    
+                  <div class="form-group">  
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" ng-model="checklistLink" id="checklist_link" placeholder="Enter a related link" name="checklist_link">
+                    </div>                
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="col-md-5">
+                      <label for="guideChecklist">Frequently Asked Questions</label>
+                      <fieldset>
+                      <input type="text" class="form-control" ng-model="faqQuestion" id="faq_question" placeholder="Enter a commonly asked question" name="faq_question" required="required"></p>
+                      <textarea class="form-control" rows="3" ng-model="faqAnswer" id="faq_answer" placeholder="Enter an answer" name="faqAnswer" required="required"></textarea>
+                      </fieldset>
+                    </div>                
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="col-md-3">
+                      <input type="submit" class="btn btn-default" value="Add guide" />
+                    </div>
+                  </div>              
+                </form>
+              </div> 	
+            </div>            
+					
+					</div>
+					
+					<div id="guide-read" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">View Guides</div>
+							<div class="panel-body">
+								<table class="table" id="tableViewGuide ">
+									<tr>
+										<th>Name</th>
+									</tr>
+									<tr ng-repeat="g in guides">
+										<td>
+											<input type="checkbox" checklist-model="guideChecked.guides" checklist-value="g.$id" id="{{g.$id}}">
+											<label for="{{g.$id}}">{{g.name}}</label>
+										</td>
+									</tr>
+								</table>
+								guideChecked.guides {{guideChecked.guides | json}}
+							</div>
+						</div>
+					
+					</div>
+					
+					<div id="guide-update" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Refresh an existing guide</div>
+							<div class="panel-body">
+								<p>only edits the first item</p>
+								guideChecked.guides: {{guideChecked.guides | json}}<br>
+								current selection: {{currentGuideName}}<br>
+								<input type="text" ng-model="newGuideName" placeholder="Enter name">
+								<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div id="guide-delete" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete Guides</div>
+							<div class="panel-body">
+								<p>check items to delete</p>
+								guideChecked.guides {{guideChecked.guides | json}}<br>
+								<button type="button" class="btn btn-danger" ng-click="deleteGuide()">Delete Guide</button>
+							</div>
+						</div>
+						
+					</div>        
+          
+        </div>
+      </div>
 			
 			<div id="event" class="tab-pane fade">
 			
@@ -488,7 +637,7 @@
 							<div class="panel-body">
 								<p>check items to delete</p>
 								clubChecked.clubs {{clubChecked.clubs | json}}<br>
-								<button type="button" class="btn btn-default" ng-click="deleteClub()">Delete club</button>
+								<button type="button" class="btn btn-danger" ng-click="deleteClub()">Delete club</button>
 							</div>
 						</div>
 						
@@ -522,6 +671,7 @@
 	<script src="scripts/angular.js"></script>
 	
 	<script src="scripts/checklist-model.js"></script>
+  <script src="scripts/guide.js"></script>  
 	<script src="scripts/event.js"></script>
 	<script src="scripts/club.js"></script>
 	<script src="scripts/unit.js"></script>
