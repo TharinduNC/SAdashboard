@@ -1,1 +1,1 @@
-var app = angular.module('myApp', ["firebase", "checklist-model"]);
+var app = angular.module('myApp', ["firebase", "checklist-model", "ui.bootstrap"]);

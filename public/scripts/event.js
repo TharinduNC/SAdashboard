@@ -1,4 +1,4 @@
-app.controller('eventAll', function($scope, $firebaseArray) {
+app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	var firebaseRefEvent = firebase.database().ref("event");
 	
@@ -8,8 +8,6 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		event: 'general'
 	};
 	
-	//for relate to, use variable and append string instead of if's
-	
 	$scope.eventNote = false;
 	
 	$scope.eventDesc = "";
@@ -18,6 +16,23 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		selectedEventId: "general"
 	};
 	
+	//datepicker init
+	
+	$scope.dateOptions = {
+		formatYear: 'yyyy',
+		startingDay: 1
+	};
+	
+	$scope.dateOpen = function() {
+		$scope.popup.opened = true;
+	};
+	
+	$scope.popup = {
+		opened: false
+	};
+	
+	//datepicker init end
+	
 	$scope.onEventRelSelect = function(selec)
 	{
 		$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
@@ -25,7 +40,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	$scope.createEvent = function(form)
 	{
-		
+		$scope.eventDate = $scope.eventDate.toString();
 		if(form.$valid)
 		{
 			if($scope.eventDesc == "")
