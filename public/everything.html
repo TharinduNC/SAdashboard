@@ -391,6 +391,12 @@
 							
 							<div class="form-group">
 								<div class="col-md-5">
+									<div uib-timepicker ng-model="eventTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-md-5">
 									<input type="text" class="form-control" ng-model="eventTime" id="event_time" placeholder="Enter time, [24hrs] (hh:mm), [range] (hh:mm - hh:mm)" name="event_time" ng-required="required">
 								</div>
 							</div>

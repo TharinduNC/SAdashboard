@@ -16,7 +16,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		selectedEventId: "general"
 	};
 	
-	//datepicker init
+	//datepicker init start
 	
 	$scope.dateOptions = {
 		formatYear: 'yyyy',
@@ -32,6 +32,13 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	};
 	
 	//datepicker init end
+	
+	//timepicker init
+	
+	$scope.eventTime = new Date();
+	
+	
+	//timepicker init end
 	
 	$scope.onEventRelSelect = function(selec)
 	{
