@@ -39,6 +39,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	$scope.eventTime = new Date();
 	
+	$scope.duration = false;
+	
+	$scope.swapDuration = function()
+	{
+		$scope.duration = !$scope.duration;
+	};
 	
 	//timepicker init end
 	
