@@ -50,6 +50,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	$scope.createEvent = function(form)
 	{
 		$scope.eventDate = $scope.eventDate.getFullYear().toString() + "/" + ($scope.eventDate.getMonth() + 1).toString() + "/" + $scope.eventDate.getDate().toString();
+		$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + $scope.eventTime.getMinutes().toString();
 		if(form.$valid)
 		{
 			if($scope.eventDesc == "")
