@@ -39,9 +39,11 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	$scope.eventTime = new Date();
 	
+	$scope.eventTime2 = new Date();
+	
 	$scope.duration = false;
 	
-	$scope.swapDuration = function()
+	$scope.toggleDuration = function()
 	{
 		$scope.duration = !$scope.duration;
 	};
@@ -60,13 +62,28 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		
 		//time to string
 		var tempO = "";
+		var tempO2 = "";
 		
 		if($scope.eventTime.getMinutes() < 10)
 		{
 			tempO = "0";
 		}
 		
-		$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString();
+		if($scope.duration)
+		{
+			if($scope.eventTime2.getMinutes() < 10)
+			{
+				tempO2 = "0";
+			}
+			
+			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString() + "-" + 
+								$scope.eventTime2.getHours().toString() + ":" + tempO + $scope.eventTime2.getMinutes().toString();
+			
+		}
+		else
+		{
+			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString();
+		}
 		
 		
 		if(form.$valid)
