@@ -381,7 +381,7 @@
 							<div class="form-group">
 								<div class="col-md-5">
 									<div class="input-group">
-										<input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="eventDate" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" id="event_date" placeholder="yyyy/mm/dd" ng-required="required" ng-pattern="dateRegex">
+										<input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="eventDate" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" id="event_date" placeholder="Click date icon to put date" ng-required="required" ng-pattern="dateRegex">
 										<span class="input-group-btn">
 											<button type="button" class="btn btn-default" ng-click="dateOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
 										</span>
@@ -391,16 +391,18 @@
 							
 							<div class="form-group">
 								<div class="col-md-5">
-									<div uib-timepicker ng-model="eventTime" hour-step="1" minute-step="5" show-meridian="true"></div>
+									<p>Pick a time (numbers are scroll-able)</p>
+									<div uib-timepicker ng-model="eventTime" hour-step="1" minute-step="1" show-meridian="true"></div>
 								</div>
 							</div>
 							
-							<div class="form-group">
+							<!--
+							<div class="form-group" ng-hide="true">
 								<div class="col-md-5">
-									<input type="text" class="form-control" ng-model="eventTime" id="event_time" placeholder="Enter time, [24hrs] (hh:mm), [range] (hh:mm - hh:mm)" name="event_time" ng-required="required">
+									<input type="text" class="form-control" ng-model="eventTime" id="event_time" placeholder="time" name="event_time" ng-required="required">
 								</div>
 							</div>
-							
+							-->
 							<div class="form-group">
 								<div class="col-md-5">
 									<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
