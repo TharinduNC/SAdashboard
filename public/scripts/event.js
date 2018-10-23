@@ -18,6 +18,8 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	//datepicker init start
 	
+	$scope.dateRegex = /\d{4}(\/\d{2}){2}/;
+	
 	$scope.dateOptions = {
 		formatYear: 'yyyy',
 		startingDay: 1

@@ -381,7 +381,7 @@
 							<div class="form-group">
 								<div class="col-md-5">
 									<div class="input-group">
-										<input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="eventDate" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" id="event_date" placeholder="Enter date (yyyy/mm/dd)" name="event_date" ng-required="required">
+										<input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="eventDate" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" id="event_date" placeholder="yyyy/mm/dd" ng-required="required" ng-pattern="dateRegex">
 										<span class="input-group-btn">
 											<button type="button" class="btn btn-default" ng-click="dateOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
 										</span>
@@ -391,7 +391,7 @@
 							
 							<div class="form-group">
 								<div class="col-md-5">
-									<div uib-timepicker ng-model="eventTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+									<div uib-timepicker ng-model="eventTime" hour-step="1" minute-step="5" show-meridian="true"></div>
 								</div>
 							</div>
 							
