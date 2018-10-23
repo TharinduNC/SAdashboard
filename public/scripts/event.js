@@ -57,6 +57,8 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	$scope.createEvent = function(form)
 	{
+		//var valid = true;
+		
 		//date to string
 		$scope.eventDate = $scope.eventDate.getFullYear().toString() + "/" + ($scope.eventDate.getMonth() + 1).toString() + "/" + $scope.eventDate.getDate().toString();
 		
@@ -71,13 +73,19 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		
 		if($scope.duration)
 		{
+			/*
+			if($scope.eventTime2.getHours() < $scope.eventTime.getHours())
+			{
+				valid = false;
+			}*/
+			
 			if($scope.eventTime2.getMinutes() < 10)
 			{
 				tempO2 = "0";
 			}
 			
 			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString() + "-" + 
-								$scope.eventTime2.getHours().toString() + ":" + tempO + $scope.eventTime2.getMinutes().toString();
+								$scope.eventTime2.getHours().toString() + ":" + tempO2 + $scope.eventTime2.getMinutes().toString();
 			
 		}
 		else
@@ -112,9 +120,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		else
 		{
-			window.alert("empty");
+			window.alert("empty, wrong time");
 		}
 		
+		$scope.eventTime = new Date();
+		$scope.eventDate = new Date();
+		$scope.duration = false;
 	};
 	
 });
