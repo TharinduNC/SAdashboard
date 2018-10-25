@@ -8,34 +8,48 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>StudentAvatar Dashboard</title>
 
-	<!-- Disable tap highlight on IE -->
+	<!-- Disable tap highlight on IE 
 	<meta name="msapplication-tap-highlight" content="no">
+	-->
+	
 
-	<!-- Add to homescreen for Chrome on Android -->
+	<!-- Add to homescreen for Chrome on Android 
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="application-name" content="Firebase Database Quickstart">
 	<meta name="theme-color" content="#303F9F">
+	-->
+	
 
-	<!-- Add to homescreen for Safari on iOS -->
+	<!-- Add to homescreen for Safari on iOS 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="apple-mobile-web-app-title" content="Firebase Database Quickstart">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+	-->
+	
 
-	<!-- Tile icon for Win8 -->
+	<!-- Tile icon for Win8 
 	<meta name="msapplication-TileColor" content="#3372DF">
 	<meta name="msapplication-navbutton-color" content="#303F9F">
+	-->
+	
 
-	<!-- Material Design Lite -->
+	<!-- Material Design Lite
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
 	<script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+	--> 
+	
+	
+	
 
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- Optional theme 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	-->
+	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -393,7 +407,7 @@
 										uib-datepicker
 										ng-model="activeDate"
 										multi-select="selectedDates"
-										select-range="{{$pickMode=='range'}}"
+										select-range="{{pickMode=='range'}}"
 										datepicker-options="dateOptions"></div>
 									<!--
 									<div class="input-group">
@@ -715,11 +729,15 @@
 		
 	</div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+	
+	-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript 
+	
+	-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
     <!-- Import and configure the Firebase SDK -->
     <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
@@ -731,11 +749,13 @@
 	
 	<!--angularjs-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-	<script src="scripts/angular.js"></script>
 	
+	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>
+	
+	<script src="scripts/angular.js"></script>
 	<script src="scripts/checklist-model.js"></script>
-	<script src="scripts/ui-bootstrap-tpls-2.5.0.js"></script>
 	<script src="scripts/gm.datepickerMultiSelect.js"></script>
+	
 	<script src="scripts/guide.js"></script>
 	<script src="scripts/event.js"></script>
 	<script src="scripts/club.js"></script>

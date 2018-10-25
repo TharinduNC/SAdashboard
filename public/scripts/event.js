@@ -70,7 +70,6 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		$scope.eventDate = {
 			[datetemp] : true
 		};
-		*/
 		
 		//time to string
 		var tempO = "";
@@ -80,6 +79,10 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		{
 			tempO = "0";
 		}
+		
+		*/
+		
+		
 		
 		if($scope.duration)
 		{
