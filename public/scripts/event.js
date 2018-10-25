@@ -60,7 +60,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		//var valid = true;
 		
 		//date to string
-		$scope.eventDate = $scope.eventDate.getFullYear().toString() + "/" + ($scope.eventDate.getMonth() + 1).toString() + "/" + $scope.eventDate.getDate().toString();
+		
+		var datetemp = $scope.eventDate.getFullYear().toString() + "-" + ($scope.eventDate.getMonth() + 1).toString() + "-" + $scope.eventDate.getDate().toString();
+		
+		$scope.eventDate = {
+			[datetemp] : true
+		};
 		
 		//time to string
 		var tempO = "";
