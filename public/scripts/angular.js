@@ -1,1 +1,1 @@
-var app = angular.module('myApp', ["firebase", "checklist-model", "ui.bootstrap"]);
+var app = angular.module('myApp', ["firebase", "checklist-model", "ui.bootstrap", "gm.datepickerMultiSelect"]);

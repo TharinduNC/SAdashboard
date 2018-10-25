@@ -1,46 +1,54 @@
 app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
+	//references
 	var firebaseRefEvent = firebase.database().ref("event");
 	
 	var list = $firebaseArray(firebaseRefEvent);
+	//references end
 	
+	//other inits
 	$scope.rel = {
 		event: 'general'
 	};
 	
 	$scope.eventNote = false;
-	
 	$scope.eventDesc = "";
-	
 	$scope.choose = {
 		selectedEventId: "general"
 	};
 	
-	//datepicker init start
+	//event relation to unit or club selection
+	$scope.onEventRelSelect = function(selec)
+	{
+		$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
+	};
+	//other init end
 	
-	$scope.dateRegex = /\d{4}(\/\d{2}){2}/;
+	//date init start
+	$scope.activeDate = null;
+	$scope.selectedDates = [new Date().setHours(0, 0, 0, 0)];
+	$scope.pickMode = "range";
 	
 	$scope.dateOptions = {
-		formatYear: 'yyyy',
-		startingDay: 1
+		startingDay: 1,
+		customClass: function(data) {
+			if($scope.selectedDates.indexOf(data.date.setHours(0, 0, 0, 0)) > -1) {
+				return 'selected';
+			}
+			return '';
+		}
 	};
 	
-	$scope.dateOpen = function() {
-		$scope.popup.opened = true;
+	$scope.removeSelected = function(dt)
+	{
+		$scope.selectedDates.splice($scope.selectedDates.indexOf(dt), 1);
+		$scope.activeDate = dt;
 	};
-	
-	$scope.popup = {
-		opened: false
-	};
-	
-	//datepicker init end
+	//date init end
 	
 	//timepicker init
-	
 	$scope.eventTime = new Date();
-	
 	$scope.eventTime2 = new Date();
-	
 	$scope.duration = false;
 	
 	$scope.toggleDuration = function()
@@ -50,22 +58,19 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	//timepicker init end
 	
-	$scope.onEventRelSelect = function(selec)
-	{
-		$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
-	};
-	
 	$scope.createEvent = function(form)
 	{
 		//var valid = true;
 		
 		//date to string
 		
+		/*
 		var datetemp = $scope.eventDate.getFullYear().toString() + "-" + ($scope.eventDate.getMonth() + 1).toString() + "-" + $scope.eventDate.getDate().toString();
 		
 		$scope.eventDate = {
 			[datetemp] : true
 		};
+		*/
 		
 		//time to string
 		var tempO = "";
@@ -99,7 +104,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		
 		
-		if(form.$valid)
+		if(form.$valid && false)
 		{
 			if($scope.eventDesc == "")
 			{
@@ -125,11 +130,11 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		else
 		{
-			window.alert("empty, wrong time");
+			window.alert("under construction do not send yet");
 		}
 		
-		$scope.eventTime = new Date();
-		$scope.eventDate = new Date();
+		$scope.eventTime = new Date().setHours(0, 0, 0, 0);
+		$scope.eventDate = new Date().setHours(0, 0, 0, 0);
 		$scope.duration = false;
 	};
 	

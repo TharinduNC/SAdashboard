@@ -1,0 +1,11 @@
+.uib-day .btn.btn-info {
+  background-color: inherit;
+  border-color: inherit;
+  color: inherit;
+}
+
+.uib-day.selected .btn {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
