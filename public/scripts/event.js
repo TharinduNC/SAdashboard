@@ -26,7 +26,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	//date init start
 	$scope.activeDate = null;
-	$scope.selectedDates = [new Date().setHours(0, 0, 0, 0)];
+	$scope.selectedDates = [new Date()];
 	$scope.pickMode = "range";
 	
 	$scope.dateOptions = {
@@ -70,8 +70,9 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		$scope.eventDate = {
 			[datetemp] : true
 		};
-		
+		*/
 		//time to string
+		
 		var tempO = "";
 		var tempO2 = "";
 		
@@ -80,17 +81,13 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 			tempO = "0";
 		}
 		
-		*/
-		
-		
-		
 		if($scope.duration)
 		{
-			/*
+			
 			if($scope.eventTime2.getHours() < $scope.eventTime.getHours())
 			{
 				valid = false;
-			}*/
+			}
 			
 			if($scope.eventTime2.getMinutes() < 10)
 			{
@@ -133,11 +130,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		else
 		{
-			window.alert("under construction do not send yet");
+			//window.alert("under construction do not send yet");
+			console.log($scope.selectedDates);
 		}
 		
-		$scope.eventTime = new Date().setHours(0, 0, 0, 0);
-		$scope.eventDate = new Date().setHours(0, 0, 0, 0);
+		$scope.eventTime = new Date();
+		$scope.eventDate = new Date();
 		$scope.duration = false;
 	};
 	
