@@ -1,4 +1,11 @@
 app.controller('guideAll', function($scope, $firebaseArray) {
+	$scope.oneAtATime = true;
+	
+	$scope.status = {
+	  isCustomHeaderOpen: false,
+	  isFirstOpen: true,
+	  isFirstDisabled: false
+	};
 	
 	//check validity of input https://stackoverflow.com/questions/20054055/angularjs-check-if-form-is-valid-in-controller
 	
@@ -12,21 +19,30 @@ app.controller('guideAll', function($scope, $firebaseArray) {
 		if(form.$valid)
 		{
 			list.$add({
-				name: $scope.guideName
+				name: $scope.guideName,
+				date: $scope.guideDate,
+				
 			}).then(function(ref) {
 				var id = ref.key;
-				//console.log("added record with id " + id);
 				window.alert("added record with id " + id);
 				list.$indexFor(id); // returns location in the array
 				
-				//try to clear the field after addition
+				firebase.database().ref('guides/' + id + "/general").set({
+				  title: $scope.guideTitle,
+				  location: $scope.guideLocation,
+				  description: $scope.guideDescription
+				});
+				firebase.database().ref('guides/' + id + "/checklist").set({
+				  task: $scope.checklistTask,
+				  description: $scope.checklistDescription,
+				  location: $scope.checklistBody,
+				  description: $scope.checklistLink
+				});
+				firebase.database().ref('guides/' + id + "/faq").set({
+				  question: $scope.faqQuestion,
+				  answer: $scope.faqAnswer
+				});
 			});
-			
-			//https://stackoverflow.com/questions/42194358/typeerror-ref-key-is-not-a-function
-			//help for code comment above, for .key
-			//can use .then to provide alert to indicate item added
-		
-			//firebaseRef.push().child("name").set($scope.guideName);
 		}
 		else
 		{
