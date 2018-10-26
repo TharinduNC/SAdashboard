@@ -399,8 +399,8 @@
 									<p>Pick date(s)</p>
 								
 									<div class='btn-group'>
-										<button class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</button>
-										<button class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</button>
+										<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
+										<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
 									</div>
 							
 									<div 
@@ -489,7 +489,7 @@
 							
 							<div class="form-group">
 								<div class="col-md-3">
-									<input type="submit" class="btn btn-default" value="Add event" />
+									<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
 								</div>
 							</div>
 						

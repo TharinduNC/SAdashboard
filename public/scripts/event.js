@@ -26,7 +26,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	//date init start
 	$scope.activeDate = null;
-	$scope.selectedDates = [new Date()];
+	$scope.selectedDates = [];
 	$scope.pickMode = "range";
 	
 	$scope.dateOptions = {
@@ -58,7 +58,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	//timepicker init end
 	
-	$scope.createEvent = function(form)
+	$scope.createEvent = function()
 	{
 		//var valid = true;
 		
@@ -104,7 +104,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		
 		
-		if(form.$valid && false)
+		if(false)
 		{
 			if($scope.eventDesc == "")
 			{
