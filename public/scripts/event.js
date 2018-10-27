@@ -27,7 +27,8 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
-	$scope.pickMode = "range";
+	$scope.eventDate = {};
+	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
 		startingDay: 1,
@@ -73,8 +74,17 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		*/
 		//time to string
 		
+		/*
+		  *** eventDate need to get values from selectedDate everytime button is pressed
+		  *** because eventDate needs to be reset because i dunno bit i feel that it is necessary
+		  
+		*/
+		
 		var tempO = "";
 		var tempO2 = "";
+		
+		var time1 = $scope.eventTime;
+		var time2 = $scope.eventTime2;
 		
 		if($scope.eventTime.getMinutes() < 10)
 		{
@@ -134,9 +144,11 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 			console.log($scope.selectedDates);
 		}
 		
-		$scope.eventTime = new Date();
-		$scope.eventDate = new Date();
-		$scope.duration = false;
+		$scope.eventDate = null;
+		
+		$scope.eventTime = time1;
+		$scope.eventTime2 = time2;
+		
 	};
 	
 });
