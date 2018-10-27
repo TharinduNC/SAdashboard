@@ -63,7 +63,46 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	{
 		//var valid = true;
 		
-		//date to string
+		/*
+		
+		** date from miliseconds to string to object
+		
+		*** eventDate need to get values from selectedDate everytime button is pressed
+		*** because eventDate needs to be reset just in case, it will be reassigned anyways
+		  
+		*/
+		
+		//no point runnint this code if there is no date selected
+		if($scope.selectedDates.length > 0)
+		{
+			var selectedDateStrRep = "{";
+			
+			var i;
+			
+			for(i in $scope.selectedDates)
+			{
+				var tempDate = new Date($scope.selectedDates[i]);
+				
+				var tempStrDate = tempDate.getFullYear().toString() + "-" + (tempDate.getMonth() + 1).toString() + "-" + tempDate.getDate().toString();
+				
+				if(!(i == $scope.selectedDates.length - 1))
+				{
+					selectedDateStrRep = selectedDateStrRep + '\"' + tempStrDate + '\"' + ':' + 'true,';
+				}
+				else
+				{
+					selectedDateStrRep = selectedDateStrRep +'\"' + tempStrDate + '\"' + ':' + 'true';
+				}
+				
+			}
+			
+			selectedDateStrRep = selectedDateStrRep + '}';
+			
+			$scope.eventDate = JSON.parse(selectedDateStrRep);
+			
+		}
+		
+		
 		
 		/*
 		var datetemp = $scope.eventDate.getFullYear().toString() + "-" + ($scope.eventDate.getMonth() + 1).toString() + "-" + $scope.eventDate.getDate().toString();
@@ -74,15 +113,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		*/
 		//time to string
 		
-		/*
-		  *** eventDate need to get values from selectedDate everytime button is pressed
-		  *** because eventDate needs to be reset because i dunno bit i feel that it is necessary
-		  
-		*/
 		
+		//for addition of the 0 in time with minutes below 10
 		var tempO = "";
 		var tempO2 = "";
 		
+		//time reassignment later to keep the variable of type date time
 		var time1 = $scope.eventTime;
 		var time2 = $scope.eventTime2;
 		
@@ -142,6 +178,8 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		{
 			//window.alert("under construction do not send yet");
 			console.log($scope.selectedDates);
+			console.log($scope.eventDate);
+			
 		}
 		
 		$scope.eventDate = null;
