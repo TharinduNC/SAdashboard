@@ -356,7 +356,7 @@
 					<div class="panel-heading">Add one event</div>
 					<div class="panel-body">
 						<!--enforce rules later-->
-						<form novalidate name="formEventCreate" ng-submit="createEvent(formEventCreate)" class="form-horizontal">
+						<form novalidate name="formEventCreate" class="form-horizontal">
 						
 							<div class="form-group">
 								<div class="col-md-5">
@@ -389,7 +389,7 @@
 							<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
 							
 								<div class="col-md-4">
-									<label>List of {{rel.event}}</label>
+									<label>Choose from the list of {{rel.event}}</label>
 									<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
 									</select>
 								</div>

@@ -7,6 +7,9 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	//references end
 	
 	//other inits
+	
+	$scope.eventTitle = "";
+	
 	$scope.rel = {
 		event: 'general'
 	};
@@ -27,7 +30,6 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
-	$scope.eventDate = {};
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -61,7 +63,28 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	$scope.createEvent = function()
 	{
-		//var valid = true;
+		var valid = true;
+		var errMsg = "";
+		
+		//needed for validation purposes
+		var relrel = $scope.choose.selectedEventId.$id;
+		
+		if($scope.eventTitle == "")
+		{
+			valid = false;
+			errMsg = errMsg + "missing title\n"
+		}
+		
+		if($scope.rel.event == 'general')
+		{
+			relrel = 'general';
+		}
+		
+		if(relrel === undefined)
+		{
+			valid = false;
+			errMsg = errMsg + "choose a related club or unit\n"
+		}
 		
 		/*
 		
@@ -72,7 +95,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		  
 		*/
 		
-		//no point runnint this code if there is no date selected
+		//no point running this code if there is no date selected
 		if($scope.selectedDates.length > 0)
 		{
 			var selectedDateStrRep = "{";
@@ -101,19 +124,14 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 			$scope.eventDate = JSON.parse(selectedDateStrRep);
 			
 		}
+		else
+		{
+			valid = false;
+			errMsg = errMsg + "date not selected\n"
+		}
 		
 		
-		
-		/*
-		var datetemp = $scope.eventDate.getFullYear().toString() + "-" + ($scope.eventDate.getMonth() + 1).toString() + "-" + $scope.eventDate.getDate().toString();
-		
-		$scope.eventDate = {
-			[datetemp] : true
-		};
-		*/
 		//time to string
-		
-		
 		//for addition of the 0 in time with minutes below 10
 		var tempO = "";
 		var tempO2 = "";
@@ -142,27 +160,30 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 			
 			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString() + "-" + 
 								$scope.eventTime2.getHours().toString() + ":" + tempO2 + $scope.eventTime2.getMinutes().toString();
-			
 		}
 		else
 		{
 			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString();
 		}
 		
-		
-		if(false)
+		if($scope.eventLocation == "")
 		{
-			if($scope.eventDesc == "")
-			{
-				$scope.eventDesc = "<no description given>";
-			}
-			
+			$scope.eventLocation = "<no location given>";
+		}
+		
+		if($scope.eventDesc == "")
+		{
+			$scope.eventDesc = "<no description given>";
+		}
+		
+		if(valid)
+		{
 			list.$add({
 				date: $scope.eventDate,
 				desc: $scope.eventDesc,
 				location: $scope.eventLocation,
 				note: $scope.eventNote,
-				relateTo: $scope.rel.event + "/" + $scope.choose.selectedEventId.$id,
+				relateTo: $scope.rel.event + "/" + relrel,
 				time: $scope.eventTime,
 				title: $scope.eventTitle
 			}).then(function(ref) {
@@ -176,14 +197,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		else
 		{
-			//window.alert("under construction do not send yet");
+			window.alert(errMsg);
 			console.log($scope.selectedDates);
 			console.log($scope.eventDate);
-			
 		}
 		
 		$scope.eventDate = null;
-		
 		$scope.eventTime = time1;
 		$scope.eventTime2 = time2;
 		
