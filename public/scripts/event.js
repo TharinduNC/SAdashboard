@@ -148,10 +148,12 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		if($scope.duration)
 		{
 			
-			if(time2 < time1)
+			errMsg = errMsg + "inscopeduration\n";
+			
+			if(time1 > time2)
 			{
 				valid = false;
-				errMsg = errMsg + "start time cannot be earlier that end time\n"
+				errMsg = errMsg + "start time cannot be earlier that end time\n" + time2 + "\n" + time1;
 			}
 			
 			if($scope.eventTime2.getMinutes() < 10)
