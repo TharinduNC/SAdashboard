@@ -1,4 +1,4 @@
-app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
+app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	//references
 	var firebaseRefEvent = firebase.database().ref("event");
