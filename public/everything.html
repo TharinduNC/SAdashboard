@@ -38,6 +38,9 @@
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/themes/default.css">
+	<link rel="stylesheet" href="css/themes/default.date.css">  
+	<link rel="stylesheet" href="css/bootstrap.vertical-tabs.min.css">	
 	<!-- Optional theme 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	-->
@@ -194,109 +197,113 @@
 					<div id="guide-create" class="tab-pane fade in active">
 						<div class="panel panel-default">
 							<div class="panel-heading">Create a guide</div>
-							<div class="panel-body">			
+							<div class="panel-body">
+								<form sf-schema="schema" sf-form="form" sf-model="model"></form>
+								<p>{{model}}</p>
+								<p>{{model.guideTitle}}</p>
+								<!--<p>{{model[arrayIndices[0]].child[arrayIndices[1]]}}</p>-->							
 								<!--enforce rules later-->
-								<form novalidate name="formGuideCreate" ng-submit="createGuide(formGuideCreate)" class="form-horizontal">
-									
-									<div class="form-group">
-										<div class="col-md-5">
-										  <input type="text" class="form-control" ng-model="guideName" id="guide_name" placeholder="Give your guide a name" name="guide_name" required="required">
-										</div>
-									  </div>
-											
-									<div class="form-group">
-									  <div class="col-md-5">
-										<input type="text" class="form-control" ng-model="guideDate" id="guide_date" placeholder="Enter date (yyyy/mm/dd)" name="guide_date" required="required">
-									  </div>
-									</div>
-									
-									<div class="panel-group" id="accordion">
-									  <div class="panel panel-default">
-										<div class="panel-heading">
-										  <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">General</a>
-										  </h4>
-										</div>
-										<div id="collapse1" class="panel-collapse collapse in">
-										  <div class="panel-body">
-											<div class="form-group">
-											  <div class="col-md-5">
-												<input type="text" class="form-control" ng-model="guideTitle" id="guide_title" placeholder="Enter title" name="guide_title" required="required">
-											  </div>
-											</div>
-											
-											<div class="form-group">  
-											  <div class="col-md-5">
-												<input type="text" class="form-control" ng-model="guideLocation" id="guide_location" placeholder="Enter location" name="guide_location">
-											  </div>
-											</div>
-											
-											<div class="form-group">
-											  <div class="col-md-5">
-												  <textarea class="form-control" rows="5" ng-model="guideDescription" id="guide_description" placeholder="Enter details" name="guide_description"></textarea>
-											  </div>
-											</div>										  
-										  </div>
-										</div>
-									  </div>
-									  <div class="panel panel-default">
-										<div class="panel-heading">
-										  <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Checklist</a>
-										  </h4>
-										</div>
-										<div id="collapse2" class="panel-collapse collapse">
-										  <div class="panel-body">
-											<div class="form-group">
-											  <div class="col-md-5">
-												<input type="text" class="form-control" ng-model="checklistTask" id="checklist_task" placeholder="Create a task" name="checklist_task" required="required">
-											  </div>
-											</div>
-										  
-											<div class="form-group">  
-											  <div class="col-md-5">
-												<input type="text" class="form-control" ng-model="checklistDescription" id="checklist_description" placeholder="Enter description" name="checklist_description">
-											  </div>                
-											</div>
-											
-											<div class="form-group">  
-											  <div class="col-md-5">
-												<textarea class="form-control" rows="5" ng-model="checklistBody" id="checklist_body" placeholder="Enter details" name="checklist_body"></textarea>
-											  </div>                
-											</div>
-											  
-											<div class="form-group">  
-											  <div class="col-md-5">
-												<input type="text" class="form-control" ng-model="checklistLink" id="checklist_link" placeholder="Enter a related link" name="checklist_link">
-											  </div>                
-											</div>											
-										  </div>
-										</div>
-									  </div>
-									  <div class="panel panel-default">
-										<div class="panel-heading">
-										  <h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frequently Asked Questions</a>
-										  </h4>
-										</div>
-										<div id="collapse3" class="panel-collapse collapse">
-										  <div class="panel-body">
-											<div class="form-group">
-											  <div class="col-md-5">
-												<input type="text" class="form-control" ng-model="faqQuestion" id="faq_question" placeholder="Enter a commonly asked question" name="faq_question" required="required"></p>
-												<textarea class="form-control" rows="3" ng-model="faqAnswer" id="faq_answer" placeholder="Enter an answer" name="faqAnswer" required="required"></textarea>
-											  </div>                
-											</div>											
-										  </div>
-										</div>
-									  </div>
-									</div>
-									<div class="form-group">
-									  <div class="col-md-3">
-										<input type="submit" class="btn btn-default" value="Add guide" />
-									  </div>
-									</div>              
-								</form>
+								<!--<form novalidate name="formGuideCreate" ng-submit="createGuide(formGuideCreate)" class="form-horizontal">-->
+								<!--	-->
+								<!--	<div class="form-group">-->
+								<!--		<div class="col-md-5">-->
+								<!--		  <input type="text" class="form-control" ng-model="guideName" id="guide_name" placeholder="Give your guide a name" name="guide_name" required="required">-->
+								<!--		</div>-->
+								<!--	  </div>-->
+								<!--			-->
+								<!--	<div class="form-group">-->
+								<!--	  <div class="col-md-5">-->
+								<!--		<input type="text" class="form-control" ng-model="guideDate" id="guide_date" placeholder="Enter date (yyyy/mm/dd)" name="guide_date" required="required">-->
+								<!--	  </div>-->
+								<!--	</div>-->
+								<!--	-->
+								<!--	<div class="panel-group" id="accordion">-->
+								<!--	  <div class="panel panel-default">-->
+								<!--		<div class="panel-heading">-->
+								<!--		  <h4 class="panel-title">-->
+								<!--			<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">General</a>-->
+								<!--		  </h4>-->
+								<!--		</div>-->
+								<!--		<div id="collapse1" class="panel-collapse collapse in">-->
+								<!--		  <div class="panel-body">-->
+								<!--			<div class="form-group">-->
+								<!--			  <div class="col-md-5">-->
+								<!--				<input type="text" class="form-control" ng-model="guideTitle" id="guide_title" placeholder="Enter title" name="guide_title" required="required">-->
+								<!--			  </div>-->
+								<!--			</div>-->
+								<!--			-->
+								<!--			<div class="form-group">  -->
+								<!--			  <div class="col-md-5">-->
+								<!--				<input type="text" class="form-control" ng-model="guideLocation" id="guide_location" placeholder="Enter location" name="guide_location">-->
+								<!--			  </div>-->
+								<!--			</div>-->
+								<!--			-->
+								<!--			<div class="form-group">-->
+								<!--			  <div class="col-md-5">-->
+								<!--				  <textarea class="form-control" rows="5" ng-model="guideDescription" id="guide_description" placeholder="Enter details" name="guide_description"></textarea>-->
+								<!--			  </div>-->
+								<!--			</div>										  -->
+								<!--		  </div>-->
+								<!--		</div>-->
+								<!--	  </div>-->
+								<!--	  <div class="panel panel-default">-->
+								<!--		<div class="panel-heading">-->
+								<!--		  <h4 class="panel-title">-->
+								<!--			<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Checklist</a>-->
+								<!--		  </h4>-->
+								<!--		</div>-->
+								<!--		<div id="collapse2" class="panel-collapse collapse">-->
+								<!--		  <div class="panel-body">-->
+								<!--			<div class="form-group">-->
+								<!--			  <div class="col-md-5">-->
+								<!--				<input type="text" class="form-control" ng-model="checklistTask" id="checklist_task" placeholder="Create a task" name="checklist_task" required="required">-->
+								<!--			  </div>-->
+								<!--			</div>-->
+								<!--		  -->
+								<!--			<div class="form-group">  -->
+								<!--			  <div class="col-md-5">-->
+								<!--				<input type="text" class="form-control" ng-model="checklistDescription" id="checklist_description" placeholder="Enter description" name="checklist_description">-->
+								<!--			  </div>                -->
+								<!--			</div>-->
+								<!--			-->
+								<!--			<div class="form-group">  -->
+								<!--			  <div class="col-md-5">-->
+								<!--				<textarea class="form-control" rows="5" ng-model="checklistBody" id="checklist_body" placeholder="Enter details" name="checklist_body"></textarea>-->
+								<!--			  </div>                -->
+								<!--			</div>-->
+								<!--			  -->
+								<!--			<div class="form-group">  -->
+								<!--			  <div class="col-md-5">-->
+								<!--				<input type="text" class="form-control" ng-model="checklistLink" id="checklist_link" placeholder="Enter a related link" name="checklist_link">-->
+								<!--			  </div>                -->
+								<!--			</div>											-->
+								<!--		  </div>-->
+								<!--		</div>-->
+								<!--	  </div>-->
+								<!--	  <div class="panel panel-default">-->
+								<!--		<div class="panel-heading">-->
+								<!--		  <h4 class="panel-title">-->
+								<!--			<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frequently Asked Questions</a>-->
+								<!--		  </h4>-->
+								<!--		</div>-->
+								<!--		<div id="collapse3" class="panel-collapse collapse">-->
+								<!--		  <div class="panel-body">-->
+								<!--			<div class="form-group">-->
+								<!--			  <div class="col-md-5">-->
+								<!--				<input type="text" class="form-control" ng-model="faqQuestion" id="faq_question" placeholder="Enter a commonly asked question" name="faq_question" required="required"></p>-->
+								<!--				<textarea class="form-control" rows="3" ng-model="faqAnswer" id="faq_answer" placeholder="Enter an answer" name="faqAnswer" required="required"></textarea>-->
+								<!--			  </div>                -->
+								<!--			</div>											-->
+								<!--		  </div>-->
+								<!--		</div>-->
+								<!--	  </div>-->
+								<!--	</div>-->
+								<!--	<div class="form-group">-->
+								<!--	  <div class="col-md-3">-->
+								<!--		<input type="submit" class="btn btn-default" value="Add guide" />-->
+								<!--	  </div>-->
+								<!--	</div>              -->
+								<!--</form>-->
 							</div> 	
 						</div>
 					</div>
@@ -727,18 +734,36 @@
     <script src="/__/firebase/3.9.0/firebase-database.js"></script>
     <script src="/__/firebase/init.js"></script>
 	
-	<!--AngularJS-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-	<script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
-    <script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>	
-	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>
+<!--	<!--AngularJS-->-->
+<!--	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
+<!--	<script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>-->
+<!--    <script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>	-->
+<!--	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>-->
+	
+	<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery.ui@1.10"></script>
+	<script src="scripts/tv4.js"></script>  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-animate.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-sanitize.js"></script>
+	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>	
+	<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap.min.js"></script>-->
+	<script type="text/javascript" src="scripts/sortable.js"></script>
+	<script src="scripts/ObjectPath.js"></script>
+	<script type="text/javascript" src="scripts/picker.js"></script>
+	<script type="text/javascript" src="scripts/picker.date.js"></script>
+	<script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script type="text/javascript" src="scripts/tx-tinymce.js"></script>
+	<script src="scripts/schema-form.js"></script>
+	<script src="scripts/bootstrap-decorator.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap-tinymce.js"></script>	
 	
 	<script src="scripts/angular.js"></script>
 	<script src="scripts/checklist-model.js"></script>
 	<script src="scripts/gm.datepickerMultiSelect.js"></script>
 	
 	<script src="scripts/guide.js"></script>
-	<script src="scripts/createguide.js"></script>
 	<script src="scripts/event.js"></script>
 	<script src="scripts/club.js"></script>
 	<script src="scripts/unit.js"></script>

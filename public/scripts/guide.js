@@ -1,13 +1,130 @@
 app.controller('guideAll', function($scope, $firebaseArray) {
-	$scope.oneAtATime = true;
-	
-	$scope.status = {
-	  isCustomHeaderOpen: false,
-	  isFirstOpen: true,
-	  isFirstDisabled: false
-	};
-	
-	//check validity of input https://stackoverflow.com/questions/20054055/angularjs-check-if-form-is-valid-in-controller
+  $scope.schema = {
+  "type": "object",
+  "title": "Guides",
+  "properties": {
+    "guideName": {
+      "title": "Guide Name",
+      "type": "string"
+    },    
+    "guideDate": {
+      "title": "Guide Date",
+      "type": "string",
+      "format": "date"
+    },
+    "guideTitle": {
+      "title": "Guide Title",
+      "type": "string"
+    },
+    "guideLocation": {
+      "title": "Guide Location",
+      "type": "string"
+    },
+    "guideDescription": {
+      "type": "string",
+      "format": "html",
+      "title": "Guide Description",
+      "description": "Enter guide details"
+    },
+    "checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "checklistTask": {
+            "title": "Task name",
+            "type": "string"
+          },
+          "checklistDescription": {
+            "title": "Task description",
+            "type": "string"
+          },
+          "checklistBody": {
+            "type": "string",
+            "format": "html",
+            "title": "Task body",
+            "description": "Enter task details"
+          },
+          "checklistLink": {
+            "title": "Task body link",
+            "type": "string"
+          }          
+        },
+        "required": [
+          "guideName",
+          "guideTitle",
+          "guideDescription"
+        ]
+      }
+    }
+  }
+}
+
+  $scope.form = [
+  {
+    "type": "help",
+    "helpvalue": "<h3>Create a guide</h3>"
+  },
+  "guideName",
+  {
+    "key": "guideDate",
+    "minDate": "1995-09-01",
+    "format": "yyyy-mm-dd"
+  },
+  {
+    "type": "help",
+    "helpvalue": "<h4>General</h4>"
+  },
+  "guideTitle",
+  "guideLocation",
+  {
+    "key": "guideDescription",
+    "tinymceOptions": {
+      "toolbar": [
+        "undo redo| styleselect | bold italic | link image",
+        "alignleft aligncenter alignright"
+      ]
+    }
+  },
+  {
+    "key": "checklist",
+    "type": "tabarray",
+    "add": "New",
+    "remove": "Delete",
+    "style": {
+      "remove": "btn-danger"
+    },
+    "title": "{{ value.name || 'Task '+$index }}",
+    "items": [
+      "checklist[].checklistTask",
+      "checklist[].checklistDescription",      
+      {
+        "key": "checklist[].checklistBody",
+        "tinymceOptions": {
+          "toolbar": [
+            "undo redo| styleselect | bold italic | link image",
+            "alignleft aligncenter alignright"
+          ]
+        }
+      },
+      "checklist[].checklistLink",
+    ]
+  },
+  {
+    "type": "submit",
+    "style": "btn-default",
+    "title": "OK"
+  }
+]
+
+    // $scope.form = [
+    // {
+    //   key: "name",
+    //   feedback: "{ 'glyphicon': true, 'glyphicon-asterisk': form.required,'glyphicon-ok': hasSuccess(), 'glyphicon-remove': hasError() }"
+    // }
+    // ];
+
+  $scope.model = {};
 	
 	var firebaseRefGuide = firebase.database().ref("guides");
 	
