@@ -113,17 +113,10 @@ app.controller('guideAll', function($scope, $firebaseArray) {
   {
     "type": "submit",
     "style": "btn-default",
-    "title": "OK"
+    "title": "Submit"
   }
 ]
-
-    // $scope.form = [
-    // {
-    //   key: "name",
-    //   feedback: "{ 'glyphicon': true, 'glyphicon-asterisk': form.required,'glyphicon-ok': hasSuccess(), 'glyphicon-remove': hasError() }"
-    // }
-    // ];
-
+  
   $scope.model = {};
 	
 	var firebaseRefGuide = firebase.database().ref("guides");
@@ -131,38 +124,43 @@ app.controller('guideAll', function($scope, $firebaseArray) {
 	var list = $firebaseArray(firebaseRefGuide);
 	
 	//create guide
-	$scope.createGuide = function(form)
+	$scope.onSubmit = function(form)
 	{
+    // First we broadcast an event so all fields validate themselves
+    $scope.$broadcast('schemaFormValidate');
+    
+    // Then we check if the form is valid
 		if(form.$valid)
 		{
 			list.$add({
-				name: $scope.guideName,
-				date: $scope.guideDate,
 				
 			}).then(function(ref) {
 				var id = ref.key;
 				window.alert("added record with id " + id);
 				list.$indexFor(id); // returns location in the array
-				
-				firebase.database().ref('guides/' + id + "/general").set({
-				  title: $scope.guideTitle,
-				  location: $scope.guideLocation,
-				  description: $scope.guideDescription
+        
+				firebase.database().ref('guides/' + id).set({
+          [id]: $scope.model
+				//firebase.database().ref('guides/' + id + "/general").set({
+				  //title: $scope.guideTitle,
+				  //location: $scope.guideLocation,
+				  //description: $scope.guideDescription
 				});
-				firebase.database().ref('guides/' + id + "/checklist").set({
-				  task: $scope.checklistTask,
-				  description: $scope.checklistDescription,
-				  location: $scope.checklistBody,
-				  description: $scope.checklistLink
-				});
-				firebase.database().ref('guides/' + id + "/faq").set({
-				  question: $scope.faqQuestion,
-				  answer: $scope.faqAnswer
-				});
+				//firebase.database().ref('guides/' + id + "/checklist").set({
+				//  task: $scope.checklistTask,
+				//  description: $scope.checklistDescription,
+				//  location: $scope.checklistBody,
+				//  description: $scope.checklistLink
+				//});
+				//firebase.database().ref('guides/' + id + "/faq").set({
+				//  question: $scope.faqQuestion,
+				//  answer: $scope.faqAnswer
+				//});
 			});
 		}
 		else
 		{
+      console.log($scope.model);
 			window.alert("empty");
 		}
 		

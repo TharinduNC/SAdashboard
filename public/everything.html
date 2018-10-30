@@ -198,10 +198,17 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Create a guide</div>
 							<div class="panel-body">
-								<form sf-schema="schema" sf-form="form" sf-model="model"></form>
+								<form name="myForm"
+									  sf-schema="schema"
+									  sf-form="form"
+									  sf-model="model"
+									  ng-submit="onSubmit(myForm)">
+								</form>
+								
+<!--								<form sf-schema="schema" sf-form="form" sf-model="model"></form>-->
 								<p>{{model}}</p>
 								<p>{{model.guideTitle}}</p>
-								<!--<p>{{model[arrayIndices[0]].child[arrayIndices[1]]}}</p>-->							
+								<!--<p>{{model[arrayIndices[0]].child[arrayIndices[1]]}}</p>-->
 								<!--enforce rules later-->
 								<!--<form novalidate name="formGuideCreate" ng-submit="createGuide(formGuideCreate)" class="form-horizontal">-->
 								<!--	-->
