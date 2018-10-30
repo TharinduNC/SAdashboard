@@ -364,148 +364,191 @@
 					</div>        
 				</div>
 			</div>
-			<div id="event" class="tab-pane fade">
 			
-				<div class="panel panel-default" ng-controller="eventAll">
-					<div class="panel-heading">Add one event</div>
-					<div class="panel-body">
-						<form novalidate name="formEventCreate" class="form-horizontal">
-						
-							<div class="form-group">
-								<div class="col-md-5">
-									<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" ng-required="required">
-								</div>
-							</div>
-							
-							<div class="form-group">
+			<div id="event" class="tab-pane fade" ng-controller="eventAll">
+			
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#event-create">Add event</a></li>
+					<li><a data-toggle="pill" href="#event-read">View events</a></li>
+					<li><a data-toggle="pill" href="#event-update">Edit events</a></li>
+					<li><a data-toggle="pill" href="#event-delete">Delete events</a></li>
+				</ul>
+			
+				<div class="tab-content">
+				
+					<div id="event-create" class="tab-pane fade in active">
 
-								<label class="col-md-12" for="relateTo">This event relates to?</label>
-							
-								<div class="col-md-6">
-									
-									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="general">General Event
-									</label>
-									
-									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
-									</label>
-									
-									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
-									</label>
+						<div class="panel panel-default">
+							<div class="panel-heading">Add one event</div>
+							<div class="panel-body">
+								<form novalidate name="formEventCreate" class="form-horizontal">
 								
-								</div>
-							
-							</div>
-							
-							<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
-							
-								<div class="col-md-4">
-									<label>Choose from the list of {{rel.event}}</label>
-									<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
-									</select>
-								</div>
-								{{choose.selectedEventId.$id}}
-							</div>
-							<hr>
-							<div class="form-group">
-								<div class="col-md-4">
-									<p>Pick date(s)</p>
-								
-									<div class='btn-group'>
-										<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
-										<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+									<div class="form-group">
+										<div class="col-md-5">
+											<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" ng-required="required">
+										</div>
 									</div>
-							
-									<div 
-										uib-datepicker
-										ng-model="activeDate"
-										multi-select="selectedDates"
-										select-range="{{pickMode=='range'}}"
-										datepicker-options="dateOptions"></div>
-								</div>
-								
-								<div class="col-md-5">
 									
-									<div ng-if="pickMode=='indi'">
-										Selected Dates:
-										<div class="well well-sm">
-											<div ng-repeat="d in selectedDates | orderBy">
-												{{d | date : 'fullDate'}}
-												<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+									<div class="form-group">
+
+										<label class="col-md-12" for="relateTo">This event relates to?</label>
+									
+										<div class="col-md-6">
+											
+											<label class="radio-inline">
+												<input type="radio" id="relateTo" ng-model="rel.event" value="general">General Event
+											</label>
+											
+											<label class="radio-inline">
+												<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
+											</label>
+											
+											<label class="radio-inline">
+												<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
+											</label>
+										
+										</div>
+									
+									</div>
+									
+									<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
+									
+										<div class="col-md-4">
+											<label>Choose from the list of {{rel.event}}</label>
+											<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
+											</select>
+										</div>
+										{{choose.selectedEventId.$id}}
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-md-4">
+											<p>Pick date(s)</p>
+										
+											<div class='btn-group'>
+												<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
+												<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+											</div>
+									
+											<div 
+												uib-datepicker
+												ng-model="activeDate"
+												multi-select="selectedDates"
+												select-range="{{pickMode=='range'}}"
+												datepicker-options="dateOptions"></div>
+										</div>
+										
+										<div class="col-md-5">
+											
+											<div ng-if="pickMode=='indi'">
+												Selected Dates:
+												<div class="well well-sm">
+													<div ng-repeat="d in selectedDates | orderBy">
+														{{d | date : 'fullDate'}}
+														<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+													</div>
+												</div>
+											</div>
+											
+											<div ng-if="pickMode=='range'">
+												Selected Dates:
+												<div class="well well-sm">
+													{{(selectedDates | orderBy)[0] | date:"fullDate"}}
+													<span ng-if="selectedDates.length > 1">
+														- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
+													</span>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-md-5">
+											<p>Pick a time (numbers are scrollable)</p>
+											<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
+											
+											<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
+											
+											<div ng-if="duration">
+												<p>End time</p>
+												<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
+												
+												<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-md-5">
+											<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-5">
+											<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<div class="checkbox">
+												<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
 											</div>
 										</div>
 									</div>
 									
-									<div ng-if="pickMode=='range'">
-										Selected Dates:
-										<div class="well well-sm">
-											{{(selectedDates | orderBy)[0] | date:"fullDate"}}
-											<span ng-if="selectedDates.length > 1">
-												- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
-											</span>
+									<div class="form-group">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
 										</div>
 									</div>
-									
-								</div>
-							</div>
-							<hr>
-							<div class="form-group">
-								<div class="col-md-5">
-									<p>Pick a time (numbers are scrollable)</p>
-									<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
-									
-									<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
-									
-									<div ng-if="duration">
-										<p>End time</p>
-										<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
-										
-										<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<div class="form-group">
-								<div class="col-md-5">
-									<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
-								</div>
-							</div>
+								
+								</form>
 							
-							<div class="form-group">
-								<div class="col-md-5">
-									<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
-								</div>
-							</div>
 							
-							<div class="form-group">
-								<div class="col-md-3">
-									<div class="checkbox">
-										<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
-									</div>
-								</div>
 							</div>
-							
-							<div class="form-group">
-								<div class="col-md-3">
-									<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
-								</div>
-							</div>
+						</div>
 						
-						</form>
-					
-					
+						<div class="panel panel-default">
+							<div class="panel-heading">Add multiple events</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+
 					</div>
-				</div>
-				
-				<div class="panel panel-default">
-					<div class="panel-heading">Add multiple events</div>
-					<div class="panel-body">
-						<p>put something</p>
+					
+					<div id="event-read" class="tab-pane fade">
+						<div class="panel panel-default">
+							<div class="panel-heading">View events</div>
+							<div class="panel-body">
+								<p>test1</p>
+							</div>
+						</div>
 					</div>
+					
+					<div id="event-update" class="tab-pane fade">
+						<div class="panel panel-default">
+							<div class="panel-heading">Edit events</div>
+							<div class="panel-body">
+								<p>test2</p>
+							</div>
+						</div>
+					</div>
+					
+					<div id="event-delete" class="tab-pane fade">
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete events</div>
+							<div class="panel-body">
+								<p>test3</p>
+							</div>
+						</div>
+					</div>
+					
 				</div>
-				
+
 			</div>
 			
 			<div id="map" class="tab-pane fade">
