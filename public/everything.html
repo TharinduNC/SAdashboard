@@ -449,13 +449,13 @@
 							<div class="form-group">
 								<div class="col-md-5">
 									<p>Pick a time (numbers are scrollable)</p>
-									<div uib-timepicker ng-model="eventTime" hour-step="1" minute-step="1" show-meridian="true"></div>
+									<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
 									
 									<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
 									
 									<div ng-if="duration">
 										<p>End time</p>
-										<div uib-timepicker ng-model="eventTime2" hour-step="1" minute-step="1" show-meridian="true"></div>
+										<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
 										
 										<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
 									</div>

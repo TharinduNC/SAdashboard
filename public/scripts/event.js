@@ -16,6 +16,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	$scope.eventNote = false;
 	$scope.eventDesc = "";
+	$scope.eventLocation = "";
 	$scope.choose = {
 		selectedEventId: "general"
 	};
@@ -50,8 +51,11 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	//date init end
 	
 	//timepicker init
-	$scope.eventTime = new Date();
-	$scope.eventTime2 = new Date();
+	
+	$scope.eventTimeRange = {
+		start: new Date(),
+		end: new Date()
+	};
 	$scope.duration = false;
 	
 	$scope.toggleDuration = function()
@@ -137,36 +141,35 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		var tempO2 = "";
 		
 		//time reassignment later to keep the variable of type date time
-		var time1 = $scope.eventTime;
-		var time2 = $scope.eventTime2;
+		var timeStart = $scope.eventTimeRange.start;
+		var timeEnd = $scope.eventTimeRange.end;
 		
-		if($scope.eventTime.getMinutes() < 10)
+		if(timeStart.getMinutes() < 10)
 		{
 			tempO = "0";
 		}
 		
 		if($scope.duration)
 		{
+			errMsg = errMsg + timeStart + "\n" + timeEnd;
 			
-			errMsg = errMsg + "inscopeduration\n";
-			
-			if(time1 > time2)
+			if(timeEnd < timeStart)
 			{
 				valid = false;
-				errMsg = errMsg + "start time cannot be earlier that end time\n" + time2 + "\n" + time1;
+				errMsg = errMsg + "end time cannot be earlier that start time\n";
 			}
 			
-			if($scope.eventTime2.getMinutes() < 10)
+			if(timeEnd.getMinutes() < 10)
 			{
 				tempO2 = "0";
 			}
 			
-			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString() + "-" + 
-								$scope.eventTime2.getHours().toString() + ":" + tempO2 + $scope.eventTime2.getMinutes().toString();
+			$scope.eventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString() + "-" + 
+								timeEnd.getHours().toString() + ":" + tempO2 + timeEnd.getMinutes().toString();
 		}
 		else
 		{
-			$scope.eventTime = $scope.eventTime.getHours().toString() + ":" + tempO + $scope.eventTime.getMinutes().toString();
+			$scope.eventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString();
 		}
 		
 		if($scope.eventLocation == "")
@@ -206,9 +209,6 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		}
 		
 		$scope.eventDate = null;
-		$scope.eventTime = time1;
-		$scope.eventTime2 = time2;
-		
 	};
 	
 });
