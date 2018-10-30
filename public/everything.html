@@ -355,7 +355,6 @@
 				<div class="panel panel-default" ng-controller="eventAll">
 					<div class="panel-heading">Add one event</div>
 					<div class="panel-body">
-						<!--enforce rules later-->
 						<form novalidate name="formEventCreate" class="form-horizontal">
 						
 							<div class="form-group">
@@ -411,14 +410,6 @@
 										multi-select="selectedDates"
 										select-range="{{pickMode=='range'}}"
 										datepicker-options="dateOptions"></div>
-									<!--
-									<div class="input-group">
-										<input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="eventDate" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" id="event_date" placeholder="Click date icon to put date" ng-required="required" ng-pattern="dateRegex">
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-default" ng-click="dateOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
-										</span>
-									</div>
-									-->
 								</div>
 								
 								<div class="col-md-5">
@@ -462,13 +453,6 @@
 								</div>
 							</div>
 							<hr>
-							<!--
-							<div class="form-group" ng-hide="true">
-								<div class="col-md-5">
-									<input type="text" class="form-control" ng-model="eventTime" id="event_time" placeholder="time" name="event_time" ng-required="required">
-								</div>
-							</div>
-							-->
 							<div class="form-group">
 								<div class="col-md-5">
 									<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">

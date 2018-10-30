@@ -6,6 +6,7 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	var list = $firebaseArray(firebaseRefEvent);
 	//references end
 	
+	//create event
 	//other inits
 	
 	$scope.eventTitle = "";
@@ -210,5 +211,11 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 		
 		$scope.eventDate = null;
 	};
+	
+	
+	//read event
+	
+	
+	
 	
 });
