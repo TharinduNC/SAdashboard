@@ -215,7 +215,9 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	//read event
 	
+	$scope.viewEvent = list;
 	
-	
-	
+	$scope.eventChecked = {
+		events: []
+	};
 });

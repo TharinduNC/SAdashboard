@@ -429,7 +429,10 @@
 												<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
 												<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
 											</div>
-									
+											
+											<p ng-if="pickMode=='indi'">Choose any dates for this event</p>
+											<p ng-if="pickMode=='range'">Choose a range of dates for this event</p>
+											
 											<div 
 												uib-datepicker
 												ng-model="activeDate"
@@ -528,6 +531,30 @@
 								<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate' }}</em></pre>
 								
 								<div uib-datepicker ng-model="viewDateSelect"></div>
+								
+								
+								<table class="table" id="tableViewEvent">
+									<tr>
+										<th>Title</th>
+										<th>Date</th>
+										<th>Time</th>
+									</tr>
+									<tr ng-repeat="ev in viewEvent">
+										<td>
+											<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}">
+											<label for="{{ev.$id}}">{{ev.title}}</label>
+										</td>
+										<td>
+											<span ng-repeat="(key, val) in ev.date">
+												<span ng-show="$index > 2"></span>
+												<strong>{{key}}</strong><br>
+											</span>
+										</td>
+										<td>
+											<strong>{{ev.time}}</strong>
+										</td>
+									</tr>
+								</table>
 								
 							</div>
 						</div>
