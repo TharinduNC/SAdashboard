@@ -1,0 +1,54 @@
+[debug] [2018-10-31T10:10:24.501Z] ----------------------------------------------------------------------
+[debug] [2018-10-31T10:10:24.504Z] Command:       D:\nodejs\Nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-10-31T10:10:24.504Z] CLI Version:   5.1.1
+[debug] [2018-10-31T10:10:24.504Z] Platform:      win32
+[debug] [2018-10-31T10:10:24.504Z] Node Version:  v10.0.0
+[debug] [2018-10-31T10:10:24.504Z] Time:          Wed Oct 31 2018 18:10:24 GMT+0800 (Malay Peninsula Standard Time)
+[debug] [2018-10-31T10:10:24.504Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-31T10:10:24.513Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-31T10:10:24.514Z] > authorizing via signed-in user
+[debug] [2018-10-31T10:10:24.514Z] [iam] checking project my-awesome-project-6dd85 for permissions ["firebase.projects.get"]
+[debug] [2018-10-31T10:10:24.516Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85:testIamPermissions  
+
+[debug] [2018-10-31T10:10:25.785Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-31T10:10:25.787Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85  
+ 
+[debug] [2018-10-31T10:10:27.041Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\project_b\SAdashboard'...
+[info] 
+[debug] [2018-10-31T10:10:27.042Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/125302731440/clients/_:getWebAppConfig  
+ 
+[debug] [2018-10-31T10:10:27.531Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+[debug] [2018-10-31T12:22:17.840Z] ----------------------------------------------------------------------
+[debug] [2018-10-31T12:22:17.842Z] Command:       D:\nodejs\Nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-10-31T12:22:17.843Z] CLI Version:   5.1.1
+[debug] [2018-10-31T12:22:17.843Z] Platform:      win32
+[debug] [2018-10-31T12:22:17.843Z] Node Version:  v10.0.0
+[debug] [2018-10-31T12:22:17.843Z] Time:          Wed Oct 31 2018 20:22:17 GMT+0800 (Malay Peninsula Standard Time)
+[debug] [2018-10-31T12:22:17.843Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-31T12:22:17.852Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-31T12:22:17.852Z] > authorizing via signed-in user
+[debug] [2018-10-31T12:22:17.852Z] [iam] checking project my-awesome-project-6dd85 for permissions ["firebase.projects.get"]
+[debug] [2018-10-31T12:22:17.854Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-31T12:22:17.854Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-10-31T12:22:18.087Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-31T12:22:18.091Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85:testIamPermissions  
+
+[debug] [2018-10-31T12:22:19.460Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-31T12:22:19.461Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85  
+ 
+[debug] [2018-10-31T12:22:20.718Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\project_b\SAdashboard'...
+[info] 
+[debug] [2018-10-31T12:22:20.720Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/125302731440/clients/_:getWebAppConfig  
+ 
+[debug] [2018-10-31T12:22:21.178Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000

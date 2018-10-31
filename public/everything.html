@@ -524,7 +524,11 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">View events</div>
 							<div class="panel-body">
-								<p>test1</p>
+								
+								<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate' }}</em></pre>
+								
+								<div uib-datepicker ng-model="viewDateSelect"></div>
+								
 							</div>
 						</div>
 					</div>
