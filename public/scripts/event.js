@@ -262,6 +262,15 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		
 	};
 	
+	//edit event
+	$scope.onEventEditClick = function()
+	{
+		if($scope.eventChecked.events.length == 1)
+		{
+			console.log("later");
+		}
+	}
+	
 	//delete event
 	$scope.deleteEvent = function()
 	{

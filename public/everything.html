@@ -265,7 +265,7 @@
 				<ul class="nav nav-pills">
 					<li class="active"><a data-toggle="pill" href="#event-create">Add event</a></li>
 					<li><a data-toggle="pill" href="#event-read">View events</a></li>
-					<li><a data-toggle="pill" href="#event-update">Edit events</a></li>
+					<li><a data-toggle="pill" href="#event-update" ng-click="onEventEditClick()">Edit events</a></li>
 					<li><a data-toggle="pill" href="#event-delete">Delete events</a></li>
 				</ul>
 			
@@ -463,7 +463,9 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Edit events</div>
 							<div class="panel-body">
-								<p>test2</p>
+								<p>only edits the first item</p>
+								eventChecked.events: {{eventChecked.events | json}}<br>
+								current selection: <br>
 							</div>
 						</div>
 					</div>
