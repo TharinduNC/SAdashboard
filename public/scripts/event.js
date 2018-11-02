@@ -1,3 +1,29 @@
+app.filter('property', property);
+
+function property(){
+    function parseString(input){
+        return input.split(".");
+    }
+ 
+    function getValue(element, propertyArray){
+        var value = element;
+ 
+        _.forEach(propertyArray, function(property){
+            value = value[property];
+        });
+ 
+        return value;
+    }
+ 
+    return function (array, propertyString, target){
+        var properties = parseString(propertyString);
+ 
+        return _.filter(array, function(item){
+            return getValue(item, properties) == target;
+        });
+    }
+}
+
 app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	//references
@@ -214,10 +240,25 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	
 	//read event
-	
+	//https://stackoverflow.com/questions/42615092/angularjs-filter-in-nested-ng-repeats
 	$scope.viewEvent = list;
 	
 	$scope.eventChecked = {
 		events: []
+	};
+	
+	$scope.commaStop = function(pos, dat)
+	{
+		len = Object.keys(dat).length;
+		
+		if(Object.keys(dat).length - 1 == pos)
+		{
+			return false
+		}
+		else
+		{
+			return true;
+		}
+		
 	};
 });

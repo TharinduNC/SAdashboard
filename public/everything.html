@@ -528,30 +528,34 @@
 							<div class="panel-heading">View events</div>
 							<div class="panel-body">
 								
-								<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate' }}</em></pre>
+								<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate'}}</em></pre>
 								
 								<div uib-datepicker ng-model="viewDateSelect"></div>
 								
+								<input type="text" ng-model="eventFil" placeholder="currently cannot filter dates" />
 								
 								<table class="table" id="tableViewEvent">
 									<tr>
 										<th>Title</th>
 										<th>Date</th>
 										<th>Time</th>
+										<th>Relation</th>
 									</tr>
-									<tr ng-repeat="ev in viewEvent">
+									<tr ng-repeat="ev in viewEvent | filter: eventFil">
 										<td>
 											<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}">
 											<label for="{{ev.$id}}">{{ev.title}}</label>
 										</td>
 										<td>
 											<span ng-repeat="(key, val) in ev.date">
-												<span ng-show="$index > 2"></span>
-												<strong>{{key}}</strong><br>
+												<strong>{{key}}<span ng-if="commaStop($index, ev.date)">,<span></strong>
 											</span>
 										</td>
 										<td>
 											<strong>{{ev.time}}</strong>
+										</td>
+										<td>
+											<strong>{{ev.relateTo}}</strong>
 										</td>
 									</tr>
 								</table>

@@ -1,54 +1,25 @@
-[debug] [2018-10-31T14:35:17.472Z] ----------------------------------------------------------------------
-[debug] [2018-10-31T14:35:17.475Z] Command:       D:\nodejs\Nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-10-31T14:35:17.475Z] CLI Version:   5.1.1
-[debug] [2018-10-31T14:35:17.475Z] Platform:      win32
-[debug] [2018-10-31T14:35:17.475Z] Node Version:  v10.0.0
-[debug] [2018-10-31T14:35:17.476Z] Time:          Wed Oct 31 2018 22:35:17 GMT+0800 (Malay Peninsula Standard Time)
-[debug] [2018-10-31T14:35:17.476Z] ----------------------------------------------------------------------
+[debug] [2018-11-02T10:48:58.468Z] ----------------------------------------------------------------------
+[debug] [2018-11-02T10:48:58.470Z] Command:       D:\nodejs\Nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-11-02T10:48:58.470Z] CLI Version:   5.1.1
+[debug] [2018-11-02T10:48:58.471Z] Platform:      win32
+[debug] [2018-11-02T10:48:58.471Z] Node Version:  v10.0.0
+[debug] [2018-11-02T10:48:58.471Z] Time:          Fri Nov 02 2018 18:48:58 GMT+0800 (Malay Peninsula Standard Time)
+[debug] [2018-11-02T10:48:58.471Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-10-31T14:35:17.485Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-10-31T14:35:17.486Z] > authorizing via signed-in user
-[debug] [2018-10-31T14:35:17.486Z] [iam] checking project my-awesome-project-6dd85 for permissions ["firebase.projects.get"]
-[debug] [2018-10-31T14:35:17.489Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-10-31T14:35:17.489Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2018-10-31T14:35:17.819Z] <<< HTTP RESPONSE 200
-[debug] [2018-10-31T14:35:17.823Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85:testIamPermissions  
+[debug] [2018-11-02T10:48:58.480Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-02T10:48:58.480Z] > authorizing via signed-in user
+[debug] [2018-11-02T10:48:58.480Z] [iam] checking project my-awesome-project-6dd85 for permissions ["firebase.projects.get"]
+[debug] [2018-11-02T10:48:58.482Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85:testIamPermissions  
 
-[debug] [2018-10-31T14:35:19.205Z] <<< HTTP RESPONSE 200
-[debug] [2018-10-31T14:35:19.206Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85  
+[debug] [2018-11-02T10:48:59.808Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-02T10:48:59.809Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85  
  
-[debug] [2018-10-31T14:35:20.462Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-02T10:49:01.093Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'D:\project_b\SAdashboard'...
 [info] 
-[debug] [2018-10-31T14:35:20.463Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/125302731440/clients/_:getWebAppConfig  
+[debug] [2018-11-02T10:49:01.094Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/125302731440/clients/_:getWebAppConfig  
  
-[debug] [2018-10-31T14:35:21.125Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-[debug] [2018-10-31T14:35:38.510Z] ----------------------------------------------------------------------
-[debug] [2018-10-31T14:35:38.512Z] Command:       D:\nodejs\Nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-10-31T14:35:38.513Z] CLI Version:   5.1.1
-[debug] [2018-10-31T14:35:38.513Z] Platform:      win32
-[debug] [2018-10-31T14:35:38.513Z] Node Version:  v10.0.0
-[debug] [2018-10-31T14:35:38.513Z] Time:          Wed Oct 31 2018 22:35:38 GMT+0800 (Malay Peninsula Standard Time)
-[debug] [2018-10-31T14:35:38.513Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2018-10-31T14:35:38.522Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-10-31T14:35:38.522Z] > authorizing via signed-in user
-[debug] [2018-10-31T14:35:38.522Z] [iam] checking project my-awesome-project-6dd85 for permissions ["firebase.projects.get"]
-[debug] [2018-10-31T14:35:38.524Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85:testIamPermissions  
-
-[debug] [2018-10-31T14:35:39.766Z] <<< HTTP RESPONSE 200
-[debug] [2018-10-31T14:35:39.767Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/my-awesome-project-6dd85  
- 
-[debug] [2018-10-31T14:35:41.051Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'D:\project_b\SAdashboard'...
-[info] 
-[debug] [2018-10-31T14:35:41.053Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/125302731440/clients/_:getWebAppConfig  
- 
-[debug] [2018-10-31T14:35:41.572Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-02T10:49:01.611Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
