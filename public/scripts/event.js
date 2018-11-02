@@ -261,4 +261,27 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		}
 		
 	};
+	
+	//delete event
+	$scope.deleteEvent = function()
+	{
+		if($scope.eventChecked.events.length > 0)
+		{
+			var i;
+		
+			for(i = 0; i < $scope.eventChecked.events.length; i++)
+			{
+				firebase.database().ref().child("event/" + $scope.eventChecked.events[i]).remove();
+			}
+			
+			$scope.eventChecked = {
+				events: []
+			};
+		}
+		else
+		{
+			window.alert("no selection");
+		}
+	};
+	
 });
