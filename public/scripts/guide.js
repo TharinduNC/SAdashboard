@@ -204,29 +204,13 @@ app.controller('guideAll', function($scope, $firebaseArray) {
 		if(form.$valid)
 		{
 			list.$add({
-				
+        
 			}).then(function(ref) {
 				var id = ref.key;
 				window.alert("added record with id " + id);
 				list.$indexFor(id); // returns location in the array
         
-				firebase.database().ref('guides/' + id).set({
-          [id]: $scope.model
-				//firebase.database().ref('guides/' + id + "/general").set({
-				  //title: $scope.guideTitle,
-				  //location: $scope.guideLocation,
-				  //description: $scope.guideDescription
-				});
-				//firebase.database().ref('guides/' + id + "/checklist").set({
-				//  task: $scope.checklistTask,
-				//  description: $scope.checklistDescription,
-				//  location: $scope.checklistBody,
-				//  description: $scope.checklistLink
-				//});
-				//firebase.database().ref('guides/' + id + "/faq").set({
-				//  question: $scope.faqQuestion,
-				//  answer: $scope.faqAnswer
-				//});
+        firebase.database().ref('guides/' + id).set($scope.model);
 			});
 		}
 		else
