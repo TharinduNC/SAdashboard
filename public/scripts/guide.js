@@ -3,127 +3,191 @@ app.controller('guideAll', function($scope, $firebaseArray) {
   "type": "object",
   "title": "Guides",
   "properties": {
-    "guideName": {
+    "name": {
       "title": "Guide Name",
       "type": "string"
     },    
-    "guideDate": {
+    "date": {
       "title": "Guide Date",
       "type": "string",
       "format": "date"
     },
-    "guideTitle": {
-      "title": "Guide Title",
-      "type": "string"
-    },
-    "guideLocation": {
-      "title": "Guide Location",
-      "type": "string"
-    },
-    "guideDescription": {
-      "type": "string",
-      "format": "html",
-      "title": "Guide Description",
-      "description": "Enter guide details"
+    "general": {
+      "type": "array",
+      "items": {
+        "type":"object",
+        "properties": {
+          "title": {
+            "title": "Guide Title",
+            "type": "string"
+          },
+          "location": {
+            "title": "Guide Location",
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "format": "html",
+            "title": "Guide Description",
+            "description": "Enter guide details"
+          },
+          "header": {
+            "title": "Guide Header",
+            "type": "string"
+          }
+        }
+      }
     },
     "checklist": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "checklistTask": {
+          "task": {
             "title": "Task name",
             "type": "string"
           },
-          "checklistDescription": {
+          "description": {
             "title": "Task description",
             "type": "string"
           },
-          "checklistBody": {
+          "body": {
             "type": "string",
             "format": "html",
             "title": "Task body",
             "description": "Enter task details"
           },
-          "checklistLink": {
+          "link": {
             "title": "Task body link",
             "type": "string"
           }          
-        },
-        "required": [
-          "guideName",
-          "guideTitle",
-          "guideDescription"
-        ]
+        }
       }
-    }
-  }
+    },
+    "faq": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "title": "Question",
+            "type": "string"
+          },
+          "answer": {
+            "type": "string",
+            "format": "html",
+            "title": "Answer",
+            "description": "Enter details"
+          }
+        }
+      }
+    }    
+  },
+  "required": [
+    "guideName",
+    "guideTitle",
+    "guideDescription"
+    ]
 }
 
   $scope.form = [
-  {
-    "type": "help",
-    "helpvalue": "<h3>Create a guide</h3>"
-  },
-  "guideName",
-  {
-    "key": "guideDate",
-    "minDate": "1995-09-01",
-    "format": "yyyy-mm-dd"
-  },
-  {
-    "type": "help",
-    "helpvalue": "<h4>General</h4>"
-  },
-  "guideTitle",
-  "guideLocation",
-  {
-    "key": "guideDescription",
-    "tinymceOptions": {
-      "toolbar": [
-        "undo redo| styleselect | bold italic | link image",
-        "alignleft aligncenter alignright"
-      ]
-    }
-  },
-  {
-    "key": "checklist",
-    "type": "tabarray",
-    "add": "New",
-    "remove": "Delete",
-    "style": {
-      "remove": "btn-danger"
-    },
-    "title": "{{ value.name || 'Task '+$index }}",
-    "items": [
-      "checklist[].checklistTask",
-      "checklist[].checklistDescription",      
-      {
-        "key": "checklist[].checklistBody",
-        "tinymceOptions": {
-          "toolbar": [
-            "undo redo| styleselect | bold italic | link image",
-            "alignleft aligncenter alignright"
+    {
+      type: "tabs",
+      tabs: [
+        {
+          "title": "general",
+          "items": [
+            "name",
+            {
+              "key": "date",
+              "minDate": "1995-09-01",
+              "format": "yyyy-mm-dd"
+            },
+            {
+              "key": "general",
+              "title": "General",
+              "add": null,
+              "items": [
+                "general[].title",
+                "general[].location",
+                {
+                  "key": "general[].description",
+                  "tinymceOptions": {
+                    "toolbar": [
+                      "undo redo| styleselect | bold italic | link image",
+                      "alignleft aligncenter alignright"
+                    ]
+                  }
+                }
+              ]
+            }            
+          ]
+        },
+        {
+          "title": "checklist",
+          "items": [
+          {
+            "key": "checklist",
+            "type": "tabarray",
+            "add": "New",
+            "remove": "Delete",
+            "style": {
+              "remove": "btn-danger"
+            },
+            "title": "{{ value.name || 'Task '+$index }}",
+            "items": [
+              "checklist[].task",
+              "checklist[].description",      
+              {
+                "key": "checklist[].body",
+                "tinymceOptions": {
+                  "toolbar": [
+                    "undo redo| styleselect | bold italic | link image",
+                    "alignleft aligncenter alignright"
+                  ]
+                }
+              },
+              "checklist[].link",
+            ]
+          }            
+          ]
+        },
+        {
+          "title": "faq",
+          "items": [
+          {
+            "key": "faq",
+            "type": "tabarray",
+            "add": "New",
+            "remove": "Delete",
+            "style": {
+              "remove": "btn-danger"
+            },
+            "title": "{{ value.name || 'Question '+$index }}",
+            "items": [
+              "faq[].question",    
+              {
+                "key": "faq[].answer",
+                "tinymceOptions": {
+                  "toolbar": [
+                    "undo redo| styleselect | bold italic | link image",
+                    "alignleft aligncenter alignright"
+                  ]
+                }
+              }
+            ]
+          }            
           ]
         }
-      },
-      "checklist[].checklistLink",
-    ]
-  },
+      ]
+    },
   {
     "type": "submit",
-    "style": "btn-default",
-    "title": "OK"
+    "style": "btn-success",
+    "title": "Submit"
   }
 ]
-
-    // $scope.form = [
-    // {
-    //   key: "name",
-    //   feedback: "{ 'glyphicon': true, 'glyphicon-asterisk': form.required,'glyphicon-ok': hasSuccess(), 'glyphicon-remove': hasError() }"
-    // }
-    // ];
-
+  
   $scope.model = {};
 	
 	var firebaseRefGuide = firebase.database().ref("guides");
@@ -131,38 +195,27 @@ app.controller('guideAll', function($scope, $firebaseArray) {
 	var list = $firebaseArray(firebaseRefGuide);
 	
 	//create guide
-	$scope.createGuide = function(form)
+	$scope.onSubmit = function(form)
 	{
+    // First we broadcast an event so all fields validate themselves
+    $scope.$broadcast('schemaFormValidate');
+    
+    // Then we check if the form is valid
 		if(form.$valid)
 		{
 			list.$add({
-				name: $scope.guideName,
-				date: $scope.guideDate,
-				
+        
 			}).then(function(ref) {
 				var id = ref.key;
 				window.alert("added record with id " + id);
 				list.$indexFor(id); // returns location in the array
-				
-				firebase.database().ref('guides/' + id + "/general").set({
-				  title: $scope.guideTitle,
-				  location: $scope.guideLocation,
-				  description: $scope.guideDescription
-				});
-				firebase.database().ref('guides/' + id + "/checklist").set({
-				  task: $scope.checklistTask,
-				  description: $scope.checklistDescription,
-				  location: $scope.checklistBody,
-				  description: $scope.checklistLink
-				});
-				firebase.database().ref('guides/' + id + "/faq").set({
-				  question: $scope.faqQuestion,
-				  answer: $scope.faqAnswer
-				});
+        
+        firebase.database().ref('guides/' + id).set($scope.model);
 			});
 		}
 		else
 		{
+      console.log($scope.model);
 			window.alert("empty");
 		}
 		

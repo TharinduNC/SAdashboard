@@ -1,4 +1,30 @@
-app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
+app.filter('property', property);
+
+function property(){
+    function parseString(input){
+        return input.split(".");
+    }
+ 
+    function getValue(element, propertyArray){
+        var value = element;
+ 
+        _.forEach(propertyArray, function(property){
+            value = value[property];
+        });
+ 
+        return value;
+    }
+ 
+    return function (array, propertyString, target){
+        var properties = parseString(propertyString);
+ 
+        return _.filter(array, function(item){
+            return getValue(item, properties) == target;
+        });
+    }
+}
+
+app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	//references
 	var firebaseRefEvent = firebase.database().ref("event");
@@ -214,8 +240,57 @@ app.controller('eventAll', function($scope, $firebaseArray, uibDateParser) {
 	
 	
 	//read event
+	//https://stackoverflow.com/questions/42615092/angularjs-filter-in-nested-ng-repeats
+	$scope.viewEvent = list;
 	
+	$scope.eventChecked = {
+		events: []
+	};
 	
+	$scope.commaStop = function(pos, dat)
+	{
+		len = Object.keys(dat).length;
+		
+		if(Object.keys(dat).length - 1 == pos)
+		{
+			return false
+		}
+		else
+		{
+			return true;
+		}
+		
+	};
 	
+	//edit event
+	$scope.onEventEditClick = function()
+	{
+		if($scope.eventChecked.events.length == 1)
+		{
+			console.log("later");
+		}
+	}
+	
+	//delete event
+	$scope.deleteEvent = function()
+	{
+		if($scope.eventChecked.events.length > 0)
+		{
+			var i;
+		
+			for(i = 0; i < $scope.eventChecked.events.length; i++)
+			{
+				firebase.database().ref().child("event/" + $scope.eventChecked.events[i]).remove();
+			}
+			
+			$scope.eventChecked = {
+				events: []
+			};
+		}
+		else
+		{
+			window.alert("no selection");
+		}
+	};
 	
 });

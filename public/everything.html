@@ -198,112 +198,14 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">Create a guide</div>
 							<div class="panel-body">
-								<form sf-schema="schema" sf-form="form" sf-model="model"></form>
+								<form name="myForm"
+									  sf-schema="schema"
+									  sf-form="form"
+									  sf-model="model"
+									  ng-submit="onSubmit(myForm)">
+								</form>
 								<p>{{model}}</p>
 								<p>{{model.guideTitle}}</p>
-								<!--<p>{{model[arrayIndices[0]].child[arrayIndices[1]]}}</p>-->							
-								<!--enforce rules later-->
-								<!--<form novalidate name="formGuideCreate" ng-submit="createGuide(formGuideCreate)" class="form-horizontal">-->
-								<!--	-->
-								<!--	<div class="form-group">-->
-								<!--		<div class="col-md-5">-->
-								<!--		  <input type="text" class="form-control" ng-model="guideName" id="guide_name" placeholder="Give your guide a name" name="guide_name" required="required">-->
-								<!--		</div>-->
-								<!--	  </div>-->
-								<!--			-->
-								<!--	<div class="form-group">-->
-								<!--	  <div class="col-md-5">-->
-								<!--		<input type="text" class="form-control" ng-model="guideDate" id="guide_date" placeholder="Enter date (yyyy/mm/dd)" name="guide_date" required="required">-->
-								<!--	  </div>-->
-								<!--	</div>-->
-								<!--	-->
-								<!--	<div class="panel-group" id="accordion">-->
-								<!--	  <div class="panel panel-default">-->
-								<!--		<div class="panel-heading">-->
-								<!--		  <h4 class="panel-title">-->
-								<!--			<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">General</a>-->
-								<!--		  </h4>-->
-								<!--		</div>-->
-								<!--		<div id="collapse1" class="panel-collapse collapse in">-->
-								<!--		  <div class="panel-body">-->
-								<!--			<div class="form-group">-->
-								<!--			  <div class="col-md-5">-->
-								<!--				<input type="text" class="form-control" ng-model="guideTitle" id="guide_title" placeholder="Enter title" name="guide_title" required="required">-->
-								<!--			  </div>-->
-								<!--			</div>-->
-								<!--			-->
-								<!--			<div class="form-group">  -->
-								<!--			  <div class="col-md-5">-->
-								<!--				<input type="text" class="form-control" ng-model="guideLocation" id="guide_location" placeholder="Enter location" name="guide_location">-->
-								<!--			  </div>-->
-								<!--			</div>-->
-								<!--			-->
-								<!--			<div class="form-group">-->
-								<!--			  <div class="col-md-5">-->
-								<!--				  <textarea class="form-control" rows="5" ng-model="guideDescription" id="guide_description" placeholder="Enter details" name="guide_description"></textarea>-->
-								<!--			  </div>-->
-								<!--			</div>										  -->
-								<!--		  </div>-->
-								<!--		</div>-->
-								<!--	  </div>-->
-								<!--	  <div class="panel panel-default">-->
-								<!--		<div class="panel-heading">-->
-								<!--		  <h4 class="panel-title">-->
-								<!--			<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Checklist</a>-->
-								<!--		  </h4>-->
-								<!--		</div>-->
-								<!--		<div id="collapse2" class="panel-collapse collapse">-->
-								<!--		  <div class="panel-body">-->
-								<!--			<div class="form-group">-->
-								<!--			  <div class="col-md-5">-->
-								<!--				<input type="text" class="form-control" ng-model="checklistTask" id="checklist_task" placeholder="Create a task" name="checklist_task" required="required">-->
-								<!--			  </div>-->
-								<!--			</div>-->
-								<!--		  -->
-								<!--			<div class="form-group">  -->
-								<!--			  <div class="col-md-5">-->
-								<!--				<input type="text" class="form-control" ng-model="checklistDescription" id="checklist_description" placeholder="Enter description" name="checklist_description">-->
-								<!--			  </div>                -->
-								<!--			</div>-->
-								<!--			-->
-								<!--			<div class="form-group">  -->
-								<!--			  <div class="col-md-5">-->
-								<!--				<textarea class="form-control" rows="5" ng-model="checklistBody" id="checklist_body" placeholder="Enter details" name="checklist_body"></textarea>-->
-								<!--			  </div>                -->
-								<!--			</div>-->
-								<!--			  -->
-								<!--			<div class="form-group">  -->
-								<!--			  <div class="col-md-5">-->
-								<!--				<input type="text" class="form-control" ng-model="checklistLink" id="checklist_link" placeholder="Enter a related link" name="checklist_link">-->
-								<!--			  </div>                -->
-								<!--			</div>											-->
-								<!--		  </div>-->
-								<!--		</div>-->
-								<!--	  </div>-->
-								<!--	  <div class="panel panel-default">-->
-								<!--		<div class="panel-heading">-->
-								<!--		  <h4 class="panel-title">-->
-								<!--			<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frequently Asked Questions</a>-->
-								<!--		  </h4>-->
-								<!--		</div>-->
-								<!--		<div id="collapse3" class="panel-collapse collapse">-->
-								<!--		  <div class="panel-body">-->
-								<!--			<div class="form-group">-->
-								<!--			  <div class="col-md-5">-->
-								<!--				<input type="text" class="form-control" ng-model="faqQuestion" id="faq_question" placeholder="Enter a commonly asked question" name="faq_question" required="required"></p>-->
-								<!--				<textarea class="form-control" rows="3" ng-model="faqAnswer" id="faq_answer" placeholder="Enter an answer" name="faqAnswer" required="required"></textarea>-->
-								<!--			  </div>                -->
-								<!--			</div>											-->
-								<!--		  </div>-->
-								<!--		</div>-->
-								<!--	  </div>-->
-								<!--	</div>-->
-								<!--	<div class="form-group">-->
-								<!--	  <div class="col-md-3">-->
-								<!--		<input type="submit" class="btn btn-default" value="Add guide" />-->
-								<!--	  </div>-->
-								<!--	</div>              -->
-								<!--</form>-->
 							</div> 	
 						</div>
 					</div>
@@ -357,148 +259,230 @@
 					</div>        
 				</div>
 			</div>
-			<div id="event" class="tab-pane fade">
 			
-				<div class="panel panel-default" ng-controller="eventAll">
-					<div class="panel-heading">Add one event</div>
-					<div class="panel-body">
-						<form novalidate name="formEventCreate" class="form-horizontal">
-						
-							<div class="form-group">
-								<div class="col-md-5">
-									<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" ng-required="required">
-								</div>
-							</div>
-							
-							<div class="form-group">
+			<div id="event" class="tab-pane fade" ng-controller="eventAll">
+			
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#event-create">Add event</a></li>
+					<li><a data-toggle="pill" href="#event-read">View events</a></li>
+					<li><a data-toggle="pill" href="#event-update" ng-click="onEventEditClick()">Edit events</a></li>
+					<li><a data-toggle="pill" href="#event-delete">Delete events</a></li>
+				</ul>
+			
+				<div class="tab-content">
+				
+					<div id="event-create" class="tab-pane fade in active">
 
-								<label class="col-md-12" for="relateTo">This event relates to?</label>
-							
-								<div class="col-md-6">
-									
-									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="general">General Event
-									</label>
-									
-									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
-									</label>
-									
-									<label class="radio-inline">
-										<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
-									</label>
+						<div class="panel panel-default">
+							<div class="panel-heading">Add one event</div>
+							<div class="panel-body">
+								<form novalidate name="formEventCreate" class="form-horizontal">
 								
-								</div>
-							
-							</div>
-							
-							<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
-							
-								<div class="col-md-4">
-									<label>Choose from the list of {{rel.event}}</label>
-									<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
-									</select>
-								</div>
-								{{choose.selectedEventId.$id}}
-							</div>
-							<hr>
-							<div class="form-group">
-								<div class="col-md-4">
-									<p>Pick date(s)</p>
-								
-									<div class='btn-group'>
-										<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
-										<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+									<div class="form-group">
+										<div class="col-md-5">
+											<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" ng-required="required">
+										</div>
 									</div>
-							
-									<div 
-										uib-datepicker
-										ng-model="activeDate"
-										multi-select="selectedDates"
-										select-range="{{pickMode=='range'}}"
-										datepicker-options="dateOptions"></div>
-								</div>
-								
-								<div class="col-md-5">
 									
-									<div ng-if="pickMode=='indi'">
-										Selected Dates:
-										<div class="well well-sm">
-											<div ng-repeat="d in selectedDates | orderBy">
-												{{d | date : 'fullDate'}}
-												<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+									<div class="form-group">
+
+										<label class="col-md-12" for="relateTo">This event relates to?</label>
+									
+										<div class="col-md-6">
+											
+											<label class="radio-inline">
+												<input type="radio" id="relateTo" ng-model="rel.event" value="general">General Event
+											</label>
+											
+											<label class="radio-inline">
+												<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
+											</label>
+											
+											<label class="radio-inline">
+												<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
+											</label>
+										
+										</div>
+									
+									</div>
+									
+									<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
+									
+										<div class="col-md-4">
+											<label>Choose from the list of {{rel.event}}</label>
+											<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
+											</select>
+										</div>
+										{{choose.selectedEventId.$id}}
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-md-4">
+											<p>Pick date(s)</p>
+										
+											<div class='btn-group'>
+												<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
+												<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+											</div>
+											
+											<p ng-if="pickMode=='indi'">Choose any dates for this event</p>
+											<p ng-if="pickMode=='range'">Choose a range of dates for this event</p>
+											
+											<div 
+												uib-datepicker
+												ng-model="activeDate"
+												multi-select="selectedDates"
+												select-range="{{pickMode=='range'}}"
+												datepicker-options="dateOptions"></div>
+										</div>
+										
+										<div class="col-md-5">
+											
+											<div ng-if="pickMode=='indi'">
+												Selected Dates:
+												<div class="well well-sm">
+													<div ng-repeat="d in selectedDates | orderBy">
+														{{d | date : 'fullDate'}}
+														<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+													</div>
+												</div>
+											</div>
+											
+											<div ng-if="pickMode=='range'">
+												Selected Dates:
+												<div class="well well-sm">
+													{{(selectedDates | orderBy)[0] | date:"fullDate"}}
+													<span ng-if="selectedDates.length > 1">
+														- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
+													</span>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-md-5">
+											<p>Pick a time (numbers are scrollable)</p>
+											<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
+											
+											<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
+											
+											<div ng-if="duration">
+												<p>End time</p>
+												<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
+												
+												<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-md-5">
+											<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-5">
+											<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<div class="col-md-3">
+											<div class="checkbox">
+												<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
 											</div>
 										</div>
 									</div>
 									
-									<div ng-if="pickMode=='range'">
-										Selected Dates:
-										<div class="well well-sm">
-											{{(selectedDates | orderBy)[0] | date:"fullDate"}}
-											<span ng-if="selectedDates.length > 1">
-												- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
-											</span>
+									<div class="form-group">
+										<div class="col-md-3">
+											<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
 										</div>
 									</div>
-									
-								</div>
-							</div>
-							<hr>
-							<div class="form-group">
-								<div class="col-md-5">
-									<p>Pick a time (numbers are scrollable)</p>
-									<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
-									
-									<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
-									
-									<div ng-if="duration">
-										<p>End time</p>
-										<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
-										
-										<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<div class="form-group">
-								<div class="col-md-5">
-									<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
-								</div>
-							</div>
+								
+								</form>
 							
-							<div class="form-group">
-								<div class="col-md-5">
-									<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
-								</div>
-							</div>
 							
-							<div class="form-group">
-								<div class="col-md-3">
-									<div class="checkbox">
-										<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
-									</div>
-								</div>
 							</div>
-							
-							<div class="form-group">
-								<div class="col-md-3">
-									<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
-								</div>
-							</div>
+						</div>
 						
-						</form>
-					
-					
+						<div class="panel panel-default">
+							<div class="panel-heading">Add multiple events</div>
+							<div class="panel-body">
+								<p>put something</p>
+							</div>
+						</div>
+
 					</div>
-				</div>
-				
-				<div class="panel panel-default">
-					<div class="panel-heading">Add multiple events</div>
-					<div class="panel-body">
-						<p>put something</p>
+					
+					<div id="event-read" class="tab-pane fade">
+						<div class="panel panel-default">
+							<div class="panel-heading">View events</div>
+							<div class="panel-body">
+								
+								<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate'}}</em></pre>
+								
+								<div uib-datepicker ng-model="viewDateSelect"></div>
+								
+								<input type="text" ng-model="eventFil" placeholder="currently cannot filter dates" />
+								
+								<table class="table" id="tableViewEvent">
+									<tr>
+										<th>Title</th>
+										<th>Date</th>
+										<th>Time</th>
+										<th>Relation</th>
+									</tr>
+									<tr ng-repeat="ev in viewEvent | filter: eventFil">
+										<td>
+											<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}">
+											<label for="{{ev.$id}}">{{ev.title}}</label>
+										</td>
+										<td>
+											<span ng-repeat="(key, val) in ev.date">
+												<strong>{{key}}<span ng-if="commaStop($index, ev.date)">,<span></strong>
+											</span>
+										</td>
+										<td>
+											<strong>{{ev.time}}</strong>
+										</td>
+										<td>
+											<strong>{{ev.relateTo}}</strong>
+										</td>
+									</tr>
+								</table>
+								
+							</div>
+						</div>
 					</div>
+					
+					<div id="event-update" class="tab-pane fade">
+						<div class="panel panel-default">
+							<div class="panel-heading">Edit events</div>
+							<div class="panel-body">
+								<p>only edits the first item</p>
+								eventChecked.events: {{eventChecked.events | json}}<br>
+								current selection: <br>
+							</div>
+						</div>
+					</div>
+					
+					<div id="event-delete" class="tab-pane fade">
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete events</div>
+							<div class="panel-body">
+								<p>check items to delete</p>
+								eventChecked.events {{eventChecked.events | json}}<br>
+								<button type="button" class="btn btn-default" ng-click="deleteEvent()">Delete event</button>
+							</div>
+						</div>
+					</div>
+					
 				</div>
-				
+
 			</div>
 			
 			<div id="map" class="tab-pane fade">
