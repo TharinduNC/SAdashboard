@@ -118,7 +118,8 @@ app.controller('guideAll', function($scope, $firebaseArray) {
                       "alignleft aligncenter alignright"
                     ]
                   }
-                }
+                },
+                "general[].header"
               ]
             }            
           ]
