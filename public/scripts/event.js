@@ -1,29 +1,3 @@
-app.filter('property', property);
-
-function property(){
-    function parseString(input){
-        return input.split(".");
-    }
- 
-    function getValue(element, propertyArray){
-        var value = element;
- 
-        _.forEach(propertyArray, function(property){
-            value = value[property];
-        });
- 
-        return value;
-    }
- 
-    return function (array, propertyString, target){
-        var properties = parseString(propertyString);
- 
-        return _.filter(array, function(item){
-            return getValue(item, properties) == target;
-        });
-    }
-}
-
 app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	//references
@@ -58,6 +32,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
+	$scope.eventDate = [];
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -128,9 +103,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		
 		//no point running this code if there is no date selected
 		if($scope.selectedDates.length > 0)
-		{
-			var selectedDateStrRep = "{";
-			
+		{	
 			var i;
 			
 			for(i in $scope.selectedDates)
@@ -139,20 +112,8 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				
 				var tempStrDate = tempDate.getFullYear().toString() + "-" + (tempDate.getMonth() + 1).toString() + "-" + tempDate.getDate().toString();
 				
-				if(!(i == $scope.selectedDates.length - 1))
-				{
-					selectedDateStrRep = selectedDateStrRep + '\"' + tempStrDate + '\"' + ':' + 'true,';
-				}
-				else
-				{
-					selectedDateStrRep = selectedDateStrRep +'\"' + tempStrDate + '\"' + ':' + 'true';
-				}
-				
+				$scope.eventDate.push(tempStrDate);
 			}
-			
-			selectedDateStrRep = selectedDateStrRep + '}';
-			
-			$scope.eventDate = JSON.parse(selectedDateStrRep);
 			
 		}
 		else
@@ -235,7 +196,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			console.log($scope.eventDate);
 		}
 		
-		$scope.eventDate = null;
+		$scope.eventDate = [];
 	};
 	
 	
