@@ -458,6 +458,7 @@
 		}
 		// map pin gets selected
 		classie.add(mallLevelsEl.querySelector('.pin[data-space="' + spaceref + '"]'), 'pin--active');
+		document.querySelector('.pin[data-space="' + spaceref + '"]').style.color = "yellow";
 	}
 
 	/**
@@ -488,6 +489,7 @@
 		classie.remove(contentItem, 'content__item--current');
 		// map pin gets unselected
 		classie.remove(mallLevelsEl.querySelector('.pin[data-space="' + spaceref + '"]'), 'pin--active');
+		document.querySelector('.pin[data-space="' + spaceref + '"]').style.color = "white";
 		// remove class active (if any) from current list item
 		var activeItem = spacesEl.querySelector('li.list__item--active');
 		if( activeItem ) {
