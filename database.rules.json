@@ -72,6 +72,11 @@
 		".write": true
 	},
 	
+	"map": {
+		".read": true,
+		".write": true
+	},
+	
 	"guides": {
 		".read": true,
 		".write": true
