@@ -32,7 +32,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
-	$scope.eventDate = [];
+	$scope.eventDate = "";
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -102,17 +102,21 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		*/
 		
 		//no point running this code if there is no date selected
+		var tempDate = "";
 		if($scope.selectedDates.length > 0)
 		{	
 			var i;
 			
 			for(i in $scope.selectedDates)
 			{
-				var tempDate = new Date($scope.selectedDates[i]);
-				
-				var tempStrDate = tempDate.getFullYear().toString() + "-" + (tempDate.getMonth() + 1).toString() + "-" + tempDate.getDate().toString();
-				
-				$scope.eventDate.push(tempStrDate);
+				if(!(i == $scope.selectedDates.length - 1))
+				{
+					$scope.eventDate = $scope.eventDate + $scope.selectedDates[i] + "-";
+				}
+				else
+				{
+					$scope.eventDate = $scope.eventDate + $scope.selectedDates[i];
+				}
 			}
 			
 		}
@@ -196,7 +200,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			console.log($scope.eventDate);
 		}
 		
-		$scope.eventDate = [];
+		$scope.eventDate = "";
 	};
 	
 	
