@@ -37,23 +37,10 @@
 
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
-	<style>
-	.custab{
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5% 0;
-    box-shadow: 3px 3px 2px #ccc;
-    transition: 0.5s;
-    }
-.custab:hover{
-    box-shadow: 3px 3px 0px transparent;
-    transition: 0.5s;
-    }
-	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/themes/default.css">
 	<link rel="stylesheet" href="css/themes/default.date.css">  
-	<link rel="stylesheet" href="css/bootstrap.vertical-tabs.min.css">
+	<link rel="stylesheet" href="css/bootstrap.vertical-tabs.min.css">	
 	<!-- Optional theme 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	-->
@@ -71,7 +58,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>StudentAvatar Dashboard </h1>
+				<h1>StudentAvatar Dashboard</h1>
 				<p>Welcome to the StudentAvatar Dashboard</p>
 			</div>
 		</div>
@@ -568,26 +555,48 @@
 											<strong>{{u.name}}</strong>
 										</td>
 									</tr>
-
-									<tr ng-repeat="u in maps">
-										<td>
-											<input type="checkbox" checklist-model="mapChecked.maps" checklist-value="u.$id" id="{{u.$id}}">
-											<label for="{{u.$id}}">{{u.code}}</label>
-										</td>
-										<td>
-											<strong>{{u.name}}</strong>
-										</td>
-										
-									</tr>
-									{{maps[0].code}}
-									
 								</table>
 								mapChecked.maps {{mapChecked.maps | json}}
 							</div>
 						</div>
+						
+					</div>
+					
+					<div id="map-update" class="tab-pane fade">
+					
+						<div class="panel panel-default">
+							<div class="panel-heading">Edit maps</div>
+							<div class="panel-body">
+								<p>only edits the first item</p>
+								mapChecked.maps: {{mapChecked.maps | json}}<br>
+								current selection: {{currentMapCode}} {{currentMapName}}<br>
+								<input type="text" ng-model="newMapCode" placeholder="Enter Code">
+								<input type="text" ng-model="newMapName" placeholder="Enter Name">
+								<button type="button" class="btn btn-default" ng-click="updateMap()">Update map</button>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div id="map-delete" class="tab-pane fade">
+						
+						<div class="panel panel-default">
+							<div class="panel-heading">Delete maps</div>
+							<div class="panel-body">
+								<p>check items to delete</p>
+								mapChecked.maps {{mapChecked.maps | json}}<br>
+								<button type="button" class="btn btn-default" ng-click="deleteMap()">Delete map</button>
+							</div>
+						</div>
+						
+					</div>
+				
+				</div>
 				
 			</div>
 			
+			
+
 			<div id="unit" class="tab-pane fade" ng-controller="unitAll">
 			
 				<ul class="nav nav-pills">
@@ -660,24 +669,11 @@
 											<strong>{{u.name}}</strong>
 										</td>
 									</tr>
-
-									<tr ng-repeat="u in units">
-										<td>
-											<input type="checkbox" checklist-model="unitChecked.units" checklist-value="u.$id" id="{{u.$id}}">
-											<label for="{{u.$id}}">{{u.code}}</label>
-										</td>
-										<td>
-											<strong>{{u.name}}</strong>
-										</td>
-										
-									</tr>
-									{{units[0].code}}
-									
 								</table>
 								unitChecked.units {{unitChecked.units | json}}
 							</div>
 						</div>
-
+						
 					</div>
 					
 					<div id="unit-update" class="tab-pane fade">
@@ -862,7 +858,7 @@
 	<script src="scripts/event.js"></script>
 	<script src="scripts/club.js"></script>
 	<script src="scripts/unit.js"></script>
-	<script src="scripts/map2.js"></script>
+	<script src="scripts/map3.js"></script>
 
 	
 	<!-- AngularFire -->
