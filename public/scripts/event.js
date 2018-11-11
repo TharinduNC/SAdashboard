@@ -25,7 +25,10 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//event relation to unit or club selection
 	$scope.onEventRelSelect = function(selec)
 	{
-		$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
+		if($scope.rel.event != 'general')
+		{
+			$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
+		}
 	};
 	//other init end
 	
@@ -33,6 +36,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
 	//$scope.eventDate = "";
+	$scope.eventDatealt = "";
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -113,10 +117,12 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				if(!(i == $scope.selectedDates.length - 1))
 				{
 					selectedDateStrRep = selectedDateStrRep + '\"' + $scope.selectedDates[i] + '\"' + ':' + 'true,';
+					$scope.eventDatealt = $scope.eventDatealt + $scope.selectedDates[i] + "-";
 				}
 				else
 				{
 					selectedDateStrRep = selectedDateStrRep +'\"' + $scope.selectedDates[i] + '\"' + ':' + 'true';
+					$scope.eventDatealt = $scope.eventDatealt + $scope.selectedDates[i];
 				}
 			}
 			
@@ -183,6 +189,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		{
 			list.$add({
 				date: $scope.eventDate,
+				datealt: $scope.eventDatealt,
 				desc: $scope.eventDesc,
 				location: $scope.eventLocation,
 				note: $scope.eventNote,
@@ -206,6 +213,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		}
 		
 		$scope.eventDate = null;
+		$scope.eventDatealt = "";
 	};
 	
 	
