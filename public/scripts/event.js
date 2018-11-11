@@ -32,7 +32,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
-	$scope.eventDate = "";
+	//$scope.eventDate = "";
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -81,7 +81,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			errMsg = errMsg + "missing title\n"
 		}
 		
-		if($scope.rel.event == 'general')
+		if($scope.rel.event == 'general' || $scope.rel.event == undefined || $scope.rel.event == null)
 		{
 			relrel = 'general';
 		}
@@ -104,20 +104,25 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		//no point running this code if there is no date selected
 		var tempDate = "";
 		if($scope.selectedDates.length > 0)
-		{	
+		{
+			var selectedDateStrRep = "{";
 			var i;
 			
 			for(i in $scope.selectedDates)
 			{
 				if(!(i == $scope.selectedDates.length - 1))
 				{
-					$scope.eventDate = $scope.eventDate + $scope.selectedDates[i] + "-";
+					selectedDateStrRep = selectedDateStrRep + '\"' + $scope.selectedDates[i] + '\"' + ':' + 'true,';
 				}
 				else
 				{
-					$scope.eventDate = $scope.eventDate + $scope.selectedDates[i];
+					selectedDateStrRep = selectedDateStrRep +'\"' + $scope.selectedDates[i] + '\"' + ':' + 'true';
 				}
 			}
+			
+			selectedDateStrRep = selectedDateStrRep + '}';
+			
+			$scope.eventDate = JSON.parse(selectedDateStrRep);
 			
 		}
 		else
@@ -200,7 +205,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			console.log($scope.eventDate);
 		}
 		
-		$scope.eventDate = "";
+		$scope.eventDate = null;
 	};
 	
 	
