@@ -212,19 +212,17 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		events: []
 	};
 	
-	$scope.commaStop = function(pos, dat)
+	$scope.chgMiliToDate = function(mili)
 	{
-		len = Object.keys(dat).length;
-		
-		if(Object.keys(dat).length - 1 == pos)
+		var arrayDates = mili.split("-");
+		var i;
+		var date = "";
+		for(i in arrayDates)
 		{
-			return false
+			var dateTem = new Date(arrayDates[i]);
+			date = date + dateTem + " , ";
 		}
-		else
-		{
-			return true;
-		}
-		
+		return date;
 	};
 	
 	//edit event

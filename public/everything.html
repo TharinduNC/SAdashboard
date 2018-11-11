@@ -442,9 +442,7 @@
 											<label for="{{ev.$id}}">{{ev.title}}</label>
 										</td>
 										<td>
-											<span ng-repeat="(key, val) in ev.date">
-												<strong>{{key}}<span ng-if="commaStop($index, ev.date)">,<span></strong>
-											</span>
+											<strong>{{ev.date}}</strong>
 										</td>
 										<td>
 											<strong>{{ev.time}}</strong>
