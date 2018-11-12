@@ -12,7 +12,9 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 		{	
 			list.$add({
 				code: $scope.mapCode,
-				name: $scope.mapName
+				name: $scope.mapName,
+				description: $scope.mapDescription,
+				descriptionheader: $scope.mapDescriptionheader
 			}).then(function(ref) {
 				var id = ref.key;
 				//console.log("added record with id " + id);
@@ -49,17 +51,23 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				var currentMap = snapshot.val();
 				$scope.currentMapCode = currentMap.code;
 				$scope.currentMapName = currentMap.name;
+				$scope.currentMapDescription = currentMap.description;
+				$scope.currentMapDescriptionheader = currentMap.descriptionheader;
 			});
 		}
 		else
 		{
 			$scope.currentMapCode = "<>"
-			$scope.currentMapName = "<no selection or too many selected>";
+			$scope.currentMapName = "<no selection or too many selected>"
+			$scope.currentMapDescription = "<>"
+			$scope.currentMapDescriptionheader = "<>";
 		}
 	};
 	
 	$scope.newMapCode = "";
 	$scope.newMapName = "";
+	$scope.newMapDescription = "";
+	$scope.newMapDescriptionheader = "";
 	
 	
 	//only one selection is allowed when updating the map
@@ -73,7 +81,9 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 			
 				var updatedMap = {
 					code: $scope.newMapCode,
-					name: $scope.newMapName
+					name: $scope.newMapName,
+					description: $scope.newMapDescription,
+					description: $scope.newMapDescriptionheader
 				};
 				
 				var updates = {};
