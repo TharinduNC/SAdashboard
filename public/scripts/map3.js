@@ -60,7 +60,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 			$scope.currentMapCode = "<>"
 			$scope.currentMapName = "<no selection or too many selected>"
 			$scope.currentMapDescription = "<>"
-			$scope.currentMapDescriptionheader = "<>";
+			$scope.currentMapDescriptionheader = "<>"
 		}
 	};
 	
@@ -83,7 +83,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 					code: $scope.newMapCode,
 					name: $scope.newMapName,
 					description: $scope.newMapDescription,
-					description: $scope.newMapDescriptionheader
+					descriptionheader: $scope.newMapDescriptionheader
 				};
 				
 				var updates = {};

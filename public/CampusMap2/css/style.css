@@ -998,8 +998,11 @@ button:focus {
 .pin--2-1 { top: 41.5vmin; left: 22vmin; }
 .pin--2-2 { top: 36vmin; left: 0vmin; }
 .pin--2-3 { top: 21vmin; left: 84vmin; }
-.pin--2-4 { top: 42vmin; left: 5vmin; }
-.pin--2-5 { top: 20vmin; left: 60vmin; }
+.pin--2-4 { top: 36vmin;
+    left: 28vmin; }
+/* Library */
+.pin--2-5 { top: 7vmin;
+    left: 51vmin; }
 .pin--2-6 { top: 46vmin; left: 0vmin; }
 .pin--2-7 { top: 34vmin; left: 37vmin; }
 .pin--2-8 { top: 52vmin; left: 74vmin; }
