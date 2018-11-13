@@ -579,10 +579,10 @@ button:focus {
 	position: absolute;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 50%;
 	padding: 1em;
 	text-align: center;
-	background: #d6d6db;
+	background: #d7d7dc;
 	-webkit-transition: -webkit-transform 0.8s;
 	transition: transform 0.8s;
 	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
