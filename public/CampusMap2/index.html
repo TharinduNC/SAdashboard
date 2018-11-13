@@ -207,20 +207,19 @@
 									</span>
 								</a>
 
-							<!-- THERMAL LAB SVG ELEMENT -->
-							<!-- <a style="transform: scale(1.6,2);" class="pin pin--2-2" data-category="2" data-space="2.02" href="#" aria-label="Pin for Rocketship Tech">
+							<a style="transform: scale(1.6,2);" class="pin pin--2-2" data-category="2" data-space="2.02" href="#" aria-label="Pin for Rocketship Tech">
 									<span class="pin__icon">
 											
 									</span>
-								</a>  -->
+								</a> 
 
 
-							<!-- <a class="pin pin--2-3" data-category="2" data-space="2.03" href="#" aria-label="Pin for Which Bug?">
+							<a class="pin pin--2-3" data-category="2" data-space="2.03" href="#" aria-label="Pin for Which Bug?">
 									<span class="pin__icon">
 										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
 										<svg class="icon icon--logo icon--bug"><use xlink:href="#icon-bug"></use></svg>
 									</span>
-							</a> -->
+							</a>
 
 								<!-- QUIET ZONE -->
 								<a style="color: white;"  class="pin pin--2-4" data-category="3" data-space="2.04" href="#" aria-label="Pin for Cognitio">
@@ -237,12 +236,12 @@
 								</a>
 
 								<!-- Computer Aided Engineering (2-6) -->
-								<!-- <a style="transform: scale(1.6,2);" class="pin pin--2-6" data-category="1" data-space="2.06" href="#" aria-label="Pin for Superfood">
+								<a style="transform: scale(1.6,2);" class="pin pin--2-6" data-category="1" data-space="2.06" href="#" aria-label="Pin for Superfood">
 									<span class="pin__icon">
 											
 									</span>
-								</a> -->
-								<!-- <a class="pin pin--2-7" data-category="3" data-space="2.07" href="#" aria-label="Pin for No Princess">
+								</a>
+								<a class="pin pin--2-7" data-category="3" data-space="2.07" href="#" aria-label="Pin for No Princess">
 									<span class="pin__icon">
 										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
 										<svg class="icon icon--logo icon--heart"><use xlink:href="#icon-heart"></use></svg>
@@ -253,7 +252,7 @@
 										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
 										<svg class="icon icon--logo icon--wrench"><use xlink:href="#icon-wrench"></use></svg>
 									</span>
-								</a> -->
+								</a>
 
 								<!-- JUNCTION SVG ELEMENT -->
 								<a style="height: 12%; transform: rotate(90deg);" class="pin pin--2-9" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
@@ -314,65 +313,66 @@
 							</svg>
 							<div class="level__pins">
 								
-								<!-- Design Lab -->
-								<a style="transform: scale(1,1);" class="pin pin--3-1" data-category="1" data-space="3.01" href="#" aria-label="Design Lab">
+								<!-- Design Lab A201 -->
+								<a class="pin pin--3-1" data-category="1" data-space="3.01" href="#" aria-label="Design Lab">
 									<span class="pin__icon">
-											
+											{{maps[7].code}}
 									</span>
 								</a>
 
-								<!-- Design Lab 2 -->
+								<!-- Design Lab A202 -->
 								<a class="pin pin--3-2" data-category="2" data-space="3.02" href="#" aria-label="Design Lab 2">
 									<span class="pin__icon">
-											</span>
+											{{maps[8].code}}
+									</span>
 								</a>
 
-								<!-- Comp Lab -->
+								<!-- Comp Lab A203 -->
 								<a class="pin pin--3-3" data-category="3" data-space="3.03" href="#" aria-label="Comp Lab">
 									<span class="pin__icon">
-											
+											{{maps[9].code}}	
 									</span>
 								</a>
 
-								<!-- Open Lab 1 -->
+								<!-- Computer Lab A204 -->
 								<a class="pin pin--3-4" data-category="3" data-space="3.04" href="#" aria-label="Open Lab 1">
 									<span class="pin__icon">
-									
+											{{maps[10].code}}	
 									</span>
 								</a>
 
-								<!-- Open Lab 2 -->
+								<!-- Open Lab 1 A207 -->
 								<a class="pin pin--3-5" data-category="4" data-space="3.05" href="#" aria-label="Open Lab 2">
 									<span class="pin__icon">
-										
+											{{maps[11].code}}
 									</span>
 								</a>
 
-								<!-- Open Lab 3 -->
+								<!-- Open Lab 2 A208 -->
 								<a class="pin pin--3-6" data-category="4" data-space="3.06" href="#" aria-label="Open Lab 3">
 									<span class="pin__icon">
-									
+											{{maps[12].code}}
 									</span>
 								</a>
 
-								<!-- Open Lab 4 -->
+								<!-- Open Lab 3 A211 -->
 								<a  class="pin pin--3-7" data-category="4" data-space="3.07" href="#" aria-label="Open Lab 4">
 									<span class="pin__icon">
-									
+									{{maps[13].code}}
 									</span>
 								</a>
 
-								<!-- Research Room A213 -->
-								<a style="transform: scale(0.4,0.4) rotate(90deg);" class="pin pin--3-8" data-category="4" data-space="3.08" href="#" aria-label="Research Room A213">
+								<!-- Open Lab 4 A212 -->
+								<a  class="pin pin--3-8" data-category="4" data-space="3.08" href="#" aria-label="Research Room A213">
 										<span class="pin__icon">
-										
+												{{maps[14].code}}
 										</span>
 								</a>
 
 								<!-- Research Room A215 -->
 								<a style="transform: scale(0.4,0.4) rotate(90deg);" class="pin pin--3-9" data-category="4" data-space="3.09" href="#" aria-label="">
 										<span class="pin__icon">
-												
+												{{maps[15].code}}	
 										</span>
 								</a>
 
@@ -813,6 +813,9 @@
 						<div class="content__item-details">
 								{{maps[3].description}}
 							</div>
+							<div class="content__item-details">
+									
+								</div>
 					</div>
 					<div class="content__item" data-space="1.02" data-category="2">
 						<h3 class="content__item-title">{{maps[4].code}}</h3>
@@ -911,7 +914,7 @@
 					<div class="content__item" data-space="2.05" data-category="1">
 						<h3 class="content__item-title">{{maps[6].name}}</h3>
 						<div class="content__item-details">
-								{{maps[6].name}}
+								<img src="Floors/FirstFloor/library.jpg" alt="" >
 							</div>
 					</div>
 					<div class="content__item" data-space="2.06" data-category="1">
@@ -1213,7 +1216,7 @@
 			<!-- /main -->
 			<aside class="spaces-list" id="spaces-list">
 				<div class="search">
-					<input class="search__input" placeholder="Search..." />
+					<input  class="search__input" placeholder="Search..." />
 					<button class="boxbutton boxbutton--darker close-search" aria-label="Close details"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
 				</div>
 				<span class="label">
@@ -1223,11 +1226,11 @@
 				<!-- List Items -->
 				<ul class="list grouped-by-category">
 					<!-- SIC -->
-					<li class="list__item" data-level="1" data-category="1" data-space="1.08"><a href="#" class="list__link">{{maps[0].name}}</a></li>
+					<li class="list__item" data-level="1" data-category="1" data-space="1.08"><a href="#" class="list__link">{{maps[0].name}}={{maps[0].name}}</a></li>
 					<li class="list__item" data-level="1" data-category="1" data-space="1.06"><a href="#" class="list__link">{{maps[1].name}}</a></li>
 					<li class="list__item" data-level="1" data-category="1" data-space="1.01"><a href="#" class="list__link">{{maps[3].code}}</a></li>
 					<!-- Library -->
-					<li class="list__item" data-level="2" data-category="1" data-space="2.05"><a href="#" class="list__link">{{maps[6].name}}</a></li>
+					<li ng-trim="false" class="list__item" data-level="2" data-category="1" data-space="2.05"><a href="#" class="list__link">{{maps[6].name}}</a></li>
 					<li class="list__item" data-level="1" data-category="1" data-space="1.07"><a href="#" class="list__link">Raw Delight</a></li>
 					<li class="list__item" data-level="2" data-category="1" data-space="2.01"><a href="#" class="list__link">Materials Lab E108</a></li>
 					<li class="list__item" data-level="3" data-category="1" data-space="3.01"><a href="#" class="list__link">Design Lab B202</a></li>
