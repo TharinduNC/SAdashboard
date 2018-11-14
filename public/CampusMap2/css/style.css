@@ -582,7 +582,7 @@ button:focus {
 	height: 100%;
 	padding: 1em;
 	text-align: center;
-	background: #d7d7dc85;
+	background: #d7d7dc;
 	-webkit-transition: -webkit-transform 0.8s;
 	transition: transform 0.8s;
 	-webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);

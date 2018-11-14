@@ -37,6 +37,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	$scope.selectedDates = [];
 	//$scope.eventDate = "";
 	$scope.eventDatealt = "";
+	$scope.eventTimestart = "";
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -147,10 +148,14 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		var timeStart = $scope.eventTimeRange.start;
 		var timeEnd = $scope.eventTimeRange.end;
 		
+		
 		if(timeStart.getMinutes() < 10)
 		{
 			tempO = "0";
 		}
+		
+		$scope.eventTimestart = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString();
+		
 		
 		if($scope.duration)
 		{
@@ -172,8 +177,10 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			$scope.eventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString();
+			$scope.eventTime = $scope.eventTimestart;
 		}
+		
+		console.log($scope.eventTimestart);
 		
 		if($scope.eventLocation == "")
 		{
@@ -195,6 +202,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				note: $scope.eventNote,
 				relateTo: $scope.rel.event + "/" + relrel,
 				time: $scope.eventTime,
+				timestart: $scope.eventTimestart,
 				title: $scope.eventTitle
 			}).then(function(ref) {
 				var id = ref.key;
@@ -214,6 +222,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		
 		$scope.eventDate = null;
 		$scope.eventDatealt = "";
+		$scope.eventTimestart = "";
 	};
 	
 	
