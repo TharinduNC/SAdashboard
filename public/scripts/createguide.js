@@ -1,17 +1,5 @@
-app.controller('guideAll', function($scope, $firebaseArray) {
-  
-	var firebaseRefGuide = firebase.database().ref("guides");
-	
-	var list = $firebaseArray(firebaseRefGuide);
-	
-	//read guide
-	$scope.guides = list;
-	
-	$scope.guideChecked = {
-		guides: []
-	};
-  
-  $scope.gEditSchema = {
+app.controller('createGuide', function($scope, $firebaseArray) {
+  $scope.schema = {
   "type": "object",
   "title": "Guides",
   "properties": {
@@ -100,9 +88,9 @@ app.controller('guideAll', function($scope, $firebaseArray) {
     "guideTitle",
     "guideDescription"
     ]
-  }
+}
 
-  $scope.gEditForm = [
+  $scope.form = [
     {
       type: "tabs",
       tabs: [
@@ -201,106 +189,36 @@ app.controller('guideAll', function($scope, $firebaseArray) {
   }
 ]
   
-  $scope.gEditModel = {};
+  $scope.model = {};
 	
-	//update guide
-	// this refreshes the selection on when the pill is clicked
-	$scope.onGuideEditClick = function() {
-		if($scope.guideChecked.guides.length == 1)
-		{
-			var guideNameRef = firebase.database().ref("guides/" + $scope.guideChecked.guides[0]);
-		
-			guideNameRef.on('value', function(snapshot) {
-				var currentGuide = snapshot.val();
-        $scope.gEditModel = currentGuide;
-			});
-		}
-		else
-		{
-			$scope.currentGuideName = "<no selection or too many selected>";
-		}
-	};
-  
-	//edit guide
-	$scope.onSubmit = function(gEditForm)
+	var firebaseRefGuide = firebase.database().ref("guides");
+	
+	var list = $firebaseArray(firebaseRefGuide);
+	
+	//create guide
+	$scope.onSubmit = function(form)
 	{
     // First we broadcast an event so all fields validate themselves
     $scope.$broadcast('schemaFormValidate');
     
     // Then we check if the form is valid
-		if(gEditForm.$valid)
+		if(form.$valid)
 		{
-      if($scope.guideChecked.guides.length == 1)
-      {      
-        var updates = {};
-        updates['guides/' + $scope.guideChecked.guides[0]] = $scope.gEditModel;
+			list.$add({
         
-        firebase.database().ref().update(updates);
-        window.alert("Guide has been updated.");
-      }
-      else
-      {
-        window.alert("Please select the guide you wish to update in the view tab.");
-      }
+			}).then(function(ref) {
+				var id = ref.key;
+				window.alert("added record with id " + id);
+				list.$indexFor(id); // returns location in the array
+        
+        firebase.database().ref('guides/' + id).set($scope.model);
+			});
 		}
 		else
 		{
-      console.log($scope.gEditModel);
-			window.alert("Please complete the form.");
+      console.log($scope.model);
+			window.alert("empty");
 		}
-	};  
-	
-	//$scope.newGuideName = "";
-	//
-	////only one selection is allowed when updating the guide
-	//$scope.updateGuide = function() {
-	//	
-	//	if($scope.guideChecked.guides.length == 1)
-	//	{
-	//		if($scope.newGuideName.length > 0)
-	//		{
-	//			window.alert($scope.newGuideName);
-	//		
-	//			var updatedName = {
-	//				name: $scope.newGuideName
-	//			};
-	//			
-	//			var updates = {};
-	//			updates['guides/' + $scope.guideChecked.guides[0]] = updatedName;
-	//			
-	//			firebase.database().ref().update(updates);
-	//		}
-	//		else
-	//		{
-	//			window.alert("empty");
-	//		}
-	//	}
-	//	else
-	//	{
-	//		window.alert("no selection");
-	//	}
-	//};
-	
-	//delete guide
-	$scope.deleteGuide = function() {
 		
-		if($scope.guideChecked.guides.length > 0)
-		{
-			var i;
-		
-			for(i = 0; i < $scope.guideChecked.guides.length; i++)
-			{
-				firebase.database().ref().child("guides/" + $scope.guideChecked.guides[i]).remove();
-			}
-			
-			$scope.guideChecked = {
-				guides: []
-			};
-		}
-		else
-		{
-			window.alert("no selection");
-		}
 	};
-	
 });
