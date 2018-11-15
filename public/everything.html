@@ -42,15 +42,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>StudentAvatar Dashboard</h1>
+				<h1>StudentAvatar</h1>
 				<p>Welcome to the StudentAvatar Dashboard</p>
+				<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 			</div>
 		</div>
-		<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-		
 		<hr>
 		
-		<nav>
+		<nav class="col-md-12">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#user">User</a></li>
 				<li><a data-toggle="tab" href="#guide">Guide</a></li>
@@ -212,7 +211,7 @@
 										</td>
 									</tr>
 								</table>
-								guideChecked.guides {{guideChecked.guides | json}}
+								<!--guideChecked.guides {{guideChecked.guides | json}}-->
 							</div>
 						</div>
 					
@@ -841,7 +840,7 @@
 					</div>
 				</div>
 			</div>
-		
+	
 		</div>
 	</div>
 
@@ -859,12 +858,6 @@
     <script src="/__/firebase/3.9.0/firebase-database.js"></script>
     <script src="/__/firebase/init.js"></script>
 	
-<!--	<!--AngularJS-->
-<!--	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
-<!--	<script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>-->
-<!--    <script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>	-->
-<!--	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>-->
-	
 	<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery.ui@1.10"></script>
 	<script src="scripts/tv4.js"></script>  
@@ -872,16 +865,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-animate.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-sanitize.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.js"></script>
-	<!--<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>	-->
-	<!--<script type="text/javascript" src="scripts/sortable.js"></script>-->
 	<script src="scripts/ObjectPath.js"></script>
 	<script type="text/javascript" src="scripts/picker.js"></script>
 	<script type="text/javascript" src="scripts/picker.date.js"></script>
 	<script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript" src="scripts/tx-tinymce.js"></script>
 	<script src="scripts/schema-form.js"></script>
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-schema-form/0.8.14/schema-form.js"></script>-->
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-schema-form/0.8.14/bootstrap-decorator.js"></script>-->
 	<script src="scripts/bootstrap-decorator.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap-tinymce.js"></script>	
