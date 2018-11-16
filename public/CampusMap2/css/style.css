@@ -1189,17 +1189,82 @@ button:focus {
     left: 23.5vmin; }
 
 /* Pins for Floor 5 */
-.pin--5-1 { top: 25.5vmin; left: 60vmin; }
-.pin--5-2 { top: 22.3vmin; left: 33.8vmin; }
-.pin--5-3 { top: 29.5vmin; left: 33.75vmin; }
-.pin--5-4 { top: 37vmin; left: 33.7vmin; }
-.pin--5-5 { top: 44.5vmin; left: 33.65vmin; }
-.pin--5-6 { top: 51.5vmin; left: 33.6vmin; }
-.pin--5-7 { top: 27vmin; left: 57.5vmin; }
-.pin--5-8 { top: 32vmin; left: 57.5vmin; }
-.pin--5-9 { top: 37vmin; left: 57.5vmin; }
-.pin--5-10 { top: 45vmin; left: 36.5vmin; }
-.pin--5-11 { top: 45vmin; left: 36.5vmin;} 
+.pin--5-1 { top: 1.5vmin;
+    left: 31vmin; }
+.pin--5-2 { top: 20vmin;
+    left: 23.8vmin; }
+.pin--5-3 { top: 19.85vmin;
+    left: 38.75vmin; }
+.pin--5-4 { top: 25vmin;
+    left: 19.7vmin; }
+.pin--5-5 { top: 26.5vmin;
+    left: 39.65vmin; }
+.pin--5-6 { top: 32.5vmin;
+    left: 19.6vmin; }
+.pin--5-7 { top: 31.5vmin;
+    left: 39.5vmin; }
+.pin--5-8 { top: 36.5vmin;
+    left: 39.5vmin; }
+.pin--5-9 { top: 40vmin;
+    left: 19.5vmin; }
+.pin--5-10 { top: 44.5vmin;
+    left: 36.5vmin; }
+.pin--5-11 { top: 47vmin;
+	left: 19.5vmin;} 
+.pin--5-12 { top: 55vmin;
+    left: 37.5vmin;} 
+.pin--5-13 { top: 54vmin;
+	left: 19.5vmin;}
+	
+
+/* Pins for Floor 6 */
+.pin--6-1 { top: 1.5vmin;
+    left: 31vmin; }
+.pin--6-2 { top: 44vmin;
+    left: 36.8vmin; }
+.pin--6-3 { top: 46.85vmin;
+    left: 38.75vmin; }
+.pin--6-4 { top: 25vmin;
+    left: 19.7vmin; }
+.pin--6-5 { top: 26.5vmin;
+    left: 39.65vmin; }
+.pin--6-6 { top: 32.5vmin;
+    left: 19.6vmin; }
+.pin--6-7 { top: 31.5vmin;
+    left: 39.5vmin; }
+.pin--6-8 { top: 36.5vmin;
+    left: 39.5vmin; }
+.pin--6-9 { top: 40vmin;
+    left: 19.5vmin; }
+.pin--6-10 { top: 51.5vmin;
+    left: 37.5vmin; }
+.pin--6-11 { top: 47vmin;
+	left: 19.5vmin;} 
+.pin--6-12 { top: 55vmin;
+    left: 37.5vmin;} 
+.pin--6-13 { top: 54vmin;
+	left: 19.5vmin;}
+	
+.pin--7-1 { top: 21.5vmin;
+    left: 20vmin; }
+.pin--7-2 {     top: 26.5vmin;
+    left: 39.8vmin; }
+.pin--7-3 { top: 31.5vmin;
+    left: 39.5vmin; }
+.pin--7-4 { top: 27vmin;
+		left: 19.7vmin; }
+.pin--7-5 { top: 36.5vmin;
+    left: 39.65vmin; }
+.pin--7-6 { top: 32.5vmin;
+		left: 19.6vmin; }
+.pin--7-7 { top: 31.5vmin;
+		left: 39.5vmin; }
+.pin--7-8 { top: 50.5vmin;
+    left: 19.5vmin; }
+.pin--7-9 { top: 55vmin;
+    left: 19.5vmin; }
+	
+		
 
 
 /* Mobile compatability */
