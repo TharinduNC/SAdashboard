@@ -1120,7 +1120,8 @@ button:focus {
     left: 63vmin; }
 .pin--4-14 { top: 2vmin;
     left: 76vmin; }
-.pin--4-15 { top: 58vmin; left: 10vmin; }
+.pin--4-15 { top: 33vmin;
+    left: 23.5vmin; }
 .pin--4-16 { top: 25.6vmin;
     left: 45vmin; }
 .pin--4-17 { top: 28vmin;
@@ -1133,37 +1134,59 @@ button:focus {
     left: 45vmin; }
 .pin--4-21 { top: 37.6vmin;
     left: 45vmin; }
-.pin--4-22 { top: 58vmin; left: 10vmin; }
-.pin--4-23 { top: 58vmin; left: 10vmin; }
-.pin--4-24 { top: 58vmin; left: 10vmin; }
+.pin--4-22 { top: 33vmin;
+    left: 34vmin; }
+.pin--4-23 { top: 49vmin;
+    left: 25vmin; }
+.pin--4-24 { top: 54vmin;
+    left: 36vmin; }
 .pin--4-25 { top: 58vmin; left: 10vmin; }
-.pin--4-26 { top: 58vmin; left: 10vmin; }
-.pin--4-27 { top: 58vmin; left: 10vmin; }
+.pin--4-26 { top: 43vmin;
+    left: 44vmin; }
+.pin--4-27 { top: 45.5vmin;
+    left: 44.7vmin; }
 .pin--4-28 { top: 58vmin; left: 10vmin; }
-.pin--4-29 { top: 58vmin; left: 10vmin; }
+.pin--4-29 { top: 48vmin;
+    left: 44.7vmin; }
 .pin--4-30 { top: 58vmin; left: 10vmin; }
-.pin--4-31 { top: 58vmin; left: 10vmin; }
+.pin--4-31 { top: 50vmin;
+    left: 44.7vmin; }
 .pin--4-32 { top: 58vmin; left: 10vmin; }
 .pin--4-33 { top: 58vmin; left: 10vmin; }
 .pin--4-34 { top: 58vmin; left: 10vmin; }
 .pin--4-35 { top: 58vmin; left: 10vmin; }
 .pin--4-36 { top: 58vmin; left: 10vmin; }
 .pin--4-37 { top: 58vmin; left: 10vmin; }
-.pin--4-38 { top: 58vmin; left: 10vmin; }
-.pin--4-39 { top: 58vmin; left: 10vmin; }
-.pin--4-40 { top: 58vmin; left: 10vmin; }
-.pin--4-41 { top: 58vmin; left: 10vmin; }
-.pin--4-42 { top: 58vmin; left: 10vmin; }
-.pin--4-43 { top: 58vmin; left: 10vmin; }
-.pin--4-44 { top: 58vmin; left: 10vmin; }
-.pin--4-45 { top: 58vmin; left: 10vmin; }
-.pin--4-46 { top: 58vmin; left: 10vmin; }
-.pin--4-47 { top: 58vmin; left: 10vmin; }
-.pin--4-48 { top: 58vmin; left: 10vmin; }
-.pin--4-49 { top: 58vmin; left: 10vmin; }
-.pin--4-50 { top: 58vmin; left: 10vmin; }
-.pin--4-51 { top: 58vmin; left: 10vmin; }
-.pin--4-52 { top: 58vmin; left: 10vmin; }
+.pin--4-38 { top: 57vmin;
+    left: 27vmin; }
+.pin--4-39 { top: 57vmin;
+    left: 19vmin; }
+.pin--4-40 { top: 56.5vmin;
+    left: 10vmin; }
+.pin--4-41 { top: 53.5vmin;
+    left: 10vmin; }
+.pin--4-42 { top: 50vmin;
+    left: 10vmin; }
+.pin--4-43 {     top: 47vmin;
+    left: 10vmin; }
+.pin--4-44 { top: 43.5vmin;
+    left: 10vmin; }
+.pin--4-45 { top: 40.5vmin;
+    left: 10vmin; }
+.pin--4-46 { top: 37vmin;
+    left: 10vmin; }
+.pin--4-47 { top: 34vmin;
+    left: 10vmin; }
+.pin--4-48 { top: 30.5vmin;
+    left: 10vmin; }
+.pin--4-49 { top: 27.5vmin;
+    left: 10vmin; }
+.pin--4-50 { top: 24.5vmin;
+    left: 10vmin; }
+.pin--4-51 { top: 21vmin;
+    left: 10vmin; }
+.pin--4-52 { top: 26vmin;
+    left: 23.5vmin; }
 
 /* Pins for Floor 5 */
 .pin--5-1 { top: 25.5vmin; left: 60vmin; }
