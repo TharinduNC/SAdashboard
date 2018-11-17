@@ -397,13 +397,13 @@
 										<div class="form-group">
 											<div class="col-md-3">
 												<div class="checkbox">
-													<label><input type="checkbox" ng-model="eventGuideRel" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
+													<label><input type="checkbox" ng-model="eventGuideRelCheck" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
 												</div>
 											</div>
 										</div>
 										
 										
-										<div class="form-group" ng-if="eventGuideRel">
+										<div class="form-group" ng-if="eventGuideRelCheck">
 											<div class="col-md-4">
 												<label>Choose from the list of guides</label>
 												<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">

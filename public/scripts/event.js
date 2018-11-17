@@ -107,13 +107,13 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			errMsg = errMsg + "choose a related club or unit\n"
 		}
 		
-		if(relrelguide === undefined)
+		if(eventGuideRelCheck)
 		{
-			
-			relrelguide = "none";
-			errMsg = errMsg + "should this happen?\n"
+			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
+			{
+				errMsg = errMsg + "click on the related guide\n"
+			}		
 		}
-		
 		/*
 		
 		** date from miliseconds to string to object
