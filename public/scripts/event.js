@@ -113,7 +113,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
 			{
 				errMsg = errMsg + "click on the related guide\n"
-			}		
+			}
 		}
 		else
 		{
