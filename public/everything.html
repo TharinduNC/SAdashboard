@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Manage StudentAvatar">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>StudentAvatars Dashboard</title>
+	<title>StudentAvatar Dashboard</title>
 
 	<!-- Bootstrap -->
 	<!-- Latest compiled and minified CSS -->
@@ -40,15 +40,12 @@
 
 <body ng-app="myApp">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1>StudentAvatar</h1>
-				<p>Welcome to the StudentAvatar Dashboard</p>
-				<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-			</div>
+		<div class="page-header">
+			<h1>StudentAvatar</h1>
+			<p>Welcome to the StudentAvatar Dashboard</p>
+			<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 		</div>
-		<hr>
-		
+		<div class="row">	
 		<nav class="col-md-12">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#user">User</a></li>
@@ -395,6 +392,24 @@
 													<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
 												</div>
 											</div>
+										</div>
+										
+										<div class="form-group">
+											<div class="col-md-3">
+												<div class="checkbox">
+													<label><input type="checkbox" ng-model="eventGuideRel" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
+												</div>
+											</div>
+										</div>
+										
+										
+										<div class="form-group" ng-if="eventGuideRel">
+											<div class="col-md-4">
+												<label>Choose from the list of guides</label>
+												<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
+												</select>
+											</div>
+											{{chooseGuide.selectedGuideId.$id}}
 										</div>
 										
 										<div class="form-group">
@@ -841,6 +856,7 @@
 				</div>
 			</div>
 	
+		</div>
 		</div>
 	</div>
 

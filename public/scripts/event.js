@@ -32,6 +32,15 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	};
 	//other init end
 	
+	//guide init
+	$scope.listGuide = $firebaseArray(firebase.database().ref("guides"));
+	
+	$scope.chooseGuide = {
+		selectedGuideId: "none"	
+	};
+	
+	//guide init
+	
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
@@ -79,6 +88,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		
 		//needed for validation purposes
 		var relrel = $scope.choose.selectedEventId.$id;
+		var relrelguide = $scope.chooseGuide.selectedGuideId.$id;
 		
 		if($scope.eventTitle == "")
 		{
@@ -95,6 +105,13 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		{
 			valid = false;
 			errMsg = errMsg + "choose a related club or unit\n"
+		}
+		
+		if(relrelguide === undefined)
+		{
+			
+			relrelguide = "none";
+			errMsg = errMsg + "should this happen?\n"
 		}
 		
 		/*
@@ -198,6 +215,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				date: $scope.eventDate,
 				datealt: $scope.eventDatealt,
 				desc: $scope.eventDesc,
+				guiderel: relrelguide,
 				location: $scope.eventLocation,
 				note: $scope.eventNote,
 				relateTo: $scope.rel.event + "/" + relrel,
