@@ -107,12 +107,18 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			errMsg = errMsg + "choose a related club or unit\n"
 		}
 		
-		if(eventGuideRelCheck)
+		if($scope.eventGuideRelCheck)
 		{
+			window.alert("true?")
 			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
 			{
 				errMsg = errMsg + "click on the related guide\n"
 			}		
+		}
+		else
+		{
+			window.alert("false")
+			relrelguide = "none";
 		}
 		/*
 		
