@@ -11,7 +11,7 @@ app.controller('guideAll', function($scope, $firebaseArray) {
 		guides: []
 	};
   
-  $scope.gEditSchema = {
+   $scope.gEditSchema = {
   "type": "object",
   "title": "Guides",
   "properties": {
@@ -46,7 +46,7 @@ app.controller('guideAll', function($scope, $firebaseArray) {
           "header": {
             "title": "Guide Header",
             "type": "string"
-          }
+          }        
         }
       }
     },
@@ -68,11 +68,7 @@ app.controller('guideAll', function($scope, $firebaseArray) {
             "format": "html",
             "title": "Task body",
             "description": "Enter task details"
-          },
-          "link": {
-            "title": "Task body link",
-            "type": "string"
-          }          
+          }         
         }
       }
     },
@@ -100,7 +96,7 @@ app.controller('guideAll', function($scope, $firebaseArray) {
     "guideTitle",
     "guideDescription"
     ]
-  }
+}
 
   $scope.gEditForm = [
     {
@@ -125,8 +121,9 @@ app.controller('guideAll', function($scope, $firebaseArray) {
                 {
                   "key": "general[].description",
                   "tinymceOptions": {
+                    "plugins": "link",
                     "toolbar": [
-                      "undo redo| styleselect | bold italic | link image",
+                      "insert | undo redo| styleselect | bold italic | link",
                       "alignleft aligncenter alignright"
                     ]
                   }
@@ -154,13 +151,13 @@ app.controller('guideAll', function($scope, $firebaseArray) {
               {
                 "key": "checklist[].body",
                 "tinymceOptions": {
+                  "plugins": "link",
                   "toolbar": [
-                    "undo redo| styleselect | bold italic | link image",
+                    "insert | undo redo| styleselect | bold italic | link",
                     "alignleft aligncenter alignright"
                   ]
                 }
-              },
-              "checklist[].link",
+              }
             ]
           }            
           ]
@@ -182,8 +179,9 @@ app.controller('guideAll', function($scope, $firebaseArray) {
               {
                 "key": "faq[].answer",
                 "tinymceOptions": {
+                  "plugins": "link",
                   "toolbar": [
-                    "undo redo| styleselect | bold italic | link image",
+                    "insert | undo redo| styleselect | bold italic | link",
                     "alignleft aligncenter alignright"
                   ]
                 }

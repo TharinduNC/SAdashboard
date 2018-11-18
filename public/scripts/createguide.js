@@ -34,7 +34,7 @@ app.controller('createGuide', function($scope, $firebaseArray) {
           "header": {
             "title": "Guide Header",
             "type": "string"
-          }
+          }         
         }
       }
     },
@@ -56,11 +56,7 @@ app.controller('createGuide', function($scope, $firebaseArray) {
             "format": "html",
             "title": "Task body",
             "description": "Enter task details"
-          },
-          "link": {
-            "title": "Task body link",
-            "type": "string"
-          }          
+          }         
         }
       }
     },
@@ -113,8 +109,9 @@ app.controller('createGuide', function($scope, $firebaseArray) {
                 {
                   "key": "general[].description",
                   "tinymceOptions": {
+                    "plugins": "link",
                     "toolbar": [
-                      "undo redo| styleselect | bold italic | link image",
+                      "insert | undo redo| styleselect | bold italic | link",
                       "alignleft aligncenter alignright"
                     ]
                   }
@@ -142,13 +139,13 @@ app.controller('createGuide', function($scope, $firebaseArray) {
               {
                 "key": "checklist[].body",
                 "tinymceOptions": {
+                  "plugins": "link",
                   "toolbar": [
-                    "undo redo| styleselect | bold italic | link image",
+                    "insert | undo redo| styleselect | bold italic | link",
                     "alignleft aligncenter alignright"
                   ]
                 }
-              },
-              "checklist[].link",
+              }
             ]
           }            
           ]
@@ -170,8 +167,9 @@ app.controller('createGuide', function($scope, $firebaseArray) {
               {
                 "key": "faq[].answer",
                 "tinymceOptions": {
+                  "plugins": "link",
                   "toolbar": [
-                    "undo redo| styleselect | bold italic | link image",
+                    "insert | undo redo| styleselect | bold italic | link",
                     "alignleft aligncenter alignright"
                   ]
                 }
