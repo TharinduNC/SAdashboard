@@ -53,8 +53,8 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			$scope.currentUnitCode = "<>"
-			$scope.currentUnitName = "<no selection or too many selected>";
+			$scope.currentUnitCode = "";
+			$scope.currentUnitName = "";
 		}
 	};
 	
