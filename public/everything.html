@@ -203,7 +203,7 @@
 									</tr>
 									<tr ng-repeat="g in guides">
 										<td>
-											<input type="checkbox" checklist-model="guideChecked.guides" checklist-value="g.$id" id="{{g.$id}}">
+											<input type="checkbox" checklist-model="guideChecked.guides" checklist-value="g.$id" id="{{g.$id}}" ng-disabled="!checked && guideChecked.guides.length == 1">
 											<label for="{{g.$id}}">{{g.name}}</label>
 										</td>
 									</tr>
@@ -461,7 +461,7 @@
 										</tr>
 										<tr ng-repeat="ev in viewEvent | filter: eventFil">
 											<td>
-												<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}">
+												<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}" ng-disabled="!checked && eventChecked.events.length == 1">
 												<label for="{{ev.$id}}">{{ev.title}}</label>
 											</td>
 											<td>
@@ -603,7 +603,7 @@
 										</tr>
 										<tr ng-repeat="u in maps">
 											<td>
-												<input type="checkbox" checklist-model="mapChecked.maps" checklist-value="u.$id" id="{{u.$id}}">
+												<input type="checkbox" checklist-model="mapChecked.maps" checklist-value="u.$id" id="{{u.$id}}" ng-disabled="!checked && mapChecked.maps.length == 1">
 												<label for="{{u.$id}}">{{u.code}}</label>
 											</td>
 											<td>
@@ -748,7 +748,7 @@
 										</tr>
 										<tr ng-repeat="u in units">
 											<td>
-												<input type="checkbox" checklist-model="unitChecked.units" checklist-value="u.$id" id="{{u.$id}}">
+												<input type="checkbox" checklist-model="unitChecked.units" checklist-value="u.$id" id="{{u.$id}}" ng-disabled="!checked && unitChecked.units.length == 1">
 												<label for="{{u.$id}}">{{u.code}}</label>
 											</td>
 											<td>
@@ -873,7 +873,7 @@
 										</tr>
 										<tr ng-repeat="c in clubs">
 											<td>
-												<input type="checkbox" checklist-model="clubChecked.clubs" checklist-value="c.$id" id="{{c.$id}}">
+												<input type="checkbox" checklist-model="clubChecked.clubs" checklist-value="c.$id" id="{{c.$id}}" ng-disabled="!checked && clubChecked.clubs.length == 1">
 												<label for="{{c.$id}}">{{c.name}}</label>
 											</td>
 										</tr>
