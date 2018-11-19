@@ -771,8 +771,8 @@
 									<p>only edits the first item</p>
 									unitChecked.units: {{unitChecked.units | json}}<br>
 									current selection: {{currentUnitCode}} {{currentUnitName}}<br>
-									<input type="text" ng-model="newUnitCode" placeholder="Enter Code">
-									<input type="text" ng-model="newUnitName" placeholder="Enter Name">
+									<input type="text" ng-model="currentUnitCode" placeholder="Enter Code"></input>
+									<input type="text" ng-model="currentUnitName" placeholder="Enter Name"></input>
 									<button type="button" class="btn btn-default" ng-click="updateUnit()">Update unit</button>
 								</div>
 							</div>
