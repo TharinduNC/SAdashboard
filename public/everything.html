@@ -394,25 +394,24 @@
 											</div>
 										</div>
 										
-										<div class="form-group" ng-if="eventStartTimeCheck">
+										<div class="form-group" ng-if="eventNote">
 											<div class="col-md-4">
-												<label>Choose from the list of guides</label>
-												<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
+												<label>Choose the time to notify</label>
+												<div uib-timepicker ng-model="eventTimestart.note" hour-step="1" minute-step="1" show-meridian="true"></div>
 												</select>
 											</div>
-											{{chooseGuide.selectedGuideId.$id}}
 										</div>
 										
 										<div class="form-group">
 											<div class="col-md-3">
 												<div class="checkbox">
-													<label><input type="checkbox" ng-model="eventGuideRelCheck" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
+													<label><input type="checkbox" ng-model="gotGuide" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
 												</div>
 											</div>
 										</div>
 										
 										
-										<div class="form-group" ng-if="eventGuideRelCheck">
+										<div class="form-group" ng-if="gotGuide">
 											<div class="col-md-4">
 												<label>Choose from the list of guides</label>
 												<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
@@ -614,7 +613,7 @@
 												<strong>{{u.descriptionheader}}</strong>
 											</td>
 											<td>
-													<strong>{{u.description}}</strong>
+												<strong>{{u.description}}</strong>
 											</td>
 											<td>
 												<strong>{{u.level}}</strong>
