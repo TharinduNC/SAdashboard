@@ -37,7 +37,7 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 	$scope.unitChecked = {
 		units: []
 	};
-	
+  
 	//update unit
 	
 	$scope.onUnitEditClick = function() {
