@@ -1,4 +1,8 @@
-
+ul {
+    column-count:1;
+    -webkit-column-count:1;
+    -moz-column-count:1;
+}
 
 svg{
 	background-image: none;
@@ -751,6 +755,9 @@ button:focus {
 	margin: 0 0 2em;
 	padding: 0 1em 1em 2em;
 	list-style: none;
+	column-count:1;
+    -webkit-column-count:1;
+    -moz-column-count:1;
 }
 
 .list__item {

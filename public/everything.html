@@ -542,6 +542,21 @@
 												<input type="text" ng-model="mapDescription" class="form-control" id="map_description" placeholder="Enter description" name="map_descriptionheader" required="required">
 											</div>
 										</div>
+										<div class="form-group">
+											<div class="col-md-5">
+												<input type="text" ng-model="mapLevel" class="form-control" id="map_level" placeholder="Enter level" name="map_level" required="required">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-5">
+												<input type="text" ng-model="mapCategory" class="form-control" id="map_category" placeholder="Enter category" name="map_category" required="required">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-5">
+												<input type="text" ng-model="mapSpace" class="form-control" id="map_space" placeholder="Enter space" name="map_space" required="required">
+											</div>
+										</div>
 										
 										<div class="form-group">
 											<div class="col-md-3">
@@ -574,6 +589,9 @@
 											<th>Name</th>
 											<th>Header</th>
 											<th>Description</th>
+											<th>Level</th>
+											<th>Category</th>
+											<th>Space</th>
 										</tr>
 										<tr ng-repeat="u in maps">
 											<td>
@@ -589,6 +607,15 @@
 											<td>
 													<strong>{{u.description}}</strong>
 											</td>
+											<td>
+												<strong>{{u.level}}</strong>
+											</td>
+											<td>
+												<strong>{{u.category}}</strong>
+											</td>
+											<td>
+												<strong>{{u.space}}</strong>
+										    </td>
 										</tr>
 									</table>
 									mapChecked.maps {{mapChecked.maps | json}}
@@ -618,7 +645,11 @@
 									<input type="text" ng-model="newMapName" placeholder="Enter Name">
 									<input type="text" ng-model="newMapDescription" placeholder="Enter description">
 									<input type="text" ng-model="newMapDescriptionheader" placeholder="Enter Header">
+									<input type="text" ng-model="newMapLevel" placeholder="Enter Level">
+									<input type="text" ng-model="newMapCategory" placeholder="Enter Category">
+									<input type="text" ng-model="newMapSpace" placeholder="Enter Space">
 	
+
 									<button type="button" class="btn btn-default" ng-click="updateMap()">Update map</button>
 								</div>
 							</div>

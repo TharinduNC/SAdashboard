@@ -1868,7 +1868,7 @@
 			<!-- /main -->
 			<aside class="spaces-list" id="spaces-list">
 				<div class="search">
-					<input  class="search__input" placeholder="Search..." />
+					<input  ng-model="search" placeholder="Search..."  />
 					<button class="boxbutton boxbutton--darker close-search" aria-label="Close details"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
 				</div>
 				<span class="label">
@@ -1876,8 +1876,10 @@
 					<label class="label__text">A - Z</label>
 				</span>
 				<!-- List Items -->
-				<ul class="list grouped-by-category">
-					<!-- SIC -->
+				<ul class="list">
+						<input  ng-model="search" placeholder="Search2..."  />
+						<ul filter-list="search">
+							
 					<li class="list__item" data-level="1" data-category="1" data-space="1.08"><a href="#" class="list__link">{{maps[0].name}}</a></li>
 					<li class="list__item" data-level="1" data-category="1" data-space="1.06"><a href="#" class="list__link">{{maps[1].name}}</a></li>
 					<li class="list__item" data-level="1" data-category="1" data-space="1.01"><a href="#" class="list__link">{{maps[3].code}}</a></li>
@@ -2027,13 +2029,19 @@
 					<li class="list__item" data-level="3" data-category="4" data-space="3.35"><a href="#" class="list__link">{{maps[41].code}}</a></li>
 
 					<li class="list__item" data-level="1" data-category="5" data-space="1.10"><a href="#" class="list__link">Junction</a></li>
+
+					
+						</ul>
+					
 				</ul>
 			</aside>
 			<!-- /spaces-list -->
 		</div>
 		<!-- /container -->
 		<script src="js/classie.js"></script>
+		
 		<script src="js/list.min.js"></script>
+		
 		<script src="js/main.js"></script>
 		<script src="js/rotate.js"></script>
 		
@@ -2078,7 +2086,7 @@
 	<script src="scripts/event.js"></script>
 	<script src="scripts/club.js"></script>
 	<script src="scripts/unit.js"></script>
-	<script src="scripts/map3.js"></script>
+	<script src="../scripts/map3.js"></script>
 
 	<!-- AngularFire -->
 	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>

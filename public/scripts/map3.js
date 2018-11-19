@@ -1,5 +1,6 @@
 app.controller('mapAll', function($scope, $firebaseArray) {
 	
+	$scope.name = 'Salah';
 	var firebaseRefMap = firebase.database().ref("map");
 	
 	var list = $firebaseArray(firebaseRefMap);
@@ -14,7 +15,10 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				code: $scope.mapCode,
 				name: $scope.mapName,
 				description: $scope.mapDescription,
-				descriptionheader: $scope.mapDescriptionheader
+				descriptionheader: $scope.mapDescriptionheader,
+				level: $scope.mapLevel,
+				category: $scope.mapCategory,
+				space: $scope.mapSpace
 			}).then(function(ref) {
 				var id = ref.key;
 				//console.log("added record with id " + id);
@@ -53,6 +57,9 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				$scope.currentMapName = currentMap.name;
 				$scope.currentMapDescription = currentMap.description;
 				$scope.currentMapDescriptionheader = currentMap.descriptionheader;
+				$scope.currentMapLevel = currentMap.level;
+				$scope.currentMapCategory = currentMap.category;
+				$scope.currentMapSpace = currentMap.space;
 			});
 		}
 		else
@@ -61,6 +68,10 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 			$scope.currentMapName = "<no selection or too many selected>"
 			$scope.currentMapDescription = "<>"
 			$scope.currentMapDescriptionheader = "<>"
+			$scope.currentMapLevel = "<>"
+			$scope.currentMapCategory = "<>"
+			$scope.currentMapSpace = "<>"
+
 		}
 	};
 	
@@ -68,6 +79,9 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 	$scope.newMapName = "";
 	$scope.newMapDescription = "";
 	$scope.newMapDescriptionheader = "";
+	$scope.newMapLevel = "";
+	$scope.newMapCategory = "";
+	$scope.newMapSpace = "";
 	
 	
 	//only one selection is allowed when updating the map
@@ -83,7 +97,10 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 					code: $scope.newMapCode,
 					name: $scope.newMapName,
 					description: $scope.newMapDescription,
-					descriptionheader: $scope.newMapDescriptionheader
+					descriptionheader: $scope.newMapDescriptionheader,
+					level: $scope.newMapLevel,
+					category: $scope.newMapCategory,
+					space: $scope.newMapSpace
 				};
 				
 				var updates = {};
@@ -125,3 +142,31 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 	};
 	
 });
+
+app.directive('filterList', function($timeout) {
+    return {
+        link: function(scope, element, attrs) {
+            
+            var li = Array.prototype.slice.call(element[0].children);
+            
+            function filterBy(value) {
+                li.forEach(function(el) {
+                    el.className = el.textContent.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? '' : 'ng-hide';
+                });
+            }
+            
+            scope.$watch(attrs.filterList, function(newVal, oldVal) {
+                if (newVal !== oldVal) {
+                    filterBy(newVal);
+                }
+            });
+        }
+    };
+});
+
+app.filter('htmlToPlaintext', function() {
+      return function(text) {
+         return String(text).replace(/<[^>]+>/gm, '');
+      };
+   }
+);
