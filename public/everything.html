@@ -369,9 +369,165 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">Edit events</div>
 									<div class="panel-body">
-										<p>only edits the first item</p>
+										<p>does not work yet, saving work</p>
 										eventChecked.events: {{eventChecked.events | json}}<br>
 										current selection: <br>
+										<p><strong><em>If something is checked/chosen for editing, although the fields relating to unit or club and guide are not highlighted, they remain the same.</em></strong></p>
+										<form novalidate name="formEventCreate" class="form-horizontal">
+										
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" class="form-control" ng-model="currentEventTitle" id="currentevent_title" placeholder="Enter title" name="currentevent_title" ng-required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+		
+												<label class="col-md-12" for="relateTo">This event relates to?</label>
+											
+												<div class="col-md-6">
+													
+													<label class="radio-inline">
+														<input type="radio" id="relateTo" ng-model="rel.event" value="general" ng-click="onEventRelSelect('general')">General Event
+													</label>
+													
+													<label class="radio-inline">
+														<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
+													</label>
+													
+													<label class="radio-inline">
+														<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
+													</label>
+												
+												</div>
+											
+											</div>
+											
+											<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
+											
+												<div class="col-md-4">
+													<label>Choose from the list of {{rel.event}}</label>
+													<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
+													</select>
+												</div>
+												{{choose.selectedEventId.$id}}
+											</div>
+											<hr>
+											<div class="form-group">
+												<div class="col-md-4">
+													<p>Pick date(s)</p>
+												
+													<div class='btn-group'>
+														<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
+														<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+													</div>
+													
+													<p ng-if="pickMode=='indi'">Choose any dates for this event</p>
+													<p ng-if="pickMode=='range'">Choose a range of dates for this event</p>
+													
+													<div 
+														uib-datepicker
+														ng-model="activeDate"
+														multi-select="selectedDates"
+														select-range="{{pickMode=='range'}}"
+														datepicker-options="dateOptions"></div>
+												</div>
+												
+												<div class="col-md-5">
+													
+													<div ng-if="pickMode=='indi'">
+														Selected Dates:
+														<div class="well well-sm">
+															<div ng-repeat="d in selectedDates | orderBy">
+																{{d | date : 'fullDate'}}
+																<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+															</div>
+														</div>
+													</div>
+													
+													<div ng-if="pickMode=='range'">
+														Selected Dates:
+														<div class="well well-sm">
+															{{(selectedDates | orderBy)[0] | date:"fullDate"}}
+															<span ng-if="selectedDates.length > 1">
+																- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
+															</span>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+											<hr>
+											<div class="form-group">
+												<div class="col-md-5">
+													<p>Pick a time (numbers are scrollable)</p>
+													<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
+													
+													<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
+													
+													<div ng-if="duration">
+														<p>End time</p>
+														<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
+														
+														<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" class="form-control" ng-model="currentEventLocation" id="currentevent_location" placeholder="Enter location" name="currentevent_location">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-5">
+													<textarea rows="4" cols="50" ng-model="currentEventDesc" id="currentevent_description" placeholder="Add a description" name="currentevent_description"></textarea>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<div class="checkbox">
+														<label><input type="checkbox" ng-model="currentEventNote" id="event_notification" name="event_notification">Push notification?</label>
+													</div>
+												</div>
+											</div>
+											
+											<div class="form-group" ng-if="currentEventNote">
+												<div class="col-md-4">
+													<label>Choose the time to notify</label>
+													<div uib-timepicker ng-model="eventTimestart.note" hour-step="1" minute-step="1" show-meridian="true"></div>
+													</select>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<div class="checkbox">
+														<label><input type="checkbox" ng-model="gotGuide" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="form-group" ng-if="gotGuide">
+												<div class="col-md-4">
+													<label>Choose from the list of guides</label>
+													<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
+													</select>
+												</div>
+												{{chooseGuide.selectedGuideId.$id}}
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<button type="button" class="btn btn-default" ng-click="updateEvent()">Update event</button>
+												</div>
+											</div>
+										
+										</form>
+										
 									</div>
 								</div>
 							</div>
