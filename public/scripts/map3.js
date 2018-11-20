@@ -18,7 +18,8 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				descriptionheader: $scope.mapDescriptionheader,
 				level: $scope.mapLevel,
 				category: $scope.mapCategory,
-				space: $scope.mapSpace
+				space: $scope.mapSpace,
+				position: $scope.mapPosition
 			}).then(function(ref) {
 				var id = ref.key;
 				//console.log("added record with id " + id);
@@ -60,6 +61,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				$scope.currentMapLevel = currentMap.level;
 				$scope.currentMapCategory = currentMap.category;
 				$scope.currentMapSpace = currentMap.space;
+				$scope.currentMapPosition = currentMap.position;
 			});
 		}
 		else
@@ -71,6 +73,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 			$scope.currentMapLevel = "<>"
 			$scope.currentMapCategory = "<>"
 			$scope.currentMapSpace = "<>"
+			$scope.currentMapPosition = "<>"
 
 		}
 	};
@@ -82,6 +85,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 	$scope.newMapLevel = "";
 	$scope.newMapCategory = "";
 	$scope.newMapSpace = "";
+	$scope.newMapPosition = "";
 	
 	
 	//only one selection is allowed when updating the map
@@ -100,7 +104,8 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 					descriptionheader: $scope.newMapDescriptionheader,
 					level: $scope.newMapLevel,
 					category: $scope.newMapCategory,
-					space: $scope.newMapSpace
+					space: $scope.newMapSpace,
+					position: $scope.newMapPosition
 				};
 				
 				var updates = {};
@@ -142,6 +147,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 	};
 	
 });
+
 
 app.directive('filterList', function($timeout) {
     return {
