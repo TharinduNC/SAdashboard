@@ -37,7 +37,7 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 	$scope.unitChecked = {
 		units: []
 	};
-	
+  
 	//update unit
 	
 	$scope.onUnitEditClick = function() {
@@ -53,13 +53,13 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			$scope.currentUnitCode = "<>"
-			$scope.currentUnitName = "<no selection or too many selected>";
+			$scope.currentUnitCode = "";
+			$scope.currentUnitName = "";
 		}
 	};
 	
-	$scope.newUnitCode = "";
-	$scope.newUnitName = "";
+	//$scope.newUnitCode = "";
+	//$scope.newUnitName = "";
 	
 	
 	//only one selection is allowed when updating the unit
@@ -67,13 +67,13 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		
 		if($scope.unitChecked.units.length == 1)
 		{
-			if($scope.newUnitName.length > 0 && $scope.newUnitCode.length > 0)
+			if($scope.currentUnitCode.length > 0 && $scope.currentUnitName.length > 0)
 			{
-				window.alert($scope.newUnitCode + " " + $scope.newUnitName);
+				window.alert($scope.currentUnitCode + " " + $scope.currentUnitName);
 			
 				var updatedUnit = {
-					code: $scope.newUnitCode,
-					name: $scope.newUnitName
+					code: $scope.currentUnitCode,
+					name: $scope.currentUnitName
 				};
 				
 				var updates = {};

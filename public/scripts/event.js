@@ -7,8 +7,8 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//references end
 	
 	//create event
-	//other inits
 	
+	//other inits
 	$scope.eventTitle = "";
 	
 	$scope.rel = {
@@ -44,9 +44,8 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
-	//$scope.eventDate = "";
 	$scope.eventDatealt = "";
-	$scope.eventTimestart = "";
+	
 	$scope.pickMode = "indi";
 	
 	$scope.dateOptions = {
@@ -72,6 +71,11 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		start: new Date(),
 		end: new Date()
 	};
+	
+	$scope.eventTimestart = {
+		note: new Date()
+	};
+	
 	$scope.duration = false;
 	
 	$scope.toggleDuration = function()
@@ -83,12 +87,12 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	$scope.createEvent = function()
 	{
-		var valid = true;
-		var errMsg = "";
-		
-		//needed for validation purposes
 		var relrel = $scope.choose.selectedEventId.$id;
 		var relrelguide = $scope.chooseGuide.selectedGuideId.$id;
+		
+		//needed for validation purposes
+		var valid = true;
+		var errMsg = "";
 		
 		if($scope.eventTitle == "")
 		{
@@ -107,30 +111,8 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			errMsg = errMsg + "choose a related club or unit\n"
 		}
 		
-		if($scope.eventGuideRelCheck)
-		{
-			window.alert("true?")
-			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
-			{
-				errMsg = errMsg + "click on the related guide\n"
-			}
-		}
-		else
-		{
-			window.alert("false")
-			relrelguide = "none";
-		}
-		/*
-		
-		** date from miliseconds to string to object
-		
-		*** eventDate need to get values from selectedDate everytime button is pressed
-		*** because eventDate needs to be reset just in case, it will be reassigned anyways
-		  
-		*/
-		
+		//changes array of date to object of dates
 		//no point running this code if there is no date selected
-		var tempDate = "";
 		if($scope.selectedDates.length > 0)
 		{
 			var selectedDateStrRep = "{";
@@ -171,16 +153,16 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		var timeStart = $scope.eventTimeRange.start;
 		var timeEnd = $scope.eventTimeRange.end;
 		
-		
-		if(timeStart.getMinutes() < 10)
+		if(!$scope.duration)
 		{
-			tempO = "0";
+			if(timeStart.getMinutes() < 10)
+			{
+				tempO = "0";
+			}
+			
+			$scope.eventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString();
 		}
-		
-		$scope.eventTimestart = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString();
-		
-		
-		if($scope.duration)
+		else
 		{
 			errMsg = errMsg + timeStart + "\n" + timeEnd;
 			
@@ -198,12 +180,6 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			$scope.eventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString() + "-" + 
 								timeEnd.getHours().toString() + ":" + tempO2 + timeEnd.getMinutes().toString();
 		}
-		else
-		{
-			$scope.eventTime = $scope.eventTimestart;
-		}
-		
-		console.log($scope.eventTimestart);
 		
 		if($scope.eventLocation == "")
 		{
@@ -214,6 +190,40 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		{
 			$scope.eventDesc = "<no description given>";
 		}
+		
+		
+		//check notification is checked
+		if($scope.eventNote)
+		{
+			var tempO3 = "";
+			var timeNote = $scope.eventTimestart.note;
+			
+			if(timeNote.getMinutes() < 10)
+			{
+				tempO3 = "0";
+			}
+			
+			$scope.eventTimeNote = timeNote.getHours().toString() + ":" + tempO3 + timeNote.getMinutes().toString();
+			
+		}
+		else
+		{
+			$scope.eventTimeNote = "00:01"
+		}
+
+		//check related guide is checked
+		if($scope.gotGuide)
+		{
+			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
+			{
+				errMsg = errMsg + "click on the related guide\n"
+			}
+		}
+		else
+		{
+			relrelguide = "none";
+		}
+		
 		
 		if(valid)
 		{
@@ -226,7 +236,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				note: $scope.eventNote,
 				relateTo: $scope.rel.event + "/" + relrel,
 				time: $scope.eventTime,
-				timestart: $scope.eventTimestart,
+				timenote: $scope.eventTimeNote,
 				title: $scope.eventTitle
 			}).then(function(ref) {
 				var id = ref.key;
@@ -234,7 +244,6 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				window.alert("added record with id " + id);
 				list.$indexFor(id); // returns location in the array
 				
-				//try to clear the field after addition
 			});
 		}
 		else
@@ -246,7 +255,6 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		
 		$scope.eventDate = null;
 		$scope.eventDatealt = "";
-		$scope.eventTimestart = "";
 	};
 	
 	

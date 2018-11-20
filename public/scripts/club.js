@@ -55,7 +55,7 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			$scope.currentClubName = "<no selection or too many selected>";
+			$scope.currentClubName = "";
 		}
 	};
 	
@@ -66,12 +66,12 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		
 		if($scope.clubChecked.clubs.length == 1)
 		{
-			if($scope.newClubName.length > 0)
+			if($scope.currentClubName.length > 0)
 			{
-				window.alert($scope.newClubName);
+				window.alert($scope.currentClubName);
 			
 				var updatedName = {
-					name: $scope.newClubName
+					name: $scope.currentClubName
 				};
 				
 				var updates = {};

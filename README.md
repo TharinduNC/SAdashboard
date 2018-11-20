@@ -1,17 +1,11 @@
-https://firebase.google.com/docs/hosting/deploying?authuser=0
-
-website: https://my-awesome-project-6dd85.firebaseapp.com/
-
-AngularJS angularFire docs refered: https://github.com/firebase/angularfire/blob/master/docs/quickstart.md
-
-1. Install Node.js 10.0.0 https://nodejs.org/en/
-2. Open cmd and install the Firebase CLI using: 
-  npm install -g firebase-tools
-3. Restart computer
-4. Clone github to local directory.
-5. Open cmd in the directory and initialize using:
-  firebase init
-6. Deploy the website using:
-  firebase deploy //must do this when making changes
-7. For localhost use:
-  firebase serve
+<h1>Getting Started</h1>
+<ol>
+  <li>Install Node.js 10.0.0 https://nodejs.org/en/</li>
+  <li>Open cmd and install the Firebase CLI using: <code>npm install -g firebase-tools</code></li>
+  <li>Restart your computer</li>
+  <li>Clone github to local directory: <code>git clone https://github.com/gunatilake/SAdashboard.git</code></li>
+  <li>Localhost: <code>firebase serve</code></li>
+  <li>Deploy the website using: <code>firebase deploy</code></li>
+</ol>
+<p>Refer to AngularJS angularfire documentation <a href="https://github.com/firebase/angularfire/blob/master/docs/quickstart.md">here</a></p>
+<p>Refer to Angular Schema Form documentation <a href="https://github.com/json-schema-form/angular-schema-form/blob/development/docs/index.md">here</a></p>

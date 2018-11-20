@@ -41,509 +41,395 @@
 <body ng-app="myApp">
 	<div class="container">
 		<div class="page-header">
-			<h1>StudentAvatar</h1>
+			<h1><a href="everything.html">StudentAvatar</a></h1>
 			<p>Welcome to the StudentAvatar Dashboard</p>
 			<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 		</div>
 		<div class="row">	
-		<nav class="col-md-12">
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#user">User</a></li>
-				<li><a data-toggle="tab" href="#guide">Guide</a></li>
-				<li><a data-toggle="tab" href="#event">Event</a></li>
-				<li><a data-toggle="tab" href="#map">Map</a></li>
-				<li><a data-toggle="tab" href="#unit">Unit</a></li>
-				<li><a data-toggle="tab" href="#club">Club</a></li>
-			</ul>
-		</nav>
-		
-		<div class="tab-content">
-			<div id="user" class="tab-pane fade in active">
-				<div class="col-md-2">
-					<ul class="nav nav nav-tabs tabs-left">				
-						<li class="active"><a data-toggle="tab" href="#user-create">Add users</a></li>
-						<li><a data-toggle="tab" href="#user-read">View users</a></li>
-						<li><a data-toggle="tab" href="#user-update">Edit users</a></li>
-						<li><a data-toggle="tab" href="#user-delete">Delete users</a></li>
-					</ul>
-				</div>
-				<div class="col-md-10">
-					<div class="tab-content">
-						
-						<div id="user-create" class="tab-pane fade in active">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add one user</div>
-								<div class="panel-body">
-								
-									<form class="form-horizontal">
-									
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<label for="user_role">Select role of user</label>
-												<select class="form-control" name="user_role" size="1" id="user_role" required="required">
-													<option value="1">admin (1)</option>
-													<option value="2">staff (2)</option>
-													<option value="3">club leader (3)</option>
-													<option value="4">student (4)</option>
-												</select>
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>
-											</div>
-										</div>
-									
-									</form>
-								</div>
-							</div>
-						
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add multiple users</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-						
-						</div>
-						
-						<div id="user-read" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">View users</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-							
-						</div>
-						
-						<div id="user-update" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Edit users</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-							
-						</div>
-						
-						<div id="user-delete" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Delete users</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
+			<nav class="col-md-12">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#guide">Guide</a></li>
+					<li><a data-toggle="tab" href="#event">Event</a></li>
+					<li><a data-toggle="tab" href="#map">Map</a></li>
+					<li><a data-toggle="tab" href="#unit">Unit</a></li>
+					<li><a data-toggle="tab" href="#club">Club</a></li>
+					<li><a data-toggle="tab" href="#user">User</a></li>
+				</ul>
+			</nav>
 			
-			</div>
-		
-			<div id="guide" class="tab-pane fade" ng-controller="guideAll">
-				<div class="col-md-2">
-					<ul class="nav nav nav-tabs tabs-left">
-						<li class="active"><a data-toggle="tab" href="#guide-create">Create a Guide</a></li>
-						<li><a data-toggle="tab" href="#guide-read">View all Guides</a></li>
-						<li><a data-toggle="tab" href="#guide-update" ng-click="onGuideEditClick()">Edit a Guide</a></li>
-						<li><a data-toggle="tab" href="#guide-delete">Delete a Guide</a></li>
-					</ul>
-				</div>
-				<div class="col-md-10">
-				<div class="tab-content">
-					<div id="guide-create" class="tab-pane fade in active" ng-controller="createGuide">
-						<div class="panel panel-default">
-							<div class="panel-heading">Create a guide</div>
-							<div class="panel-body">
-								<form name="myForm"
-									  sf-schema="schema"
-									  sf-form="form"
-									  sf-model="model"
-									  ng-submit="onSubmit(myForm)">
-								</form>
-								<!--<p>{{model}}</p>-->
-							</div> 	
-						</div>
+			<div class="tab-content">
+				<div id="guide" class="tab-pane fade in active" ng-controller="guideAll">
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">
+							<li class="active"><a data-toggle="tab" href="#guide-create">Create a Guide</a></li>
+							<li><a data-toggle="tab" href="#guide-read">View all Guides</a></li>
+							<li><a data-toggle="tab" href="#guide-update" ng-click="onGuideEditClick()">Edit a Guide</a></li>
+							<li><a data-toggle="tab" href="#guide-delete">Delete a Guide</a></li>
+						</ul>
 					</div>
-					
-					<div id="guide-read" class="tab-pane fade">
-					
-						<div class="panel panel-default">
-							<div class="panel-heading">View Guides</div>
-							<div class="panel-body">
-								<table class="table" id="tableViewGuide ">
-									<tr>
-										<th>Name</th>
-									</tr>
-									<tr ng-repeat="g in guides">
-										<td>
-											<input type="checkbox" checklist-model="guideChecked.guides" checklist-value="g.$id" id="{{g.$id}}">
-											<label for="{{g.$id}}">{{g.name}}</label>
-										</td>
-									</tr>
-								</table>
-								<!--guideChecked.guides {{guideChecked.guides | json}}-->
-							</div>
-						</div>
-					
-					</div>
-					
-					<div id="guide-update" class="tab-pane fade">
-					
-						<div class="panel panel-default">
-							<div class="panel-heading">Refresh an existing guide</div>
-							<div class="panel-body">
-								<!--guideChecked.guides: {{guideChecked.guides | json}}<br>-->
-								<p>You are editing: {{currentGuideName}} {{guideChecked.guides | json}}</p>
-								<!--<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
-								<!--<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>								-->
-								<form name="guideEditForm"
-									  sf-schema="gEditSchema"
-									  sf-form="gEditForm"
-									  sf-model="gEditModel"
-									  ng-submit="onSubmit(guideEditForm)">
-								</form>
-								<!--<p>{{gEditModel}}</p>-->
-							</div>							
-							<!--<div class="panel-body">-->
-							<!--	<p>only edits the first item</p>-->
-							<!--	guideChecked.guides: {{guideChecked.guides | json}}<br>-->
-							<!--	current selection: {{currentGuideName}}<br>-->
-							<!--	<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
-							<!--	<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>-->
-							<!--</div>-->
-						</div>
-						
-					</div>
-					
-					<div id="guide-delete" class="tab-pane fade">
-						<div class="panel panel-default">
-							<div class="panel-heading">Delete Guides</div>
-							<div class="panel-body">
-								<p>check items to delete</p>
-								guideChecked.guides {{guideChecked.guides | json}}<br>
-								<button type="button" class="btn btn-danger" ng-click="deleteGuide()">Delete Guide</button>
-							</div>
-						</div>
-					</div>        
-				</div>
-				</div>
-			</div>
-			
-			<div id="event" class="tab-pane fade" ng-controller="eventAll">
-				<div class="col-md-2">
-					<ul class="nav nav nav-tabs tabs-left">
-						<li class="active"><a data-toggle="tab" href="#event-create">Add event</a></li>
-						<li><a data-toggle="tab" href="#event-read">View events</a></li>
-						<li><a data-toggle="tab" href="#event-update" ng-click="onEventEditClick()">Edit events</a></li>
-						<li><a data-toggle="tab" href="#event-delete">Delete events</a></li>
-					</ul>
-				</div>
-				<div class="col-md-10">
+					<div class="col-md-10">
 					<div class="tab-content">
-					
-						<div id="event-create" class="tab-pane fade in active">
-	
+						<div id="guide-create" class="tab-pane fade in active" ng-controller="createGuide">
 							<div class="panel panel-default">
-								<div class="panel-heading">Add one event</div>
+								<div class="panel-heading">Create a guide</div>
 								<div class="panel-body">
-									<form novalidate name="formEventCreate" class="form-horizontal">
-									
-										<div class="form-group">
-											<div class="col-md-5">
-												<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" ng-required="required">
-											</div>
-										</div>
-										
-										<div class="form-group">
-	
-											<label class="col-md-12" for="relateTo">This event relates to?</label>
-										
-											<div class="col-md-6">
-												
-												<label class="radio-inline">
-													<input type="radio" id="relateTo" ng-model="rel.event" value="general" ng-click="onEventRelSelect('general')">General Event
-												</label>
-												
-												<label class="radio-inline">
-													<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
-												</label>
-												
-												<label class="radio-inline">
-													<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
-												</label>
-											
-											</div>
-										
-										</div>
-										
-										<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
-										
-											<div class="col-md-4">
-												<label>Choose from the list of {{rel.event}}</label>
-												<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
-												</select>
-											</div>
-											{{choose.selectedEventId.$id}}
-										</div>
-										<hr>
-										<div class="form-group">
-											<div class="col-md-4">
-												<p>Pick date(s)</p>
-											
-												<div class='btn-group'>
-													<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
-													<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
-												</div>
-												
-												<p ng-if="pickMode=='indi'">Choose any dates for this event</p>
-												<p ng-if="pickMode=='range'">Choose a range of dates for this event</p>
-												
-												<div 
-													uib-datepicker
-													ng-model="activeDate"
-													multi-select="selectedDates"
-													select-range="{{pickMode=='range'}}"
-													datepicker-options="dateOptions"></div>
-											</div>
-											
-											<div class="col-md-5">
-												
-												<div ng-if="pickMode=='indi'">
-													Selected Dates:
-													<div class="well well-sm">
-														<div ng-repeat="d in selectedDates | orderBy">
-															{{d | date : 'fullDate'}}
-															<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
-														</div>
-													</div>
-												</div>
-												
-												<div ng-if="pickMode=='range'">
-													Selected Dates:
-													<div class="well well-sm">
-														{{(selectedDates | orderBy)[0] | date:"fullDate"}}
-														<span ng-if="selectedDates.length > 1">
-															- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
-														</span>
-													</div>
-												</div>
-												
-											</div>
-										</div>
-										<hr>
-										<div class="form-group">
-											<div class="col-md-5">
-												<p>Pick a time (numbers are scrollable)</p>
-												<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
-												
-												<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
-												
-												<div ng-if="duration">
-													<p>End time</p>
-													<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
-													
-													<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
-												</div>
-											</div>
-										</div>
-										<hr>
-										<div class="form-group">
-											<div class="col-md-5">
-												<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-5">
-												<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<div class="checkbox">
-													<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
-												</div>
-											</div>
-										</div>
-										
-										<div class="form-group" ng-if="eventStartTimeCheck">
-											<div class="col-md-4">
-												<label>Choose from the list of guides</label>
-												<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
-												</select>
-											</div>
-											{{chooseGuide.selectedGuideId.$id}}
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<div class="checkbox">
-													<label><input type="checkbox" ng-model="eventGuideRelCheck" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
-												</div>
-											</div>
-										</div>
-										
-										
-										<div class="form-group" ng-if="eventGuideRelCheck">
-											<div class="col-md-4">
-												<label>Choose from the list of guides</label>
-												<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
-												</select>
-											</div>
-											{{chooseGuide.selectedGuideId.$id}}
-										</div>
-										
-										<div class="form-group">
-											<div class="col-md-3">
-												<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
-											</div>
-										</div>
-									
+									<form name="myForm"
+										  sf-schema="schema"
+										  sf-form="form"
+										  sf-model="model"
+										  ng-submit="onSubmit(myForm)">
 									</form>
-								
-								
-								</div>
+									<!--<p>{{model}}</p>-->
+								</div> 	
 							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">Add multiple events</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-	
 						</div>
 						
-						<div id="event-read" class="tab-pane fade">
+						<div id="guide-read" class="tab-pane fade">
+						
 							<div class="panel panel-default">
-								<div class="panel-heading">View events</div>
+								<div class="panel-heading">View Guides</div>
 								<div class="panel-body">
-									
-									<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate'}}</em></pre>
-									
-									<div uib-datepicker ng-model="viewDateSelect"></div>
-									
-									<input type="text" ng-model="eventFil" placeholder="currently cannot filter dates" />
-									
-									<table class="table" id="tableViewEvent">
+									<table class="table" id="tableViewGuide ">
 										<tr>
-											<th>Title</th>
-											<th>Date</th>
-											<th>Time</th>
-											<th>Relation</th>
+											<th>Name</th>
 										</tr>
-										<tr ng-repeat="ev in viewEvent | filter: eventFil">
+										<tr ng-repeat="g in guides">
 											<td>
-												<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}">
-												<label for="{{ev.$id}}">{{ev.title}}</label>
-											</td>
-											<td>
-												<strong>{{ev.datealt}}</strong>
-											</td>
-											<td>
-												<strong>{{ev.time}}</strong>
-											</td>
-											<td>
-												<strong>{{ev.relateTo}}</strong>
+												<input type="checkbox" checklist-model="guideChecked.guides" checklist-value="g.$id" id="{{g.$id}}" ng-disabled="!checked && guideChecked.guides.length == 1">
+												<label for="{{g.$id}}">{{g.name}}</label>
 											</td>
 										</tr>
 									</table>
-									
+									<!--guideChecked.guides {{guideChecked.guides | json}}-->
 								</div>
 							</div>
+						
 						</div>
 						
-						<div id="event-update" class="tab-pane fade">
+						<div id="guide-update" class="tab-pane fade">
+						
 							<div class="panel panel-default">
-								<div class="panel-heading">Edit events</div>
+								<div class="panel-heading">Refresh an existing guide</div>
 								<div class="panel-body">
-									<p>only edits the first item</p>
-									eventChecked.events: {{eventChecked.events | json}}<br>
-									current selection: <br>
-								</div>
+									<!--guideChecked.guides: {{guideChecked.guides | json}}<br>-->
+									<p>You are editing: {{currentGuideName}} {{guideChecked.guides | json}}</p>
+									<!--<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
+									<!--<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>								-->
+									<form name="guideEditForm"
+										  sf-schema="gEditSchema"
+										  sf-form="gEditForm"
+										  sf-model="gEditModel"
+										  ng-submit="onSubmit(guideEditForm)">
+									</form>
+									<!--<p>{{gEditModel}}</p>-->
+								</div>							
+								<!--<div class="panel-body">-->
+								<!--	<p>only edits the first item</p>-->
+								<!--	guideChecked.guides: {{guideChecked.guides | json}}<br>-->
+								<!--	current selection: {{currentGuideName}}<br>-->
+								<!--	<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
+								<!--	<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>-->
+								<!--</div>-->
 							</div>
+							
 						</div>
 						
-						<div id="event-delete" class="tab-pane fade">
+						<div id="guide-delete" class="tab-pane fade">
 							<div class="panel panel-default">
-								<div class="panel-heading">Delete events</div>
+								<div class="panel-heading">Delete Guides</div>
 								<div class="panel-body">
 									<p>check items to delete</p>
-									eventChecked.events {{eventChecked.events | json}}<br>
-									<button type="button" class="btn btn-default" ng-click="deleteEvent()">Delete event</button>
+									guideChecked.guides {{guideChecked.guides | json}}<br>
+									<button type="button" class="btn btn-danger" ng-click="deleteGuide()">Delete Guide</button>
 								</div>
 							</div>
-						</div>
-						
+						</div>        
+					</div>
 					</div>
 				</div>
-			</div>
-			
-			<div id="map" class="tab-pane fade" ng-controller="mapAll">
-				<div class="col-md-2">
-					<ul class="nav nav nav-tabs tabs-left">				
-						<li class="active"><a data-toggle="tab" href="#map-create">Add maps</a></li>
-						<li><a data-toggle="tab" href="#map-read">View maps</a></li>
-						<li><a data-toggle="tab" href="#map-update" ng-click="onMapEditClick()">Edit maps</a></li>
-						<li><a data-toggle="tab" href="#map-delete">Delete maps</a></li>
-					</ul>
-				</div>
-				<div class="col-md-10">
-					<div class="tab-content">
-					
-						<div id="map-create" class="tab-pane fade in active">
+				
+				<div id="event" class="tab-pane fade" ng-controller="eventAll">
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">
+							<li class="active"><a data-toggle="tab" href="#event-create">Add event</a></li>
+							<li><a data-toggle="tab" href="#event-read">View events</a></li>
+							<li><a data-toggle="tab" href="#event-update" ng-click="onEventEditClick()">Edit events</a></li>
+							<li><a data-toggle="tab" href="#event-delete">Delete events</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10">
+						<div class="tab-content">
 						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add one map <a href="https://my-awesome-project-6dd85.firebaseapp.com/CampusMap2/">Campus Map</a></div>
-								<div class="panel-body">
-								
-									<form novalidate name="formMapCreate" ng-submit="createMap(formMapCreate)" class="form-horizontal">
+							<div id="event-create" class="tab-pane fade in active">
+		
+								<div class="panel panel-default">
+									<div class="panel-heading">Add one event</div>
+									<div class="panel-body">
+										<form novalidate name="formEventCreate" class="form-horizontal">
+										
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" class="form-control" ng-model="eventTitle" id="event_title" placeholder="Enter title" name="event_title" ng-required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+		
+												<label class="col-md-12" for="relateTo">This event relates to?</label>
+											
+												<div class="col-md-6">
+													
+													<label class="radio-inline">
+														<input type="radio" id="relateTo" ng-model="rel.event" value="general" ng-click="onEventRelSelect('general')">General Event
+													</label>
+													
+													<label class="radio-inline">
+														<input type="radio" id="relateTo" ng-model="rel.event" value="unit" ng-click="onEventRelSelect('unit')">Unit (class/schedule/timetable)
+													</label>
+													
+													<label class="radio-inline">
+														<input type="radio" id="relateTo" ng-model="rel.event" value="club" ng-click="onEventRelSelect('club')">Club Events
+													</label>
+												
+												</div>
+											
+											</div>
+											
+											<div class="form-group" ng-if="rel.event == 'unit' || rel.event == 'club'">
+											
+												<div class="col-md-4">
+													<label>Choose from the list of {{rel.event}}</label>
+													<select class="form-control" size="4" ng-model="choose.selectedEventId" ng-options="c.name for c in sel" ng-required="required">
+													</select>
+												</div>
+												{{choose.selectedEventId.$id}}
+											</div>
+											<hr>
+											<div class="form-group">
+												<div class="col-md-4">
+													<p>Pick date(s)</p>
+												
+													<div class='btn-group'>
+														<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
+														<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+													</div>
+													
+													<p ng-if="pickMode=='indi'">Choose any dates for this event</p>
+													<p ng-if="pickMode=='range'">Choose a range of dates for this event</p>
+													
+													<div 
+														uib-datepicker
+														ng-model="activeDate"
+														multi-select="selectedDates"
+														select-range="{{pickMode=='range'}}"
+														datepicker-options="dateOptions"></div>
+												</div>
+												
+												<div class="col-md-5">
+													
+													<div ng-if="pickMode=='indi'">
+														Selected Dates:
+														<div class="well well-sm">
+															<div ng-repeat="d in selectedDates | orderBy">
+																{{d | date : 'fullDate'}}
+																<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+															</div>
+														</div>
+													</div>
+													
+													<div ng-if="pickMode=='range'">
+														Selected Dates:
+														<div class="well well-sm">
+															{{(selectedDates | orderBy)[0] | date:"fullDate"}}
+															<span ng-if="selectedDates.length > 1">
+																- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
+															</span>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+											<hr>
+											<div class="form-group">
+												<div class="col-md-5">
+													<p>Pick a time (numbers are scrollable)</p>
+													<div uib-timepicker ng-model="eventTimeRange.start" hour-step="1" minute-step="1" show-meridian="true"></div>
+													
+													<button type="button" class="btn btn-default" ng-click="toggleDuration()" ng-if="!duration">Set end time</button>
+													
+													<div ng-if="duration">
+														<p>End time</p>
+														<div uib-timepicker ng-model="eventTimeRange.end" hour-step="1" minute-step="1" show-meridian="true"></div>
+														
+														<button type="button" class="btn btn-default" ng-click="toggleDuration()">Cancel</button>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" class="form-control" ng-model="eventLocation" id="event_location" placeholder="Enter location" name="event_location">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-5">
+													<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<div class="checkbox">
+														<label><input type="checkbox" ng-model="eventNote" id="event_notification" name="event_notification">Push notification?</label>
+													</div>
+												</div>
+											</div>
+											
+											<div class="form-group" ng-if="eventNote">
+												<div class="col-md-4">
+													<label>Choose the time to notify</label>
+													<div uib-timepicker ng-model="eventTimestart.note" hour-step="1" minute-step="1" show-meridian="true"></div>
+													</select>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<div class="checkbox">
+														<label><input type="checkbox" ng-model="gotGuide" id="event_guide_rel" name="event_guide_rel">Select Related Guide?</label>
+													</div>
+												</div>
+											</div>
+											
+											
+											<div class="form-group" ng-if="gotGuide">
+												<div class="col-md-4">
+													<label>Choose from the list of guides</label>
+													<select class="form-control" size="4" ng-model="chooseGuide.selectedGuideId" ng-options="g.name for g in listGuide" ng-required="required">
+													</select>
+												</div>
+												{{chooseGuide.selectedGuideId.$id}}
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<button type="button" class="btn btn-default" ng-click="createEvent()">Add Event</button>
+												</div>
+											</div>
+										
+										</form>
 									
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="text" ng-model="mapCode" class="form-control" id="map_code" placeholder="Enter code" name="map_code" required="required">
+									
+									</div>
+								</div>
+								
+							</div>
+							
+							<div id="event-read" class="tab-pane fade">
+								<div class="panel panel-default">
+									<div class="panel-heading">View events</div>
+									<div class="panel-body">
+										
+										<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate'}}</em></pre>
+										
+										<div uib-datepicker ng-model="viewDateSelect"></div>
+										
+										<input type="text" ng-model="eventFil" placeholder="currently cannot filter dates" />
+										
+										<table class="table" id="tableViewEvent">
+											<tr>
+												<th>Title</th>
+												<th>Date</th>
+												<th>Time</th>
+												<th>Relation</th>
+											</tr>
+											<tr ng-repeat="ev in viewEvent | filter: eventFil">
+												<td>
+													<input type="checkbox" checklist-model="eventChecked.events" checklist-value="ev.$id" id="{{ev.$id}}" ng-disabled="!checked && eventChecked.events.length == 1">
+													<label for="{{ev.$id}}">{{ev.title}}</label>
+												</td>
+												<td>
+													<strong>{{ev.datealt}}</strong>
+												</td>
+												<td>
+													<strong>{{ev.time}}</strong>
+												</td>
+												<td>
+													<strong>{{ev.relateTo}}</strong>
+												</td>
+											</tr>
+										</table>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div id="event-update" class="tab-pane fade">
+								<div class="panel panel-default">
+									<div class="panel-heading">Edit events</div>
+									<div class="panel-body">
+										<p>only edits the first item</p>
+										eventChecked.events: {{eventChecked.events | json}}<br>
+										current selection: <br>
+									</div>
+								</div>
+							</div>
+							
+							<div id="event-delete" class="tab-pane fade">
+								<div class="panel panel-default">
+									<div class="panel-heading">Delete events</div>
+									<div class="panel-body">
+										<p>check items to delete</p>
+										eventChecked.events {{eventChecked.events | json}}<br>
+										<button type="button" class="btn btn-default" ng-click="deleteEvent()">Delete event</button>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div id="map" class="tab-pane fade" ng-controller="mapAll">
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">				
+							<li class="active"><a data-toggle="tab" href="#map-create">Add maps</a></li>
+							<li><a data-toggle="tab" href="#map-read">View maps</a></li>
+							<li><a data-toggle="tab" href="#map-update" ng-click="onMapEditClick()">Edit maps</a></li>
+							<li><a data-toggle="tab" href="#map-delete">Delete maps</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10">
+						<div class="tab-content">
+						
+							<div id="map-create" class="tab-pane fade in active">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Add one map <a href="https://my-awesome-project-6dd85.firebaseapp.com/CampusMap2/">Campus Map</a></div>
+									<div class="panel-body">
+									
+										<form novalidate name="formMapCreate" ng-submit="createMap(formMapCreate)" class="form-horizontal">
+										
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" ng-model="mapCode" class="form-control" id="map_code" placeholder="Enter code" name="map_code" required="required">
+												</div>
 											</div>
-										</div>
-	
-	
-										<div class="form-group">
-											<div class="col-md-5">
-												<input type="text" ng-model="mapName" class="form-control" id="map_name" placeholder="Enter name" name="map_name" required="required">
+		
+		
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapName" class="form-control" id="map_name" placeholder="Enter name" name="map_name" required="required">
+												</div>
 											</div>
-										</div>
-	
-										<div class="form-group">
-											<div class="col-md-5">
-												<input type="text" ng-model="mapDescriptionheader" class="form-control" id="map_descriptionheader" placeholder="Enter header name" name="map_descriptionheader" required="required">
+		
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapDescriptionheader" class="form-control" id="map_descriptionheader" placeholder="Enter header name" name="map_descriptionheader" required="required">
+												</div>
 											</div>
+<<<<<<< HEAD
 										</div>
 	
 										<div class="form-group">
@@ -575,333 +461,457 @@
 										<div class="form-group">
 											<div class="col-md-3">
 												<input type="submit" class="btn btn-default" value="Add map" />
+=======
+		
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapDescription" class="form-control" id="map_description" placeholder="Enter description" name="map_descriptionheader" required="required">
+												</div>
+>>>>>>> ae848029b7da86870afa9b9d2891f5de0ab1a34a
 											</div>
-										</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapLevel" class="form-control" id="map_level" placeholder="Enter level" name="map_level" required="required">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapCategory" class="form-control" id="map_category" placeholder="Enter category" name="map_category" required="required">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapSpace" class="form-control" id="map_space" placeholder="Enter space" name="map_space" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="submit" class="btn btn-default" value="Add map" />
+												</div>
+											</div>
+										
+										</form>
+									</div>
+								</div>
 									
-									</form>
-								</div>
 							</div>
 						
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add multiple maps</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-								
-						</div>
-					
-						<div id="map-read" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">View maps</div>
-								<div class="panel-body">
-									<table class="table" id="tableViewMap">
-										<tr>
-											<th>Code</th>
-											<th>Name</th>
-											<th>Header</th>
-											<th>Description</th>
-											<th>Level</th>
-											<th>Category</th>
-											<th>Space</th>
-										</tr>
-										<tr ng-repeat="u in maps">
-											<td>
-												<input type="checkbox" checklist-model="mapChecked.maps" checklist-value="u.$id" id="{{u.$id}}">
-												<label for="{{u.$id}}">{{u.code}}</label>
-											</td>
-											<td>
-												<strong>{{u.name}}</strong>
-											</td>
-											<td>
-												<strong>{{u.descriptionheader}}</strong>
-											</td>
-											<td>
+							<div id="map-read" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">View maps</div>
+									<div class="panel-body">
+										<table class="table" id="tableViewMap">
+											<tr>
+												<th>Code</th>
+												<th>Name</th>
+												<th>Header</th>
+												<th>Description</th>
+												<th>Level</th>
+												<th>Category</th>
+												<th>Space</th>
+											</tr>
+											<tr ng-repeat="u in maps">
+												<td>
+													<input type="checkbox" checklist-model="mapChecked.maps" checklist-value="u.$id" id="{{u.$id}}" ng-disabled="!checked && mapChecked.maps.length == 1">
+													<label for="{{u.$id}}">{{u.code}}</label>
+												</td>
+												<td>
+													<strong>{{u.name}}</strong>
+												</td>
+												<td>
+													<strong>{{u.descriptionheader}}</strong>
+												</td>
+												<td>
 													<strong>{{u.description}}</strong>
-											</td>
-											<td>
-												<strong>{{u.level}}</strong>
-											</td>
-											<td>
-												<strong>{{u.category}}</strong>
-											</td>
-											<td>
-												<strong>{{u.space}}</strong>
-										    </td>
-										</tr>
-									</table>
-									mapChecked.maps {{mapChecked.maps | json}}
+												</td>
+												<td>
+													<strong>{{u.level}}</strong>
+												</td>
+												<td>
+													<strong>{{u.category}}</strong>
+												</td>
+												<td>
+													<strong>{{u.space}}</strong>
+												</td>
+											</tr>
+										</table>
+										mapChecked.maps {{mapChecked.maps | json}}
+									</div>
 								</div>
+								
+								<div id="Iframe-Master-CC-and-Rs" class="set-margin set-padding set-border set-box-shadow center-block-horiz">
+									<div class="responsive-wrapper 
+									   responsive-wrapper-wxh-572x612"
+									   style="-webkit-overflow-scrolling: touch; overflow: auto;">
+								  
+									  <iframe src="/CampusMap2/"></iframe>
+									</div>
+								</div>
+								
 							</div>
 							
-							<div id="Iframe-Master-CC-and-Rs" class="set-margin set-padding set-border set-box-shadow center-block-horiz">
-								<div class="responsive-wrapper 
-								   responsive-wrapper-wxh-572x612"
-								   style="-webkit-overflow-scrolling: touch; overflow: auto;">
-							  
-								  <iframe src="/CampusMap2/"></iframe>
-								</div>
-							</div>
+							<div id="map-update" class="tab-pane fade">
 							
-						</div>
-						
-						<div id="map-update" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Edit maps</div>
-								<div class="panel-body">
-									<p>only edits the first item</p>
-									mapChecked.maps: {{mapChecked.maps | json}}<br>
-									current selection: {{currentMapCode}} {{currentMapName}}<br>
-									<input type="text" ng-model="newMapCode" placeholder="Enter Code">
-									<input type="text" ng-model="newMapName" placeholder="Enter Name">
-									<input type="text" ng-model="newMapDescription" placeholder="Enter description">
-									<input type="text" ng-model="newMapDescriptionheader" placeholder="Enter Header">
-									<input type="text" ng-model="newMapLevel" placeholder="Enter Level">
-									<input type="text" ng-model="newMapCategory" placeholder="Enter Category">
-									<input type="text" ng-model="newMapSpace" placeholder="Enter Space">
+								<div class="panel panel-default">
+									<div class="panel-heading">Edit maps</div>
+									<div class="panel-body">
+										<p>only edits the first item</p>
+										mapChecked.maps: {{mapChecked.maps | json}}<br>
+										current selection: {{currentMapCode}} {{currentMapName}}<br>
+										<input type="text" ng-model="newMapCode" placeholder="Enter Code">
+										<input type="text" ng-model="newMapName" placeholder="Enter Name">
+										<input type="text" ng-model="newMapDescription" placeholder="Enter description">
+										<input type="text" ng-model="newMapDescriptionheader" placeholder="Enter Header">
+										<input type="text" ng-model="newMapLevel" placeholder="Enter Level">
+										<input type="text" ng-model="newMapCategory" placeholder="Enter Category">
+										<input type="text" ng-model="newMapSpace" placeholder="Enter Space">
+		
 	
-
-									<button type="button" class="btn btn-default" ng-click="updateMap()">Update map</button>
+										<button type="button" class="btn btn-default" ng-click="updateMap()">Update map</button>
+									</div>
 								</div>
+								
 							</div>
 							
-						</div>
+							<div id="map-delete" class="tab-pane fade">
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">Delete maps</div>
+									<div class="panel-body">
+										<p>check items to delete</p>
+										mapChecked.maps {{mapChecked.maps | json}}<br>
+										<button type="button" class="btn btn-default" ng-click="deleteMap()">Delete map</button>
+									</div>
+								</div>
+								
+							</div>
 						
-						<div id="map-delete" class="tab-pane fade">
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">Delete maps</div>
-								<div class="panel-body">
-									<p>check items to delete</p>
-									mapChecked.maps {{mapChecked.maps | json}}<br>
-									<button type="button" class="btn btn-default" ng-click="deleteMap()">Delete map</button>
-								</div>
-							</div>
-							
 						</div>
-					
 					</div>
 				</div>
-			</div>
-			
-			
-
-			<div id="unit" class="tab-pane fade" ng-controller="unitAll">
-				<div class="col-md-2">
-					<ul class="nav nav nav-tabs tabs-left">			
-						<li class="active"><a data-toggle="tab" href="#unit-create">Add units</a></li>
-						<li><a data-toggle="tab" href="#unit-read">View units</a></li>
-						<li><a data-toggle="tab" href="#unit-update" ng-click="onUnitEditClick()">Edit units</a></li>
-						<li><a data-toggle="tab" href="#unit-delete">Delete units</a></li>
-					</ul>
-				</div>
-				<div class="col-md-10">
-					<div class="tab-content">
-					
-						<div id="unit-create" class="tab-pane fade in active">
+				
+				
+	
+				<div id="unit" class="tab-pane fade" ng-controller="unitAll">
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">			
+							<li class="active"><a data-toggle="tab" href="#unit-create">Add units</a></li>
+							<li><a data-toggle="tab" href="#unit-read">View units</a></li>
+							<li><a data-toggle="tab" href="#unit-update" ng-click="onUnitEditClick()">Edit units</a></li>
+							<li><a data-toggle="tab" href="#unit-delete">Delete units</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10">
+						<div class="tab-content">
 						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add one unit</div>
-								<div class="panel-body">
-								
-									<form novalidate name="formUnitCreate" ng-submit="createUnit(formUnitCreate)" class="form-horizontal">
+							<div id="unit-create" class="tab-pane fade in active">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Add one unit</div>
+									<div class="panel-body">
 									
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="text" ng-model="unitCode" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
-											</div>
-										</div>
-	
-	
-										<div class="form-group">
-											<div class="col-md-5">
-												<input type="text" ng-model="unitName" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
-											</div>
-										</div>
+										<form novalidate name="formUnitCreate" ng-submit="createUnit(formUnitCreate)" class="form-horizontal">
 										
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="submit" class="btn btn-default" value="Add unit" />
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" ng-model="unitCode" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
+												</div>
 											</div>
-										</div>
-									
-									</form>
-								</div>
-							</div>
-						
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add multiple units</div>
-								<div class="panel-body">
-									<p>put something</p>
-								</div>
-							</div>
-								
-						</div>
-					
-						<div id="unit-read" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">View units</div>
-								<div class="panel-body">
-									<table class="table" id="tableViewUnit">
-										<tr>
-											<th>Code</th>
-											<th>Name</th>
-										</tr>
-										<tr ng-repeat="u in units">
-											<td>
-												<input type="checkbox" checklist-model="unitChecked.units" checklist-value="u.$id" id="{{u.$id}}">
-												<label for="{{u.$id}}">{{u.code}}</label>
-											</td>
-											<td>
-												<strong>{{u.name}}</strong>
-											</td>
-										</tr>
-									</table>
-									unitChecked.units {{unitChecked.units | json}}
-								</div>
-							</div>
-							
-						</div>
-						
-						<div id="unit-update" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Edit units</div>
-								<div class="panel-body">
-									<p>only edits the first item</p>
-									unitChecked.units: {{unitChecked.units | json}}<br>
-									current selection: {{currentUnitCode}} {{currentUnitName}}<br>
-									<input type="text" ng-model="newUnitCode" placeholder="Enter Code">
-									<input type="text" ng-model="newUnitName" placeholder="Enter Name">
-									<button type="button" class="btn btn-default" ng-click="updateUnit()">Update unit</button>
-								</div>
-							</div>
-							
-						</div>
-						
-						<div id="unit-delete" class="tab-pane fade">
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">Delete units</div>
-								<div class="panel-body">
-									<p>check items to delete</p>
-									unitChecked.units {{unitChecked.units | json}}<br>
-									<button type="button" class="btn btn-default" ng-click="deleteUnit()">Delete unit</button>
-								</div>
-							</div>
-							
-						</div>
-					
-					</div>
-				</div>
-			</div>
-			
-			<div id="club" class="tab-pane fade" ng-controller="clubAll">
-				<div class="col-md-2">
-					<ul class="nav nav nav-tabs tabs-left">			
-						<li class="active"><a data-toggle="tab" href="#club-create">Add clubs</a></li>
-						<li><a data-toggle="tab" href="#club-read">View clubs</a></li>
-						<li><a data-toggle="tab" href="#club-update" ng-click="onClubEditClick()">Edit clubs</a></li>
-						<li><a data-toggle="tab" href="#club-delete">Delete clubs</a></li>
-					</ul>
-				</div>
-				<div class="col-md-10">
-					<div class="tab-content">
-					
-						<div id="club-create" class="tab-pane fade in active">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add one club</div>
-								<div class="panel-body">
-								
-									<form novalidate name="formClubCreate" ng-submit="createClub(formClubCreate)" class="form-horizontal">
-	
-										<div class="form-group">
-											<div class="col-md-4">
-												<input type="text" class="form-control" ng-model="clubName" id="club_name" placeholder="Enter name" name="club_name" required="required">
+		
+		
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="unitName" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
+												</div>
 											</div>
-										</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="submit" class="btn btn-default" value="Add unit" />
+												</div>
+											</div>
 										
-										<div class="form-group">
-											<div class="col-md-3">
-												<input type="submit" class="btn btn-default" value="Add club" />
-											</div>
-										</div>
+										</form>
+									</div>
+								</div>
 									
-									</form>
-								</div>
 							</div>
 						
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Add multiple clubs</div>
-								<div class="panel-body">
-									<p>put something</p>
+							<div id="unit-read" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">View units</div>
+									<div class="panel-body">
+										<table class="table" id="tableViewUnit">
+											<tr>
+												<th>Code</th>
+												<th>Name</th>
+											</tr>
+											<tr ng-repeat="u in units">
+												<td>
+													<input type="checkbox" checklist-model="unitChecked.units" checklist-value="u.$id" id="{{u.$id}}" ng-disabled="!checked && unitChecked.units.length == 1">
+													<label for="{{u.$id}}">{{u.code}}</label>
+												</td>
+												<td>
+													<strong>{{u.name}}</strong>
+												</td>
+											</tr>
+										</table>
+										unitChecked.units {{unitChecked.units | json}}
+									</div>
 								</div>
-							</div>
-						
-						</div>
-						
-						<div id="club-read" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">View clubs</div>
-								<div class="panel-body">
-									<table class="table" id="tableViewClub">
-										<tr>
-											<th>Name</th>
-										</tr>
-										<tr ng-repeat="c in clubs">
-											<td>
-												<input type="checkbox" checklist-model="clubChecked.clubs" checklist-value="c.$id" id="{{c.$id}}">
-												<label for="{{c.$id}}">{{c.name}}</label>
-											</td>
-										</tr>
-									</table>
-									clubChecked.clubs {{clubChecked.clubs | json}}
-								</div>
-							</div>
-						
-						</div>
-						
-						<div id="club-update" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Edit clubs</div>
-								<div class="panel-body">
-									<p>only edits the first item</p>
-									clubChecked.clubs: {{clubChecked.clubs | json}}<br>
-									current selection: {{currentClubName}}<br>
-									<input type="text" ng-model="newClubName" placeholder="Enter name">
-									<button type="button" class="btn btn-default" ng-click="updateClub()">Update club</button>
-								</div>
+								
 							</div>
 							
-						</div>
-						
-						<div id="club-delete" class="tab-pane fade">
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">Delete clubs</div>
-								<div class="panel-body">
-									<p>check items to delete</p>
-									clubChecked.clubs {{clubChecked.clubs | json}}<br>
-									<button type="button" class="btn btn-danger" ng-click="deleteClub()">Delete club</button>
+							<div id="unit-update" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Edit units</div>
+									<div class="panel-body">
+										<p>only edits the first item</p>
+										unitChecked.units: {{unitChecked.units | json}}<br>
+										current selection: {{currentUnitCode}} {{currentUnitName}}<br>									
+										<form novalidate name="formUnitEdit" ng-submit="updateUnit(formUnitEdit)" class="form-horizontal">
+										
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" ng-model="currentUnitCode" class="form-control" id="unit_code" placeholder="Enter code" name="unit_code" required="required">
+												</div>
+											</div>
+		
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="currentUnitName" class="form-control" id="unit_name" placeholder="Enter name" name="unit_name" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="submit" class="btn btn-default" value="Update unit" />
+												</div>
+											</div>
+										</form>								
+	
+	<!--									<input type="text" ng-model="currentUnitCode" placeholder="Enter Code"></input>
+										<input type="text" ng-model="currentUnitName" placeholder="Enter Name"></input>
+										<button type="button" class="btn btn-default" ng-click="updateUnit()">Update unit</button>-->
+									</div>
 								</div>
+								
 							</div>
 							
-						</div>
+							<div id="unit-delete" class="tab-pane fade">
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">Delete units</div>
+									<div class="panel-body">
+										<p>check items to delete</p>
+										unitChecked.units {{unitChecked.units | json}}<br>
+										<button type="button" class="btn btn-default" ng-click="deleteUnit()">Delete unit</button>
+									</div>
+								</div>
+								
+							</div>
 						
+						</div>
 					</div>
 				</div>
+				
+				<div id="club" class="tab-pane fade" ng-controller="clubAll">
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">			
+							<li class="active"><a data-toggle="tab" href="#club-create">Add clubs</a></li>
+							<li><a data-toggle="tab" href="#club-read">View clubs</a></li>
+							<li><a data-toggle="tab" href="#club-update" ng-click="onClubEditClick()">Edit clubs</a></li>
+							<li><a data-toggle="tab" href="#club-delete">Delete clubs</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10">
+						<div class="tab-content">
+						
+							<div id="club-create" class="tab-pane fade in active">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Add one club</div>
+									<div class="panel-body">
+									
+										<form novalidate name="formClubCreate" ng-submit="createClub(formClubCreate)" class="form-horizontal">
+		
+											<div class="form-group">
+												<div class="col-md-4">
+													<input type="text" class="form-control" ng-model="clubName" id="club_name" placeholder="Enter name" name="club_name" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="submit" class="btn btn-default" value="Add club" />
+												</div>
+											</div>
+										
+										</form>
+									</div>
+								</div>
+							
+							</div>
+							
+							<div id="club-read" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">View clubs</div>
+									<div class="panel-body">
+										<table class="table" id="tableViewClub">
+											<tr>
+												<th>Name</th>
+											</tr>
+											<tr ng-repeat="c in clubs">
+												<td>
+													<input type="checkbox" checklist-model="clubChecked.clubs" checklist-value="c.$id" id="{{c.$id}}" ng-disabled="!checked && clubChecked.clubs.length == 1">
+													<label for="{{c.$id}}">{{c.name}}</label>
+												</td>
+											</tr>
+										</table>
+										clubChecked.clubs {{clubChecked.clubs | json}}
+									</div>
+								</div>
+							
+							</div>
+							
+							<div id="club-update" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Edit clubs</div>
+									<div class="panel-body">
+										<p>only edits the first item</p>
+										clubChecked.clubs: {{clubChecked.clubs | json}}<br>
+										current selection: {{currentClubName}}<br>
+										<input type="text" ng-model="currentClubName" placeholder="Enter name">
+										<button type="button" class="btn btn-default" ng-click="updateClub()">Update club</button>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div id="club-delete" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Delete clubs</div>
+									<div class="panel-body">
+										<p>check items to delete</p>
+										clubChecked.clubs {{clubChecked.clubs | json}}<br>
+										<button type="button" class="btn btn-danger" ng-click="deleteClub()">Delete club</button>
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div id="user" class="tab-pane fade">
+					
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">				
+							<li class="active"><a data-toggle="tab" href="#user-create">Add users</a></li>
+							<li><a data-toggle="tab" href="#user-read">View users</a></li>
+							<li><a data-toggle="tab" href="#user-update">Edit users</a></li>
+							<li><a data-toggle="tab" href="#user-delete">Delete users</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10">
+						<div class="tab-content">
+							
+							<div id="user-create" class="tab-pane fade in active">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Add one user</div>
+									<div class="panel-body">
+									
+										<form class="form-horizontal">
+										
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<label for="user_role">Select role of user</label>
+													<select class="form-control" name="user_role" size="1" id="user_role" required="required">
+														<option value="1">admin (1)</option>
+														<option value="2">staff (2)</option>
+														<option value="3">club leader (3)</option>
+														<option value="4">student (4)</option>
+													</select>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>
+												</div>
+											</div>
+										
+										</form>
+									</div>
+								</div>
+							
+							</div>
+							
+							<div id="user-read" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">View users</div>
+									<div class="panel-body">
+										<p>put something</p>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div id="user-update" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Edit users</div>
+									<div class="panel-body">
+										<p>put something</p>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div id="user-delete" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Delete users</div>
+									<div class="panel-body">
+										<p>put something</p>
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				
+				</div>			
 			</div>
-	
-		</div>
 		</div>
 	</div>
 
