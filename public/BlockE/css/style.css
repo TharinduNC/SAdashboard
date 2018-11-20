@@ -4,6 +4,15 @@ ul {
     -moz-column-count:1;
 }
 
+@media #{$small-only} {
+	.mybutton {
+	  width:100%;
+	}
+	.button-container {
+	  text-align: center;
+	}
+  }
+
 svg{
 	background-image: none;
 
