@@ -51,7 +51,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	$scope.dateOptions = {
 		startingDay: 1,
 		customClass: function(data) {
-			if($scope.selectedDates.indexOf(data.date.setHours(0, 0, 0, 0)) > -1) {
+			if($scope.selectedDates.indexOf(data.date.setHours(0)) > -1) {
 				return 'selected';
 			}
 			return '';
@@ -279,14 +279,264 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		return date;
 	};
 	
-	//edit event
+	//update event
 	$scope.onEventEditClick = function()
 	{
 		if($scope.eventChecked.events.length == 1)
 		{
-			console.log("later");
+			var eventRef = firebase.database().ref("event/" + $scope.eventChecked.events[0]);
+			
+			eventRef.on('value', function(snapshot) {
+				var currentEvent = snapshot.val();
+				
+				$scope.currentEventDate = currentEvent.date;
+				$scope.currentEventDatealt = currentEvent.datealt;
+				$scope.currentEventDesc = currentEvent.desc;
+				$scope.currentEventGuiderel = currentEvent.guiderel;
+				$scope.currentEventLocation = currentEvent.location;
+				$scope.currentEventNote = currentEvent.note;
+				$scope.currentEventRelateTo = currentEvent.relateTo;
+				$scope.currentEventTime = currentEvent.time;
+				$scope.currentEventTimeNote = currentEvent.timenote;
+				$scope.currentEventTitle = currentEvent.title;
+				
+				console.log(currentEvent);
+			});
+			
+			$scope.rel.event = $scope.currentEventRelateTo.substring(0, 4);
+
+			$scope.onEventRelSelect($scope.rel.event);
+			
+			var strdate = $scope.currentEventDatealt.split("-");
+			
+			for(var i = 0; i < strdate.length; i++)
+			{
+				$scope.selectedDates.push(+strdate[i]);
+			}
+			
+			var strtime = $scope.currentEventTime.split("-");
+			
+			if(strtime[1] == null)
+			{
+				$scope.duration = false;
+				
+				var theDate = Date.parse("1970-01-02 " + strtime[0]);
+				
+				$scope.eventTimeRange.start = theDate;
+				$scope.eventTimeRange.end = theDate;
+				
+				console.log($scope.eventTimeRange.start);
+				console.log($scope.eventTimeRange.end);
+			}
+			else
+			{
+				$scope.duration = true;
+				
+				var theDate = Date.parse("1970-01-02 " + strtime[0]);
+				var theDate2 = Date.parse("1970-01-02 " + strtime[1]);
+				
+				$scope.eventTimeRange.start = theDate;
+				$scope.eventTimeRange.end = theDate2;
+			}
+			
+			if($scope.currentEventNote)
+			{
+				var theDate = Date.parse("1970-01-02 " + $scope.currentEventTimenote);
+				
+				$scope.eventTimestart.note = theDate;
+			}
+			
+			if($scope.currentEventGuiderel != "none")
+			{
+				$scope.gotGuide = false;
+			}
+			else
+			{
+				$scope.gotGuide = true;
+			}
+			
+		}
+		else
+		{
+			$scope.currentEventDate = null;
+			$scope.currentEventDatealt = "";
+			$scope.currentEventDesc = "";
+			$scope.currentEventGuiderel = "none";
+			$scope.currentEventLocation = "";
+			$scope.currentEventNote = false;
+			$scope.currentEventRelateto = "general/general";
+			$scope.currentEventTime = "";
+			$scope.currentEventTimeNote = "00:01";
+			$scope.currentEventTitle = "";
 		}
 	}
+	
+	$scope.updateEvent = function()
+	{
+		
+		var relrel = $scope.choose.selectedEventId.$id;
+		var relrelguide = $scope.chooseGuide.selectedGuideId.$id;
+		
+		//needed for validation purposes
+		var valid = true;
+		var errMsg = "";
+		
+		if($scope.currentEventTitle == "")
+		{
+			valid = false;
+			errMsg = errMsg + "missing title\n"
+		}
+		
+		if($scope.rel.event == 'general' || $scope.rel.event == undefined || $scope.rel.event == null)
+		{
+			relrel = 'general';
+		}
+		
+		if(relrel === undefined && $scope.currentEventRelateTo.length > 10)
+		{
+			valid = false;
+			errMsg = errMsg + "choose a related club or unit\n"
+		}
+		
+		//changes array of date to object of dates
+		//no point running this code if there is no date selected
+		if($scope.selectedDates.length > 0)
+		{
+			var selectedDateStrRep = "{";
+			var i;
+			
+			for(i in $scope.selectedDates)
+			{
+				if(!(i == $scope.selectedDates.length - 1))
+				{
+					selectedDateStrRep = selectedDateStrRep + '\"' + $scope.selectedDates[i] + '\"' + ':' + 'true,';
+					$scope.currentEventDatealt = $scope.currentEventDatealt + $scope.selectedDates[i] + "-";
+				}
+				else
+				{
+					selectedDateStrRep = selectedDateStrRep +'\"' + $scope.selectedDates[i] + '\"' + ':' + 'true';
+					$scope.currentEventDatealt = $scope.currentEventDatealt + $scope.selectedDates[i];
+				}
+			}
+			
+			selectedDateStrRep = selectedDateStrRep + '}';
+			
+			$scope.currentEventDate = JSON.parse(selectedDateStrRep);
+			
+		}
+		else
+		{
+			valid = false;
+			errMsg = errMsg + "date not selected\n"
+		}
+		
+		
+		//time to string
+		//for addition of the 0 in time with minutes below 10
+		var tempO = "";
+		var tempO2 = "";
+		
+		//time reassignment later to keep the variable of type date time
+		var timeStart = $scope.eventTimeRange.start;
+		var timeEnd = $scope.eventTimeRange.end;
+		
+		if(!$scope.duration)
+		{
+			if(timeStart.getMinutes() < 10)
+			{
+				tempO = "0";
+			}
+			
+			$scope.currentEventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString();
+		}
+		else
+		{
+			errMsg = errMsg + timeStart + "\n" + timeEnd;
+			
+			if(timeEnd < timeStart)
+			{
+				valid = false;
+				errMsg = errMsg + "end time cannot be earlier that start time\n";
+			}
+			
+			if(timeEnd.getMinutes() < 10)
+			{
+				tempO2 = "0";
+			}
+			
+			$scope.currentEventTime = timeStart.getHours().toString() + ":" + tempO + timeStart.getMinutes().toString() + "-" + 
+								timeEnd.getHours().toString() + ":" + tempO2 + timeEnd.getMinutes().toString();
+		}
+		
+		if($scope.currentEventLocation == "")
+		{
+			$scope.eventLocation = "<no location given>";
+		}
+		
+		if($scope.currentEventDesc == "")
+		{
+			$scope.currentEventDesc = "<no description given>";
+		}
+		
+		
+		//check notification is checked
+		if($scope.currentEventNote)
+		{
+			var tempO3 = "";
+			var timeNote = $scope.eventTimestart.note;
+			
+			if(timeNote.getMinutes() < 10)
+			{
+				tempO3 = "0";
+			}
+			
+			$scope.currentEventTimeNote = timeNote.getHours().toString() + ":" + tempO3 + timeNote.getMinutes().toString();
+			
+		}
+		else
+		{
+			$scope.currentEventTimeNote = "00:01"
+		}
+
+		//check related guide is checked
+		if($scope.gotGuide)
+		{
+			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
+			{
+				errMsg = errMsg + "click on the related guide\n"
+			}
+		}
+		else
+		{
+			relrelguide = "none";
+		}
+		
+		if($scope.eventChecked.events.length == 1 && valid)
+		{
+			var updateEvent = {
+				date: $$scope.currentEventDate,
+				datealt: $scope.currentEventDatealt,
+				desc: $scope.currentEventDesc,
+				guiderel: relrelguide,
+				location: $scope.currentEventLocation,
+				note: $scope.currentEventNote,
+				relateTo: $scope.rel.event + "/" + relrel,
+				time: $scope.currentEventTime,
+				timenote: $scope.currentEventTimeNote,
+				title: $scope.currentEventTitle
+			};
+			
+			var updates = {};
+			updates['event/' + $scope.eventChecked.events[0]] = updatedEvent;
+			firebase.database().ref().update(updates);
+		}
+		else
+		{
+			window.alert(errMsg);
+			console.log($scope.selectedDates);
+			console.log($scope.eventDate);
+		}
+	};
 	
 	//delete event
 	$scope.deleteEvent = function()
