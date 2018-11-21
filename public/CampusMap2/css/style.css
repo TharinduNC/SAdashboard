@@ -509,8 +509,9 @@ button:focus {
 	color: #fff;
 	border: 0;
 	background: rgba(0, 0, 0, 0.1);
-	box-shadow: 0 5px #666;
-    transform: translateY(4px);
+	background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .boxbutton--dark {
