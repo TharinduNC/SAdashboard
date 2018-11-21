@@ -509,6 +509,8 @@ button:focus {
 	color: #fff;
 	border: 0;
 	background: rgba(0, 0, 0, 0.1);
+	box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .boxbutton--dark {
@@ -698,7 +700,7 @@ button:focus {
 	width: 300px;
 	min-height: 100vh;
 	padding: 5em 0 1em;
-	background: #fff;
+	background: #ffffffe0;;
 }
 
 .search {
