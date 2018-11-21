@@ -511,17 +511,17 @@ button:focus {
 	color: #fff;
 	border: 0;
 	background: rgba(0, 0, 0, 0.1);
-	background-color: #3e8e41;
+	background-color: rgba(255, 0, 0, 0.54);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
 .boxbutton--dark {
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(255, 0, 0, 0.54);
 }
 
 .boxbutton--darker {
-	background: #2c2c2f;
+	background: rgba(255, 0, 0, 0.54);
 }
 
 .boxbutton--alt {
@@ -703,7 +703,7 @@ button:focus {
 	width: 300px;
 	min-height: 100vh;
 	padding: 5em 0 1em;
-	background: #ffffffe0;;
+	background: rgba(239, 164, 164, 0.91);
 }
 
 .search {
