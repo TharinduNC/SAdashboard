@@ -91,7 +91,7 @@
 .icon-close {
 	position: absolute;
 	/* top: 20px; */
-	right: 20px;
+	right: -2px;
 }
 
 .icon-close:hover {
