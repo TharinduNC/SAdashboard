@@ -1008,21 +1008,26 @@ button:focus {
 .pin--1-17 { top: -2.5vmin; left: 91.5vmin; }
 
 /* Pins for floor 2 */
-.pin--2-1 { top: 41.5vmin; left: 22vmin; }
-.pin--2-2 { top: 36vmin; left: 0vmin; }
-.pin--2-3 { top: 21vmin; left: 84vmin; }
-.pin--2-4 { top: 36vmin;
-    left: 28vmin; }
+.pin--2-1 { top: 5.5vmin;
+    left: 71vmin; }
+.pin--2-2 { top: 5.5vmin;
+    left: 58vmin; }
+.pin--2-3 { top: 5.5vmin;
+    left: 46vmin; }
+.pin--2-4 {     top: 5.5vmin;
+    left: 37vmin; }
 /* Library */
-.pin--2-5 { top: 7vmin;
-    left: 51vmin; }
-.pin--2-6 { top: 46vmin; left: 0vmin; }
+.pin--2-5 { top: 18vmin;
+    left: 34vmin; }
+.pin--2-6 { top: 19vmin;
+    left: 4vmin; }
 .pin--2-7 { top: 34vmin; left: 37vmin; }
-.pin--2-8 { top: 52vmin; left: 74vmin; }
+.pin--2-8 { top: 24vmin;
+    left: 29vmin; }
 .pin--2-9 { top: 63vmin;
     left: 57vmin; }
-.pin--2-10 { top: 64vmin;
-    left: 6vmin; }
+.pin--2-10 { top: 29vmin;
+    left: 3vmin; }
 .pin--2-11 { top: 14vmin;
     left: 43vmin; }
 .pin--2-12 { top: 2vmin;
@@ -1035,40 +1040,46 @@ button:focus {
 .pin--2-16 { top: 55vmin; left: 38vmin; }
 
 /* Pins for floor 3 */
-.pin--3-1 { top: 2vmin;
-    left: 8vmin; } /* Design Lab A201 */
-.pin--3-2 { top: 9vmin;
-    left: 8vmin; } /*Design Lab2 A202 */
-.pin--3-3 { top: 2vmin;
-    left: 25vmin; } /* Comp Lab */
-.pin--3-4 { top: 7vmin;
-    left: 23vmin; } /* Open Lab 1*/
-.pin--3-5 { top: 2vmin;
-    left: 42vmin; } /* Open Lab 2 */
-.pin--3-6 { top: 2vmin;
-    left: 57vmin; } /* Open Lab 3 */
-.pin--3-7 { top: 10.5vmin;
-    left: 42vmin; } /* Open Lab 4 */
-.pin--3-8 { top: 10.5vmin;
-    left: 57vmin; } /* Research Room A213 */
-.pin--3-9 { top: 0vmin; left: 71vmin; } /* A215 */
-.pin--3-11 { top: 11vmin;
-	left: 83vmin; } /* A216*/
+.pin--3-1 { top: 6vmin;
+    left: 75vmin; } /* Design Lab A201 */
+.pin--3-2 { top: 6vmin;
+    left: 71vmin; } /*Design Lab2 A202 */
+.pin--3-3 { top: 6vmin;
+    left: 65vmin; } /* Comp Lab */
+.pin--3-4 { top: 6vmin;
+    left: 60.5vmin; } /* Open Lab 1*/
+.pin--3-5 { top: 6vmin;
+    left: 55vmin; } /* Open Lab 2 */
+.pin--3-6 { top: 6vmin;
+    left: 50vmin; } /* Open Lab 3 */
+.pin--3-7 {top: 6vmin;
+    left: 45vmin; } /* Open Lab 4 */
+.pin--3-8 { top: 6vmin;
+    left: 40vmin; } /* Research Room A213 */
+.pin--3-9 { top: 6vmin; left: 35vmin; } /* A215 */
+
+.pin--3-10 {  top: 19vmin;
+    left: 36vmin; } /* A215 */
+
+.pin--3-11 { top: 19vmin;
+    left: 2vmin; } /* A216*/
 	
-.pin--3-12 { top: 10.1vmin;
-	left: 71vmin; } /* A214 */
+.pin--3-12 { top: 23.5vmin;
+    left: 30vmin; } /* A214 */
 	
-.pin--3-13 { top: 38vmin;
-    left: 13vmin; } /* A216 */
-.pin--3-14 { top: 0vmin; left: 76.5vmin; } /* A216 */
-.pin--3-15 { top: 0vmin; left: 84.5vmin; } /* A216 */
-.pin--3-16 { top: 31vmin;
-    left: 25vmin; } /* A216 */
-.pin--3-17 { top: 24.5vmin;
-	left: 33vmin; } /* A216 */
+.pin--3-13 {     top: 29vmin;
+    left: 2vmin; } /* A216 */
+.pin--3-14 { top: 40vmin;
+    left: 1.5vmin; } /* A216 */
+.pin--3-15 { top: 42.8vmin;
+    left: 29.5vmin; } /* A216 */
+.pin--3-16 { top: 51vmin;
+    left: 2vmin;} /* A216 */
+.pin--3-17 { top: 54.5vmin;
+    left: 19vmin; } /* A216 */
 	
-.pin--3-18 { top: 25.5vmin;
-	left: 44.5vmin; } /* b203 */
+.pin--3-18 { top: 50vmin;
+    left: 29.5vmin; } /* b203 */
 	
 .pin--3-19 { top: 28vmin; left: 44.5vmin; } /* A216 */
 .pin--3-20 { top: 30.5vmin;
