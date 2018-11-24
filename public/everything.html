@@ -34,7 +34,9 @@
 	<link rel="stylesheet" href="css/themes/default.css">
 	<link rel="stylesheet" href="css/themes/default.date.css">  
 	<link rel="stylesheet" href="css/bootstrap.vertical-tabs.min.css">
-	<link rel="stylesheet" href="css/iframe.css">	
+	<link rel="stylesheet" href="css/datePicker.css">
+	
+	<!--<link rel="stylesheet" href="css/iframe.css">-->
 	<style>
         * {
             margin: 0;
@@ -357,6 +359,8 @@
 												<th>Date</th>
 												<th>Time</th>
 												<th>Relation</th>
+												<th>Location</th>
+												<th>Notification</th>
 											</tr>
 											<tr ng-repeat="ev in viewEvent | filter: eventFil">
 												<td>
@@ -372,6 +376,12 @@
 												<td>
 													<strong>{{ev.relateTo}}</strong>
 												</td>
+												<td>
+													<strong>{{ev.location}}</strong>
+												</td>
+												<td>
+													<strong>{{ev.note}}</strong>
+												</td>
 											</tr>
 										</table>
 										
@@ -381,12 +391,11 @@
 							
 							<div id="event-update" class="tab-pane fade">
 								<div class="panel panel-default">
-									<div class="panel-heading">Edit events</div>
+									<div class="panel-heading">Edit events <em>{{edit_notice}}</em></div>
 									<div class="panel-body">
-										<p>does not work yet, saving work</p>
 										eventChecked.events: {{eventChecked.events | json}}<br>
 										current selection: <br>
-										<p><strong><em>If something is checked/chosen for editing, although the fields relating to unit or club and guide are not highlighted, they remain the same.</em></strong></p>
+										<p><strong><em>Needs reselection of event relation and guide and possibly date</em></strong></p>
 										<form novalidate name="formEventCreate" class="form-horizontal">
 										
 											<div class="form-group">
@@ -432,39 +441,39 @@
 													<p>Pick date(s)</p>
 												
 													<div class='btn-group'>
-														<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'indi'">Individual date pick</label>
-														<label class="btn btn-default" ng-model="pickMode" uib-btn-radio="'range'">Range date pick</label>
+														<label class="btn btn-default" ng-model="pickMode2" uib-btn-radio="'indi'">Individual date pick</label>
+														<label class="btn btn-default" ng-model="pickMode2" uib-btn-radio="'range'">Range date pick</label>
 													</div>
 													
-													<p ng-if="pickMode=='indi'">Choose any dates for this event</p>
-													<p ng-if="pickMode=='range'">Choose a range of dates for this event</p>
+													<p ng-if="pickMode2=='indi'">Choose any dates for this event</p>
+													<p ng-if="pickMode2=='range'">Choose a range of dates for this event</p>
 													
 													<div 
 														uib-datepicker
-														ng-model="activeDate"
-														multi-select="selectedDates"
-														select-range="{{pickMode=='range'}}"
-														datepicker-options="dateOptions"></div>
+														ng-model="activeDate2"
+														multi-select="selectedDates2"
+														select-range="{{pickMode2=='range'}}"
+														datepicker-options="dateOptions2"></div>
 												</div>
 												
 												<div class="col-md-5">
 													
-													<div ng-if="pickMode=='indi'">
+													<div ng-if="pickMode2=='indi'">
 														Selected Dates:
 														<div class="well well-sm">
-															<div ng-repeat="d in selectedDates | orderBy">
+															<div ng-repeat="d in selectedDates2 | orderBy">
 																{{d | date : 'fullDate'}}
-																<button class="btn btn-warning btn-xs" ng-click="removeSelected(d)">Remove</button>
+																<button class="btn btn-warning btn-xs" ng-click="removeSelected2(d)">Remove</button>
 															</div>
 														</div>
 													</div>
 													
-													<div ng-if="pickMode=='range'">
+													<div ng-if="pickMode2=='range'">
 														Selected Dates:
 														<div class="well well-sm">
-															{{(selectedDates | orderBy)[0] | date:"fullDate"}}
-															<span ng-if="selectedDates.length > 1">
-																- {{(selectedDates | orderBy : '-')[0] | date:"fullDate"}}
+															{{(selectedDates2 | orderBy)[0] | date:"fullDate"}}
+															<span ng-if="selectedDates2.length > 1">
+																- {{(selectedDates2 | orderBy : '-')[0] | date:"fullDate"}}
 															</span>
 														</div>
 													</div>
@@ -536,7 +545,7 @@
 											
 											<div class="form-group">
 												<div class="col-md-3">
-													<button type="button" class="btn btn-default" ng-click="updateEvent()">Update event</button>
+													<button type="button" class="btn btn-default {{update_stat}}" ng-click="updateEvent()">Update event</button>
 												</div>
 											</div>
 										
@@ -571,7 +580,7 @@
 						</ul>
 					</div>
 
-					<img src="Captuooore2.png" usemap="#image-map">
+					<!--<img src="Captuooore2.png" usemap="#image-map">-->
 					
 					<map name="image-map">
 						<area target="" alt="MPH" title="MPH" href="https://my-awesome-project-6dd85.firebaseapp.com/MPH/" coords="49,145,40,174,35,204,36,245,44,286,62,291,66,327,103,333,167,333,194,329,195,315,225,317,233,305,248,301,253,168,239,152,223,148,219,137,140,133,85,133" shape="poly">

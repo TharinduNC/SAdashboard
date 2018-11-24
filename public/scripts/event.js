@@ -25,7 +25,9 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//event relation to unit or club selection
 	$scope.onEventRelSelect = function(selec)
 	{
-		if($scope.rel.event != 'general')
+		console.log($scope.activeDate);
+		console.log(selec);
+		if($scope.rel.event != "general" && $scope.rel.event != "gene" && selec != "gene" && $scope.rel.event != "general")
 		{
 			$scope.sel = $firebaseArray(firebase.database().ref($scope.rel.event));
 		}
@@ -48,6 +50,11 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	$scope.pickMode = "indi";
 	
+		//second group for editing date
+	$scope.activeDate2 = null;
+	$scope.selectedDates2 = [];
+	$scope.pickMode2 = "indi";
+	
 	$scope.dateOptions = {
 		startingDay: 1,
 		customClass: function(data) {
@@ -58,10 +65,26 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		}
 	};
 	
+	$scope.dateOptions2 = {
+		startingDay: 1,
+		customClass: function(data) {
+			if($scope.selectedDates2.indexOf(data.date.setHours(0)) > -1) {
+				return 'selected';
+			}
+			return '';
+		}
+	};
+	
 	$scope.removeSelected = function(dt)
 	{
 		$scope.selectedDates.splice($scope.selectedDates.indexOf(dt), 1);
 		$scope.activeDate = dt;
+	};
+	
+	$scope.removeSelected2 = function(dt)
+	{
+		$scope.selectedDates2.splice($scope.selectedDates2.indexOf(dt), 1);
+		$scope.activeDate2 = dt;
 	};
 	//date init end
 	
@@ -85,6 +108,14 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	//timepicker init end
 	
+	$scope.chgMiliToDate = function(mili)
+	{
+		var d = new Date(mili);
+		var date = new Date(d.getTime() - (d.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];
+		
+		return date;
+	};
+	
 	$scope.createEvent = function()
 	{
 		var relrel = $scope.choose.selectedEventId.$id;
@@ -97,7 +128,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		if($scope.eventTitle == "")
 		{
 			valid = false;
-			errMsg = errMsg + "missing title\n"
+			errMsg = errMsg + "missing title\n";
 		}
 		
 		if($scope.rel.event == 'general' || $scope.rel.event == undefined || $scope.rel.event == null)
@@ -108,7 +139,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		if(relrel === undefined)
 		{
 			valid = false;
-			errMsg = errMsg + "choose a related club or unit\n"
+			errMsg = errMsg + "choose a related club or unit\n";
 		}
 		
 		//changes array of date to object of dates
@@ -123,12 +154,12 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 				if(!(i == $scope.selectedDates.length - 1))
 				{
 					selectedDateStrRep = selectedDateStrRep + '\"' + $scope.selectedDates[i] + '\"' + ':' + 'true,';
-					$scope.eventDatealt = $scope.eventDatealt + $scope.selectedDates[i] + "-";
+					$scope.eventDatealt = $scope.eventDatealt + $scope.chgMiliToDate($scope.selectedDates[i]) + ",";
 				}
 				else
 				{
 					selectedDateStrRep = selectedDateStrRep +'\"' + $scope.selectedDates[i] + '\"' + ':' + 'true';
-					$scope.eventDatealt = $scope.eventDatealt + $scope.selectedDates[i];
+					$scope.eventDatealt = $scope.eventDatealt + $scope.chgMiliToDate($scope.selectedDates[i]);
 				}
 			}
 			
@@ -140,7 +171,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		else
 		{
 			valid = false;
-			errMsg = errMsg + "date not selected\n"
+			errMsg = errMsg + "date not selected\n";
 		}
 		
 		
@@ -216,7 +247,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		{
 			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
 			{
-				errMsg = errMsg + "click on the related guide\n"
+				errMsg = errMsg + "click on the related guide\n";
 			}
 		}
 		else
@@ -266,24 +297,14 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		events: []
 	};
 	
-	$scope.chgMiliToDate = function(mili)
-	{
-		var arrayDates = mili.split("-");
-		var i;
-		var date = "";
-		for(i in arrayDates)
-		{
-			var dateTem = new Date(arrayDates[i]);
-			date = date + dateTem + " , ";
-		}
-		return date;
-	};
-	
 	//update event
 	$scope.onEventEditClick = function()
 	{
 		if($scope.eventChecked.events.length == 1)
 		{
+			$scope.edit_notice = "";
+			$scope.update_stat = "active";
+			
 			var eventRef = firebase.database().ref("event/" + $scope.eventChecked.events[0]);
 			
 			eventRef.on('value', function(snapshot) {
@@ -307,11 +328,14 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 
 			$scope.onEventRelSelect($scope.rel.event);
 			
-			var strdate = $scope.currentEventDatealt.split("-");
+			var strdate = $scope.currentEventDatealt.split(",");
 			
 			for(var i = 0; i < strdate.length; i++)
 			{
-				$scope.selectedDates.push(+strdate[i]);
+				var tt = new Date(strdate[i]);
+				tt = tt.getTime();
+				console.log(tt);
+				$scope.selectedDates2.push(tt);
 			}
 			
 			var strtime = $scope.currentEventTime.split("-");
@@ -320,7 +344,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			{
 				$scope.duration = false;
 				
-				var theDate = Date.parse("1970-01-02 " + strtime[0]);
+				var theDate = new Date("1970-01-02 " + strtime[0]);
 				
 				$scope.eventTimeRange.start = theDate;
 				$scope.eventTimeRange.end = theDate;
@@ -332,8 +356,8 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			{
 				$scope.duration = true;
 				
-				var theDate = Date.parse("1970-01-02 " + strtime[0]);
-				var theDate2 = Date.parse("1970-01-02 " + strtime[1]);
+				var theDate = new Date("1970-01-02 " + strtime[0]);
+				var theDate2 = new Date("1970-01-02 " + strtime[1]);
 				
 				$scope.eventTimeRange.start = theDate;
 				$scope.eventTimeRange.end = theDate2;
@@ -341,12 +365,12 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			
 			if($scope.currentEventNote)
 			{
-				var theDate = Date.parse("1970-01-02 " + $scope.currentEventTimenote);
-				
+				var theDate = new Date("1970-01-02 " + $scope.currentEventTimeNote);
+				console.log(theDate);
 				$scope.eventTimestart.note = theDate;
 			}
 			
-			if($scope.currentEventGuiderel != "none")
+			if($scope.currentEventGuiderel == "none")
 			{
 				$scope.gotGuide = false;
 			}
@@ -368,6 +392,9 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			$scope.currentEventTime = "";
 			$scope.currentEventTimeNote = "00:01";
 			$scope.currentEventTitle = "";
+			
+			$scope.edit_notice = " | editing would not work with no selection";
+			$scope.update_stat = "disabled";
 		}
 	}
 	
@@ -384,7 +411,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		if($scope.currentEventTitle == "")
 		{
 			valid = false;
-			errMsg = errMsg + "missing title\n"
+			errMsg = errMsg + "missing title\n";
 		}
 		
 		if($scope.rel.event == 'general' || $scope.rel.event == undefined || $scope.rel.event == null)
@@ -395,27 +422,28 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		if(relrel === undefined && $scope.currentEventRelateTo.length > 10)
 		{
 			valid = false;
-			errMsg = errMsg + "choose a related club or unit\n"
+			errMsg = errMsg + "choose a related club or unit\n";
 		}
 		
 		//changes array of date to object of dates
 		//no point running this code if there is no date selected
-		if($scope.selectedDates.length > 0)
+		if($scope.selectedDates2.length > 0)
 		{
+			$scope.currentEventDatealt = "";
 			var selectedDateStrRep = "{";
 			var i;
 			
-			for(i in $scope.selectedDates)
+			for(i in $scope.selectedDates2)
 			{
-				if(!(i == $scope.selectedDates.length - 1))
+				if(!(i == $scope.selectedDates2.length - 1))
 				{
-					selectedDateStrRep = selectedDateStrRep + '\"' + $scope.selectedDates[i] + '\"' + ':' + 'true,';
-					$scope.currentEventDatealt = $scope.currentEventDatealt + $scope.selectedDates[i] + "-";
+					selectedDateStrRep = selectedDateStrRep + '\"' + $scope.selectedDates2[i] + '\"' + ':' + 'true,';
+					$scope.currentEventDatealt = $scope.currentEventDatealt + $scope.chgMiliToDate($scope.selectedDates2[i]) + ",";
 				}
 				else
 				{
-					selectedDateStrRep = selectedDateStrRep +'\"' + $scope.selectedDates[i] + '\"' + ':' + 'true';
-					$scope.currentEventDatealt = $scope.currentEventDatealt + $scope.selectedDates[i];
+					selectedDateStrRep = selectedDateStrRep +'\"' + $scope.selectedDates2[i] + '\"' + ':' + 'true';
+					$scope.currentEventDatealt = $scope.currentEventDatealt + $scope.chgMiliToDate($scope.selectedDates2[i]);
 				}
 			}
 			
@@ -427,7 +455,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		else
 		{
 			valid = false;
-			errMsg = errMsg + "date not selected\n"
+			errMsg = errMsg + "date not selected\n";
 		}
 		
 		
@@ -503,7 +531,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		{
 			if(relrelguide == "none" || relrelguide == undefined || relrelguide == null)
 			{
-				errMsg = errMsg + "click on the related guide\n"
+				errMsg = errMsg + "click on the related guide\n";
 			}
 		}
 		else
@@ -514,7 +542,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		if($scope.eventChecked.events.length == 1 && valid)
 		{
 			var updateEvent = {
-				date: $$scope.currentEventDate,
+				date: $scope.currentEventDate,
 				datealt: $scope.currentEventDatealt,
 				desc: $scope.currentEventDesc,
 				guiderel: relrelguide,
@@ -527,8 +555,27 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			};
 			
 			var updates = {};
-			updates['event/' + $scope.eventChecked.events[0]] = updatedEvent;
+			updates['event/' + $scope.eventChecked.events[0]] = updateEvent;
 			firebase.database().ref().update(updates);
+			
+			$scope.currentEventDate = null;
+			$scope.currentEventDatealt = "";
+			$scope.currentEventDesc = "";
+			$scope.currentEventGuiderel = "none";
+			$scope.currentEventLocation = "";
+			$scope.currentEventNote = false;
+			$scope.currentEventRelateto = "general/general";
+			$scope.currentEventTime = "";
+			$scope.currentEventTimeNote = "00:01";
+			$scope.currentEventTitle = "";
+			
+			$scope.eventChecked = {
+				events: []
+			};
+			
+			$scope.edit_notice = "editing would not work with no selection";
+			$scope.update_stat = "disabled";
+			window.alert("updated event");
 		}
 		else
 		{
