@@ -871,7 +871,7 @@ button:focus {
 	font-weight: bold;
 	text-transform: uppercase;
 	position: absolute;
-	width: 3.5vmin;
+	width: 9.5vmin;
 	height: 2.25vmin;
 	/* margin: -8.25vmin 0 0 -2.25vmin;  */
 	/* let the bottom tip be the reference point for individual coordinates */
@@ -1040,23 +1040,29 @@ button:focus {
 .pin--2-16 { top: 55vmin; left: 38vmin; }
 
 /* Pins for floor 3 */
-.pin--3-1 { top: 6vmin;
-    left: 75vmin; } /* Design Lab A201 */
-.pin--3-2 { top: 6vmin;
-    left: 71vmin; } /*Design Lab2 A202 */
-.pin--3-3 { top: 6vmin;
-    left: 65vmin; } /* Comp Lab */
-.pin--3-4 { top: 6vmin;
-    left: 60.5vmin; } /* Open Lab 1*/
-.pin--3-5 { top: 6vmin;
-    left: 55vmin; } /* Open Lab 2 */
-.pin--3-6 { top: 6vmin;
-    left: 50vmin; } /* Open Lab 3 */
-.pin--3-7 {top: 6vmin;
-    left: 45vmin; } /* Open Lab 4 */
-.pin--3-8 { top: 6vmin;
-    left: 40vmin; } /* Research Room A213 */
-.pin--3-9 { top: 6vmin; left: 35vmin; } /* A215 */
+.pin--3-1 { top: 9vmin;
+    left: 72vmin; } /* Design Lab A201 */
+.pin--3-2 { top: 9vmin;
+    left: 67vmin; } /*Design Lab2 A202 */
+.pin--3-3 { top: 9vmin;
+    left: 62.5vmin; } /* Comp Lab */
+.pin--3-4 { top: 9vmin;
+	left: 57vmin; } /* Open Lab 1*/
+	
+.pin--3-5 { top: 9vmin;
+	left: 52vmin; } /* Open Lab 2 */
+	
+.pin--3-6 { top: 9vmin;
+	left: 47vmin; } /* Open Lab 3 */
+	
+.pin--3-7 {top: 9vmin;
+	left: 42vmin; } /* Open Lab 4 */
+	
+.pin--3-8 { top: 9vmin;
+	left: 37vmin; } /* Research Room A213 */
+	
+.pin--3-9 { top: 9vmin;
+    left: 32vmin; } /* A215 */
 
 .pin--3-10 {  top: 18vmin;
     left: 34vmin; } /* A215 */
@@ -1116,22 +1122,22 @@ button:focus {
     left: 25vmin; }  
 
 /* Pins for floor 4 */
-.pin--4-1 { top: 6vmin;
-    left: 74vmin; }
-.pin--4-2 { top: 6vmin;
-    left: 67vmin; }
-.pin--4-3 { top: 6vmin;
-    left: 61vmin; }
-.pin--4-4 {     top: 6vmin;
-    left: 55vmin; }
-.pin--4-5 {     top: 6vmin;
-    left: 48vmin; }
-.pin--4-6 { top: 6vmin;
-	left: 43vmin; }
-.pin--4-7 { top: 6vmin;
-    left: 37vmin; }
-.pin--4-8 { top: 6vmin;
-    left: 30.5vmin; }
+.pin--4-1 { top: 9vmin;
+    left: 70.5vmin; }
+.pin--4-2 { top: 9vmin;
+    left: 65vmin; }
+.pin--4-3 { top: 9vmin;
+    left: 59vmin; }
+.pin--4-4 {     top: 9vmin;
+    left: 52vmin; }
+.pin--4-5 {     top: 9vmin;
+    left: 46vmin; }
+.pin--4-6 { top: 9vmin;
+    left: 40vmin; }
+.pin--4-7 { top: 9vmin;
+    left: 34vmin; }
+.pin--4-8 {     top: 9vmin;
+    left: 27.5vmin; }
 .pin--4-9 { top: 18.7vmin;
     left: 11vmin; }
 .pin--4-10 { top: 18.7vmin;
@@ -1147,7 +1153,7 @@ button:focus {
 .pin--4-15 { top: 22vmin;
     left: 3.5vmin; }
 .pin--4-16 { top: 19.6vmin;
-    left: 21vmin; }
+    left: 24vmin; }
 .pin--4-17 { top: 25.5vmin;
     left: 4vmin; }
 .pin--4-18 { top: 30.4vmin;
@@ -1228,9 +1234,9 @@ button:focus {
     left: 1.65vmin; }
 .pin--5-6 { top: 40.5vmin;
     left: 1.6vmin; }
-.pin--5-7 { top: 43.5vmin;
+.pin--5-7 { top: 42.5vmin;
     left: 25.5vmin; }
-.pin--5-8 { top: 51.5vmin;
+.pin--5-8 { top: 50.5vmin;
     left: 1.5vmin; }
 .pin--5-9 {top: 52vmin;
     left: 25.5vmin; }
@@ -1240,22 +1246,22 @@ button:focus {
 	
 
 /* Pins for Floor 6 */
-.pin--6-1 { top: 1.5vmin;
-    left: 31vmin; }
-.pin--6-2 { top: 44vmin;
-    left: 36.8vmin; }
-.pin--6-3 { top: 46.85vmin;
-    left: 38.75vmin; }
-.pin--6-4 { top: 25vmin;
+.pin--6-1 { top: 16vmin;
+    left: 1vmin; }
+.pin--6-2 { top: 16vmin;
+    left: 24.8vmin; }
+.pin--6-3 {top: 22.85vmin;
+    left: 0.75vmin; }
+.pin--6-4 { top: 21vmin;
     left: 19.7vmin; }
-.pin--6-5 { top: 26.5vmin;
-    left: 39.65vmin; }
-.pin--6-6 { top: 32.5vmin;
-    left: 19.6vmin; }
-.pin--6-7 { top: 31.5vmin;
-    left: 39.5vmin; }
-.pin--6-8 { top: 36.5vmin;
-    left: 39.5vmin; }
+.pin--6-5 { top: 30.5vmin;
+    left: 0.65vmin; }
+.pin--6-6 { top: 41.5vmin;
+    left: 0.6vmin; }
+.pin--6-7 { top: 43.5vmin;
+    left: 21.5vmin; }
+.pin--6-8 { top: 37vmin;
+    left: 21.5vmin; }
 .pin--6-9 { top: 40vmin;
     left: 19.5vmin; }
 .pin--6-10 { top: 51.5vmin;
