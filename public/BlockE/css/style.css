@@ -1216,32 +1216,27 @@ button:focus {
     left: 23.5vmin; }
 
 /* Pins for Floor 5 */
-.pin--5-1 { top: 1.5vmin;
-    left: 31vmin; }
-.pin--5-2 { top: 20vmin;
-    left: 23.8vmin; }
-.pin--5-3 { top: 19.85vmin;
-    left: 38.75vmin; }
+.pin--5-1 { top: 18.5vmin;
+    left: 1vmin; }
+.pin--5-2 { top: 18vmin;
+    left: 28.8vmin; }
+.pin--5-3 { top: 24.85vmin;
+    left: 1vmin; }
 .pin--5-4 { top: 25vmin;
-    left: 19.7vmin; }
-.pin--5-5 { top: 26.5vmin;
-    left: 39.65vmin; }
-.pin--5-6 { top: 32.5vmin;
-    left: 19.6vmin; }
-.pin--5-7 { top: 31.5vmin;
-    left: 39.5vmin; }
-.pin--5-8 { top: 36.5vmin;
-    left: 39.5vmin; }
-.pin--5-9 { top: 40vmin;
-    left: 19.5vmin; }
+    left: 24.7vmin; }
+.pin--5-5 { top: 31vmin;
+    left: 1.65vmin; }
+.pin--5-6 { top: 40.5vmin;
+    left: 1.6vmin; }
+.pin--5-7 { top: 43.5vmin;
+    left: 25.5vmin; }
+.pin--5-8 { top: 51.5vmin;
+    left: 1.5vmin; }
+.pin--5-9 {top: 52vmin;
+    left: 25.5vmin; }
 .pin--5-10 { top: 44.5vmin;
     left: 36.5vmin; }
-.pin--5-11 { top: 47vmin;
-	left: 19.5vmin;} 
-.pin--5-12 { top: 55vmin;
-    left: 37.5vmin;} 
-.pin--5-13 { top: 54vmin;
-	left: 19.5vmin;}
+
 	
 
 /* Pins for Floor 6 */
