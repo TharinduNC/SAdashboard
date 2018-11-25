@@ -159,8 +159,8 @@ a:hover {
 
 .bl-main > section .bl-icon-close {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 1%;
+    right: 2%;
 	cursor: pointer;
 	z-index: 100;
 	opacity: 0;
@@ -176,11 +176,11 @@ div.bl-panel-items > div > div {
 	opacity: 0;
 	pointer-events: none;
 	position: absolute;
-    top: 17px;
-    left: 7px;
-    right: 7px;
-    bottom: 30px;
-    padding: 0 17px;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    /* padding: 0 17px; */
     overflow: hidden;
     overflow-y: auto;
 }
@@ -195,9 +195,10 @@ div.bl-panel-items > div > div {
 }
 
 .bl-content h2 {
+	text-align: center;
 	font-size: 3em;
 	font-weight: 300;
-	margin: 0 0 20px 0;
+	margin: 0 0 6px 0;
 }
 
 .bl-content article {

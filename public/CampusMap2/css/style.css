@@ -993,7 +993,8 @@ button:focus {
 .pin--1-6 { top: 6vmin;
     left: 65.7vmin; }
 .pin--1-7 { top: 67vmin; left: 5vmin; }
-.pin--1-3 { top: 45vmin; left: 4.5vmin; }
+.pin--1-3 {     top: 16vmin;
+    left: 62.5vmin; }
 .pin--1-9 { top: 4.5vmin; left: 18.5vmin; } 
 .pin--1-10 { top: -3.5vmin; left: -1vmin; }
 .pin--1-11 { top: 12.5vmin; left: 40.5vmin; }
