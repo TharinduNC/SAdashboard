@@ -1,9 +1,51 @@
 app.controller('mapAll', function($scope, $firebaseArray) {
-	
+	$scope.mapImageResult = "";
 	$scope.name = 'Salah';
 	var firebaseRefMap = firebase.database().ref("map");
 	
 	var list = $firebaseArray(firebaseRefMap);
+	
+	// Image upload
+	var auth = firebase.auth();
+	var storageRef = firebase.storage().ref();
+	
+	function handleFileSelect(evt) {
+	  evt.stopPropagation();
+	  evt.preventDefault();
+	  var file = evt.target.files[0];
+	  var metadata = {
+		 'contentType': file.type
+	  };
+	  // Push to child path.
+	  // [START oncomplete]
+	  storageRef.child('images/' + file.name).put(file, metadata).then(function(snapshot) {
+		 console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+		 console.log('File metadata:', snapshot.metadata);
+		 // Let's get a download URL for the file.
+		 snapshot.ref.getDownloadURL().then(function(url) {
+			$scope.mapImageResult = url;
+			console.log('File available at', url);
+		 });
+	  }).catch(function(error) {
+		 // [START onfailure]
+		 console.error('Upload failed:', error);
+		 // [END onfailure]
+	  });
+	  // [END oncomplete]
+	}
+	window.onload = function() {
+	  document.getElementById('file').addEventListener('change', handleFileSelect, false);
+	  document.getElementById('file').disabled = true;
+	  auth.onAuthStateChanged(function(user) {
+		 if (user) {
+			var user = firebase.auth().currentUser;
+			//console.log('Anonymous user signed-in.', user);
+			document.getElementById('file').disabled = false;
+		 } else {
+			console.log('There was no session.');
+		 }
+	  });
+	}
 	
 	//create map
 	$scope.createMap = function(form)
@@ -19,7 +61,8 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				level: $scope.mapLevel,
 				category: $scope.mapCategory,
 				space: $scope.mapSpace,
-				position: $scope.mapPosition
+				position: $scope.mapPosition,
+				image: $scope.mapImageResult
 			}).then(function(ref) {
 				var id = ref.key;
 				//console.log("added record with id " + id);
@@ -66,14 +109,14 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			$scope.currentMapCode = "<>"
-			$scope.currentMapName = "<no selection or too many selected>"
-			$scope.currentMapDescription = "<>"
-			$scope.currentMapDescriptionheader = "<>"
-			$scope.currentMapLevel = "<>"
-			$scope.currentMapCategory = "<>"
-			$scope.currentMapSpace = "<>"
-			$scope.currentMapPosition = "<>"
+			$scope.currentMapCode = "<>";
+			$scope.currentMapName = "<no selection or too many selected>";
+			$scope.currentMapDescription = "<>";
+			$scope.currentMapDescriptionheader = "<>";
+			$scope.currentMapLevel = "<>";
+			$scope.currentMapCategory = "<>";
+			$scope.currentMapSpace = "<>";
+			$scope.currentMapPosition = "<>";
 
 		}
 	};
