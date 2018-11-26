@@ -25,7 +25,7 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			window.alert("empty");
+			window.alert("Empty!");
 		}
 		
 	};
@@ -57,10 +57,6 @@ app.controller('unitAll', function($scope, $firebaseArray) {
 			$scope.currentUnitName = "";
 		}
 	};
-	
-	//$scope.newUnitCode = "";
-	//$scope.newUnitName = "";
-	
 	
 	//only one selection is allowed when updating the unit
 	$scope.updateUnit = function() {

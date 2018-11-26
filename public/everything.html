@@ -95,7 +95,6 @@
 										  sf-model="model"
 										  ng-submit="onSubmit(myForm)">
 									</form>
-									<!--<p>{{model}}</p>-->
 								</div> 	
 							</div>
 						</div>
@@ -116,7 +115,6 @@
 											</td>
 										</tr>
 									</table>
-									<!--guideChecked.guides {{guideChecked.guides | json}}-->
 								</div>
 							</div>
 						
@@ -127,25 +125,14 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">Refresh an existing guide</div>
 								<div class="panel-body">
-									<!--guideChecked.guides: {{guideChecked.guides | json}}<br>-->
 									<p>You are editing: {{currentGuideName}} {{guideChecked.guides | json}}</p>
-									<!--<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
-									<!--<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>								-->
 									<form name="guideEditForm"
 										  sf-schema="gEditSchema"
 										  sf-form="gEditForm"
 										  sf-model="gEditModel"
 										  ng-submit="onSubmit(guideEditForm)">
 									</form>
-									<!--<p>{{gEditModel}}</p>-->
-								</div>							
-								<!--<div class="panel-body">-->
-								<!--	<p>only edits the first item</p>-->
-								<!--	guideChecked.guides: {{guideChecked.guides | json}}<br>-->
-								<!--	current selection: {{currentGuideName}}<br>-->
-								<!--	<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
-								<!--	<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>-->
-								<!--</div>-->
+								</div>
 							</div>
 							
 						</div>

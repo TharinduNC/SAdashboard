@@ -6,12 +6,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 		if(user != null) {
 
 			var email_id = user.email;
-			window.alert(user.uid);
+			//window.alert(user.uid);
 		}
 
 	} else {
 		// No user is signed in.
-		window.alert("no sign");
+		//window.alert("No sign");
 		window.location.href = "index.html";
 	}
 });

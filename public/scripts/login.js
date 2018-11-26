@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			if(user != null) {
 
 				var email_id = user.email;
-				window.alert(user.uid);
+				//window.alert(user.uid);
 				window.location.href = "everything.html";
 			}
 
@@ -16,7 +16,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 function login(){
-
 	var userEmail = document.getElementById("email_field").value;
 	var userPass = document.getElementById("password_field").value;
 	firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
@@ -31,24 +30,22 @@ function login(){
 		}
 		console.log(error);
 	});
-
 }
 
 function myFunction() {
-    var txt;
-    //var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
+	var txt;
 	var encrypted = "U2FsdGVkX1/rpFGEW2yPNNxX+luH8+lR6WOyL+K3oQU=";
-   
-   var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
-   var authKey = decrypted.toString(CryptoJS.enc.Utf8);
-    var keyInput = prompt("Please enter authentication key:", "");
-    if (keyInput == null || keyInput == "") {
-        myFunction();
-    } else if(keyInput == authKey) {
-        txt = "Hello! How are you today?";
-    }
-    else
-    {
-      myFunction();
-    }
+	
+	var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+	var authKey = decrypted.toString(CryptoJS.enc.Utf8);
+	 var keyInput = prompt("Please enter authentication key:", "");
+	 if (keyInput == null || keyInput == "") {
+		  myFunction();
+	 } else if(keyInput == authKey) {
+		  txt = "Hello! How are you today?";
+	 }
+	 else
+	 {
+		myFunction();
+	 }
 }

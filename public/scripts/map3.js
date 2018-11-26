@@ -58,10 +58,6 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				name: $scope.mapName,
 				description: $scope.mapDescription,
 				descriptionheader: $scope.mapDescriptionheader,
-				level: $scope.mapLevel,
-				category: $scope.mapCategory,
-				space: $scope.mapSpace,
-				position: $scope.mapPosition,
 				image: $scope.mapImageResult
 			}).then(function(ref) {
 				var id = ref.key;
@@ -75,7 +71,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			window.alert("empty");
+			window.alert("Empty!");
 		}
 		
 	};
@@ -101,10 +97,6 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 				$scope.currentMapName = currentMap.name;
 				$scope.currentMapDescription = currentMap.description;
 				$scope.currentMapDescriptionheader = currentMap.descriptionheader;
-				$scope.currentMapLevel = currentMap.level;
-				$scope.currentMapCategory = currentMap.category;
-				$scope.currentMapSpace = currentMap.space;
-				$scope.currentMapPosition = currentMap.position;
 			});
 		}
 		else
@@ -113,11 +105,6 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 			$scope.currentMapName = "<no selection or too many selected>";
 			$scope.currentMapDescription = "<>";
 			$scope.currentMapDescriptionheader = "<>";
-			$scope.currentMapLevel = "<>";
-			$scope.currentMapCategory = "<>";
-			$scope.currentMapSpace = "<>";
-			$scope.currentMapPosition = "<>";
-
 		}
 	};
 	
@@ -125,11 +112,6 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 	$scope.newMapName = "";
 	$scope.newMapDescription = "";
 	$scope.newMapDescriptionheader = "";
-	$scope.newMapLevel = "";
-	$scope.newMapCategory = "";
-	$scope.newMapSpace = "";
-	$scope.newMapPosition = "";
-	
 	
 	//only one selection is allowed when updating the map
 	$scope.updateMap = function() {
@@ -144,11 +126,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 					code: $scope.newMapCode,
 					name: $scope.newMapName,
 					description: $scope.newMapDescription,
-					descriptionheader: $scope.newMapDescriptionheader,
-					level: $scope.newMapLevel,
-					category: $scope.newMapCategory,
-					space: $scope.newMapSpace,
-					position: $scope.newMapPosition
+					descriptionheader: $scope.newMapDescriptionheader
 				};
 				
 				var updates = {};
@@ -158,12 +136,12 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 			}
 			else
 			{
-				window.alert("empty");
+				window.alert("Empty!");
 			}
 		}
 		else
 		{
-			window.alert("no selection");
+			window.alert("No selection");
 		}
 	};
 	
@@ -185,7 +163,7 @@ app.controller('mapAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			window.alert("no selection");
+			window.alert("No selection");
 		}
 	};
 	
