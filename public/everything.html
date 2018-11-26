@@ -69,7 +69,7 @@
 					<li><a data-toggle="tab" href="#map">Map</a></li>
 					<li><a data-toggle="tab" href="#unit">Unit</a></li>
 					<li><a data-toggle="tab" href="#club">Club</a></li>
-					<!--<li><a data-toggle="tab" href="#user">User</a></li>-->
+					<li><a data-toggle="tab" href="#user">User</a></li>
 				</ul>
 			</nav>
 			
@@ -95,6 +95,7 @@
 										  sf-model="model"
 										  ng-submit="onSubmit(myForm)">
 									</form>
+									<!--<p>{{model}}</p>-->
 								</div> 	
 							</div>
 						</div>
@@ -115,6 +116,7 @@
 											</td>
 										</tr>
 									</table>
+									<!--guideChecked.guides {{guideChecked.guides | json}}-->
 								</div>
 							</div>
 						
@@ -125,14 +127,25 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">Refresh an existing guide</div>
 								<div class="panel-body">
+									<!--guideChecked.guides: {{guideChecked.guides | json}}<br>-->
 									<p>You are editing: {{currentGuideName}} {{guideChecked.guides | json}}</p>
+									<!--<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
+									<!--<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>								-->
 									<form name="guideEditForm"
 										  sf-schema="gEditSchema"
 										  sf-form="gEditForm"
 										  sf-model="gEditModel"
 										  ng-submit="onSubmit(guideEditForm)">
 									</form>
-								</div>
+									<!--<p>{{gEditModel}}</p>-->
+								</div>							
+								<!--<div class="panel-body">-->
+								<!--	<p>only edits the first item</p>-->
+								<!--	guideChecked.guides: {{guideChecked.guides | json}}<br>-->
+								<!--	current selection: {{currentGuideName}}<br>-->
+								<!--	<input type="text" ng-model="newGuideName" placeholder="Enter name">-->
+								<!--	<button type="button" class="btn btn-default" ng-click="updateGuide()">Update Guide</button>-->
+								<!--</div>-->
 							</div>
 							
 						</div>
@@ -277,7 +290,7 @@
 											
 											<div class="form-group">
 												<div class="col-md-5">
-													<textarea class="form-control" rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
+													<textarea rows="4" cols="50" ng-model="eventDesc" id="event_description" placeholder="Add a description" name="event_description"></textarea>
 												</div>
 											</div>
 											
@@ -584,13 +597,14 @@
 									<div class="panel-heading">Add one map <a href="https://my-awesome-project-6dd85.firebaseapp.com/CampusMap2/">Campus Map</a></div>
 									<div class="panel-body">
 									
-										<form novalidate name="formMapCreate" ng-submit="createMap(formMapCreate)" class="form-horizontal">											
-																			
+										<form novalidate name="formMapCreate" ng-submit="createMap(formMapCreate)" class="form-horizontal">
+										
 											<div class="form-group">
 												<div class="col-md-3">
 													<input type="text" ng-model="mapCode" class="form-control" id="map_code" placeholder="Enter code" name="map_code" required="required">
 												</div>
 											</div>
+		
 		
 											<div class="form-group">
 												<div class="col-md-5">
@@ -609,19 +623,51 @@
 													<input type="text" ng-model="mapDescription" class="form-control" id="map_description" placeholder="Enter description" name="map_descriptionheader" required="required">
 												</div>
 											</div>
-											
 											<div class="form-group">
-												<div class="col-md-3">
-													<input type="file" id="file" name="file"/>
-													<label for="file">Upload Image</label>
+												<div class="col-md-5">
+													<input type="text" ng-model="mapLevel" class="form-control" id="map_level" placeholder="Enter level" name="map_level" required="required">
 												</div>
 											</div>
-											
 											<div class="form-group">
-												<div class="col-md-3">
-													<input type="hidden" ng-model="mapImageResult" class="form-control" id="map_image_result" name="map_image_result" value="">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapCategory" class="form-control" id="map_category" placeholder="Enter category" name="map_category" required="required">
 												</div>
-											</div>											
+											</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapSpace" class="form-control" id="map_space" placeholder="Enter space" name="map_space" required="required">
+												</div>
+											</div>
+											<div class="form-group">
+													<div class="col-md-5">
+														<input type="text" ng-model="mapPosition" class="form-control" id="map_position" placeholder="Enter position" name="map_position" required="required">
+													</div>
+												</div>
+										
+										<!--<div class="form-group">-->
+										<!--	<div class="col-md-3">-->
+										<!--		<input type="submit" class="btn btn-default" value="Add map" />-->
+		
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapDescription" class="form-control" id="map_description" placeholder="Enter description" name="map_descriptionheader" required="required">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapLevel" class="form-control" id="map_level" placeholder="Enter level" name="map_level" required="required">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapCategory" class="form-control" id="map_category" placeholder="Enter category" name="map_category" required="required">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-md-5">
+													<input type="text" ng-model="mapSpace" class="form-control" id="map_space" placeholder="Enter space" name="map_space" required="required">
+												</div>
+											</div>
 											
 											<div class="form-group">
 												<div class="col-md-3">
@@ -947,104 +993,104 @@
 					</div>
 				</div>
 				
-				<!--<div id="user" class="tab-pane fade">-->
-				<!--	-->
-				<!--	<div class="col-md-2">-->
-				<!--		<ul class="nav nav nav-tabs tabs-left">				-->
-				<!--			<li class="active"><a data-toggle="tab" href="#user-create">Add users</a></li>-->
-				<!--			<li><a data-toggle="tab" href="#user-read">View users</a></li>-->
-				<!--			<li><a data-toggle="tab" href="#user-update">Edit users</a></li>-->
-				<!--			<li><a data-toggle="tab" href="#user-delete">Delete users</a></li>-->
-				<!--		</ul>-->
-				<!--	</div>-->
-				<!--	<div class="col-md-10">-->
-				<!--		<div class="tab-content">-->
-				<!--			-->
-				<!--			<div id="user-create" class="tab-pane fade in active">-->
-				<!--			-->
-				<!--				<div class="panel panel-default">-->
-				<!--					<div class="panel-heading">Add one user</div>-->
-				<!--					<div class="panel-body">-->
-				<!--					-->
-				<!--						<form class="form-horizontal">-->
-				<!--						-->
-				<!--							<div class="form-group">-->
-				<!--								<div class="col-md-3">-->
-				<!--									<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">-->
-				<!--								</div>-->
-				<!--							</div>-->
-				<!--							-->
-				<!--							<div class="form-group">-->
-				<!--								<div class="col-md-3">-->
-				<!--									<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">-->
-				<!--								</div>-->
-				<!--							</div>-->
-				<!--							-->
-				<!--							<div class="form-group">-->
-				<!--								<div class="col-md-3">-->
-				<!--									<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">-->
-				<!--								</div>-->
-				<!--							</div>-->
-				<!--							-->
-				<!--							<div class="form-group">-->
-				<!--								<div class="col-md-3">-->
-				<!--									<label for="user_role">Select role of user</label>-->
-				<!--									<select class="form-control" name="user_role" size="1" id="user_role" required="required">-->
-				<!--										<option value="1">admin (1)</option>-->
-				<!--										<option value="2">staff (2)</option>-->
-				<!--										<option value="3">club leader (3)</option>-->
-				<!--										<option value="4">student (4)</option>-->
-				<!--									</select>-->
-				<!--								</div>-->
-				<!--							</div>-->
-				<!--							-->
-				<!--							<div class="form-group">-->
-				<!--								<div class="col-md-3">-->
-				<!--									<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>-->
-				<!--								</div>-->
-				<!--							</div>-->
-				<!--						-->
-				<!--						</form>-->
-				<!--					</div>-->
-				<!--				</div>-->
-				<!--			-->
-				<!--			</div>-->
-				<!--			-->
-				<!--			<div id="user-read" class="tab-pane fade">-->
-				<!--			-->
-				<!--				<div class="panel panel-default">-->
-				<!--					<div class="panel-heading">View users</div>-->
-				<!--					<div class="panel-body">-->
-				<!--						<p>put something</p>-->
-				<!--					</div>-->
-				<!--				</div>-->
-				<!--				-->
-				<!--			</div>-->
-				<!--			-->
-				<!--			<div id="user-update" class="tab-pane fade">-->
-				<!--			-->
-				<!--				<div class="panel panel-default">-->
-				<!--					<div class="panel-heading">Edit users</div>-->
-				<!--					<div class="panel-body">-->
-				<!--						<p>put something</p>-->
-				<!--					</div>-->
-				<!--				</div>-->
-				<!--				-->
-				<!--			</div>-->
-				<!--			-->
-				<!--			<div id="user-delete" class="tab-pane fade">-->
-				<!--			-->
-				<!--				<div class="panel panel-default">-->
-				<!--					<div class="panel-heading">Delete users</div>-->
-				<!--					<div class="panel-body">-->
-				<!--						<p>put something</p>-->
-				<!--					</div>-->
-				<!--				</div>-->
-				<!--				-->
-				<!--			</div>-->
-				<!--			-->
-				<!--		</div>-->
-				<!--	</div>-->
+				<div id="user" class="tab-pane fade">
+					
+					<div class="col-md-2">
+						<ul class="nav nav nav-tabs tabs-left">				
+							<li class="active"><a data-toggle="tab" href="#user-create">Add users</a></li>
+							<li><a data-toggle="tab" href="#user-read">View users</a></li>
+							<li><a data-toggle="tab" href="#user-update">Edit users</a></li>
+							<li><a data-toggle="tab" href="#user-delete">Delete users</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10">
+						<div class="tab-content">
+							
+							<div id="user-create" class="tab-pane fade in active">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Add one user</div>
+									<div class="panel-body">
+									
+										<form class="form-horizontal">
+										
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" class="form-control" id="user_name" placeholder="Enter username" name="user_name" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="email" class="form-control" id="user_mail" placeholder="Enter email" name="user_mail" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<input type="text" class="form-control" id="user_pass" placeholder="Enter password" name="user_pass" required="required">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<label for="user_role">Select role of user</label>
+													<select class="form-control" name="user_role" size="1" id="user_role" required="required">
+														<option value="1">admin (1)</option>
+														<option value="2">staff (2)</option>
+														<option value="3">club leader (3)</option>
+														<option value="4">student (4)</option>
+													</select>
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-md-3">
+													<button type="button" class="btn btn-default" onclick="userSubmit()">Add user</button>
+												</div>
+											</div>
+										
+										</form>
+									</div>
+								</div>
+							
+							</div>
+							
+							<div id="user-read" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">View users</div>
+									<div class="panel-body">
+										<p>put something</p>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div id="user-update" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Edit users</div>
+									<div class="panel-body">
+										<p>put something</p>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div id="user-delete" class="tab-pane fade">
+							
+								<div class="panel panel-default">
+									<div class="panel-heading">Delete users</div>
+									<div class="panel-body">
+										<p>put something</p>
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
 				
 				</div>			
 			</div>
@@ -1063,7 +1109,6 @@
     <script src="/__/firebase/3.9.0/firebase-app.js"></script>
     <script src="/__/firebase/3.9.0/firebase-auth.js"></script>
     <script src="/__/firebase/3.9.0/firebase-database.js"></script>
-	<script src="/__/firebase/3.9.0/firebase-storage.js"></script>
     <script src="/__/firebase/init.js"></script>
 	
 	<script src="https://code.jquery.com/jquery-2.1.3.js"></script>

@@ -215,7 +215,7 @@ app.controller('createGuide', function($scope, $firebaseArray) {
 		else
 		{
       console.log($scope.model);
-			window.alert("Empty!");
+			window.alert("empty");
 		}
 		
 	};

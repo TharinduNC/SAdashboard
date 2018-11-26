@@ -30,7 +30,7 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			window.alert("Empty!");
+			window.alert("empty");
 		}
 		
 	};
@@ -81,12 +81,12 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 			}
 			else
 			{
-				window.alert("Empty!");
+				window.alert("empty");
 			}
 		}
 		else
 		{
-			window.alert("No selection.");
+			window.alert("no selection");
 		}
 	};
 	
@@ -108,7 +108,7 @@ app.controller('clubAll', function($scope, $firebaseArray) {
 		}
 		else
 		{
-			window.alert("No selection");
+			window.alert("no selection");
 		}
 	};
 	

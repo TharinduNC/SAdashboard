@@ -210,13 +210,12 @@ app.controller('guideAll', function($scope, $firebaseArray) {
 		
 			guideNameRef.on('value', function(snapshot) {
 				var currentGuide = snapshot.val();
-				$scope.currentGuideName = currentGuide.name;
         $scope.gEditModel = currentGuide;
 			});
 		}
 		else
 		{
-			$scope.currentGuideName = "No selection has been made in the view tab";
+			$scope.currentGuideName = "<no selection or too many selected>";
 		}
 	};
   
@@ -247,7 +246,38 @@ app.controller('guideAll', function($scope, $firebaseArray) {
       console.log($scope.gEditModel);
 			window.alert("Please complete the form.");
 		}
-	};
+	};  
+	
+	//$scope.newGuideName = "";
+	//
+	////only one selection is allowed when updating the guide
+	//$scope.updateGuide = function() {
+	//	
+	//	if($scope.guideChecked.guides.length == 1)
+	//	{
+	//		if($scope.newGuideName.length > 0)
+	//		{
+	//			window.alert($scope.newGuideName);
+	//		
+	//			var updatedName = {
+	//				name: $scope.newGuideName
+	//			};
+	//			
+	//			var updates = {};
+	//			updates['guides/' + $scope.guideChecked.guides[0]] = updatedName;
+	//			
+	//			firebase.database().ref().update(updates);
+	//		}
+	//		else
+	//		{
+	//			window.alert("empty");
+	//		}
+	//	}
+	//	else
+	//	{
+	//		window.alert("no selection");
+	//	}
+	//};
 	
 	//delete guide
 	$scope.deleteGuide = function() {
