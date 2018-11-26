@@ -300,6 +300,8 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//update event
 	$scope.onEventEditClick = function()
 	{
+		$scope.selectedDates2.length = 0;
+		
 		if($scope.eventChecked.events.length == 1)
 		{
 			$scope.edit_notice = "";
