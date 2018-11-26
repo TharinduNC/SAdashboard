@@ -46,11 +46,10 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	//date init start
 	$scope.activeDate = null;
 	$scope.selectedDates = [];
-	$scope.eventDatealt = "";
-	
 	$scope.pickMode = "indi";
 	
-		//second group for editing date
+	$scope.eventDatealt = "";
+	
 	$scope.activeDate2 = null;
 	$scope.selectedDates2 = [];
 	$scope.pickMode2 = "indi";
@@ -63,17 +62,17 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			}
 			return '';
 		}
-	};
+	}
 	
 	$scope.dateOptions2 = {
-		startingDay: 1,
 		customClass: function(data) {
 			if($scope.selectedDates2.indexOf(data.date.setHours(0)) > -1) {
 				return 'selected';
 			}
 			return '';
 		}
-	};
+	}
+	
 	
 	$scope.removeSelected = function(dt)
 	{
@@ -86,6 +85,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 		$scope.selectedDates2.splice($scope.selectedDates2.indexOf(dt), 1);
 		$scope.activeDate2 = dt;
 	};
+	
 	//date init end
 	
 	//timepicker init
@@ -117,7 +117,7 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	};
 	
 	$scope.createEvent = function()
-	{
+	{	
 		var relrel = $scope.choose.selectedEventId.$id;
 		var relrelguide = $scope.chooseGuide.selectedGuideId.$id;
 		
@@ -326,14 +326,17 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 			
 			$scope.rel.event = $scope.currentEventRelateTo.substring(0, 4);
 
-			$scope.onEventRelSelect($scope.rel.event);
+			//$scope.onEventRelSelect($scope.rel.event);
 			
 			var strdate = $scope.currentEventDatealt.split(",");
 			
+			$scope.activeDate2 = new Date(strdate[0] + " 00:00").getTime();
+			
+			
+			console.log($scope.activeDate2);
 			for(var i = 0; i < strdate.length; i++)
 			{
-				var tt = new Date(strdate[i]);
-				tt = tt.getTime();
+				var tt = new Date(strdate[i] + " 00:00").getTime();
 				console.log(tt);
 				$scope.selectedDates2.push(tt);
 			}
@@ -400,7 +403,6 @@ app.controller('eventAll', function($scope, $firebaseArray) {
 	
 	$scope.updateEvent = function()
 	{
-		
 		var relrel = $scope.choose.selectedEventId.$id;
 		var relrelguide = $scope.chooseGuide.selectedGuideId.$id;
 		
