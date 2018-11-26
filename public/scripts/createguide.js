@@ -210,7 +210,6 @@ app.controller('createGuide', function($scope, $firebaseArray) {
 				list.$indexFor(id); // returns location in the array
         
         firebase.database().ref('guides/' + id).set($scope.model);
-        $scope.model = {};
 			});
 		}
 		else
