@@ -1,1 +1,1 @@
-var app = angular.module('myApp', ['firebase', 'checklist-model', 'ui.bootstrap', 'gm.datepickerMultiSelect', 'ngSanitize', 'schemaForm', 'schemaForm-tinymce']);
+var app = angular.module('myApp', ['firebase']);
