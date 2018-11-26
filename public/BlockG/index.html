@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en" >
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>SUTS Campus Maps</title>
+		<meta name="description" content="A 3D Model and Floor Map with descriptions for each of locations" />
+		<meta name="keywords" content="swinburne map, 3d, css, javascript, pin, levels, floor map" />
+		<meta name="author" content="Ali Elmahdi" />
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<link rel="shortcut icon" href="suts.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+		<script src="js/modernizr-custom.js"></script>
+		
+	</head>
+	<body ng-app="myApp" style=" background-image: url('swinburne-campus.jpg');
+
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;" >
+		<svg class="hidden">
+			<defs>
+				<symbol id="icon-pin" viewBox="0 0 200 300">
+					<title>pin</title>
+					<path d="M100,21.78A85,85,0,0,0,15.18,106.6c0,18.85,12.08,49.52,36.76,93.9,17.48,31.36,34.7,57.49,35.47,58.6L100,278.22l12.59-19.11c0.69-1.11,18-27.25,35.47-58.6,24.76-44.38,36.76-75.06,36.76-93.9A85,85,0,0,0,100,21.78Z" />
+				</symbol>
+				<symbol id="icon-search" viewBox="0 0 32 32">
+					<title>search</title>
+					<path class="path1" d="M26.819 24.917c0.262 0.262 0.262 0.688 0 0.951l-0.951 0.951c-0.263 0.262-0.688 0.262-0.951 0l-6.656-6.656c-0.072-0.072-0.12-0.158-0.153-0.248-1.365 0.998-3.041 1.593-4.862 1.593-4.562 0-8.261-3.699-8.261-8.261s3.699-8.261 8.261-8.261c4.562 0 8.261 3.699 8.261 8.261 0 1.821-0.595 3.497-1.593 4.862 0.091 0.032 0.176 0.080 0.248 0.153l6.656 6.656zM13.246 7.739c-3.041 0-5.508 2.466-5.508 5.508s2.466 5.508 5.508 5.508 5.508-2.466 5.508-5.508c0-3.041-2.466-5.508-5.508-5.508z"></path>
+				</symbol>
+				<symbol id="icon-stack" viewBox="0 0 32 32">
+					<title>stack</title>
+					<path class="path1" d="M29.143 11.071l-13.143-6.571-13.143 6.571 13.143 6.571 13.143-6.571zM16 6.681l8.781 4.39-8.781 4.39-8.781-4.39 8.781-4.39zM26.51 14.684l2.633 1.316-13.143 6.571-13.143-6.571 2.633-1.316 10.51 5.255zM26.51 19.612l2.633 1.316-13.143 6.571-13.143-6.571 2.633-1.316 10.51 5.255z"></path>
+				</symbol>
+				<symbol id="icon-cross" viewBox="0 0 24 24">
+					<title>cross</title>
+					<path class="path1" d="M18.016 5.125q0.369 0 0.614 0.245t0.245 0.614q0 0.363-0.248 0.611l-5.411 5.405 5.411 5.405q0.248 0.248 0.248 0.611 0 0.369-0.245 0.614t-0.614 0.245q-0.363 0-0.611-0.248l-5.405-5.411-5.405 5.411q-0.248 0.248-0.611 0.248-0.369 0-0.614-0.245t-0.245-0.614q0-0.363 0.248-0.611l5.411-5.405-5.411-5.405q-0.248-0.248-0.248-0.611 0-0.369 0.245-0.614t0.614-0.245q0.363 0 0.611 0.248l5.405 5.411 5.405-5.411q0.248-0.248 0.611-0.248z"></path>
+				</symbol>
+				<symbol id="icon-elevator" viewBox="0 0 32 32">
+					<title>elevator</title>
+					<path class="path1" d="M6.179 9.958c-0.345-0.345-0.518-0.765-0.518-1.258s0.173-0.913 0.518-1.258c0.345-0.345 0.765-0.518 1.258-0.518s0.913 0.173 1.258 0.518c0.345 0.345 0.518 0.765 0.518 1.258s-0.173 0.913-0.518 1.258-0.765 0.518-1.258 0.518c-0.493 0-0.913-0.173-1.258-0.518zM3.904 18.449c0.111 0.086 0.24 0.13 0.388 0.13s0.277-0.043 0.388-0.13 0.167-0.228 0.167-0.425v-4.81c0-0.074 0.037-0.123 0.111-0.148s0.136-0.037 0.185-0.037 0.111 0.012 0.185 0.037c0.074 0.025 0.111 0.074 0.111 0.148v11.063c0 0.222 0.080 0.407 0.24 0.555s0.351 0.222 0.574 0.222c0.222 0 0.413-0.074 0.574-0.222s0.24-0.333 0.24-0.555v-6.771c0-0.123 0.049-0.203 0.148-0.241s0.173-0.055 0.222-0.055 0.117 0.019 0.204 0.055 0.13 0.117 0.13 0.241v6.771c0 0.222 0.080 0.407 0.24 0.555s0.351 0.222 0.573 0.222c0.247 0 0.444-0.074 0.592-0.222s0.222-0.333 0.222-0.555l0.037-11.063c0-0.074 0.037-0.123 0.111-0.148s0.136-0.037 0.185-0.037 0.111 0.012 0.185 0.037 0.111 0.074 0.111 0.148v4.81c0 0.197 0.056 0.339 0.166 0.425s0.234 0.13 0.37 0.13c0.136 0 0.259-0.043 0.37-0.13s0.166-0.228 0.166-0.425v-5.106c0-0.493-0.166-0.937-0.499-1.332s-0.783-0.592-1.351-0.592h-3.885c-0.567 0-0.981 0.197-1.239 0.592s-0.389 0.839-0.389 1.332v5.106c0 0.197 0.055 0.339 0.167 0.425zM23.088 4.056c0.222 0.21 0.333 0.475 0.333 0.795v22.052c0 0.321-0.111 0.586-0.333 0.796s-0.493 0.315-0.814 0.315h-21.127c-0.321 0-0.592-0.105-0.814-0.315s-0.333-0.475-0.333-0.796v-22.052c0-0.321 0.111-0.586 0.333-0.795s0.493-0.314 0.814-0.314h21.127c0.321 0 0.592 0.105 0.814 0.314zM21.571 5.592h-19.721v20.572h19.721v-20.572zM15.947 10.476c0.493 0 0.913-0.173 1.258-0.518s0.518-0.765 0.518-1.258-0.173-0.913-0.518-1.258c-0.345-0.345-0.765-0.518-1.258-0.518s-0.913 0.173-1.258 0.518c-0.345 0.345-0.518 0.765-0.518 1.258s0.173 0.913 0.518 1.258 0.765 0.518 1.258 0.518zM12.414 18.449c0.111 0.086 0.241 0.13 0.389 0.13s0.277-0.043 0.389-0.13 0.166-0.228 0.166-0.425v-4.81c0-0.074 0.037-0.123 0.111-0.148s0.136-0.037 0.185-0.037 0.111 0.012 0.185 0.037 0.111 0.074 0.111 0.148v11.063c0 0.222 0.080 0.407 0.241 0.555s0.351 0.222 0.573 0.222 0.413-0.074 0.573-0.222c0.16-0.148 0.241-0.333 0.241-0.555v-6.771c0-0.123 0.049-0.203 0.148-0.241s0.173-0.055 0.222-0.055 0.123 0.019 0.222 0.055c0.099 0.037 0.148 0.117 0.148 0.241v6.771c0 0.222 0.074 0.407 0.222 0.555s0.345 0.222 0.592 0.222c0.222 0 0.413-0.074 0.573-0.222s0.241-0.333 0.241-0.555v-11.063c0-0.074 0.037-0.123 0.111-0.148s0.136-0.037 0.185-0.037 0.111 0.012 0.185 0.037c0.074 0.025 0.111 0.074 0.111 0.148v4.81c0 0.197 0.055 0.339 0.166 0.425s0.241 0.13 0.389 0.13 0.277-0.043 0.389-0.13 0.166-0.228 0.166-0.425v-5.106c0-0.493-0.173-0.937-0.518-1.332s-0.802-0.592-1.369-0.592h-3.848c-0.567 0-0.987 0.197-1.258 0.592s-0.407 0.839-0.407 1.332v5.106c0 0.197 0.056 0.339 0.166 0.425zM31.669 23.692c-0.64 0-1.658 0-1.658 0s0-0.276 0-0.7c0-1.308 0-3.855 0-4.83 0 0 0.008-0.228-0.288-0.228s-2.111 0-2.524 0c-0.415 0-0.342 0.273-0.342 0.273 0 1.004 0 3.465 0 4.821 0 0.473 0 0.781 0 0.781s-1.27 0-1.795 0c-0.523 0-0.041 0.456-0.041 0.456l3.185 3.849c0 0 0.261 0.306 0.535 0.031 0.377-0.378 3.085-3.974 3.085-3.974s0.481-0.477-0.157-0.477zM25.149 8.654c0.64 0 1.658 0 1.658 0s0 0.276 0 0.7c0 1.308 0 3.855 0 4.83 0 0-0.008 0.228 0.288 0.228s2.111 0 2.524 0c0.415 0 0.342-0.273 0.342-0.273 0-1.004 0-3.465 0-4.821 0-0.473 0-0.781 0-0.781s1.27 0 1.795 0c0.523 0 0.041-0.456 0.041-0.456l-3.185-3.849c0 0-0.261-0.306-0.535-0.031-0.377 0.378-3.085 3.974-3.085 3.974s-0.481 0.477 0.157 0.477z"></path>
+				</symbol>
+				<symbol id="icon-angle-up" viewBox="0 0 21 32">
+					<title>angle-up</title>
+					<path class="path1" d="M19.196 21.143q0 0.232-0.179 0.411l-0.893 0.893q-0.179 0.179-0.411 0.179t-0.411-0.179l-7.018-7.018-7.018 7.018q-0.179 0.179-0.411 0.179t-0.411-0.179l-0.893-0.893q-0.179-0.179-0.179-0.411t0.179-0.411l8.321-8.321q0.179-0.179 0.411-0.179t0.411 0.179l8.321 8.321q0.179 0.179 0.179 0.411z"></path>
+				</symbol>
+				<symbol id="icon-angle-down" viewBox="0 0 21 32">
+					<title>angle-down</title>
+					<path class="path1" d="M19.196 13.143q0 0.232-0.179 0.411l-8.321 8.321q-0.179 0.179-0.411 0.179t-0.411-0.179l-8.321-8.321q-0.179-0.179-0.179-0.411t0.179-0.411l0.893-0.893q0.179-0.179 0.411-0.179t0.411 0.179l7.018 7.018 7.018-7.018q0.179-0.179 0.411-0.179t0.411 0.179l0.893 0.893q0.179 0.179 0.179 0.411z"></path>
+				</symbol>
+			</defs>
+		</svg>
+		<div id="map" ng-controller="mapAll" class="container">
+			<div class="main">
+				
+				<div id="target" class="mall" >
+					<div class="surroundings">
+						<img class="surroundings__map" src="img/surroundings.svg" alt="Surroundings"/>
+					</div>
+					<div class="levels">
+						<div class="level level--1" aria-label="Level 1">
+								
+							<!-- Ground Floor SVG ElEMENt -->
+							<svg class="map map--1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">  
+								<image href="Floors/GroundFloor/g.png"/>
+							</svg>
+									
+							<div class="level__pins">
+
+								<!-- Pin for E004-E006 -->
+								<a  class="pin pin--1-1 labels" data-category="1" data-space="1.01" href="#" aria-label="Pin for Frisbee Court">
+									<span class="pin__icon">
+											{{maps[129].code}}	
+									</span>
+								</a>
+								
+								<a class="pin pin--1-2 labels" data-category="2" data-space="1.02" href="#" aria-label="Pin for Engineering Concrete Lab 1">
+									<span class="pin__icon">
+											{{maps[130].name}}
+									</span>
+								</a>
+
+								<a class="pin pin--1-3 labels" data-category="1" data-space="1.03" href="#" aria-label="Pin for The SIC">
+									<span class="pin__icon">
+										{{maps[131].code}}
+									</span>
+								</a>
+
+								<!-- Tommy Boy SVG Element -->
+								<!-- <a class="pin pin--1-4 labels" data-category="3" data-space="1.04" href="#" aria-label="Pin for Dress me not">
+									<span class="pin__icon">
+										{{maps[132].code}}
+									</span>
+								</a> -->
+
+								<a class="pin pin--1-5 labels" data-category="4" data-space="1.05" href="#" aria-label="Pin for Lesiure Area">
+									<span class="pin__icon"> 
+										{{maps[133].name}}
+									</span>
+								</a>
+
+								<!-- BookStore SVG Element -->
+								<!-- <a class="pin pin--1-8 labels" data-category="2" data-space="1.09" href="#" aria-label="Pin for Engineering Concrete Lab 2">
+									<span class="pin__icon">
+											{{maps[131].code}}
+									</span>
+								</a>
+								 -->
+								<!-- Marketing Area SVG -->
+								<!-- <a class="pin pin--1-6 labels" data-category="2" data-space="1.06" href="#" aria-label="Pin for Seed of Life">
+									<span class="pin__icon">
+											
+
+									</span>
+								</a> -->
+
+								<!-- FLUIDS LAB MAIN WORKSHOP SVG -->
+								<!-- <a class="pin pin--1-7 labels" data-category="1" data-space="1.07" href="#" aria-label="Pin for Star">
+									
+									<span class="pin__icon">
+											
+									</span>
+								</a> -->
+
+								
+					
+								<!-- SIC SVG -->
+								<!-- <a class="pin pin--1-9 labels" data-category="1" data-space="1.08" href="#" aria-label="Pin for SIC">
+									<span class="pin__icon">
+
+										
+
+									</span>
+								</a> -->
+								
+								<!-- Junction Pins -->
+								<!-- <a style="height: 12%; transform: scale(2.5,1);" class="pin pin--1-10" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a>
+								<a style="height: 12%; transform: scale(2.5,1);" class="pin pin--1-11" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a> -->
+								<!-- <a style="height: 12%; transform: scale(2.5,1);" class="pin pin--1-12" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a> -->
+								<!-- <a style="height: 12%; transform: scale(2.5,1);" class="pin pin--1-13" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a> -->
+								<!-- <a style="height: 12%; transform: scale(2.5,1) rotate(90deg);" class="pin pin--1-14" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a>
+								<a style="height: 12%; transform: scale(2.5,1); transform: rotate(180deg);" class="pin pin--1-15" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a>
+								<a style="height: 12%; transform: scale(2.5,1);" class="pin pin--1-16" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a>
+								<a style="height: 12%; transform: scale(2.5,1);" class="pin pin--1-17" data-category="1" data-space="1.10" href="#" aria-label="Pin for Elevator">
+									<span  class="pin__icon">
+										<svg style="fill: yellow;" class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg style="transform: scale(2,1.75);" class="icon icon--logo icon--junction"><use xlink:href="#icon-junction"></use></svg>
+									</span>
+								</a> -->
+							</div>
+							<!-- /level__pins -->
+						</div>
+
+						<!-- BEGINNING OF FIRST FLOOR -->
+
+						<div class="level level--2" aria-label="Level 2">
+								  
+							<svg class="map map--2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">  
+								<image href="Floors/FirstFloor/first.jpg"/>
+							</svg>
+							
+							<div class="level__pins">
+
+								<!-- Materials Lab SVG ELEMENT -->
+								<a style="" class="pin pin--2-1" data-category="1" data-space="2.01" href="#" aria-label="Pin for Grilled Chipotle">
+									<span class="pin__icon">
+										{{maps[134].code}}
+									</span>
+								</a>
+
+							<a style="" class="pin pin--2-2" data-category="2" data-space="2.02" href="#" aria-label="Pin for Rocketship Tech">
+									<span class="pin__icon">
+										{{maps[135].code}}	
+									</span>
+								</a> 
+
+
+							<a class="pin pin--2-3" data-category="2" data-space="2.03" href="#" aria-label="Pin for Which Bug?">
+									<span class="pin__icon">
+										{{maps[136].code}}
+									</span>
+							</a>
+
+								<!-- QUIET ZONE -->
+								<a style=""  class="pin pin--2-4" data-category="3" data-space="2.04" href="#" aria-label="Pin for Cognitio">
+									<span class="pin__icon">
+										{{maps[137].code}}
+									</span>
+								</a>
+				
+								<!-- LIBRARY SVG ELEMENT -->
+								<a  class="pin pin--2-5" data-category="1" data-space="2.05" href="#" aria-label="Pin for The Eggplanthead">
+								<span style=""class="pin__icon">
+										{{maps[138].code}}	
+								</span>
+								</a>
+
+								<!-- Computer Aided Engineering (2-6) -->
+								<a style="font-size: 7px;" class="pin pin--2-6" data-category="1" data-space="2.06" href="#" aria-label="Pin for Superfood">
+									<span class="pin__icon">
+											{{maps[139].name}}	
+									</span>
+								</a>
+								<!-- <a class="pin pin--2-7" data-category="3" data-space="2.07" href="#" aria-label="Pin for No Princess">
+									<span class="pin__icon">
+											{{maps[140].code}}
+									</span>
+								</a> -->
+								<a style="font-size: 8.5px;" class="pin pin--2-8" data-category="3" data-space="2.08" href="#" aria-label="Pin for Tool Exchange">
+									<span class="pin__icon">
+											{{maps[141].name}}
+									</span>
+								</a>
+								<!-- <a class="pin pin--2-9" data-category="3" data-space="2.09" href="#" aria-label="Pin for Tool Exchange">
+										<span class="pin__icon">
+												{{maps[142].code}}
+										</span>
+								</a> -->
+								<a style="font-size: 7px;" class="pin pin--2-10" data-category="3" data-space="2.10" href="#" aria-label="Pin for Tool Exchange">
+										<span class="pin__icon">
+												{{maps[143].name}}
+										</span>
+								</a>
+
+
+								
+								
+								
+							</div>
+							<!-- /level__pins -->
+						</div>
+						
+						<div class="level level--3" aria-label="Level 3">
+							<svg class="map map--3" version="1.1" id="Layer_1"
+							 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+							 x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" 
+							 preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" 
+							 xml:space="preserve">  <image href="Floors/SecondFloor/second.jpg"/>
+							</svg>
+							<div class="level__pins">
+								
+								<!-- Design Lab A201 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-1" data-category="1" data-space="3.01" href="#" aria-label="Design Lab">
+									<span class="pin__icon">
+											{{maps[144].code}}
+									</span>
+								</a>
+
+								<!-- Design Lab A202 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-2" data-category="2" data-space="3.02" href="#" aria-label="Design Lab 2">
+									<span class="pin__icon">
+											{{maps[145].code}}
+									</span>
+								</a>
+
+								<!-- Comp Lab A203 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-3" data-category="3" data-space="3.03" href="#" aria-label="Comp Lab">
+									<span class="pin__icon">
+											{{maps[146].code}}	
+									</span>
+								</a>
+
+								<!-- Computer Lab A204 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-4" data-category="3" data-space="3.04" href="#" aria-label="Open Lab 1">
+									<span class="pin__icon">
+											{{maps[147].code}}	
+									</span>
+								</a>
+
+								<!-- Open Lab 1 A207 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-5" data-category="4" data-space="3.05" href="#" aria-label="Open Lab 2">
+									<span class="pin__icon">
+											{{maps[148].code}}
+									</span>
+								</a>
+
+								<!-- Open Lab 2 A208 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-6" data-category="4" data-space="3.06" href="#" aria-label="Open Lab 3">
+									<span class="pin__icon">
+											{{maps[149].code}}
+									</span>
+								</a>
+
+								<!-- Open Lab 3 A211 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-7" data-category="4" data-space="3.07" href="#" aria-label="Open Lab 4">
+									<span class="pin__icon">
+									{{maps[150].code}}
+									</span>
+								</a>
+
+								<!-- Open Lab 4 A212 -->
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-8" data-category="4" data-space="3.08" href="#" aria-label="Research Room A213">
+										<span class="pin__icon">
+												{{maps[151].code}}
+										</span>
+								</a>
+
+								<a style="transform: rotate(90deg);
+								font-size: 6px;" class="pin pin--3-9" data-category="4" data-space="3.09" href="#" aria-label="Research Room A213">
+										<span class="pin__icon">
+												{{maps[152].code}}
+										</span>
+								</a>
+
+								<!-- Research Room A213 -->
+								<a style="font-size: 9px;" class="pin pin--3-10" data-category="4" data-space="3.10" href="#" aria-label="">
+										<span class="pin__icon">
+												{{maps[153].code}}	
+										</span>
+								</a>
+
+								<!-- Research Room A216 -->
+								<a style="font-size: 9px;" class="pin pin--3-11" data-category="4" data-space="3.11" href="#" aria-label="">
+										<span>
+												{{maps[154].name}}	
+										</span>
+										
+								</a>
+
+								<!-- Tutorial Room A214 -->
+								<a style="font-size: 6.5px;" class="pin pin--3-12" data-category="4" data-space="3.12" href="#" aria-label="">
+										<span class="pin__icon">
+												{{maps[155].name}}
+										</span>
+								</a>
+
+								<a style="font-size: 9px;" class="pin pin--3-13" data-category="4" data-space="3.13" href="#" aria-label="">
+										<span class="pin__icon">
+												{{maps[156].name}}
+										</span>
+								</a>
+
+								
+								<!-- A215 -->
+								<a style="font-size: 9px;" class="pin pin--3-14" data-category="1" data-space="3.14" href="#" aria-label="Pin for Cold Soup Kitchen">
+										<span class="pin__icon">
+												{{maps[157].name}}	
+										</span>
+									</a>
+
+									<!-- A217 -->
+									<a style="font-size: 7px;" class="pin pin--3-15" data-category="1" data-space="3.15" href="#" aria-label="Pin for Cold Soup Kitchen">
+											<span class="pin__icon">
+													{{maps[158].name}}	
+											</span>
+										</a>
+
+									<a style="font-size: 8px;" class="pin pin--3-16" data-category="1" data-space="3.16" href="#" aria-label="Pin for Cold Soup Kitchen">
+											<span class="pin__icon">
+														{{maps[159].name}}	
+											</span>
+									</a>
+
+									<!-- B202 -->
+									<a style="transform: rotate(270deg);font-size: 6px;" class="pin pin--3-17" data-category="1" data-space="3.17" href="#" aria-label="Pin for Cold Soup Kitchen">
+											<span class="pin__icon">
+													{{maps[160].code}}	
+											</span>
+									</a>
+									<!-- B203 -->
+									<a style="font-size: 7px;" class="pin pin--3-18" data-category="1" data-space="3.18" href="#" aria-label="Pin for Cold Soup Kitchen">
+											<span class="pin__icon">
+													{{maps[161].name}}		
+											</span>
+									</a>
+									
+							
+							</div>
+							<!-- /level__pins -->
+						</div>
+
+
+						<div class="level level--4" aria-label="Level 4">
+							
+							<svg class="map map--4" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+								  <image href="Floors/ThirdFloor/third.jpg"/>
+							</svg>
+
+							<!-- A301 -->
+							
+							<div class="level__pins">
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-1" data-category="1" data-space="4.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+									<span style="stroke-width: 4px;"  class="icon icon--pin">
+									{{maps[162].code}}	
+									</span>
+								</a>
+                                
+                            <!-- A302 -->
+                            <a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-2" data-category="1" data-space="4.02" href="#" aria-label="Pin for Cold Soup Kitchen">
+									<span class="pin__icon">
+										{{maps[163].code}}	
+									</span>
+								</a>
+
+								<!-- A303 -->
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-3" data-category="2" data-space="4.03" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+										{{maps[164].code}}
+									</span>
+								</a>
+
+								<!-- A305 -->
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-4" data-category="3" data-space="4.04" href="#" aria-label="Pin for Little Artist">
+									<span class="pin__icon">
+										{{maps[165].code}}
+									</span>
+								</a>
+
+								<!-- A306 -->
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-5" data-category="4" data-space="4.05" href="#" aria-label="Pin for Sacred Symmetry">
+									<span class="pin__icon">
+										{{maps[166].code}}
+                                    </span>
+								</a>
+								<!-- A307 -->
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-6" data-category="4" data-space="4.06" href="#" aria-label="Pin for Hot Tub Festival">
+									<span class="pin__icon">
+										{{maps[167].code}}
+									</span>
+								</a>
+								<!-- A308 -->
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-7" data-category="2" data-space="4.07" href="#" aria-label="Pin for Love 2 Cook">
+									<span class="pin__icon">
+										{{maps[168].code}}
+									</span>
+								</a>
+								<!-- A309 -->
+								<a style="font-size: 6px; transform: rotate(90deg);" class="pin pin--4-8" data-category="2" data-space="4.08" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+											{{maps[169].code}}</span>
+								</a>
+								<!-- A310 -->
+                                <a style="font-size: 4px" class="pin pin--4-9" data-category="2" data-space="4.09" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+											{{maps[170].code}}</span>
+								</a>
+								<!-- a311 -->
+                                <a style="font-size: 4px;" class="pin pin--4-10" data-category="2" data-space="4.10" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+											{{maps[171].code}}</span>
+								</a>
+								<!-- a312 -->
+                                <a style="font-size: 5px;" class="pin pin--4-11" data-category="2" data-space="4.11" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[172].code}}</span>
+								</a>
+                                <!-- a313 -->
+                                <!-- <a style="" class="pin pin--4-12" data-category="2" data-space="4.12" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[173].code}}</span>
+								</a> -->
+								<!-- a314 -->
+                                <a style="" class="pin pin--4-13" data-category="2" data-space="4.13" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[174].code}}</span>
+								</a>
+								<!-- a316 -->
+                                <a style="" class="pin pin--4-14" data-category="2" data-space="4.14" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[175].code}}</span>
+								</a>
+								<!-- B302 -->
+                                <a style="font-size: 9px;" class="pin pin--4-15" data-category="2" data-space="4.15" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[176].code}}</span>
+								</a>
+								<!-- B303 -->
+                                <a style="font-size: 8.1px;" class="pin pin--4-16" data-category="2" data-space="4.16" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[177].name}}</span>
+								</a>
+                                <!-- B304 -->
+                                <a style="font-size: 9px;" class="pin pin--4-17" data-category="2" data-space="4.17" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[178].code}}</span>
+								</a>
+								<!-- B305 -->
+                                <!-- <a style="" class="pin pin--4-18" data-category="2" data-space="4.18" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[179].code}}</span> -->
+								</a>
+								<!-- B306 -->
+                                <a style="font-size: 9px;" class="pin pin--4-19" data-category="2" data-space="4.19" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[180].code}}</span>
+								</a>
+								<!-- B307 -->
+                                <!-- <a style="" class="pin pin--4-20" data-category="2" data-space="4.20" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[181].code}}</span>
+								</a> -->
+								<!-- B308 -->
+                                <!-- <a style="" class="pin pin--4-21" data-category="2" data-space="4.21" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[182].code}}</span>
+								</a> -->
+								<!-- B309 -->
+                                <a style="font-size: 9px;" class="pin pin--4-22" data-category="2" data-space="4.22" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[183].code}}</span>
+								</a>
+								<!-- B312 -->
+                                <a  style="font-size: 9px;" class="pin pin--4-23" data-category="2" data-space="4.23" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[184].code}}</span>
+								</a>
+								<!-- Faculty of Business & Design -->
+                                <a style="font-size: 9px;" class="pin pin--4-24" data-category="2" data-space="4.24" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[185].code}}</span>
+								</a>
+								<!-- B314 -->
+                                <a style="font-size: 8px;" class="pin pin--4-25" data-category="2" data-space="4.25" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[186].name}}</span>
+								</a>
+								<!-- B316 -->
+                                <a style="font-size: 9px;" class="pin pin--4-26" data-category="2" data-space="4.26" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[187].code}}</span>
+								</a>
+								<!-- B317 -->
+                                <a  style="font-size: 9px;" class="pin pin--4-27" data-category="2" data-space="4.27" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[188].code}}</span>
+								</a>
+								<!-- B318 -->
+                                <a style="font-size: 9px;" class="pin pin--4-28" data-category="2" data-space="4.28" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[189].code}}</span>
+								</a>
+								<!-- B319 -->
+                                <a style="font-size: 9px;" class="pin pin--4-29" data-category="2" data-space="4.29" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[190].name}}</span>
+								</a>
+								<!-- B320 -->
+                                <a style="font-size: 9px;" class="pin pin--4-30" data-category="2" data-space="4.30" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[191].code}}</span>
+								</a>
+								<!-- B321 -->
+                                <a style="font-size: 9px;" class="pin pin--4-31" data-category="2" data-space="4.31" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[192].code}}</span>
+								</a>     
+							</div>
+						</div>
+
+						<div class="level level--5" aria-label="Level 5">
+							<svg class="map map--5" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+								  <image href="Floors/FourthFloor/fourth.jpg"/>
+							</svg>
+							
+							
+							<div class="level__pins">
+								<!-- Swinburne Research Center -->
+								<a style="" class="pin pin--5-1" data-category="1" data-space="5.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+									<span class="pin_icon">
+										{{maps[193].code}}
+									</span>
+								</a>
+
+								<!-- IT Support -->
+								<a style="" class="pin pin--5-2" data-category="2" data-space="5.02" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+										{{maps[194].code}}
+									</span>
+								</a>
+
+								<!-- Printing Room -->
+								<a style="" class="pin pin--5-3" data-category="3" data-space="5.03" href="#" aria-label="Pin for Little Artist">
+									<span class="pin__icon">
+										{{maps[195].code}}
+									</span>
+								</a>
+
+								<!-- Computer Lab -->
+								<a  class="pin pin--5-4" data-category="4" data-space="5.04" href="#" aria-label="Pin for Sacred Symmetry">
+									<span class="pin__icon">
+										{{maps[196].code}}
+									</span>
+								</a>
+
+
+								<a style="font-size: 6.5px;" class="pin pin--5-5" data-category="4" data-space="5.05" href="#" aria-label="Pin for Hot Tub Festival">
+									<span class="pin__icon">
+										{{maps[197].name}}
+									</span>
+								</a>
+
+								<a style="font-size: 9px;" class="pin pin--5-6" data-category="2" data-space="5.06" href="#" aria-label="Pin for Love 2 Cook">
+									<span class="pin__icon">
+										{{maps[198].name}}
+									</span>
+								</a>
+								<a style="font-size: 7px;" class="pin pin--5-7" data-category="2" data-space="5.07" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+										{{maps[199].name}}
+									</span>
+								
+								</a>
+								<a style="font-size: 9px;" class="pin pin--5-8" data-category="2" data-space="5.08" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+										{{maps[200].name}}
+									</span>
+								</a>
+
+								<a style="font-size: 6px;" class="pin pin--5-9" data-category="2" data-space="5.09" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+										{{maps[201].name}}
+									</span>
+								</a>
+
+							</div>
+							<!-- /level__pins -->
+						</div>
+
+						<div class="level level--6" aria-label="Level 6">
+								<svg class="map map--6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+									  <image href="Floors/FifthFloor/fifth.jpg"/>
+								</svg>
+
+							<div class="level__pins">
+								<a style="font-size: 6px;" class="pin pin--6-1" data-category="1" data-space="6.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+									<span class="pin__icon">
+										{{maps[202].name}}
+									</span>
+								</a>
+								<a style="" class="pin pin--6-2" data-category="2" data-space="6.02" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+											{{maps[203].code}}</span>
+								</a>
+								<a style="font-size: 6px;" class="pin pin--6-3" data-category="3" data-space="6.03" href="#" aria-label="Pin for Little Artist">
+									<span class="pin__icon">
+											{{maps[204].name}}
+									</span>
+								</a>
+								<a style="font-size: 8px;" class="pin pin--6-4" data-category="4" data-space="6.04" href="#" aria-label="Pin for Sacred Symmetry">
+									<span class="pin__icon">
+											{{maps[205].name}}
+									</span>
+								</a>
+								<a style="    font-size: 6px;" class="pin pin--6-5" data-category="4" data-space="6.05" href="#" aria-label="Pin for Hot Tub Festival">
+									<span class="pin__icon">
+											{{maps[206].name}}
+									</span>
+								</a>
+								<a style="font-size: 6px;" class="pin pin--6-6" data-category="2" data-space="6.06" href="#" aria-label="Pin for Love 2 Cook">
+									<span class="pin__icon">
+											{{maps[207].name}}
+									</span>
+								</a>
+								<a style="font-size: 7px;" class="pin pin--6-7" data-category="2" data-space="6.07" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+											{{maps[208].name}}
+									</span>
+								</a>
+								<a style="font-size: 6px;" class="pin pin--6-8" data-category="2" data-space="6.08" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[209].name}}
+										</span>
+								</a>
+							</div>
+							<!-- /level__pins -->
+						</div>
+
+						<div class="level level--7" aria-label="Level 7">
+								<svg class="map map--7" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+									  <image href="Floors/FifthFloor/fifth.jpg"/>
+								</svg>
+							
+							<div class="level__pins">
+								<a class="pin pin--7-1" data-category="1" data-space="7.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+									<span class="pin__icon">
+										{{maps[120].code}}</span>
+								</a>
+								<a class="pin pin--7-2" data-category="2" data-space="7.02" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+											{{maps[121].code}}
+									</span>
+								</a>
+								
+								<a class="pin pin--7-3" data-category="4" data-space="7.03" href="#" aria-label="Pin for Hot Tub Festival">
+									<span class="pin__icon">
+											{{maps[122].code}}
+									</span>
+								</a>
+								<a class="pin pin--7-4" data-category="2" data-space="7.04" href="#" aria-label="Pin for Love 2 Cook">
+									<span class="pin__icon">
+											{{maps[123].code}}
+									</span>
+								</a>
+								<a class="pin pin--7-5" data-category="2" data-space="7.05" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+											{{maps[124].code}}
+									</span>
+								</a>
+								<a class="pin pin--7-6" data-category="2" data-space="7.06" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[125].code}}
+										</span>
+								</a>
+								<a class="pin pin--7-7" data-category="2" data-space="7.07" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[126].code}}
+										</span>
+								</a>
+								<a class="pin pin--7-8" data-category="2" data-space="7.08" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[127].code}}
+										</span>
+								</a>
+								<a class="pin pin--7-9" data-category="2" data-space="7.09" href="#" aria-label="Pin for Permaculture Hub">
+										<span class="pin__icon">
+												{{maps[128].code}}
+										</span>
+								</a>
+							</div>
+							<!-- /level__pins -->
+						</div>
+
+						<div class="level level--8" aria-label="Level 8">
+							
+								<svg class="map map--8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+									  <image href="Floors/SeventhFloor/seventh.jpg"/>
+								</svg>
+							<div class="level__pins">
+								<!-- <a class="pin pin--4-1" data-category="1" data-space="4.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--tomato"><use xlink:href="#icon-tomato"></use></svg>
+									</span>
+								</a>
+								<a class="pin pin--4-2" data-category="2" data-space="4.02" href="#" aria-label="Pin for Docu Dome">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--cinema"><use xlink:href="#icon-cinema"></use></svg>
+									</span>
+								</a>
+								<a class="pin pin--4-3" data-category="3" data-space="4.03" href="#" aria-label="Pin for Little Artist">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--paint-brush"><use xlink:href="#icon-paint-brush"></use></svg>
+									</span>
+								</a>
+								<a class="pin pin--4-4" data-category="4" data-space="4.04" href="#" aria-label="Pin for Sacred Symmetry">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--modx"><use xlink:href="#icon-modx"></use></svg>
+									</span>
+								</a>
+								<a class="pin pin--4-5" data-category="4" data-space="4.05" href="#" aria-label="Pin for Hot Tub Festival">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--droplet"><use xlink:href="#icon-droplet"></use></svg>
+									</span>
+								</a>
+								<a class="pin pin--4-6" data-category="2" data-space="4.06" href="#" aria-label="Pin for Love 2 Cook">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--cupcake"><use xlink:href="#icon-cupcake"></use></svg>
+									</span>
+								</a>
+								<a class="pin pin--4-7" data-category="2" data-space="4.07" href="#" aria-label="Pin for Permaculture Hub">
+									<span class="pin__icon">
+										<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+										<svg class="icon icon--logo icon--leafcircle"><use xlink:href="#icon-leafcircle"></use></svg>
+									</span>
+								</a> -->
+							</div>
+							<!-- /level__pins -->
+						</div>
+
+						<div class="level level--" aria-label="Level 8">
+							
+							<svg class="map map--9" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+								  <image href="Floors/eighth.jpg"/>
+							</svg>
+						<div class="level__pins">
+							<!-- <a class="pin pin--4-1" data-category="1" data-space="4.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--tomato"><use xlink:href="#icon-tomato"></use></svg>
+								</span>
+							</a>
+							<a class="pin pin--4-2" data-category="2" data-space="4.02" href="#" aria-label="Pin for Docu Dome">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--cinema"><use xlink:href="#icon-cinema"></use></svg>
+								</span>
+							</a>
+							<a class="pin pin--4-3" data-category="3" data-space="4.03" href="#" aria-label="Pin for Little Artist">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--paint-brush"><use xlink:href="#icon-paint-brush"></use></svg>
+								</span>
+							</a>
+							<a class="pin pin--4-4" data-category="4" data-space="4.04" href="#" aria-label="Pin for Sacred Symmetry">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--modx"><use xlink:href="#icon-modx"></use></svg>
+								</span>
+							</a>
+							<a class="pin pin--4-5" data-category="4" data-space="4.05" href="#" aria-label="Pin for Hot Tub Festival">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--droplet"><use xlink:href="#icon-droplet"></use></svg>
+								</span>
+							</a>
+							<a class="pin pin--4-6" data-category="2" data-space="4.06" href="#" aria-label="Pin for Love 2 Cook">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--cupcake"><use xlink:href="#icon-cupcake"></use></svg>
+								</span>
+							</a>
+							<a class="pin pin--4-7" data-category="2" data-space="4.07" href="#" aria-label="Pin for Permaculture Hub">
+								<span class="pin__icon">
+									<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+									<svg class="icon icon--logo icon--leafcircle"><use xlink:href="#icon-leafcircle"></use></svg>
+								</span>
+							</a> -->
+						</div>
+						<!-- /level__pins -->
+					</div>
+
+					<div class="level level--10" aria-label="Level 9">
+							
+						<svg class="map map--10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet"  enable-background="new 0 0 4961 3508" xml:space="preserve">
+							  <image href="Floors/nineth.jpg"/>
+						</svg>
+					<div class="level__pins">
+						<!-- <a class="pin pin--4-1" data-category="1" data-space="4.01" href="#" aria-label="Pin for Cold Soup Kitchen">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--tomato"><use xlink:href="#icon-tomato"></use></svg>
+							</span>
+						</a>
+						<a class="pin pin--4-2" data-category="2" data-space="4.02" href="#" aria-label="Pin for Docu Dome">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--cinema"><use xlink:href="#icon-cinema"></use></svg>
+							</span>
+						</a>
+						<a class="pin pin--4-3" data-category="3" data-space="4.03" href="#" aria-label="Pin for Little Artist">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--paint-brush"><use xlink:href="#icon-paint-brush"></use></svg>
+							</span>
+						</a>
+						<a class="pin pin--4-4" data-category="4" data-space="4.04" href="#" aria-label="Pin for Sacred Symmetry">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--modx"><use xlink:href="#icon-modx"></use></svg>
+							</span>
+						</a>
+						<a class="pin pin--4-5" data-category="4" data-space="4.05" href="#" aria-label="Pin for Hot Tub Festival">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--droplet"><use xlink:href="#icon-droplet"></use></svg>
+							</span>
+						</a>
+						<a class="pin pin--4-6" data-category="2" data-space="4.06" href="#" aria-label="Pin for Love 2 Cook">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--cupcake"><use xlink:href="#icon-cupcake"></use></svg>
+							</span>
+						</a>
+						<a class="pin pin--4-7" data-category="2" data-space="4.07" href="#" aria-label="Pin for Permaculture Hub">
+							<span class="pin__icon">
+								<svg class="icon icon--pin"><use xlink:href="#icon-pin"></use></svg>
+								<svg class="icon icon--logo icon--leafcircle"><use xlink:href="#icon-leafcircle"></use></svg>
+							</span>
+						</a> -->
+					</div>
+					<!-- /level__pins -->
+				</div>
+
+					</div>
+					<!-- /levels -->
+				</div>
+				<!-- /mall -->
+				
+				<button class="boxbutton boxbutton--dark open-search" aria-label="Show search"><svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg></button>
+				<!-- <button style="width: 90px;
+				height: 34px;
+				top: 10px;
+                right: 69px;
+				display: inline-block;
+				font-size: 12px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				outline: none;
+				color: #fff;
+				background-color: rgba(255, 0, 0, 0.54);
+				border: none;
+				border-radius: 15px;
+				box-shadow: 0 9px #999;" class="boxbutton boxbutton--dark open-search" aria-label="Show search"  onclick="window.location.href='../CampusMap2'" >Block A&B</button>
+				</p>
+				 -->
+				<nav class="mallnav mallnav--hidden">
+					<button class="boxbutton mallnav__button--up" aria-label="Go up"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-up"></use></svg></button>
+					<button class="boxbutton boxbutton--dark mallnav__button--all-levels" aria-label="Back to all levels"><svg class="icon icon--stack"><use xlink:href="#icon-stack"></use></svg></button>
+					<button class="boxbutton mallnav__button--down" aria-label="Go down"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-down"></use></svg></button>
+				</nav>
+				<div class="content">
+					<div class="content__item" data-space="1.01" data-category="1">
+						<h3 class="content__item-title">{{maps[129].code}}</h3>
+						<div class="content__item-details">
+								{{maps[129].description}}
+							</div>
+							<div class="content__item-details">
+									
+								</div>
+					</div>
+					<div class="content__item" data-space="1.02" data-category="2">
+						<h3 class="content__item-title">{{maps[130].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[130].description}}
+							</div>
+					</div>
+					<div class="content__item" data-space="1.03" data-category="2">
+						<h3 class="content__item-title">{{maps[131].name}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[131].name}}
+							</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="1.04" data-category="3">
+						<h3 class="content__item-title">{{maps[132].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[132].description}} 
+							</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="1.05" data-category="4">
+						<h3 class="content__item-title">{{maps[133].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+									{{maps[133].description}} 
+							</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="1.06" data-category="2">
+						<h3 class="content__item-title">{{maps[1].name}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[1].description}}
+							</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="1.07" data-category="1">
+						<h3 class="content__item-title">Fluids Lab & Main Workshop E005</h3>
+					</div>
+                    
+					<div class="content__item" data-space="1.08" data-category="1">
+						<h3 class="content__item-title">{{maps[0].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+									{{maps[0].description}}
+							</p>
+						</div>
+					</div>
+					<!-- B006 -->
+					<div class="content__item" data-space="1.09" data-category="2">
+						<h3 class="content__item-title">{{maps[5].code}}</h3>
+						<div class="content__item-details">
+								{{maps[5].code}} 
+						</div>
+					</div>
+					<div class="content__item" data-space="1.10" data-category="5">
+						<h3 class="content__item-title">Elevator and Staircase</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								<p class="content__desc">This is an elevator and staircase area that can transport you between the building levels. </p>
+						</div>
+					</div>
+					<div class="content__item" data-space="2.01" data-category="1">
+						<h3 class="content__item-title">{{maps[134].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[134].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="2.02" data-category="2">
+						<h3 class="content__item-title">{{maps[135].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[135].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="2.03" data-category="2">
+						<h3 class="content__item-title">{{maps[136].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[136].description}}
+							</p>
+						</div>
+					</div>
+					<!-- Quiet Zone -->
+					<div class="content__item" data-space="2.04" data-category="3">
+						<h3 class="content__item-title">{{maps[137].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[137].description}}
+							</div>
+					</div>
+					<!-- Library -->
+					<div class="content__item" data-space="2.05" data-category="1">
+						<h3 class="content__item-title">{{maps[138].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[137].description}}
+							</div>
+					</div>
+					<div class="content__item" data-space="2.06" data-category="1">
+						<h3 class="content__item-title">{{maps[139].descriptionheader}}</h3>
+						<div class="content__item-details">
+							{{maps[139].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="2.07" data-category="3">
+						<h3 class="content__item-title">{{maps[140].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[140].description}}
+							</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="2.08" data-category="3">
+						<h3 class="content__item-title">{{maps[141].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+									{{maps[141].description}}
+							</p>
+					</div>
+					</div>
+					
+					<div class="content__item" data-space="2.09" data-category="3">
+						<h3 class="content__item-title">{{maps[142].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+									{{maps[142].description}}
+							</p>
+					</div>
+					</div>
+
+					<div class="content__item" data-space="2.10" data-category="3">
+						<h3 class="content__item-title">{{maps[143].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[143].description}}
+							</p>
+					</div>
+					</div>
+
+
+
+					
+					<div class="content__item" data-space="3.01" data-category="1">
+						<h3 class="content__item-title">{{maps[144].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">
+								{{maps[144].description}}
+							</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="3.02" data-category="2">
+						<h3 class="content__item-title">{{maps[145].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">{{maps[145].description}}</p>
+							</div>
+					</div>
+					<div class="content__item" data-space="3.03" data-category="3">
+						<h3 class="content__item-title">{{maps[146].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">{{maps[146].description}}</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="3.04" data-category="3">
+						<h3 class="content__item-title">{{maps[147].descriptionheader}}</h3>
+						<div class="content__item-details">
+							<p class="content__meta">{{maps[147].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.05" data-category="4">
+						<h3 class="content__item-title">{{maps[148].descriptionheader}}</h3>
+						<div class="content__item-details">
+								<p class="content__meta">{{maps[148].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.06" data-category="4">
+						<h3 class="content__item-title">{{maps[149].descriptionheader}}</h3>
+						<div class="content__item-details">{{maps[149].description}}</div>
+					</div>
+
+					<div class="content__item" data-space="3.07" data-category="4">
+							<h3 class="content__item-title">{{maps[150].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[150].description}}</div>
+					</div>
+
+					<div class="content__item" data-space="3.08" data-category="4">
+							<h3 class="content__item-title">{{maps[151].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[151].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.09" data-category="4">
+							<h3 class="content__item-title">{{maps[152].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[152].description}}</div>
+					</div>
+
+					<div class="content__item" data-space="3.10" data-category="4">
+							<h3 class="content__item-title">{{maps[153].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[153].description}}</div>
+					</div>
+
+					<div class="content__item" data-space="3.11" data-category="4">
+							<h3 class="content__item-title">{{maps[154].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[154].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.12" data-category="4">
+							<h3 class="content__item-title">{{maps[155].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[155].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.13" data-category="4">
+							<h3 class="content__item-title">{{maps[156].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[156].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.14" data-category="4">
+							<h3 class="content__item-title">{{maps[157].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[157].description}}</div>
+						</div>
+					<div class="content__item" data-space="3.15" data-category="4">
+								<h3 class="content__item-title">{{maps[158].descriptionheader}}</h3>
+								<div class="content__item-details">{{maps[158].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.16" data-category="4">
+							<h3 class="content__item-title">{{maps[159].descriptionheader}}</h3>
+							<div class="content__item-details">{{maps[159].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.17" data-category="4">
+							<h3 class="content__item-title">{{maps[160].code}}</h3>
+							<div class="content__item-details">{{maps[160].description}}</div>
+					</div>
+					<div class="content__item" data-space="3.18" data-category="4">
+							<h3 class="content__item-title">{{maps[161].code}}</h3>
+							<div class="content__item-details">{{maps[161].description}}</div>
+					</div>
+					
+
+
+
+
+
+
+					<!-- A301 -->
+					<div class="content__item" data-space="4.01" data-category="1">
+						<h3 class="content__item-title">{{maps[162].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[162].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.02" data-category="2">
+						<h3 class="content__item-title">{{maps[163].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[163].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.03" data-category="3">
+						<h3 class="content__item-title">{{maps[164].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[164].description}}
+						</div>
+					</div>
+                    
+					<div class="content__item" data-space="4.04" data-category="4">
+							<h3 class="content__item-title">{{maps[165].descriptionheader}}</h3>
+							<div class="content__item-details">
+									{{maps[165].description}}
+							</div>
+				    </div>
+                    
+					<div class="content__item" data-space="4.05" data-category="4">
+							<h3 class="content__item-title">{{maps[166].descriptionheader}}</h3>
+							<div class="content__item-details">
+									{{maps[166].description}}
+							</div>
+				    </div>
+					<div class="content__item" data-space="4.06" data-category="2">
+							<h3 class="content__item-title">{{maps[167].descriptionheader}}</h3>
+							<div class="content__item-details">
+									{{maps[167].description}}
+							</div>
+					</div>
+					<div class="content__item" data-space="4.07" data-category="2">
+							<h3 class="content__item-title">{{maps[168].descriptionheader}}</h3>
+							<div class="content__item-details">
+									{{maps[168].description}}
+							</div>
+					</div>
+					<div class="content__item" data-space="4.08" data-category="1">
+							<h3 class="content__item-title">{{maps[169].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[169].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.09" data-category="1">
+							<h3 class="content__item-title">{{maps[170].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[170].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.10" data-category="1">
+							<h3 class="content__item-title">{{maps[171].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[171].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.11" data-category="1">
+							<h3 class="content__item-title">{{maps[172].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[172].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.12" data-category="1">
+							<h3 class="content__item-title">{{maps[173].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[173].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.13" data-category="1">
+							<h3 class="content__item-title">{{maps[174].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[174].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.14" data-category="1">
+							<h3 class="content__item-title">{{maps[175].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[175].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.15" data-category="1">
+							<h3 class="content__item-title">{{maps[176].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[176].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.16" data-category="1">
+							<h3 class="content__item-title">{{maps[177].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[177].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.17" data-category="1">
+							<h3 class="content__item-title">{{maps[178].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[178].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.18" data-category="1">
+							<h3 class="content__item-title">{{maps[179].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[179].description}}
+						</div>
+					</div>
+
+					<div class="content__item" data-space="4.19" data-category="1">
+							<h3 class="content__item-title">{{maps[180].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[180].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.20" data-category="1">
+							<h3 class="content__item-title">{{maps[181].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[181].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.21" data-category="1">
+							<h3 class="content__item-title">{{maps[182].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[182].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.22" data-category="1">
+							<h3 class="content__item-title">{{maps[183].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[183].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.23" data-category="1">
+							<h3 class="content__item-title">{{maps[184].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[184].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.24" data-category="1">
+							<h3 class="content__item-title">{{maps[185].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[185].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.25" data-category="1">
+							<h3 class="content__item-title">{{maps[186].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[186].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.26" data-category="1">
+							<h3 class="content__item-title">{{maps[187].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[187].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.27" data-category="1">
+							<h3 class="content__item-title">{{maps[188].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[188].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.28" data-category="1">
+							<h3 class="content__item-title">{{maps[189].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[189].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.29" data-category="1">
+							<h3 class="content__item-title">{{maps[190].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[190].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.30" data-category="1">
+							<h3 class="content__item-title">{{maps[191].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[191].description}}
+						</div>
+					</div>
+					<div class="content__item" data-space="4.31" data-category="1">
+							<h3 class="content__item-title">{{maps[192].descriptionheader}}</h3>
+						<div class="content__item-details">
+								{{maps[192].description}}
+						</div>
+					</div>
+					
+			
+					<div class="content__item" data-space="5.01" data-category="1">
+							<h3 class="content__item-title">{{maps[193].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[193].description}}</p>
+						</div>
+					</div>
+
+
+					<div class="content__item" data-space="5.02" data-category="1">
+							<h3 class="content__item-title">{{maps[194].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[194].description}}</p>
+					</div>
+					</div>
+
+					<div class="content__item" data-space="5.03" data-category="1">
+						<h3 class="content__item-title">{{maps[195].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[195].description}}</p>
+					
+					</div>
+					</div>
+
+
+					<div class="content__item" data-space="5.04" data-category="1">
+						<h3 class="content__item-title">{{maps[196].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[196].description}}</p>
+					
+					</div>
+					</div>
+
+
+
+					<div class="content__item" data-space="5.05" data-category="1">
+						<h3 class="content__item-title">{{maps[197].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[197].description}}</p>
+							</div>
+					</div>
+
+
+
+					<div class="content__item" data-space="5.06" data-category="1">
+						<h3 class="content__item-title">{{maps[198].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[198].description}}</p>
+							</div>
+					</div>
+
+
+
+					<div class="content__item" data-space="5.07" data-category="1">
+						<h3 class="content__item-title">{{maps[199].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[199].description}}</p>
+							</div>
+					</div>
+
+
+
+					<div class="content__item" data-space="5.08" data-category="1">
+						<h3 class="content__item-title">{{maps[200].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[200].description}}</p>
+							</div>
+					</div>
+
+
+
+					<div class="content__item" data-space="5.09" data-category="1">
+						<h3 class="content__item-title">{{maps[201].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[201].description}}</p>
+							</div>
+					</div>
+
+
+
+					<div class="content__item" data-space="6.01" data-category="1">
+							<h3 class="content__item-title">{{maps[202].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[202].description}}</p>
+								</div>
+					</div>
+					<div class="content__item" data-space="6.02" data-category="1">
+							<h3 class="content__item-title">{{maps[203].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[203].description}}</p>
+							</div>
+					</div>
+					<div class="content__item" data-space="6.03" data-category="1">
+							<h3 class="content__item-title">{{maps[204].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[204].description}}</p>
+								</div>
+					</div>
+					<div class="content__item" data-space="6.04" data-category="1">
+							<h3 class="content__item-title">{{maps[205].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[205].description}}</p>
+								</div>
+					</div>
+					<div class="content__item" data-space="6.05" data-category="1">
+							<h3 class="content__item-title">{{maps[206].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[206].description}}</p>
+							</div>
+					</div>
+					<div class="content__item" data-space="6.06" data-category="1">
+							<h3 class="content__item-title">{{maps[207].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[207].description}}</p>
+							</div>
+					</div>
+					<div class="content__item" data-space="6.07" data-category="1">
+						<h3 class="content__item-title">{{maps[208].name}}</h3>
+						<div class="content__item-details">
+							<p>{{maps[208].description}}</p>
+						</div>
+					</div>
+					<div class="content__item" data-space="6.08" data-category="1">
+							<h3 class="content__item-title">{{maps[209].name}}</h3>
+							<div class="content__item-details">
+								<p>{{maps[209].description}}</p>
+							</div>
+					</div>
+					
+
+
+					<div class="content__item" data-space="7.01" data-category="1">
+							<h3 class="content__item-title">{{maps[120].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.02" data-category="1">
+							<h3 class="content__item-title">{{maps[121].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.03" data-category="1">
+							<h3 class="content__item-title">{{maps[122].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.04" data-category="1">
+							<h3 class="content__item-title">{{maps[123].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.05" data-category="1">
+							<h3 class="content__item-title">{{maps[124].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.06" data-category="1">
+							<h3 class="content__item-title">{{maps[125].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.07" data-category="1">
+							<h3 class="content__item-title">{{maps[126].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.08" data-category="1">
+							<h3 class="content__item-title">{{maps[127].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.09" data-category="1">
+							<h3 class="content__item-title">{{maps[128].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.10" data-category="1">
+							<h3 class="content__item-title">{{maps[129].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.11" data-category="1">
+							<h3 class="content__item-title">{{maps[130].name}}</h3>
+					</div>
+					<div class="content__item" data-space="7.12" data-category="1">
+							<h3 class="content__item-title">{{maps[131].name}}</h3>
+					</div>
+				
+					<button class="boxbutton boxbutton--dark content__button content__button--hidden" aria-label="Close details"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
+				</div>
+				<!-- content -->
+			</div>
+			<!-- /main -->
+			<aside class="spaces-list" id="spaces-list">
+				<div class="search">
+					
+					<button class="boxbutton boxbutton--darker close-search" aria-label="Close details"><svg class="icon icon--cross"><use xlink:href="#icon-cross"></use></svg></button>
+				</div>
+				<span class="label">
+					<input id="sort-by-name" class="label__checkbox" type="checkbox" aria-label="Show alphabetically"/>
+					<label class="label__text">A - Z</label>
+				</span>
+				<!-- List Items -->
+				<ul class="list">
+						<input  ng-model="search" placeholder="Search2..."  />
+						<ul filter-list="search">
+							
+					<li class="list__item" data-level="1" data-category="1" data-space="1.08"><a href="#" class="list__link">{{maps[0].name}}</a></li>
+					<li class="list__item" data-level="1" data-category="1" data-space="1.06"><a href="#" class="list__link">{{maps[1].name}}</a></li>
+					<li class="list__item" data-level="1" data-category="1" data-space="1.01"><a href="#" class="list__link">{{maps[129].name}}</a></li>
+					<!-- Library -->
+					<li ng-trim="false" class="list__item" data-level="2" data-category="1" data-space="2.05"><a href="#" class="list__link">{{maps[138].name}}</a></li>
+					<li class="list__item" data-level="1" data-category="1" data-space="1.07"><a href="#" class="list__link">Raw Delight</a></li>
+					<li class="list__item" data-level="2" data-category="1" data-space="2.01"><a href="#" class="list__link">{{maps[134].name}}</a></li>
+
+
+					<li class="list__item" data-level="4" data-category="1" data-space="4.01"><a href="#" class="list__link">{{maps[162].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.02"><a href="#" class="list__link">{{maps[163].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.03"><a href="#" class="list__link">{{maps[164].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.04"><a href="#" class="list__link">{{maps[165].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.05"><a href="#" class="list__link">{{maps[166].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.06"><a href="#" class="list__link">{{maps[167].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.07"><a href="#" class="list__link">{{maps[168].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.08"><a href="#" class="list__link">{{maps[169].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.09"><a href="#" class="list__link">{{maps[170].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.10"><a href="#" class="list__link">{{maps[171].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.11"><a href="#" class="list__link">{{maps[172].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.12"><a href="#" class="list__link">{{maps[173].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.13"><a href="#" class="list__link">{{maps[174].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.14"><a href="#" class="list__link">{{maps[175].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.15"><a href="#" class="list__link">{{maps[176].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.16"><a href="#" class="list__link">{{maps[177].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.17"><a href="#" class="list__link">{{maps[178].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.18"><a href="#" class="list__link">{{maps[179].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.19"><a href="#" class="list__link">{{maps[180].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.20"><a href="#" class="list__link">{{maps[181].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.21"><a href="#" class="list__link">{{maps[182].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.22"><a href="#" class="list__link">{{maps[183].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.23"><a href="#" class="list__link">{{maps[184].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.24"><a href="#" class="list__link">{{maps[185].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.25"><a href="#" class="list__link">{{maps[186].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.26"><a href="#" class="list__link">{{maps[187].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.27"><a href="#" class="list__link">{{maps[188].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.28"><a href="#" class="list__link">{{maps[189].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.29"><a href="#" class="list__link">{{maps[190].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.30"><a href="#" class="list__link">{{maps[191].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="1" data-space="4.31"><a href="#" class="list__link">{{maps[192].name}}</a></li>
+					
+
+					<li class="list__item" data-level="2" data-category="1" data-space="2.06"><a href="#" class="list__link">{{maps[139].name}}</a></li>
+					
+					<li class="list__item" data-level="5" data-category="1" data-space="5.01"><a href="#" class="list__link">{{maps[193].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.02"><a href="#" class="list__link">{{maps[194].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.03"><a href="#" class="list__link">{{maps[195].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.04"><a href="#" class="list__link">{{maps[196].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.05"><a href="#" class="list__link">{{maps[197].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.06"><a href="#" class="list__link">{{maps[198].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.07"><a href="#" class="list__link">{{maps[199].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.08"><a href="#" class="list__link">{{maps[200].name}}</a></li>
+					<li class="list__item" data-level="5" data-category="1" data-space="5.09"><a href="#" class="list__link">{{maps[201].name}}</a></li>
+					
+					<li class="list__item" data-level="6" data-category="1" data-space="6.01"><a href="#" class="list__link">{{maps[202].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.02"><a href="#" class="list__link">{{maps[203].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.03"><a href="#" class="list__link">{{maps[204].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.04"><a href="#" class="list__link">{{maps[205].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.05"><a href="#" class="list__link">{{maps[206].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.06"><a href="#" class="list__link">{{maps[207].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.07"><a href="#" class="list__link">{{maps[208].name}}</a></li>
+					<li class="list__item" data-level="6" data-category="1" data-space="6.08"><a href="#" class="list__link">{{maps[209].name}}</a></li>
+					
+					
+					
+					<!-- B006 -->
+					<li class="list__item" data-level="1" data-category="2" data-space="1.09"><a href="#" class="list__link">{{maps[5].code}}</a></li>	
+					<li class="list__item" data-level="4" data-category="2" data-space="4.06"><a href="#" class="list__link">Love 2 Cook</a></li>
+					<!-- <li class="list__item" data-level="1" data-category="2" data-space="1.07"><a href="#" class="list__link">Fluids & Main Workshop E005</a></li> -->
+					<li class="list__item" data-level="1" data-category="2" data-space="1.02"><a href="#" class="list__link">{{maps[130].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.07"><a href="#" class="list__link">Permaculture Hub</a></li>
+					<li class="list__item" data-level="1" data-category="2" data-space="1.03"><a href="#" class="list__link">{{maps[131].name}}</a></li>
+					<li class="list__item" data-level="2" data-category="2" data-space="2.02"><a href="#" class="list__link">{{maps[135].name}}</a></li>
+					<li class="list__item" data-level="2" data-category="2" data-space="2.03"><a href="#" class="list__link">{{maps[136].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="2" data-space="4.02"><a href="#" class="list__link">Computer Lab A310</a></li>
+					<li class="list__item" data-level="4" data-category="3" data-space="4.03"><a href="#" class="list__link">Computer Lab A312</a></li>
+					<li class="list__item" data-level="2" data-category="3" data-space="2.08"><a href="#" class="list__link">{{maps[141].name}}</a></li>
+					<li class="list__item" data-level="2" data-category="3" data-space="2.09"><a href="#" class="list__link">{{maps[142].name}}</a></li>
+					<li class="list__item" data-level="2" data-category="3" data-space="2.10"><a href="#" class="list__link">{{maps[143].name}}</a></li>
+					<!-- <li class="list__item" data-level="1" data-category="3" data-space="1.04"><a href="#" class="list__link">{{maps[132].name}}</a></li> -->
+					<!-- Quiet Zone -->
+					<li class="list__item" data-level="2" data-category="3" data-space="2.04"><a href="#" class="list__link">{{maps[137].name}}</a></li>
+					<li class="list__item" data-level="2" data-category="3" data-space="2.07"><a href="#" class="list__link">{{maps[140].name}}</a></li>
+					<li class="list__item" data-level="4" data-category="4" data-space="4.04"><a href="#" class="list__link">Research Lab A314</a></li>
+					<!-- Leisure area -->
+					<li class="list__item" data-level="1" data-category="4" data-space="1.05"><a href="#" class="list__link">{{maps[133].name}} </a></li>
+					<li class="list__item" data-level="4" data-category="4" data-space="4.05"><a href="#" class="list__link">Hot Tub Festival</a></li>
+
+
+					<li class="list__item" data-level="3" data-category="1" data-space="3.01"><a href="#" class="list__link">{{maps[144].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="2" data-space="3.02"><a href="#" class="list__link">{{maps[145].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="3" data-space="3.03"><a href="#" class="list__link">{{maps[146].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="3" data-space="3.04"><a href="#" class="list__link">{{maps[147].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.05"><a href="#" class="list__link">{{maps[148].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.06"><a href="#" class="list__link">{{maps[149].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.07"><a href="#" class="list__link">{{maps[150].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.08"><a href="#" class="list__link">{{maps[151].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.09"><a href="#" class="list__link">{{maps[152].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.10"><a href="#" class="list__link">{{maps[153].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.11"><a href="#" class="list__link">{{maps[154].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.12"><a href="#" class="list__link">{{maps[155].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.13"><a href="#" class="list__link">{{maps[156].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.14"><a href="#" class="list__link">{{maps[157].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.15"><a href="#" class="list__link">{{maps[158].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.16"><a href="#" class="list__link">{{maps[159].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.17"><a href="#" class="list__link">{{maps[160].name}}</a></li>
+					<li class="list__item" data-level="3" data-category="4" data-space="3.18"><a href="#" class="list__link">{{maps[161].name}}</a></li>
+
+					
+
+					<li class="list__item" data-level="1" data-category="5" data-space="1.10"><a href="#" class="list__link">Junction</a></li>
+
+					
+						</ul>
+					
+				</ul>
+			</aside>
+			<!-- /spaces-list -->
+		</div>
+		<!-- /container -->
+		<script src="js/classie.js"></script>
+		
+		<script src="js/list.min.js"></script>
+		
+		<script src="js/main.js"></script>
+		<script src="js/rotate.js"></script>
+		
+		<!-- Import and configure the Firebase SDK -->
+    <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+    <!-- If you do not serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+    <script src="/__/firebase/3.9.0/firebase-app.js"></script>
+    <script src="/__/firebase/3.9.0/firebase-auth.js"></script>
+    <script src="/__/firebase/3.9.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+	
+<!--	<!--AngularJS-->
+<!--	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
+<!--	<script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>-->
+<!--    <script src="ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>	-->
+<!--	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>-->
+	
+	<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery.ui@1.10"></script>
+	<script src="scripts/tv4.js"></script>  
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-animate.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-sanitize.js"></script>
+	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js"></script>	
+	<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap.min.js"></script>-->
+	<script type="text/javascript" src="scripts/sortable.js"></script>
+	<script src="../scripts/ObjectPath.js"></script>
+	<script type="text/javascript" src="scripts/picker.js"></script>
+	<script type="text/javascript" src="scripts/picker.date.js"></script>
+	<script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script type="text/javascript" src="scripts/tx-tinymce.js"></script>
+	<script src="../scripts/schema-form.js"></script>
+	<script src="../scripts/bootstrap-decorator.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap-tinymce.js"></script>	
+	
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/checklist-model.js"></script>
+	<script src="scripts/gm.datepickerMultiSelect.js"></script>
+	
+	<script src="scripts/guide.js"></script>
+	<script src="scripts/event.js"></script>
+	<script src="scripts/club.js"></script>
+	<script src="scripts/unit.js"></script>
+	<script src="../scripts/map3.js"></script>
+
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+	
+	<!--<script src="../scripts/logout.js"></script>	-->
+	</body>
+</html>
