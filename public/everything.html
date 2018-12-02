@@ -332,12 +332,7 @@
 									<div class="panel-heading">View events</div>
 									<div class="panel-body">
 										
-										<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate'}}</em></pre>
-										
-										<div uib-datepicker ng-model="viewDateSelect"></div>
-										
-										<input type="text" ng-model="eventFil" placeholder="currently cannot filter dates" />
-										
+											<input type="text" ng-model="eventFil" placeholder="Search..." />
 										<table class="table" id="tableViewEvent">
 											<tr>
 												<th>Title</th>
