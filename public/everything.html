@@ -30,18 +30,16 @@
 	<meta name="theme-color" content="#ffffff">
 	
 	<!-- Our CSS -->
+	<link rel="stylesheet" href="css/avatar.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
 	<link rel="stylesheet" href="css/themes/default.css">
 	<link rel="stylesheet" href="css/themes/default.date.css">  
 	<link rel="stylesheet" href="css/bootstrap.vertical-tabs.min.css">
 	<link rel="stylesheet" href="css/datePicker.css">
 	
+
 	<!--<link rel="stylesheet" href="css/iframe.css">-->
 	<style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
         .imgbox {
             display: grid;
             height: 100%;
@@ -54,12 +52,12 @@
     </style>
 </head>
 
-<body ng-app="myApp">
+<body style="font-family:myFirstFont;"ng-app="myApp">
 	<div class="container">
 		<div class="page-header">
-			<h1><a href="everything.html">StudentAvatar</a></h1>
-			<p>Welcome to the StudentAvatar Dashboard</p>
-			<a href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+			<h1 style="text-align:center; text-decoration: none;"><a style="text-decoration:none;" href="everything.html">Student<a style="color:#dc2d27;text-decoration:none;" href="everything.html">Avatar</a></a></h1>
+			<p style="text-align:center;">Welcome to the StudentAvatar Dashboard</p>
+			<p style="text-align:center;"><a style="text-align:center; text-decoration: none;" href="#" onclick="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></p>
 		</div>
 		<div class="row">	
 			<nav class="col-md-12">
@@ -334,7 +332,11 @@
 									<div class="panel-heading">View events</div>
 									<div class="panel-body">
 										
-										<input type="text" ng-model="eventFil" placeholder="Search..." />
+										<pre>Selected date is: <em>{{viewDateSelect | date:'fullDate'}}</em></pre>
+										
+										<div uib-datepicker ng-model="viewDateSelect"></div>
+										
+										<input type="text" ng-model="eventFil" placeholder="currently cannot filter dates" />
 										
 										<table class="table" id="tableViewEvent">
 											<tr>
