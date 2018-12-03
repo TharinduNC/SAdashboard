@@ -552,8 +552,9 @@
 				
 				<div id="map" class="tab-pane fade" ng-controller="mapAll">
 					<div class="col-md-2">
-						<ul class="nav nav nav-tabs tabs-left">				
-							<li class="active"><a data-toggle="tab" href="#map-create">Add Room</a></li>
+						<ul class="nav nav nav-tabs tabs-left">
+							<li class="active"><a data-toggle="tab" href="#map-view">CampusMaps</a></li>
+							<li><a data-toggle="tab" href="#map-create">Add Room</a></li>
 							<li><a data-toggle="tab" href="#map-read">View Rooms</a></li>
 							<li><a data-toggle="tab" href="#map-delete">Delete Room</a></li>
 							<li><a data-toggle="tab" href="#map-update" ng-click="onMapEditClick()">Edit Room</a></li>
@@ -572,10 +573,10 @@
 					<div class="col-md-10">
 						<div class="tab-content">
 						
-							<div id="map-create" class="tab-pane fade in active">
+							<div id="map-create" class="tab-pane fade">
 							
 								<div class="panel panel-default">
-									<div class="panel-heading">Add one map <a href="https://my-awesome-project-6dd85.firebaseapp.com/CampusMap2/">Campus Map</a></div>
+									<div class="panel-heading">Add one map</div>
 									<div class="panel-body">
 									
 										<form novalidate name="formMapCreate" ng-submit="createMap(formMapCreate)" class="form-horizontal">											
@@ -673,14 +674,7 @@
 									</div>
 								</div>
 								
-								<div id="Iframe-Master-CC-and-Rs" class="set-margin set-padding set-border set-box-shadow center-block-horiz">
-									<div class="responsive-wrapper 
-									   responsive-wrapper-wxh-572x612"
-									   style="-webkit-overflow-scrolling: touch; overflow: auto;">
-								  
-									  <iframe src="/CampusMap2/"></iframe>
-									</div>
-								</div>
+								
 								
 							</div>
 							
@@ -757,6 +751,29 @@
 									</div>
 									
 								</div>
+
+								<div id="map-view" class="tab-pane fade in active">
+								
+										<div class="panel panel-default">
+											<div class="panel-heading">View CampusMaps</div>
+											<div class="panel-body">
+													<div id="Iframe-Master-CC-and-Rs" class="set-margin set-padding set-border set-box-shadow center-block-horiz">
+															<div class="responsive-wrapper 
+															   responsive-wrapper-wxh-572x612"
+															   style="-webkit-overflow-scrolling: touch; overflow: auto;">
+														  
+															  <iframe style="
+															  top: 0;
+															  left: 0;
+															  width: 100%;
+															  height: 450px;
+															  border: 0;" src="/LandingMap/"></iframe>
+															</div>
+														</div>
+											</div>
+										</div>
+										
+									</div>
 						
 						</div>
 					</div>
