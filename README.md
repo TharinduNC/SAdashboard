@@ -2,7 +2,7 @@
 <ol>
   <li>Install Node.js 10.0.0 https://nodejs.org/en/</li>
   <li>Open cmd and install the Firebase CLI using: <code>npm install -g firebase-tools</code></li>
-  <li>Restart your computer</li>
+  <li>Authenticate: <code>firebase login</li>
   <li>Clone github to local directory: <code>git clone https://github.com/gunatilake/SAdashboard.git</code></li>
   <li>Localhost: <code>firebase serve</code></li>
   <li>Deploy the website using: <code>firebase deploy</code></li>
