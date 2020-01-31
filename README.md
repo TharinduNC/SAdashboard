@@ -13,7 +13,7 @@ $ firebase login
 Clone repository
 ```
 $ git clone https://github.com/gunatilake/SAdashboard.git
-
+```
 Deploy locally
 ```
 $ firebase serve
